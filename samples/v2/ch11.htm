@@ -1,0 +1,5643 @@
+<HTML><HEAD>
+<TITLE>HL7 V2.4 Chapter 11</TITLE></HEAD>
+<BODY BACKGROUND="" BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1>
+HL7 V2.4 Contents
+</H1>
+<A HREF="hl7.htm">Contents</A><br>
+<A HREF="ch01.htm">1 . Introduction</A><br>
+<A HREF="ch02.htm">2 .Control </A><br>
+<A HREF="ch03.htm">3 .Patient Administration</A><br>
+<A HREF="ch04.htm">4 .Order Entry</A><br>
+<A HREF="ch05.htm">5 .Query</A><br>
+<A HREF="ch06.htm">6. Financial Management</A><br>
+<A HREF="ch07.htm">7 .Observation Reporting</A><br>
+<A HREF="ch08.htm">8 .Master Files</A><br>
+<A HREF="ch09.htm">9 .Medical Records/Information Management (Document Management)</A><br>
+<A HREF="ch10.htm">10 .Scheduling</A><br>
+<A HREF="ch11.htm">11 .Patient Referral</A><br>
+<A HREF="ch12.htm">12 .Patient Care</A><br>
+<A HREF="ch13.htm">13 .Clinical Laboratory Automation</A><br>
+<A HREF="ch14.htm">14 .Application Management</A><br>
+<A HREF="ch15.htm">15 .Personnel Management</A><br>
+<A HREF="AppendixA.htm">A .Data Definition Tables</A><br>
+<A HREF="AppendixB.htm">B. Lower Layer Protocols</A><br>
+<A HREF="AppendixC.htm">C. Version 2.4 BNF Message Descriptions</A><br>
+<A HREF="AppendixD.htm">D. Glossary</A><br>
+
+<hr size=4>
+<H1>
+HL7 V2.4 Chapter 11</H1>
+<UL>
+<LI><A HREF="#Heading1">11 .<BR>Patient Referral</A>
+<UL>
+<LI><A HREF="#Heading2">11.1 CHAPTER 11 CONTENTS</A>
+<LI><A HREF="#Heading3">11.2 PURPOSE</A>
+<UL>
+<LI><A HREF="#Heading4">11.2.1 Patient referral and responses</A>
+<UL>
+<LI><A HREF="#Heading5"> </A>
+<LI><A HREF="#Heading6">11.2.1.1 Patient referral</A>
+<LI><A HREF="#Heading7">11.2.1.2 Responding to a patient referral</A>
+</UL>
+<LI><A HREF="#Heading8">11.2.2 Application roles and data process</A>
+<UL>
+<LI><A HREF="#Heading9"> </A>
+<LI><A HREF="#Heading10">11.2.2.1 Application roles</A>
+<LI><A HREF="#Heading11">11.2.2.2 The referring provider application role</A>
+<LI><A HREF="#Heading12">11.2.2.3 The referred-to provider application role</A>
+<LI><A HREF="#Heading13">11.2.2.4 The querying application role</A>
+<LI><A HREF="#Heading14">11.2.2.5 The auxiliary application role</A>
+<LI><A HREF="#Heading15">11.2.2.6 Application roles in a messaging environment</A>
+</UL>
+<LI><A HREF="#Heading16">11.2.3 Glossary</A>
+<UL>
+<LI><A HREF="#Heading17"> </A>
+<LI><A HREF="#Heading18">11.2.3.1 Benefits: </A>
+<LI><A HREF="#Heading19">11.2.3.2 Clinical information: </A>
+<LI><A HREF="#Heading20">11.2.3.3 Dependent: </A>
+<LI><A HREF="#Heading21">11.2.3.4 Eligibility/coverage: </A>
+<LI><A HREF="#Heading22">11.2.3.5 Encounter: </A>
+<LI><A HREF="#Heading23">11.2.3.6 Guarantor: </A>
+<LI><A HREF="#Heading24">11.2.3.7 Healthcare provider: </A>
+<LI><A HREF="#Heading25">11.2.3.8 Payor: </A>
+<LI><A HREF="#Heading26">11.2.3.9 Pre-authorization: </A>
+<LI><A HREF="#Heading27">11.2.3.10 Primary care provider: </A>
+<LI><A HREF="#Heading28">11.2.3.11 Referral: </A>
+<LI><A HREF="#Heading29">11.2.3.12 Referring provider: </A>
+<LI><A HREF="#Heading30">11.2.3.13 Referred-to-provider: </A>
+<LI><A HREF="#Heading31">11.2.3.14 Specialist:</A>
+<LI><A HREF="#Heading32">11.2.3.15 Subscriber: </A>
+</UL>
+</UL>
+<LI><A HREF="#Heading33">11.3 PATIENT INFORMATION REQUEST MESSAGES AND TRIGGER EVENTS</A>
+<UL>
+<LI><A HREF="#Heading34">11.3.1 RQI/RPI - request for insurance information (event I01) </A>
+<LI><A HREF="#Heading35">11.3.2 RQI/RPL - request/receipt of patient selection display list (event I02) </A>
+<LI><A HREF="#Heading36">11.3.3 RQI/RPR - request/receipt of patient selection list (event I03) </A>
+<LI><A HREF="#Heading37">11.3.4 RQP/RPI - request for patient demographic data (event I04) </A>
+<LI><A HREF="#Heading38">11.3.5 RQC/RCI - request for patient clinical information (event I05) </A>
+<LI><A HREF="#Heading39">11.3.6 RQC/RCL - request/receipt of clinical data listing (event I06) </A>
+<LI><A HREF="#Heading40">11.3.7 PIN/ACK - unsolicited insurance information (event I07) </A>
+</UL>
+<LI><A HREF="#Heading41">11.4 PATIENT TREATMENT AUTHORIZATION REQUESTS</A>
+<UL>
+<LI><A HREF="#Heading42">11.4.1 RQA/RPA - request patient authorization message </A>
+<LI><A HREF="#Heading43">11.4.2 RQA/RPA - request for treatment authorization information (event I08) </A>
+<LI><A HREF="#Heading44">11.4.3 RQA/RPA - request for modification to an authorization (event I09) </A>
+<LI><A HREF="#Heading45">11.4.4 RQA/RPA - request for resubmission of an authorization (event I10)</A>
+<LI><A HREF="#Heading46">11.4.5 RQA/RPA - request for cancellation of an authorization (event I11)</A>
+</UL>
+<LI><A HREF="#Heading47">11.5 PATIENT REFERRAL MESSAGES AND TRIGGER EVENTS</A>
+<UL>
+<LI><A HREF="#Heading48">11.5.1 REF/RRI - patient referral message</A>
+<LI><A HREF="#Heading49">11.5.2 REF/RRI - patient referral (event I12)</A>
+<LI><A HREF="#Heading50">11.5.3 REF/RRI - modify patient referral (event I13)</A>
+<LI><A HREF="#Heading51">11.5.4 REF/RRI - cancel patient referral (event I14)</A>
+<LI><A HREF="#Heading52">11.5.5 REF/RRI - request patient referral status (event I15)</A>
+</UL>
+<LI><A HREF="#Heading53">11.6 SEGMENTS</A>
+<UL>
+<LI><A HREF="#Heading54">11.6.1 RF1 - referral information segment</A>
+<UL>
+<LI><A HREF="#Heading55">11.6.1.0 RF1 - field definitions</A>
+<LI><A HREF="#Heading56">11.6.1.1 RF1-1  Referral status  (CE)   01137</A>
+<LI><A HREF="#Heading57">11.6.1.2 RF1-2  Referral priority  (CE)   01138</A>
+<LI><A HREF="#Heading58">11.6.1.3 RF1-3  Referral type  (CE)   01139</A>
+<LI><A HREF="#Heading59">11.6.1.4 RF1-4  Referral disposition  (CE)   01140</A>
+<LI><A HREF="#Heading60">11.6.1.5 RF1-5  Referral category   (CE)   01141</A>
+<LI><A HREF="#Heading61">11.6.1.6 RF1-6  Originating referral identifier  (EI)   01142</A>
+<LI><A HREF="#Heading62">11.6.1.7 RF1-7  Effective date  (TS)   01143</A>
+<LI><A HREF="#Heading63">11.6.1.8 RF1-8  Expiration date  (TS)   01144</A>
+<LI><A HREF="#Heading64">11.6.1.9 RF1-9  Process date  (TS)   01145</A>
+<LI><A HREF="#Heading65">11.6.1.10 RF1-10  Referral reason  (CE)   01228 </A>
+<LI><A HREF="#Heading66">11.6.1.11 RF1-11  External referral identifier  (EI)   01300</A>
+</UL>
+<LI><A HREF="#Heading67">11.6.2 AUT - authorization information segment</A>
+<UL>
+<LI><A HREF="#Heading68">11.6.2.0 AUT - field definitions</A>
+<LI><A HREF="#Heading69">11.6.2.1 AUT-1  Authorizing payor, plan ID  (CE)   01146</A>
+<LI><A HREF="#Heading70">11.6.2.2 AUT-2  Authorizing payor, company ID  (CE)   01147</A>
+<LI><A HREF="#Heading71">11.6.2.3 AUT-3  Authorizing payor, company name  (ST)   01148</A>
+<LI><A HREF="#Heading72">11.6.2.4 AUT-4  Authorization effective date  (TS)   01149</A>
+<LI><A HREF="#Heading73">11.6.2.5 AUT-5  Authorization expiration date  (TS)   01150</A>
+<LI><A HREF="#Heading74">11.6.2.6 AUT-6  Authorization identifier  (EI)   01151</A>
+<LI><A HREF="#Heading75">11.6.2.7 AUT-7  Reimbursement limit  (CP)   01152</A>
+<LI><A HREF="#Heading76">11.6.2.8 AUT-8  Requested number of treatments  (NM)   01153</A>
+<LI><A HREF="#Heading77">11.6.2.9 AUT-9  Authorized number of treatments  (NM)   01154</A>
+<LI><A HREF="#Heading78">11.6.2.10 AUT-10  Process date  (TS)   01145</A>
+</UL>
+<LI><A HREF="#Heading79">11.6.3 PRD - provider data segment</A>
+<UL>
+<LI><A HREF="#Heading80">11.6.3.0 PRD field definitions</A>
+<LI><A HREF="#Heading81">11.6.3.1 PRD-1  Provider role  (CE)   01155</A>
+<LI><A HREF="#Heading82">11.6.3.2 PRD-2  Provider name  (XPN)   01156</A>
+<LI><A HREF="#Heading83">11.6.3.3 PRD-3  Provider address  (XAD)   01157</A>
+<LI><A HREF="#Heading84">11.6.3.4 PRD-4  Provider location  (PL)   01158</A>
+<LI><A HREF="#Heading85">11.6.3.5 PRD-5  Provider communication information  (XTN)   01159</A>
+<LI><A HREF="#Heading86">11.6.3.6 PRD-6  Preferred method of contact - provider  (CE)   00684</A>
+<LI><A HREF="#Heading87">11.6.3.7 PRD-7  Provider identifiers  (CM)   01162</A>
+<LI><A HREF="#Heading88">11.6.3.8 PRD-8  Effective start date of provider role  (TS)   01163</A>
+<LI><A HREF="#Heading89">11.6.3.9 PRD-9  Effective end date of provider role  (TS)   01164</A>
+</UL>
+<LI><A HREF="#Heading90">11.6.4 CTD - contact data segment</A>
+<UL>
+<LI><A HREF="#Heading91">11.6.4.0 CTD field definitions</A>
+<LI><A HREF="#Heading92">11.6.4.1 CTD-1  Contact role  (CE)   00196</A>
+<LI><A HREF="#Heading93">11.6.4.2 CTD-2  Contact name  (XPN)   01165</A>
+<LI><A HREF="#Heading94">11.6.4.3 CTD-3  Contact address  (XAD)   01166</A>
+<LI><A HREF="#Heading95">11.6.4.4 CTD-4  Contact location  (PL)   01167</A>
+<LI><A HREF="#Heading96">11.6.4.5 CTD-5  Contact communication information  (XTN)   01168</A>
+<LI><A HREF="#Heading97">11.6.4.6 CTD-6  Preferred method of contact - provider  (CE)   00684</A>
+<LI><A HREF="#Heading98">11.6.4.7 CTD-7  Contact identifiers  (CM)   01171</A>
+</UL>
+</UL>
+<LI><A HREF="#Heading99">11.7 EXAMPLES</A>
+<UL>
+<LI><A HREF="#Heading100">11.7.1 RQI message using an I01 event with an immediate response</A>
+<LI><A HREF="#Heading101">11.7.2 RQA message using an I08 event with an immediate response</A>
+<LI><A HREF="#Heading102">11.7.3 RQA message using an I08 event with a deferred response</A>
+<LI><A HREF="#Heading103">11.7.4 REF message using an I11 event with an immediate response</A>
+<LI><A HREF="#Heading104">11.7.5 REF message using an I11 event with a deferred response</A>
+<LI><A HREF="#Heading105">11.7.6 RQC inquiry message using an I05 event with an immediate response</A>
+</UL>
+<LI><A HREF="#Heading106">11.8 OUTSTANDING ISSUES</A>
+<UL>
+<LI><A HREF="#Heading107">11.8.1 HL7 overlapping with ASC X12N</A>
+</UL>
+</UL>
+</UL>
+<hr size=4>
+
+<h1>
+<A NAME="Heading1">11 .<BR>Patient Referral</A></h1>
+
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter
+Chair/Editor:
+</p></TD>
+<TD colspan=1 align="left"><p>Clement
+J. McDonald, MD<br>Regenstrief Institute and Indiana University School of
+Medicine
+</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter
+Chair/Editor:
+</p></TD>
+<TD colspan=1 align="left"><p>Hans
+Buitendijk<br>Shared Medical Systems
+</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter
+Chair/Editor:
+</p></TD>
+<TD colspan=1 align="left"><p>Gunther
+Schadow<br>Regenstrief Institute for Health Care
+</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter
+Chair/Editor:
+</p></TD>
+<TD colspan=1 align="left"><p>Helen
+Stevens<br>McKessonHBOC
+</p></TD>
+</TR>
+</TABLE>
+<p><b>Note:</b>
+No substantive changes were made to this chapter for Version 2.4.
+</p>
+
+<h2>
+<A NAME="Heading2">11.1 CHAPTER 11 CONTENTS</A></h2>
+
+
+<h2>
+<A NAME="Heading3">11.2 PURPOSE</A></h2>
+
+<p>The
+Patient Referral chapter defines the message set used in patient referral
+communications between mutually exclusive healthcare entities.  These referral
+transactions frequently occur between entities with different methods and
+systems of capturing and storing data.  Such transactions frequently traverse a
+path connecting primary care providers, specialists, payors, government
+agencies, hospitals, labs, and other healthcare entities.  The availability,
+completeness, and currency of information for a given patient will vary greatly
+across such a spectrum.<br>
+The referral in this specification is viewed from the perspective of the
+provider as an individual, irrespective of his/her affiliation with a specific
+institution or campus.  Events triggering this kind of message are not
+restricted to a hospital environment, but have a community-wide area of impact
+in which more extensive identification of patients and healthcare providers is
+needed.  Therefore, a referral must contain adequate identification information
+to meet the broadly varying requirements of the dissimilar systems within the
+community.<br>
+This chapter describes the various events and resulting transactions that make
+up the referral message set.  Examples have been provided to demonstrate the
+use of this specification within the events described.  Each event example
+centers on a primary care provider's encounter with a patient.  All of the
+examples in this chapter have been constructed using the HL7 Encoding Rules.
+</p>
+
+<h3>
+<A NAME="Heading4">11.2.1 Patient referral and responses</A></h3>
+
+<p>When
+a patient is referred by one healthcare entity (e.g., a primary care provider)
+to another (e.g., a specialist or lab) or when a patient inquiry is made
+between two separate entities, little is known about the information each party
+requires to identify or codify the patient.  The receiving entity may have no
+knowledge of the patient and may require a full set of demographics, subscriber
+and billing information, eligibility/coverage information, pre-authorization
+information, and/or clinical data to process the referral. If the receiving
+entity already has a record of the patient, the precise requirements for
+identifying that patient record will vary greatly from one entity to another.
+The existing record of a patient residing in the database of a specialist, a
+lab, or a hospital may require updating with more current information.  In
+addition, providers receiving a referral often require detailed information
+about the provider making the referral, such as a physician's name and
+address.<br>
+For example, a primary care provider making a referral may need to obtain
+insurance information or pre-authorization from a payor prior to making a
+referral.  Getting this information requires an inquiry and a response between
+the primary care provider and the payor.  In addition, the primary care
+provider may request results from a lab to accompany the referral.  Getting
+these results may require an inquiry and a response between the primary care
+provider and the lab.  The information could then be incorporated into a
+referral sent from the primary care provider to the specialist.  As the
+referral is processed, requested procedures are performed, the results are
+observed, and the relevant data must be returned to the primary care provider.
+Such a response may frequently take the form of multiple responses as results
+become available.<br>
+The message set that encompasses these transactions includes the referral
+(REF), requests for information (RQA, RQC, RQP, RQI) and the returned patient
+information (RCI, RCL, RPA, RPI, RPL, RRI).  The referral message originates a
+transaction and a return patient information message concludes the transaction.
+At least one RPA/RPI is required to complete a patient referral or a patient
+request transaction, although multiple RPI messages may be returned in response
+to a single REF message.  The segments used in the REF, RQA, RQI, RQP, RRI,
+RPH, RCI, RCL, RPA and RPI messages encompass information about patient,
+guarantor and next of kin demographics, eligibility/coverage information,
+accident, diagnosis, requested procedures, payor pre-authorization, notes, and
+referring and consulting provider data.
+</p>
+
+<h4>
+<A NAME="Heading5"> </A></h4>
+
+
+<h4>
+<A NAME="Heading6">11.2.1.1 Patient referral</A></h4>
+
+<p>There
+are clear distinctions between a referral and an order.  An order is almost
+always an intra-enterprise transaction and represents a request from a
+patient's active provider to supporting providers for clearly defined services
+and/or results.  While the supporting provider may exercise great discretion in
+the performance of an order, overall responsibility for the patient's plan of
+treatment remains with the ordering provider.  As such, the ordering provider
+retains significant control authority for the order and can, after the fact,
+cause the order to be canceled, reinstated, etc.  Additionally, detailed
+results produced by the supporting provider are always reported back to the
+ordering provider, who remains ultimately responsible for evaluating their
+value and relevance.  A referral, on the other hand, can be either an intra- or
+an inter-enterprise transaction and represents not only a request for
+additional provider support but also a transfer of a portion or all of the
+responsibility for the patient's plan of treatment.  Once the referral is made,
+the referring provider, during the transfer period, retains almost no control
+of any resulting actions.  The referred-to provider becomes responsible for
+placing any additional orders and for evaluating the value and relevance of any
+results, which may or may not be automatically passed back to the referring
+provider.  A referred-to provider may, in turn, also become a referring
+provider. <br>
+A referral message is used to support transactions related to the referral of a
+patient from one healthcare provider to another.  This kind of message will be
+particularly useful from the perspective of a primary care provider referring a
+patient to a specialist.  However, the application of the message should not be
+limited to this model.  For example, a referral may be as simple as a physician
+sending a patient to another physician for a consultation or it may be as
+complex as a primary care provider sending a patient to a specialist for
+specific medical procedures to be performed and attaching the payor
+authorizations for those requested procedures as well as the relevant clinical
+information on the patient's case.<br>
+In a community model, stringent security requirements will need to be met when
+dealing with the release of clinical information.  This message set facilitates
+the proper qualification of requests because the message packet will contain
+all the data required by any application in the community, including the
+necessary patient demographic information and the proper identification of the
+party requesting the information.  
+</p>
+
+<h4>
+<A NAME="Heading7">11.2.1.2 Responding to a patient referral</A></h4>
+
+<p>When
+a patient is referred by one provider to another or is pre-admitted, there is a
+great likelihood that subsequent transactions will take place between the
+initiating entity (the referring or admitting physician) and the responding
+entity (the specialist or hospital).  The subsequent transactions might include
+a variety of queries, orders, etc.  Within those subsequent transactions, there
+must be a way for the initiating system to refer to the patient.  The "generic"
+patient information included in the original referral or the pre-admit Patient
+Identification (PID) segment may not be detailed enough to locate the patient
+in the responding facility's database, unless the responding facility has
+assigned a unique identifier to the new patient.  Similarly, the responding
+system may not have record retrieval capabilities based on any of the
+unambiguous, facility-neutral data elements (like the Social Security Number)
+included in the original referral or pre-admit PID segment.  This problem could
+result in the responding system associating subsequent orders or requests with
+the wrong patient.  One solution to this potential problem is for the
+responding system to utilize the RRI message and return to the initiating
+system the unique internal identifier it assigns to the patient, and with which
+it will primarily (or even exclusively) refer to that patient in all subsequent
+update operations.  However, the intent of the RRI message is that it will
+supply the originator of the referral type message with sufficient patient
+demographic and/or clinical information to properly process continued
+transactions.
+</p>
+
+<h3>
+<A NAME="Heading8">11.2.2 Application roles and data process</A></h3>
+
+
+<h4>
+<A NAME="Heading9"> </A></h4>
+
+
+<h4>
+<A NAME="Heading10">11.2.2.1 Application roles</A></h4>
+
+<p>This
+Standard assumes that there are four roles that an application can take on: a
+referring or referred-by provider application role, a referred-to provider
+application role, a querying application role, and an auxiliary application
+role.  These application roles define the interactions an application will have
+with other applications in the messaging environment.  In many environments,
+any single application may take on more than one application role.<br>
+This Standard's definition of application roles does not intend to define or
+limit the functionality of specific products developed by vendors of such
+applications.  Instead, this information is provided to help define the model
+used to develop this Standard, and to provide an unambiguous way for
+applications to communicate with each other.
+</p>
+
+<h4>
+<A NAME="Heading11">11.2.2.2 The referring provider application role</A></h4>
+
+<p>A
+referring provider application requests the services of another healthcare
+provider (a referred-to provider) application.  There may or may not be any
+association between the referring provider application and the receiving
+entity.  Although in most cases a referral environment will be inter-enterprise
+in nature, it is not limited to that model and applies to intra-enterprise
+situations also.  Because the referring provider application cannot exert any
+control over the referred-to provider application, it must send requests to
+modify the status of the referred-to provider application.  The referring
+provider application will often assume an auxiliary application role once a
+patient has been accepted by another application.  Once this happens, the
+referring provider application may receive unsolicited status updates from the
+referred-to provider application concerning the care of a patient.<br>
+The analog of a referring provider application in a non-automated environment
+might be a primary care provider diagnosing a patient with a problem that must
+in turn be referred to a specialist for a service.  The primary care provider
+would contact the specialist and refer the patient into his care.  Often, the
+specialist may not receive the patient into his care, preferring instead to
+refer the patient to another healthcare provider.  The referring provider will
+indicate the diagnosis and any requested services, and the specialist to whom
+the patient is referred will indicate whether the referral will be accepted as
+specified.  Once a patient referral has been accepted by the specialist, the
+specialist may send out updates to the primary care provider concerning the
+status of the patient as regards any tests performed, their outcomes, etc.
+</p>
+
+<h4>
+<A NAME="Heading12">11.2.2.3 The referred-to provider application role</A></h4>
+
+<p>A
+referred-to provider application, in the referral model, is one that performs
+one or more services requested by another healthcare provider (referring
+provider).  In other words, a referred-to provider application exerts control
+over a certain set of services and defines the availability of those services.
+Because of this control, no other application has the ability to accept,
+reject, or otherwise modify a referral accepted by a particular referred-to
+provider application.<br>
+Other applications can, on the other hand, make requests to modify the status
+of an accepted referral "owned by" the referred-to provider application.  The
+referred-to provider application either grants or denies requests for
+information, or otherwise modifies the referrals for the services over which it
+exerts control.<br>
+Finally, the referred-to provider application also provides information about
+the referral encounter to other applications.  The reasons that an application
+may be interested in receiving such information are varied.  An application may
+have previously requested the status of the referral encounter, or it may
+simply be interested in the information for its own clinical reporting or
+statistical purposes.  There are two methods whereby the referred-to provider
+applications disseminate this information: by issuing unsolicited information
+messages to auxiliary applications, or by responding to queries made by
+querying applications.<br>
+The analog of a referred-to provider application in a non-automated environment
+might be a specialist such as a cardiologist.  A patient does not generally go
+to a cardiologist for routine health care.  Instead,  a patient generally goes
+to a primary care provider, who may diagnose the patient with a heart ailment
+and refer that patient to a cardiologist.  The cardiologist would review the
+information provided with the referral request and determine whether or not to
+accept the patient into his care.  Once the cardiologist accepts the patient,
+anyone needing information on the status of the patient must then make requests
+to the cardiologist.  In addition, the cardiologist may forward unsolicited
+information regarding the treatment of the patient back to the primary care
+provider.  Once the cardiologist accepts the referred patient, he/she may
+determine that additional information regarding the patient is needed.  It will
+often take the role of a querying application by sending a query message to the
+patient's primary care provider and requesting additional information on
+demographics, insurance information, laboratory test results, etc.
+</p>
+
+<h4>
+<A NAME="Heading13">11.2.2.4 The querying application role</A></h4>
+
+<p>A
+querying application neither exerts control over, nor requests changes to a
+referral.  Rather than accepting unsolicited information about referrals, as
+does an auxiliary application, the querying application actively solicits this
+information using a query mechanism.  It will, in general, be driven by an
+entity seeking information about a referral such as a referring provider
+application or an entity seeking information about a referred patient such as a
+referred-to provider application.  The information that the querying
+application receives is valid only at the exact time that the query results are
+generated by the provider applications.  Changes made to the referral or the
+referred patient's status after the query results have been returned are not
+communicated to the querying application until it issues another query
+transaction.<br>
+The analog of a querying application in a non-automated environment might be a
+primary care provider seeking information about a specific patient who has been
+referred to a specialist.  For example, a patient may have been referred to a
+specialist in order that a specific test be performed, following which, the
+patient would return to the primary care provider.  If the specialist has not
+forwarded information regarding the testing procedures for the patient to the
+primary care provider, the primary care provider would then query the
+specialist for the outcome of those procedures.  Likewise, if a specialist
+received a referred patient without the preliminary diagnoses of test results,
+he/she might in turn query the primary care provider for the information
+leading to the diagnoses and subsequent referral.
+</p>
+
+<h4>
+<A NAME="Heading14">11.2.2.5 The auxiliary application role</A></h4>
+
+<p>Like
+querying applications, an auxiliary application neither exerts control over nor
+requests changes to a referral or a referred patient.  They, too, are only
+concerned with gathering information about a particular referral.  An auxiliary
+application is considered an "interested third-party," in that it is interested
+in any changes to a particular referral or referred patient, but has no
+interest in changing it or controlling it in any way.  An auxiliary application
+passively collects information by receiving unsolicited updates from a provider
+application.<br>
+The analog of an auxiliary application in a non-automated environment might be
+any person receiving reports containing referral information.  For example, an
+insurance company may need information about the activities a patient
+experiences during specific referral encounters.  Primary care providers may
+need to forward information regarding all referred patients to a payor
+organization.<br>
+In turn, a primary care provider may have the ability to track electronically a
+patient's medical record.  She or he would then be very interested in receiving
+any information regarding the patient (s)he has referred to a specialist.
+</p>
+
+<h4>
+<A NAME="Heading15">11.2.2.6 Application roles in a messaging environment</A></h4>
+
+<p>In
+a messaging environment, these four application roles communicate using
+specific kinds of messages and trigger events.  The following figure
+illustrates the relationships between these application roles in a messaging
+environment:<br>
+<center>Figure 11-1.  Application role messaging relationships</center><br>
+<center>
+<A href="ch1101.gif">Click here for Picture </A></center></p>
+
+<h3>
+<A NAME="Heading16">11.2.3 Glossary</A></h3>
+
+
+<h4>
+<A NAME="Heading17"> </A></h4>
+
+
+<h4>
+<A NAME="Heading18">11.2.3.1 Benefits: </A></h4>
+
+<p>The
+services payable under a specific payor plan.  They are also referred to as an
+insurance product, such as professional services, prescription drugs, etc.
+</p>
+
+<h4>
+<A NAME="Heading19">11.2.3.2 Clinical information: </A></h4>
+
+<p>Refers
+to the data contained in the patient record.  The data may include such things
+as problem lists, lab results, current medications, family history, etc.  For
+the purposes of this chapter, clinical information is limited to diagnoses
+(DG1&amp; DRG), results reported (OBX/OBR), and allergies (AL1).
+</p>
+
+<h4>
+<A NAME="Heading20">11.2.3.3 Dependent: </A></h4>
+
+<p>Refers
+to a person who is affiliated with a subscriber, such as spouse or child.
+</p>
+
+<h4>
+<A NAME="Heading21">11.2.3.4 Eligibility/coverage: </A></h4>
+
+<p>Refers
+to the period of time a subscriber or dependent is entitled to benefits.
+</p>
+
+<h4>
+<A NAME="Heading22">11.2.3.5 Encounter: </A></h4>
+
+<p>Refers
+to a meeting between a covered person and a healthcare provider whose services
+are provided.
+</p>
+
+<h4>
+<A NAME="Heading23">11.2.3.6 Guarantor: </A></h4>
+
+<p>Refers
+to a person who has financial responsibility for the payment of a patient
+account.
+</p>
+
+<h4>
+<A NAME="Heading24">11.2.3.7 Healthcare provider: </A></h4>
+
+<p>Refers
+to a person licensed, certified or otherwise authorized or permitted by law to
+administer health care in the ordinary course of business or practice of a
+profession, including a healthcare facility.
+</p>
+
+<h4>
+<A NAME="Heading25">11.2.3.8 Payor: </A></h4>
+
+<p>Indicates
+a third-party entity who pays for or underwrites coverage for healthcare
+expenses.  A payor may be an insurance company, a health maintenance
+organization (HMO), a preferred provider organization (PPO), a government
+agency or an agency such as a third-party administrator (TPA).
+</p>
+
+<h4>
+<A NAME="Heading26">11.2.3.9 Pre-authorization: </A></h4>
+
+<p>Refers
+to the process of obtaining prior approval as to the appropriateness of a
+service.  Pre-authorization does not guarantee coverage.
+</p>
+
+<h4>
+<A NAME="Heading27">11.2.3.10 Primary care provider: </A></h4>
+
+<p>Indicates
+the provider responsible for delivering care as well as authorizing and
+channeling care to specialists and other providers in a gatekeeper system.  The
+provider is also referred to as a case manager or a gatekeeper.
+</p>
+
+<h4>
+<A NAME="Heading28">11.2.3.11 Referral: </A></h4>
+
+<p>Means
+a provider's recommendation that a covered person receive care from a different
+provider.
+</p>
+
+<h4>
+<A NAME="Heading29">11.2.3.12 Referring provider: </A></h4>
+
+<p>Indicates
+the provider who requests services from a specialist or another primary care
+provider.  A referring provider may, in fact, be a specialist who is referring
+a patient to another specialist.
+</p>
+
+<h4>
+<A NAME="Heading30">11.2.3.13 Referred-to-provider: </A></h4>
+
+<p>Typically
+indicates a specialty care provider who provides services at the request of a
+primary care provider or another specialty care provider. 
+</p>
+
+<h4>
+<A NAME="Heading31">11.2.3.14 Specialist:</A></h4>
+
+<p>Means
+a provider of services which are beyond the capabilities or resources of the
+primary care provider.  A specialist is also known as a specialty care provider
+who provides services at the request of a primary care provider or another
+specialty care provider.
+</p>
+
+<h4>
+<A NAME="Heading32">11.2.3.15 Subscriber: </A></h4>
+
+<p>Refers
+to a person who elects benefits and is affiliated with an employer or insurer.  
+</p>
+
+<h2>
+<A NAME="Heading33">11.3 PATIENT INFORMATION REQUEST MESSAGES AND TRIGGER EVENTS</A></h2>
+
+<p>Patient
+information may need to be retrieved from various enterprises.  The definition
+of these enterprises often varies greatly.  Some enterprises may be providers
+or reference laboratories, while others may be payors providing insurance
+information.  In the first case, the message definitions will focus on patient
+and provider information, while in the latter case, the message definition will
+deal primarily with patient and subscriber identification. 
+</p>
+
+<h3>
+<A NAME="Heading34">11.3.1 RQI/RPI - request for insurance information (event I01) </A></h3>
+
+<p>This
+event triggers a message to be sent from one healthcare provider to another to
+request insurance information for a specified patient.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RQI^I01^RQI_I01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Request
+Patient Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info - Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RPI^I01^RPI_I01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Patient Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA  
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info - Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading35">11.3.2 RQI/RPL - request/receipt of patient selection display list (event I02) </A></h3>
+
+<p>This
+trigger event occurs when the inquirer specifies a request for a name lookup
+listing.  Generally, this request is used by the responder when insufficient
+data is on hand for a positive match.  In this case, the requester may ask for
+a list of possible candidates from which to make a selection.  This event code
+is also used by the responder to signify that the return information contains a
+list of information rather than information specific to a single patient.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RQI^I02^RQI_I01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Request
+Patient Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   
+<u>PRD</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID 
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p>
+<BR></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info - Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RPL^I02^RPL_I02</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Patient Display List
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA  
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   PRD
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CT
+D</u>}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DSP}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Display
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+DSC ]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Continuation
+Pointer
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading36">11.3.3 RQI/RPR - request/receipt of patient selection list (event I03) </A></h3>
+
+<p>This
+trigger event occurs when the inquirer specifies a request for a listing of
+patient names.  This event differs from event I02 (request/receipts of patient
+selection display list) in that it returns the patient list in repeating PID
+segments instead of repeating DSP segments.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RQI^I03^RQI_I01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Request
+Patient Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>P
+RD</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID 
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info - Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RPR^I03^RPR_I03</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Patient List
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA  
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{PID}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading37">11.3.4 RQP/RPI - request for patient demographic data (event I04) </A></h3>
+
+<p>This
+event triggers a request from one healthcare provider to another for patient
+demographic information, including insurance and billing information.
+Typically, this transaction would occur between one provider to another, but it
+could also be directed to a payor.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RQP^I04^RQP_I04</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Request
+Patient Demographics
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RPI^I04^RPI_I04</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Patient Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA  
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+  {
+</tt></p>
+<BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info - Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading38">11.3.5 RQC/RCI - request for patient clinical information (event I05) </A></h3>
+
+<p>This
+event is used to request clinical information for a specific patient.
+Generally, this transaction occurs between one provider and another (typically
+a laboratory or radiology, etc.).  However, it may also be very useful for a
+payor-to-provider request for clinical observation information to be used in
+considering a request for treatment authorization.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RQC^I05^RQC_I05</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Request
+Clinical Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ QRD
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Definition
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [QRF]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Filter
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RCI^I05^RCI_I05</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Clinical Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA  
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ QRD
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Definition
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [QRF]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Filter
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DG1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DRG}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis
+Related Group
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{AL1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Allergy
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   OBR
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation
+Request
+</tt></p></TD>
+<TD colspan=1 align="center"><p>4</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>OBX</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+        [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   ]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading39">11.3.6 RQC/RCL - request/receipt of clinical data listing (event I06) </A></h3>
+
+<p>This
+event code is sent from one healthcare provider to another  (typically a
+laboratory or radiology, etc.) to request a list of available clinical
+observation information.  When the provider is dealing with a community model
+in which remote requests make transmission of large amounts of data
+impractical, this event code will provide for interactive lists of transactions
+from which more specific selections can be made.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RQC^I06^RQC_I05</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Request
+Clinical Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ QRD
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Definition
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [QRF]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Filter
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification3
+</tt></p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+GT1 ]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RCL^I06^RCL_I06</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Clinical List
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA  
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ QRD
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Definition
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [QRF]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Filter
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DG1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DRG}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis
+Related Group
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{AL1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Allergy
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DSP}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Display
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+DSC ]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Continuation
+Pointer
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading40">11.3.7 PIN/ACK - unsolicited insurance information (event I07) </A></h3>
+
+<p>This
+trigger event is used by an entity or organization to transmit to a healthcare
+provider the insurance information on a specific patient.  Typically, the
+healthcare provider will be a primary care provider.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>PIN^I07^RQI_I01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Patient
+Insurance Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info 
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info -Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^I07^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA  
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [ ERR ]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h2>
+<A NAME="Heading41">11.4 PATIENT TREATMENT AUTHORIZATION REQUESTS</A></h2>
+
+<p>This
+functional definition applies to a request for treatment authorization.
+Although this message also pertains to the payor, it differs greatly from that
+of an insurance information request.  This message is used to request an
+authorization for specific procedures.  Just as patient identification was
+important in an insurance information request, the focus of this functional
+area is provider identification, requested treatments/procedures and, in many
+cases, clinical information on a patient needed to fulfill review or
+certification requirements.
+</p>
+
+<h3>
+<A NAME="Heading42">11.4.1 RQA/RPA - request patient authorization message </A></h3>
+
+<p>All
+trigger events in this group use the following message definition.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RQA^I08-I11^RQA_I08</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Request
+Patient Authorization 
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[<u>RF1</u>]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Referral
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [<u>CTD</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+  [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info - Cert
+</tt></p>
+<BR></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+ACC ]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Accident
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DG1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DRG}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis
+Related Group
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{AL1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Allergy
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   PR1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Procedure</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [<u>CTD</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   OBR
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation
+Request
+</tt></p></TD>
+<TD colspan=1 align="center"><p>4</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+        OBX
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+        [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   ]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PV1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [PV2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RPA^I08-I11^RPA_I08</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Patient Authorization
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSA
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[<u>RF1</u>]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Referral
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [<u>CTD</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info - Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+ACC ]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Accident
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DG1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DRG}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis
+Related Group
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{AL1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Allergy
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+  PR1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Procedure</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+  [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [<u>CTD</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+  ]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>}</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   OBR
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation
+Request
+</tt></p></TD>
+<TD colspan=1 align="center"><p>4</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+        OBX
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+        [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   ]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+  }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PV1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [PV2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><b>Note:</b>
+	The abstract message definitions for both the RPA and RQA include the patient
+visit segments (PV1 and PV2).  The PV1 and PV2 segments appear in the RPA and
+RQA as an optional grouping to specify the visit or encounter that
+<b>generated</b> the referral authorization request.  The PV1 and PV2 <b>should
+not</b> be used to provide suggested information for a future encounter or
+visit generated by the referral authorization request.<br>
+The trigger events that use this message definition are described in Sections
+11.4.2, "RQA/RPA - request for treatment authorization information (event
+I08)," through 11.4.5, "RQA/RPA - request for cancellation of an authorization
+(event I11)."
+</p>
+
+<h3>
+<A NAME="Heading43">11.4.2 RQA/RPA - request for treatment authorization information (event I08) </A></h3>
+
+<p>This
+event triggers a message to be sent from a healthcare provider to a payor
+requesting authorization to perform specific medical procedures or tests on a
+given patient.  The specific medical procedures must be filled out in the PR1
+segments.  Each repeating PR1 segment may be paired with an AUT segment so that
+authorization information can be given regarding dollar amounts, number of
+treatments, and perhaps the estimated length of stay for treatment.  The OBR
+and OBX segments should be used to include any relevant clinical information
+that may be required to support or process the authorization.
+</p>
+
+<h3>
+<A NAME="Heading44">11.4.3 RQA/RPA - request for modification to an authorization (event I09) </A></h3>
+
+<p>This
+event triggers a message sent from a healthcare provider to a payor requesting
+changes to a previously referenced authorization.  For example, a provider may
+determine that a substitute testing or surgical procedure should be performed
+on a specified patient.
+</p>
+
+<h3>
+<A NAME="Heading45">11.4.4 RQA/RPA - request for resubmission of an authorization (event I10)</A></h3>
+
+<p>If
+a previously submitted request for treatment authorization is rejected or
+canceled, this event could trigger a resubmission message for a referenced
+authorization.  For example, the payor may have rejected a request until
+additional clinical information is sent to support the authorization request.
+</p>
+
+<h3>
+<A NAME="Heading46">11.4.5 RQA/RPA - request for cancellation of an authorization (event I11)</A></h3>
+
+<p>This
+event may trigger the cancellation of an authorization.  It may be used by the
+provider to indicate that an authorized service was not performed, or perhaps
+that the patient changed to another provider.  A payor may use this request to
+reject a submitted authorization request from a provider.
+</p>
+
+<h2>
+<A NAME="Heading47">11.5 PATIENT REFERRAL MESSAGES AND TRIGGER EVENTS</A></h2>
+
+<p>These
+message definitions and event codes define the patient referral.  Although only
+three trigger events are defined, the abstract message is very versatile and
+can provide for a wide variety of inter-enterprise transactions.
+</p>
+
+<h3>
+<A NAME="Heading48">11.5.1 REF/RRI - patient referral message</A></h3>
+
+<p>The
+trigger events that use this message definition are described in Sections
+11.5.2, "REF/RRI - patient referral (event I12)," through 11.5.5, "REF/RRI -
+request patient referral status (event I15)."<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>REF^I12-I15^REF_I12</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Patient
+Referral
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[<u>RF1</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Referral
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [<u>CTD</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NK1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Next
+of Kin/Associated Parties
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{GT1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Guarantor</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    IN1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+    [IN3]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Insurance
+Add'l Info -Cert
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[ACC]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Accident
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DG1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DRG}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis
+Related Group
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{AL1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Allergy
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   PR1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Procedure</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+       <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+       [<u>CTD</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   OBR
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation
+Request
+</tt></p></TD>
+<TD colspan=1 align="center"><p>4</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+         OBX
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+        [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   ]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PV1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [PV2]
+</tt></p>
+<BR></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PV1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [PV2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RRI^I12-I15^RRI_I12</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Return
+Referral Information
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ MSH
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[MSA]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[<u>RF1</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Referral
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [<u>CTD]
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{    <u>PRD
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Provider
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{<u>CTD</u>}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+}
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[ACC]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Accident
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DG1}]</tt></p>
+<BR></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{DRG}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Diagnosis
+Related Group
+</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{AL1}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Allergy
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   PR1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Procedure</tt></p></TD>
+<TD colspan=1 align="center"><p>6</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+       <u>AUT
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Authorization
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+       [<u>CTD</u>]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Contact
+Data
+</tt></p></TD>
+<TD colspan=1 align="center"><p>11</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   OBR
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation
+Request
+</tt></p></TD>
+<TD colspan=1 align="center"><p>4</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     {
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+        OBX
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+            [{NTE}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+     }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   ]
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+  }
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PV1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [PV2]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit Additional Info
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>]</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[{NTE}]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Notes
+and Comments
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+</TABLE>
+<p><b>Note</b>:
+The abstract message definitions for both the REF and RRI include the patient
+visit segments (PV1 and PV2). The PV1 and PV2 segments appear in the REF as an
+optional grouping to specify the visit or encounter that <b>generated</b> the
+referral.  The PV1 and PV2 <b>should not</b> be used to provide suggested
+information for a future encounter or visit generated by the referral.<br>
+The PV1 and PV2 are also included in the RRI message definition.  It should be
+noted that these segments do not merely mirror the segments in the originating
+REF message.  Rather, they may contain information regarding the visit or
+encounter that <b>resulted</b> from the referral.
+</p>
+
+<h3>
+<A NAME="Heading49">11.5.2 REF/RRI - patient referral (event I12)</A></h3>
+
+<p>This
+event triggers a message to be sent from one healthcare provider to another
+regarding a specific patient.  The referral message may contain patient
+demographic information, specific medical procedures to be performed
+(accompanied by previously obtained authorizations) and relevant clinical
+information pertinent to the patient's case.
+</p>
+
+<h3>
+<A NAME="Heading50">11.5.3 REF/RRI - modify patient referral (event I13)</A></h3>
+
+<p>This
+event triggers a message to be sent from one healthcare provider to another
+regarding changes to an existing referral.  Changes in a referral may include
+additional instructions from the referring provider, additional clinical
+information, and even additional information on patient demographics.
+</p>
+
+<h3>
+<A NAME="Heading51">11.5.4 REF/RRI - cancel patient referral (event I14)</A></h3>
+
+<p>This
+event triggers a message to be sent from one healthcare provider to another
+canceling a referral.  A previous referral may have been made in error, or
+perhaps the cancellation has come from the patient.
+</p>
+
+<h3>
+<A NAME="Heading52">11.5.5 REF/RRI - request patient referral status (event I15)</A></h3>
+
+<p>This
+event triggers a message to be sent between healthcare providers regarding the
+status of a patient referral request.  A previous referral has been made and
+acknowledged; however, no response has been received to indicate results and/or
+procedures performed.
+</p>
+
+<h2>
+<A NAME="Heading53">11.6 SEGMENTS</A></h2>
+
+
+<h3>
+<A NAME="Heading54">11.6.1 RF1 - referral information segment</A></h3>
+
+<p>This
+segment represents information that may be useful when sending referrals from
+the referring provider to the referred-to provider.
+<a name="RFI"></a><br>
+<center>HL7 Attribute Table - RF1 -Referral Information</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p></TH>
+<TH><p><b>LEN</b></p></TH>
+<TH><p><b>DT</b></p></TH>
+<TH><p><b>OPT</b></p></TH>
+<TH><p><b>RP/#</b></p></TH>
+<TH><p><b>TBL#</b></p></TH>
+<TH><p><b>ITEM#</b></p></TH>
+<TH><p>ELEMENT
+NAME
+</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0283</u></p></TD>
+<TD colspan=1 align="center"><p>01137</p></TD>
+<TD colspan=1 align="center"><p>Referral
+Status
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0280</u></p></TD>
+<TD colspan=1 align="center"><p>01138</p></TD>
+<TD colspan=1 align="center"><p>Referral
+Priority
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0281</u></p></TD>
+<TD colspan=1 align="center"><p>01139</p></TD>
+<TD colspan=1 align="center"><p>Referral
+Type
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><p><u>0282</u></p></TD>
+<TD colspan=1 align="center"><p>01140</p></TD>
+<TD colspan=1 align="center"><p>Referral
+Disposition
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0284</u></p></TD>
+<TD colspan=1 align="center"><p>01141</p></TD>
+<TD colspan=1 align="center"><p>Referral
+Category
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>EI</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01142</p></TD>
+<TD colspan=1 align="center"><p>Originating
+Referral Identifier
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01143</p></TD>
+<TD colspan=1 align="center"><p>Effective
+Date
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01144</p></TD>
+<TD colspan=1 align="center"><p>Expiration
+Date
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01145</p></TD>
+<TD colspan=1 align="center"><p>Process
+Date
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>10</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><p>0336</p></TD>
+<TD colspan=1 align="center"><p>01228</p></TD>
+<TD colspan=1 align="center"><p>Referral
+Reason
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>11</p></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>EI</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01300</p></TD>
+<TD colspan=1 align="center"><p>External
+Referral Identifier
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading55">11.6.1.0 RF1 - field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading56">11.6.1.1 RF1-1  Referral status  (CE)   01137</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the status of the referral as defined by
+either the referred-to or the referred-by provider.  Refer to
+<cite>User-defined Table 
+0283
+- Referral status</cite><i> </i>for suggested values. <br>
+<center>User-defined Table 0283 - Referral status
+<a name="HL70283"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p>Description</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>A</p></TD>
+<TD colspan=1 align="center"><p>Accepted</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>P</p></TD>
+<TD colspan=1 align="center"><p>Pending</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><p>Rejected</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>E</p></TD>
+<TD colspan=1 align="center"><p>Expired</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading57">11.6.1.2 RF1-2  Referral priority  (CE)   01138</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the urgency of the referral.  Refer to
+<cite>User-defined Table 0280 - Referral priority</cite> for suggested
+values<i>.</i><br>
+<center>User-defined Table 0280 - Referral priority
+<a name="HL70280"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p>Description</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>S</p></TD>
+<TD colspan=1 align="center"><p>STAT</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>A</p></TD>
+<TD colspan=1 align="center"><p>ASAP</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><p>Routine</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading58">11.6.1.3 RF1-3  Referral type  (CE)   01139</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(ST)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (ST)&gt;</tt><br>
+Definition:  This field contains the type of referral.  It is loosely
+associated with a clinical specialty or type of resource.  Refer to
+<cite>User-defined Table 0281 - Referral type</cite> for suggested values. <br>
+<center>User-defined Table 0281 - Referral type
+<a name="HL70281"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p>Description</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>Lab</p></TD>
+<TD colspan=1 align="center"><p>Laboratory</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>Rad</p></TD>
+<TD colspan=1 align="center"><p>Radiology</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>Med</p></TD>
+<TD colspan=1 align="center"><p>Medical</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>Skn</p></TD>
+<TD colspan=1 align="center"><p>Skilled
+Nursing
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>Psy</p></TD>
+<TD colspan=1 align="center"><p>Psychiatric</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>Hom</p></TD>
+<TD colspan=1 align="center"><p>Home
+Care
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading59">11.6.1.4 RF1-4  Referral disposition  (CE)   01140</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the type of response or action that the
+referring provider would like from the referred-to provider.  Refer to
+<cite>User-defined Table 0282 - Referral disposition</cite> for suggested
+values. <br>
+<center>User-defined Table 0282 - Referral disposition
+<a name="HL70282"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p>Description</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>WR</p></TD>
+<TD colspan=1 align="center"><p>Send
+Written Report
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>RP</p></TD>
+<TD colspan=1 align="center"><p>Return
+Patient After Evaluation
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AM</p></TD>
+<TD colspan=1 align="center"><p>Assume
+Management
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SO</p></TD>
+<TD colspan=1 align="center"><p>Second
+Opinion
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading60">11.6.1.5 RF1-5  Referral category   (CE)   01141</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the location at which the referral will take
+place.  Refer to <cite>User-defined Table 0284 - Referral
+categor</cite><i>y</i> for suggested values. <br>
+<center>User-defined Table 0284 - Referral category
+<a name="HL70284"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p>Description</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>I</p></TD>
+<TD colspan=1 align="center"><p>Inpatient</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Outpatient</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>A</p></TD>
+<TD colspan=1 align="center"><p>Ambulatory</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>E</p></TD>
+<TD colspan=1 align="center"><p>Emergency</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading61">11.6.1.6 RF1-6  Originating referral identifier  (EI)   01142</A></h4>
+
+<p><tt>Components:
+ &lt;entity identifier (ST)&gt; ^ &lt;namespace ID (IS)&gt; ^ &lt;universal ID
+(ST)&gt; ^ &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains the originating application's permanent
+identifier for the referral.  This is a composite field.<br>
+The first component is a string of up to 15 characters that identifies an
+individual referral.  It is assigned by the originating application, and it
+identifies a referral, and the subsequent referral transactions, uniquely among
+all such referrals from a particular processing application.<br>
+The second component is optional because this field, itself, is already defined
+as a <i>referral identifier</i>.  <br>
+The third component is optional.  If used, it should contain the application
+identifier for the referred-to or external applications (i.e., <i>not</i> the
+originating application).  The application identifier is a string of up to 15
+characters that is uniquely associated with an application.  A given healthcare
+provider facility, or group of intercommunicating healthcare provider
+facilities, should establish a unique list of applications that may be
+potential originators and recipients, and then assign unique application
+identifiers to each of those applications.  This list of application
+identifiers becomes one of the healthcare provider facility's master dictionary
+lists.  Since applications fulfilling different application roles can send and
+receive referral messages, the assigning authority application identifier may
+not identify the application sending or receiving a particular message.  Data
+elements on the Message Header (MSH) segment are available to identify the
+actual sending and receiving applications.
+</p>
+
+<h4>
+<A NAME="Heading62">11.6.1.7 RF1-7  Effective date  (TS)   01143</A></h4>
+
+<p>Definition:
+ This field contains the date on which the referral is effective.  
+</p>
+
+<h4>
+<A NAME="Heading63">11.6.1.8 RF1-8  Expiration date  (TS)   01144</A></h4>
+
+<p>Definition:
+ This field contains the date on which the referral expires.
+</p>
+
+<h4>
+<A NAME="Heading64">11.6.1.9 RF1-9  Process date  (TS)   01145</A></h4>
+
+<p>Definition:
+ This field contains the date on which the referral originated.  It is used in
+cases of retroactive approval. 
+</p>
+
+<h4>
+<A NAME="Heading65">11.6.1.10 RF1-10  Referral reason  (CE)   01228 </A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the reason for which the referral will take
+place.  Refer to <cite>User-defined Table 0336 - Referral reason</cite> for
+suggested values. <br>
+<center>User-defined Table 0336 - Referral reason
+<a name="HL70336"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p>Description</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>S</p></TD>
+<TD colspan=1 align="center"><p>Second
+Opinion
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>P</p></TD>
+<TD colspan=1 align="center"><p>Patient
+Preference
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Provider
+Ordered
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>W</p></TD>
+<TD colspan=1 align="center"><p>Work
+Load
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading66">11.6.1.11 RF1-11  External referral identifier  (EI)   01300</A></h4>
+
+<p><tt>Components:
+ &lt;entity identifier (ST)&gt; ^ &lt;namespace ID (IS)&gt; ^ &lt;universal ID
+(ST)&gt; ^ &lt;universal ID type (ID)&gt;</tt><br>
+Definition: This field contains an external application's permanent identifier
+for the referral.  That is, this referral identifier does not belong to the
+application that originated the referral and assigned the originating referral
+identifier.<br>
+The first component is a string of up to 15 characters that identifies an
+individual referral.  It is typically assigned by the referred-to provider
+application responding to a referral originating from a referring provider
+application, and it identifies a referral, and the subsequent referral
+transactions, uniquely among all such referrals for a particular referred-to
+provider processing application.  For example, when a primary care provider
+(referring provider) sends a referral to a specialist (referred-to provider),
+the specialist's application system may accept the referral and assign it a new
+referral identifier which uniquely identifies that particular referral within
+the specialist's application system.  This new referral identifier would be
+placed in the external referral identifier field when the specialist responds
+to the primary care physician.<br>
+The second component is optional because this field, itself, is already defined
+as a <i>referral identifier</i>.  <br>
+The third component is optional.  If used, it should contain the application
+identifier for the referred-to or external application (i.e., not the
+originating application.  The application identifier is a string of up to 15
+characters that is uniquely associated with an application.  A given healthcare
+provider facility, or group of intercommunicating healthcare provider
+facilities, should establish a unique list of applications that may be
+potential originators and recipients, and then assign unique application
+identifiers to each of those applications.  This list of application
+identifiers becomes one of the healthcare provider facility's master dictionary
+lists.  Since applications fulfilling different application roles can send and
+receive referral messages, the assigning authority application identifier may
+not identify the application sending or receiving a particular message.  Data
+elements on the Message Header (MSH) segment are available to identify the
+actual sending and receiving applications.
+</p>
+
+<h3>
+<A NAME="Heading67">11.6.2 AUT - authorization information segment</A></h3>
+
+<p>This
+segment represents an authorization or a pre-authorization for a referred
+procedure or requested service by the payor covering the patient's health care.
+<a name="AUT"></a><br>
+<center>HL7 Attribute Table - AUT - Authorization Information</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p></TH>
+<TH><p><b>LEN</b></p></TH>
+<TH><p><b>DT</b></p></TH>
+<TH><p><b>OPT</b></p></TH>
+<TH><p><b>RP/#</b></p></TH>
+<TH><p><b>TBL#</b></p></TH>
+<TH><p><b>ITEM#</b></p></TH>
+<TH><p>ELEMENT
+NAME
+</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0072</u></p></TD>
+<TD colspan=1 align="center"><p>01146</p></TD>
+<TD colspan=1 align="center"><p>Authorizing
+Payor, Plan ID
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0285</u></p></TD>
+<TD colspan=1 align="center"><p>01147</p></TD>
+<TD colspan=1 align="center"><p>Authorizing
+Payor, Company ID
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>45</p></TD>
+<TD colspan=1 align="center"><p>ST</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01148</p></TD>
+<TD colspan=1 align="center"><p>Authorizing
+Payor, Company Name
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01149</p></TD>
+<TD colspan=1 align="center"><p>Authorization
+Effective Date
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01150</p></TD>
+<TD colspan=1 align="center"><p>Authorization
+Expiration Date
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>EI</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01151</p></TD>
+<TD colspan=1 align="center"><p>Authorization
+Identifier
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p></TD>
+<TD colspan=1 align="center"><p>25</p></TD>
+<TD colspan=1 align="center"><p>CP</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01152</p></TD>
+<TD colspan=1 align="center"><p>Reimbursement
+Limit
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>NM</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01153</p></TD>
+<TD colspan=1 align="center"><p>Requested
+Number of Treatments
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>NM</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01154</p></TD>
+<TD colspan=1 align="center"><p>Authorized
+Number of Treatments
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>10
+</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01145</p></TD>
+<TD colspan=1 align="center"><p>Process
+Date
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading68">11.6.2.0 AUT - field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading69">11.6.2.1 AUT-1  Authorizing payor, plan ID  (CE)   01146</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the ID of the coverage plan authorizing
+treatment.  Values should be entries in a locally-defined table of plan codes.
+<cite>User 
+defined
+Table 0072- Insurance plan ID</cite><i> </i>is used as the HL7 identifier for
+the user-defined table of values for this field. <br>
+<center>User-defined Table 0072 - Insurance plan
+<a name="HL70072"></a>
+ID</center><br>
+</p>
+<TABLE BORDER>
+<TR align="left">
+<TH colspan=1 align="left"><p><b>Value</b></p></TH>
+<TH colspan=1 align="left"><p><b>Description</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>No
+suggested values defined
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading70">11.6.2.2 AUT-2  Authorizing payor, company ID  (CE)   01147</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the ID of the insurance company or other
+entity that administers the authorizing coverage plan.  Values may be entries
+in a locally-defined table of payor codes<i>. </i><cite>User-defined Table 0285
+- Insurance company ID codes</cite> is used as the HL7 identifier for the
+user-defined table of values for this field. <br>
+<center>User-defined Table 0285 - Insurance company ID codes
+<a name="HL70285"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="left">
+<TH colspan=1 align="left"><p><b>Value</b></p></TH>
+<TH colspan=1 align="left"><p><b>Description</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>No
+suggested values defined
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading71">11.6.2.3 AUT-3  Authorizing payor, company name  (ST)   01148</A></h4>
+
+<p>Definition:
+ This field contains the name of the insurance company or other entity that
+administers the authorizing coverage plan.
+</p>
+
+<h4>
+<A NAME="Heading72">11.6.2.4 AUT-4  Authorization effective date  (TS)   01149</A></h4>
+
+<p>Definition:
+ This field contains the effective date of the authorization.
+</p>
+
+<h4>
+<A NAME="Heading73">11.6.2.5 AUT-5  Authorization expiration date  (TS)   01150</A></h4>
+
+<p>Definition:
+ This field contains the expiration date after which the authorization to treat
+will no longer be in effect from the perspective of the coverage plan.
+</p>
+
+<h4>
+<A NAME="Heading74">11.6.2.6 AUT-6  Authorization identifier  (EI)   01151</A></h4>
+
+<p><tt>Components:
+ &lt;entity identifier (ST)&gt; ^ &lt;namespace ID (IS)&gt; ^ &lt;universal ID
+(ST)&gt; ^ &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains the coverage application's permanent
+identifier assigned to track the authorization and all related billing
+documents.  This field is conditionally required.  It is not required when
+authorization information is being requested.  However, it is required when
+this segment is contained in a message which is responding to a request and
+contains the authorization information.  This is a composite field.<br>
+The first component of this field is a string of up to 15 characters that
+identifies an individual authorization.  It is assigned by the coverage
+application, and it identifies an authorization, and the subsequent billing
+transactions resulting from the given authorization, uniquely among all such
+authorizations granted from a particular processing application.<br>
+The second component is optional because this field, itself, is already defined
+as an <i>authorization identifier</i>.<br>
+The third component is optional.  If used it should contain the application
+identifier for the coverage application. The application identifier is a string
+of up to six characters that is uniquely associated with an application.  A
+given healthcare provider facility, or group of intercommunicating healthcare
+provider facilities, should establish a unique list of applications that may be
+potential originators and recipients, and then assign unique application
+identifiers to each of those applications.  This list of application
+identifiers becomes one of the healthcare provider facility's master dictionary
+lists.  Since applications fulfilling different application roles can send and
+receive referral messages containing authorizations, the coverage application
+identifier may not identify the application sending or receiving a particular
+message.  Data elements on the Message Header (MSH) segment are available to
+identify the actual sending and receiving applications.
+</p>
+
+<h4>
+<A NAME="Heading75">11.6.2.7 AUT-7  Reimbursement limit  (CP)   01152</A></h4>
+
+<p><tt>Components:
+ &lt;price (MO)&gt; ^ &lt;price type (ID)&gt; ^ &lt;from value (NM)&gt; ^
+&lt;to value (NM)&gt; ^ &lt;range units (CE)&gt; ^ &lt;range type
+(ID)&gt;</tt><br>
+Definition:  This field contains the dollar limit for reimbursement specified
+by the coverage plan for the authorized treatment.
+</p>
+
+<h4>
+<A NAME="Heading76">11.6.2.8 AUT-8  Requested number of treatments  (NM)   01153</A></h4>
+
+<p>Definition:
+ This field contains the <i>requested</i> number of times that the treatment
+may be administered to the patient without obtaining additional authorization.
+</p>
+
+<h4>
+<A NAME="Heading77">11.6.2.9 AUT-9  Authorized number of treatments  (NM)   01154</A></h4>
+
+<p>Definition:
+ This field contains the number of times that the authorized treatment may be
+administered to the patient without obtaining additional authorization.
+</p>
+
+<h4>
+<A NAME="Heading78">11.6.2.10 AUT-10  Process date  (TS)   01145</A></h4>
+
+<p>Definition:
+ This field contains the date that the authorization originated with the
+authorizing party.
+</p>
+
+<h3>
+<A NAME="Heading79">11.6.3 PRD - provider data segment</A></h3>
+
+<p>This
+segment will be employed as part of a patient referral message and its related
+transactions.  The PRD segment contains data specifically focused on a
+referral, and it is inter-enterprise in nature.  The justification for this new
+segment comes from the fact that we are dealing with referrals that are
+external to the facilities that received them.  Therefore, using a segment such
+as the current PV1 would be inadequate for all the return information that may
+be required by the receiving facility or application.  In addition, the PV1
+does not always provide information sufficient to enable the external facility
+to make a complete identification of the referring entity.  The information
+contained in the PRD segment will include the referring provider, the
+referred-to provider, the referred-to location or service, and the referring
+provider clinic address. 
+<a name="PRD"></a><br>
+<center>HL7 Attribute Table - PRD - Provider Data</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p></TH>
+<TH><p><b>LEN</b></p></TH>
+<TH><p><b>DT</b></p></TH>
+<TH><p><b>OPT</b></p>
+<BR></TH>
+<TH><p><b>RP/#</b></p></TH>
+<TH><p><b>TBL#</b></p></TH>
+<TH><p><b>ITEM#</b></p></TH>
+<TH><p>ELEMENT
+NAME
+</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><p><u>0286</u></p></TD>
+<TD colspan=1 align="center"><p>01155</p></TD>
+<TD colspan=1 align="center"><p>Provider
+Role
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XPN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01156</p></TD>
+<TD colspan=1 align="center"><p>Provider
+Name
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>
+250
+</p></TD>
+<TD colspan=1 align="center"><p>XAD</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01157</p></TD>
+<TD colspan=1 align="center"><p>Provider
+Address
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>
+60
+</p></TD>
+<TD colspan=1 align="center"><p>PL</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01158</p></TD>
+<TD colspan=1 align="center"><p>Provider
+Location
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>
+250
+</p></TD>
+<TD colspan=1 align="center"><p>XTN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01159</p></TD>
+<TD colspan=1 align="center"><p>Provider
+Communication Information
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0185</p></TD>
+<TD colspan=1 align="center"><p>00684</p></TD>
+<TD colspan=1 align="center"><p>Preferred
+Method of Contact - Provider
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p></TD>
+<TD colspan=1 align="center"><p>100</p></TD>
+<TD colspan=1 align="center"><p>CM</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01162</p></TD>
+<TD colspan=1 align="center"><p>Provider
+Identifiers
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01163</p></TD>
+<TD colspan=1 align="center"><p>Effective
+Start Date of Provider Role
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9
+</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01164</p></TD>
+<TD colspan=1 align="center"><p>Effective
+End Date of Provider Role
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading80">11.6.3.0 PRD field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading81">11.6.3.1 PRD-1  Provider role  (CE)   01155</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the contact role that defines the relationship
+of the person described in this segment to the patient being referred.  When a
+referral is inter-enterprise in nature, there are several important
+relationships that must be identified.  For example, the proper identification
+of both the referring and the referred-to provider is critical for proper
+processing of a referral.  In addition, some enterprises may want information
+regarding a consulting provider or the identity of the person who actually
+prepared the referral.  This contact role may also expand to represent
+affiliated persons to whom information regarding this referral must be
+forwarded or copied.  Refer to <cite>User-defined Table 0286 - Provider
+role</cite> for suggested values. <br>
+<center>User-defined Table 0286 - Provider role
+<a name="HL70286"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p>Description</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>RP</p></TD>
+<TD colspan=1 align="center"><p>Referring
+Provider
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>PP</p></TD>
+<TD colspan=1 align="center"><p>Primary
+Care Provider
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>CP</p></TD>
+<TD colspan=1 align="center"><p>Consulting
+Provider
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>RT</p></TD>
+<TD colspan=1 align="center"><p>Referred
+to Provider
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading82">11.6.3.2 PRD-2  Provider name  (XPN)   01156</A></h4>
+
+<p><tt>Components:
+In Version 2.3, replaces the PN data type.  &lt;family name (FN)&gt; ^
+&lt;given name (ST)&gt; ^ &lt;second and further given names or initials
+thereof (ST)&gt; ^ &lt;suffix (e.g., JR or III) (ST)&gt; ^ &lt;prefix (e.g.,
+DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt; ^<b> </b>&lt;name type code (ID)
+&gt; ^ &lt;name representation code (ID)&gt; ^ &lt;name context (CE)&gt; ^
+&lt;name validity range (DR)&gt; ^ &lt;name assembly order (ID)&gt;</tt><br>
+Definition:  This field contains the name of the provider identified in this
+segment.  Generally, this field will describe a physician associated with the
+referral.  However, it is not limited to physicians.  This field may contain
+the name of any valid healthcare provider associated with this referral.  If
+this Provider Name is a physician's name, you may refer to <i>PRD-7-Provider
+identifiers</i> for the physician identifier. 
+</p>
+
+<h4>
+<A NAME="Heading83">11.6.3.3 PRD-3  Provider address  (XAD)   01157</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, replaces the AD data type.  &lt;street address
+(SAD)&gt; ^ &lt;other designation (ST)&gt; ^ &lt;city (ST)&gt; ^ &lt;state or
+province (ST)&gt; ^ &lt;zip or postal code (ST)&gt; ^ &lt;country (ID)&gt; ^
+&lt; address type (ID)&gt;<b> </b>^ &lt;other geographic designation (ST)&gt;
+^<b> </b>&lt;county/parish code (IS)&gt; ^ &lt;census tract (IS)&gt; ^
+&lt;address representation code (ID)&gt; ^ &lt;address validity range
+(DR)&gt;</tt><br>
+Definition:  This field contains the mailing address of the provider identified
+in this segment.  One of the key components to completing the "circle of care"
+and provider/institution bonding is the issuance of follow-up correspondence to
+the referring provider.
+</p>
+
+<h4>
+<A NAME="Heading84">11.6.3.4 PRD-4  Provider location  (PL)   01158</A></h4>
+
+<p><tt>Components:
+ &lt;point of care (IS)&gt; ^ &lt;room (IS)&gt; ^ &lt;bed (IS)&gt; ^
+&lt;facility (HD)&gt; ^ &lt;location status (IS)&gt; ^ &lt;person location type
+(IS)&gt; ^ &lt;building (IS)&gt; ^ &lt;floor (IS)&gt; ^ &lt;location
+description (ST)&gt;</tt><br>
+<tt>Subcomponents of facility:  &lt;namespace ID (IS) &amp; &lt;universal ID
+(ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains the location of the provider as needed when a
+provider that may be external to a given enterprise must be referenced.  For
+example, if this provider represented the referred-to physician, the
+<i>PRD-4-Provider location</i> should identify the clinic of the physician or
+provider to whom this referral has been sent.  The identification of the
+provider's location is specified by an application and facility identifier
+carried in the facility field.  The application ID and facility ID would be
+used in the same manner as their corresponding fields in the MSH segment
+(<i>MSH-3-Sending application, MSH-5-Receiving application,</i>
+<i>MSH-4-Sending facility, MSH-6-Receiving facility</i>).  That is, the
+facility field will contain an application identifier and facility identifier
+which describe the location of this provider.  However, it should be noted that
+they may describe a different location because the provider location being
+referenced in this field <i>may not be</i> the location from which the message
+originated, which is being described by the MSH.
+</p>
+
+<h4>
+<A NAME="Heading85">11.6.3.5 PRD-5  Provider communication information  (XTN)   01159</A></h4>
+
+<p><tt>Components:
+ [NNN] [(999)]999-9999 [X99999] [B99999] [C any text] ^ &lt;telecommunication
+use code (ID)&gt; ^ &lt;telecommunication equipment type (ID)&gt; ^ &lt;email
+address (ST)&gt; ^ &lt;country code (NM)&gt; ^ &lt;area/city code (NM)&gt; ^
+&lt;phone number (NM)&gt; ^ &lt;extension (NM)&gt; ^ &lt;any text
+(ST)&gt;</tt><br>
+Definition:  This field contains information, such as the phone number or
+electronic mail address, used to communicate with the provider or organization.
+</p>
+
+<h4>
+<A NAME="Heading86">11.6.3.6 PRD-6  Preferred method of contact - provider  (CE)   00684</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the preferred method to use when communicating
+with the provider.  Refer to <i>User-defined Table 0185 - Preferred method of
+contact</i> for suggested values. 
+</p>
+
+<h4>
+<A NAME="Heading87">11.6.3.7 PRD-7  Provider identifiers  (CM)   01162</A></h4>
+
+<p><tt>Components:
+&lt;ID number (ST)&gt; ^ &lt;type of ID number (IS)&gt; ^ &lt;other qualifying
+info (ST)&gt;</tt><br>
+Definition:  This repeating field contains the provider's unique identifiers
+such as UPIN, Medicare and Medicaid numbers.  Refer to <i>PRA-6-Practitioner ID
+numbers</i> in Chapter 8 (Section 8.6.3.6, "Practitioner ID numbers") for
+suggested values.
+</p>
+
+<h4>
+<A NAME="Heading88">11.6.3.8 PRD-8  Effective start date of provider role  (TS)   01163</A></h4>
+
+<p>Definition:
+ This field contains the date that the role of the provider effectively began.
+For example, this date may represent the date on which a physician was assigned
+as a patient's primary care provider.
+</p>
+
+<h4>
+<A NAME="Heading89">11.6.3.9 PRD-9  Effective end date of provider role  (TS)   01164</A></h4>
+
+<p>Definition:
+ This field contains the date that the role of the provider effectively ended.
+For example, this date may represent the date that a physician was removed as a
+patient's primary care provider.<br>
+<b>Note:</b>	The <i>PRD-8-Effective start date of role</i> and
+<i>PRD-9-Effective end date of role</i> fields should <i>not</i> be used as
+trigger events.  For example, they should not be used to trigger a change in
+role.  These two dates are for informational purposes only.
+</p>
+
+<h3>
+<A NAME="Heading90">11.6.4 CTD - contact data segment</A></h3>
+
+<p>The
+CTD segment may identify any contact personnel associated with a patient
+referral message and its related transactions.  The CTD segment will be paired
+with a PRD segment.  The PRD segment contains data specifically focused on
+provider information in a referral.  While it is important in an
+inter-enterprise transaction to transmit specific information regarding the
+providers involved (referring and referred-to), it may also be important to
+identify the contact personnel associated with the given provider.  For
+example, a provider receiving a referral may need to know the office manager or
+the billing person at the institution of the provider who sent the referral.
+This segment allows for multiple contact personnel to be associated with a
+single provider.
+<a name="CTD"></a><br>
+<center>HL7 Attribute Table - CTD - Contact Data</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p></TH>
+<TH><p><b>LEN</b></p></TH>
+<TH><p><b>DT</b></p></TH>
+<TH><p><b>OPT</b></p></TH>
+<TH><p><b>RP/#</b></p></TH>
+<TH><p><b>TBL#</b></p></TH>
+<TH><p><b>ITEM#</b></p></TH>
+<TH><p>ELEMENT
+NAME
+</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><p>Y</p>
+<BR></TD>
+<TD colspan=1 align="center"><p>0131</p></TD>
+<TD colspan=1 align="center"><p>00196</p></TD>
+<TD colspan=1 align="center"><p>Contact
+Role
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XPN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01165</p></TD>
+<TD colspan=1 align="center"><p>Contact
+Name
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>250
+</p></TD>
+<TD colspan=1 align="center"><p>XAD</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01166</p></TD>
+<TD colspan=1 align="center"><p>Contact
+Address
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>
+60
+</p></TD>
+<TD colspan=1 align="center"><p>PL</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01167</p></TD>
+<TD colspan=1 align="center"><p>Contact
+Location
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>
+250
+</p></TD>
+<TD colspan=1 align="center"><p>XTN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01168</p></TD>
+<TD colspan=1 align="center"><p>Contact
+Communication Information
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0185</p></TD>
+<TD colspan=1 align="center"><p>00684</p></TD>
+<TD colspan=1 align="center"><p>Preferred
+Method of Contact - Provider
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p></TD>
+<TD colspan=1 align="center"><p>100</p></TD>
+<TD colspan=1 align="center"><p>CM</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01171</p></TD>
+<TD colspan=1 align="center"><p>Contact
+Identifiers
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading91">11.6.4.0 CTD field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading92">11.6.4.1 CTD-1  Contact role  (CE)   00196</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the contact role that defines the relationship
+of the person described in this segment to the patient being referred.  When a
+referral is inter-enterprise in nature, there are some important relationships
+that must be identified.  For example, it may be necessary to identify the
+contact representative at the clinic that sent the referral. <i>User-defined
+Table 0131 - Contact role</i> is used as the HL7 identifier for the
+user-defined table of values for this field. 
+</p>
+
+<h4>
+<A NAME="Heading93">11.6.4.2 CTD-2  Contact name  (XPN)   01165</A></h4>
+
+<p><tt>Components:
+In Version 2.3, replaces the PN data type.  &lt;family name (FN)&gt; ^
+&lt;given name (ST)&gt; ^ &lt;second and further given names or initials
+thereof (ST)&gt; ^ &lt;suffix (e.g., JR or III) (ST)&gt; ^ &lt;prefix (e.g.,
+DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt; ^<b> </b>&lt;name type code (ID)
+&gt; ^ &lt;name representation code (ID)&gt; ^ &lt;name context (CE)&gt; ^
+&lt;name validity range (DR)&gt; ^ &lt;name assembly order (ID)&gt;</tt><br>
+Definition:  This field contains the name of the contact person identified in
+this segment.  Generally, this field will describe a person or provider
+associated with the referral.  If this contact name is a physician, you may
+refer to the <i>CTD-7-Contact identifiers</i> (Section 11.6.4.7) for the
+physician identifier. 
+</p>
+
+<h4>
+<A NAME="Heading94">11.6.4.3 CTD-3  Contact address  (XAD)   01166</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, replaces the AD data type.  &lt;street address
+(SAD)&gt; ^ &lt;other designation (ST)&gt; ^ &lt;city (ST)&gt; ^ &lt;state or
+province (ST)&gt; ^ &lt;zip or postal code (ST)&gt; ^ &lt;country (ID)&gt; ^
+&lt; address type (ID)&gt;<b> </b>^ &lt;other geographic designation (ST)&gt;
+^<b> </b>&lt;county/parish code (IS)&gt; ^ &lt;census tract (IS)&gt; ^
+&lt;address representation code (ID)&gt; ^ &lt;address validity range
+(DR)&gt;</tt><br>
+Definition:  This field contains the mailing address of the contact person
+identified in this segment. One of the key components for completing the
+"circle of care" and provider/institution bonding is the issuance of follow-up
+correspondence to the referring provider.
+</p>
+
+<h4>
+<A NAME="Heading95">11.6.4.4 CTD-4  Contact location  (PL)   01167</A></h4>
+
+<p><tt>Components:
+&lt;point of care (IS)&gt; ^ &lt;room (IS)&gt; ^ &lt;bed (IS)&gt; ^
+&lt;facility (HD)&gt; ^ &lt;location status (IS)&gt; ^ &lt;person location type
+(IS)&gt; ^ &lt;building (IS)&gt; ^ &lt;floor (IS)&gt; ^ &lt;location
+description (ST)&gt;</tt><br>
+<tt>Subcomponents of facility:  &lt;namespace ID (IS) &amp; &lt;universal ID
+(ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains the location of the contact, which is required
+when a contact that may be external to a given enterprise must be referenced.
+For example, if this contact represents the office manager of the referred-to
+physician, then the contact location should identify the clinic of the
+physician or provider to whom this referral has been sent.  The identification
+of the contact's location is specified by an application and facility
+identifier carried in the facility field.  The application identifier and the
+facility identifier would be used in the same manner as their corresponding
+fields in the MSH segment (<i>MSH-3-Sending application, MSH-5-Receiving
+application, MSH-4-Sending facility, MSH-6-Receiving facility</i>).  That is,
+the facility field will contain an application identifier and facility
+identifier which describe the location of this contact.  However, it should be
+noted that they may describe a different location because the contact location
+being referenced in this field <i>may not be</i> the location from which the
+message originated, which is being described by the MSH.
+</p>
+
+<h4>
+<A NAME="Heading96">11.6.4.5 CTD-5  Contact communication information  (XTN)   01168</A></h4>
+
+<p><tt>Components:
+ [NNN] [(999)]999-9999 [X99999] [B99999] [C any text] ^ &lt;telecommunication
+use code (ID)&gt; ^ &lt;telecommunication equipment type (ID)&gt; ^ &lt;email
+address (ST)&gt; ^ &lt;country code (NM)&gt; ^ &lt;area/city code (NM)&gt; ^
+&lt;phone number (NM)&gt; ^ &lt;extension (NM)&gt; ^ &lt;any text
+(ST)&gt;</tt><br>
+Definition:  This field contains the information, such as the phone number or
+electronic mail address, used to communicate with the contact person or
+organization.
+</p>
+
+<h4>
+<A NAME="Heading97">11.6.4.6 CTD-6  Preferred method of contact - provider  (CE)   00684</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the preferred method to use when communicating
+with the contact person.  Refer to <i>User-defined Table 0185 - Preferred
+method of contact</i> for suggested values. 
+</p>
+
+<h4>
+<A NAME="Heading98">11.6.4.7 CTD-7  Contact identifiers  (CM)   01171</A></h4>
+
+<p><tt>Components:
+&lt;ID number (ST)&gt; ^ &lt;type of ID number (IS)&gt; ^ &lt;other qualifying
+info (ST)&gt;</tt><br>
+Definition:  This repeating field contains the contact's unique identifiers
+such as UPIN, Medicare and Medicaid numbers.  Refer to Chapter 8 (Section
+8.6.3.6, "Practitioner ID numbers") for suggested values.
+</p>
+
+<h2>
+<A NAME="Heading99">11.7 EXAMPLES</A></h2>
+
+<p>The
+following examples will demonstrate the proposed way in which the RQI, RQA and
+REF messages can be used with the I01 (request for insurance information), I08
+(request for treatment authorization information), I15 (request patient
+referral status) and I06 (request/receipt of clinical data listing) event
+codes.  The events are presented in the order in which they would occur in a
+typical patient encounter.  The first event to occur when the patient visits
+the medical practice is the verification of eligibility/coverage information.
+Next, the patient will be diagnosed and may be referred to a specialist for
+further treatment.  This procedure may require a request for pre-authorization
+from the payor, which will be forwarded to the referral provider.  Once the
+referral provider begins treatment, messages regarding the status or outcome of
+the treatment will be sent to the referring provider.  Queries may also be sent
+to the specialist and reference laboratories.
+</p>
+
+<h3>
+<A NAME="Heading100">11.7.1 RQI message using an I01 event with an immediate response</A></h3>
+
+<p>When
+a patient arrives for an appointment, the office staff will frequently need to
+verify the patient's insurance information.  In the following RQI message
+example, Dr. Blake is sending an insurance information request to the
+Washington State Insurance Company for her patient, Cary Joe Brown.  The
+response from the payor is shown in a more complete IN1 segment.  However, it
+should be noted that in addition to the IN1 segment, this return information
+could have been placed in the NTE segment to serve as display data.  This
+strategy would serve a broader community of diverse application systems that
+might have different levels of ability to process the record-formatted data.<br>
+MSH|^~\&amp;|BLAKEMD|EWHIN|MSC|EWHIN|19940107155043||RQI^I01|BLAKEM7888|P|2.4|||NE|AL&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+PRD|RT|WSIC||^^^MSC&amp;EWHIN^^^^^WASHINGTON STATE INSURANCE
+COMPANY&lt;cr&gt;<br>
+PID|||402941703^9^M10||BROWN^CARY^JOE||19600309||||||||||||402941703&lt;cr&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|&lt;cr&gt;<br>
+MSH|^~\&amp;|MSC|EWHIN|BLAKEMD|EWHIN|19940107155212||RPI^I01|MSC2112|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7888|ELIGIBILITY INFORMATION FOUND&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+PRD|RT|WSIC||^^^MSC&amp;EWHIN^^^^^WASHINGTON STATE INSURANCE
+COMPANY&lt;cr&gt;<br>
+PID|||402941703^9^M10||BROWN^CARY^JOE||19600301||||||||||||402941703,CR&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|11223 FOURTH STREET^^MEAD^WA^99021^USA|ANN
+MILLER|509)333-1234|987654321||||19901101||||BROWN^CARY^JOE|1|19600309|N. 12345
+SOME STREET^^MEAD^WA^99021^USA|||||||||||||||||402941703||||||01|M&lt;cr&gt;
+</p>
+
+<h3>
+<A NAME="Heading101">11.7.2 RQA message using an I08 event with an immediate response</A></h3>
+
+<p>When
+the attending physician decides to refer the patient for treatment to another
+healthcare provider, pre-authorization may be required by the payor.  In the
+following RQA example, Dr. Blake is requesting the appropriate
+pre-authorization from Washington State Insurance Company for a colonoscopy on
+Cary Joe Brown.  The request includes the diagnosis, in case it is a factor in
+the approval decision.  As shown below, the immediate response indicates
+approval of the request that was made on 01/10/94 and that expires on 05/10/94.
+In actuality, most payors require some human intervention in the
+pre-authorization process and would probably not respond immediately.<br>
+MSH|^~\&amp;|BLAKEMD|EWHIN|MSC|EWHIN|19940110105307||RQA^I08|BLAKEM7898|P|2.4|||NE|AL&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+PRD|RT|WSIC||^^^MSC&amp;EWHIN^^^^^WASHINGTON STATE INSURANCE
+COMPANY&lt;cr&gt;<br>
+PID|||402941703^9^M10||BROWN^CARY^JOE||19600309||||||||||||402941703&lt;cr&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|11223 FOURTH STREET^^MEAD^WA^99021^USA|ANN
+MILLER|509)333-1234|987654321||||19901101||||BROWN^CARY^JOE|1|19600309|N. 12345
+SOME STREET^^MEAD^WA^99021^USA|||||||||||||||||402941703||||||01|M&lt;cr&gt;<br>
+DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940110105309|00&lt;cr&gt;<br>
+MSH|^~\&amp;|MSC|EWHIN|BLAKEMD|EWHIN|19940110154812||RPA^I08|MSC2112|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7888&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+PRD|RT|WSIC||^^^MSC&amp;EWHIN^^^^^WASHINGTON STATE INSURANCE
+COMPANY&lt;cr&gt;<br>
+PID|||402941703^9^M10||BROWN^CARY^JOE||19600301||||||||||||402941703&lt;cr&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|11223 FOURTH STREET^^MEAD^WA^99021^USA|ANN
+MILLER|(509)333-1234|987654321||||19901101||||BROWN^CARY^JOE|1|19600309|N.
+12345 SOME
+STREET^^MEAD^WA^99021^USA|||||||||||||||||402941703||||||01|M&lt;cr&gt;<br>
+DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940110105309|00&lt;cr&gt;<br>
+AUT|PPO|WA02|WSIC (WA State Code)|19940110|19940510|123456789|175|1&lt;cr&gt;
+</p>
+
+<h3>
+<A NAME="Heading102">11.7.3 RQA message using an I08 event with a deferred response</A></h3>
+
+<p>In
+the following example of a pre-authorization request, the payor indicates his
+receipt of the request (a standard acknowledgment message), but defers issuing
+a pre-authorization to a later time.  This response represents a more typical
+payor transaction sequence.  Note the use of the "Accept Acknowledgment Type,"
+requiring the receiving system to respond in all cases to receipt of the
+message.<br>
+MSH|^~\&amp;|BLAKEMD|EWHIN|MSC|EWHIN|19940110105307||RQA^I08|BLAKEM7898|P|2.4|||AL|AL&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+PRD|RT|WSIC||^^^MSC&amp;EWHIN^^^^^WASHINGTON STATE INSURANCE
+COMPANY&lt;cr&gt;<br>
+PID|||402941703^9^M10||BROWN^CARY^JOE||19600301||||||||||||402941703&lt;cr&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|11223 FOURTH STREET^^MEAD^WA^99021^USA|ANN
+MILLER|(509)333-1234|987654321||||19901101||||BROWN^CARY^JOE|1|19600309|N.
+12345 SOME
+STREET^^MEAD^WA^99021^USA|||||||||||||||||402941703||||||01|M&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940110105309|00&lt;cr&gt;<br>
+MSH|^~\&amp;|MSC|EWHIN|BLAKEMD|EWHIN|1994011015315||MCF|MSC2112|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7888&lt;cr&gt;<br>
+MSH|^~\&amp;|MSC|EWHIN|BLAKEMD|EWHIN|19940111102304||RPA^I08|MSC2113|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7888&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+PRD|RT|WSIC||^^^MSC&amp;EWHIN^^^^^WASHINGTON STATE INSURANCE
+COMPANY&lt;cr&gt;<br>
+PID|||402941703^9^M10||BROWN^CARY^JOE||19600301||||||||||||402941703&lt;cr&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|11223 FOURTH STREET^^MEAD^WA^99021^USA|ANN
+MILLER|509)333-1234|987654321||||19901101||||BROWN^CARY^JOE|1|19600309|N. 12345
+SOME STREET^^MEAD^WA^99021^USA|||||||||||||||||402941703||||||01|M&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940110105309|00&lt;cr&gt;<br>
+AUT|PPO|WA02|WSIC (WA State Code)|19940110|19940510|123456789|175|1&lt;cr&gt;
+</p>
+
+<h3>
+<A NAME="Heading103">11.7.4 REF message using an I11 event with an immediate response</A></h3>
+
+<p>Once
+pre-authorization has been received, the patient is referred to the referral
+provider.  In the following example, Dr. Blake is referring Cary Joe Brown to
+Dr. Jose Jimenez for a colonoscopy.  The referral message includes the
+patient's demographic information, diagnosis and the pre-authorization
+information retrieved during the previous transaction.  The dates contained in
+the pre-authorization segment (e.g., authorization date and authorization
+expiration date) pertain to the authorization, given by a payor, for a
+specified procedure.  They are not intended to imply any kind of schedule
+request.  Scheduling will be handled by the referral provider and the patient
+in a separate transaction.  Not all referrals will require a detailed chain of
+response messages, so in this case, a simple acknowledgment in the form of an
+RPI is returned with a note from the referred-to provider.<br>
+MSH|^~\&amp;|BLAKEMD|EWHIN|JIME|EWHIN|19940111113142||REF^I11|BLAKEM7899|P|2.4|||NE|AL&lt;cr&gt;<br>
+RF1||R|MED|RP|O|REF4502|19940111|19940510|19940111&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+CTD|PR|JONES^BUCK|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER&lt;cr&gt;<br>
+PRD|RT|JIMENEZ^JOSE^^^DR||^^^JIME&amp;EWHIN^^^^^JIMENEZ AND
+SMITH||||531886&lt;cr&gt;<br>
+PID|||1234567891^1^M10||BROWN^CARY^JOE||19600309|M||C|N. 12345 SOME
+STREET^^MEAD^WA^99021^USA|SPO|(509)466-6801|(509)466-0396|ENGL|M|M||402941703|
+BROWN*CJ4298^WA&lt;cr&gt;<br>
+NK1|1|BROWN^KATHARINA^LOU|2|N. 12345 SOME
+STREET^^MEAD^WA^99021^USA|(509)466-6801&lt;cr&gt;<br>
+GT1|1||BROWN^CARY^JOE||N. 12345 SOME
+STREET^^MEAD^WA^99021^USA|(509)466-6801|(509)466-0396|19600309|M||1|402941703||||
+WISMER*MARTIN|||456789|01&lt;cr&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|11223 FOURTH STREET^^MEAD^WA^99021^USA|ANN
+MILLER|509)333-1234|987654321||||19901101||||BROWN^CARY^JOE|1|19600309|N. 12345
+SOME STREET^^MEAD^WA^99021^USA|||||||||||||||||402941703||||||01|M&lt;cr&gt;<br>
+ACC|19940105125700|WR|WISMER*MARTIN&lt;cr&gt;<br>
+ DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940110105309|00&lt;cr&gt;<br>
+AUT|PPO|WA02|WSIC (WA State
+Code)|19940110|19940510|123456789|175|1&lt;cr&gt;<br>
+MSH|^~\&amp;|JIME|EWHIN|BLAKEMD|EWHIN|19940111152401||RRI^I11|JIME1123|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7899&lt;cr&gt;<br>
+RF1|A|R|MED|RP|O|REF4502|19940111|19940510|19940111&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+CTD|PR|JONES^BUCK|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER&lt;cr&gt;<br>
+PRD|RT|JIMENEZ^JOSE^^^DR||^^^JIME&amp;EWHIN^^^^^JIMENEZ AND
+SMITH||||531886&lt;cr&gt;<br>
+PID|||1234567891^1^M10||BROWN^CARY^JOE||19600309|M||C|N. 12345 SOME
+STREET^^MEAD^WA^99021^USA|SPO|(509)466-6801|(509)466-0396|ENGL|M|M||402941703|
+BROWN*CJ4298^WA&lt;cr&gt;<br>
+DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940111141509|00&lt;cr&gt;<br>
+NTE|||Patient is doing well.~Full recovery expected.&lt;cr&gt;
+</p>
+
+<h3>
+<A NAME="Heading104">11.7.5 REF message using an I11 event with a deferred response</A></h3>
+
+<p>The
+following example demonstrates the ability of the referral provider to return a
+series of responses.  For most referrals, multiple responses will be returned
+because referrals may contain multiple requested procedures that may be
+performed over a period of time.  The referral provider determines the
+completion of this chain of messages and indicates that designation in the
+following example by setting the "Processed" flag in the MSA segment.  This
+procedure will probably vary from network to network. <br>
+MSH|^~\&amp;|BLAKEMD|EWHIN|JIME|EWHIN|19940111113142||REF^I11|BLAKEM7899|P|2.4|||AL|AL&lt;cr&gt;<br>
+RF1||R|MED|RP|O|REF4502|19940111|19940510|19940111&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT HIGHWAY^^MEAD^WA^99021|
+^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL CENTER|BLAKEM7899&lt;cr&gt;<br>
+CTD|PR|JONES^BUCK|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER&lt;cr&gt;<br>
+PRD|RT|JIMENEZ^JOSE^^^DR||^^^JIME&amp;EWHIN^^^^^JIMENEZ AND
+SMITH||||531886&lt;cr&gt;<br>
+PID|||1234567891^1^M10||BROWN^CARY^JOE||19600309|M||C|N. 12345 SOME
+STREET^^MEAD^WA
+^99021^USA|SPO|(509)466-6801|(509)466-0396|ENGL|M|M||402941703|BROWN*CJ4298^WA&lt;cr&gt;<br>
+NK1|1|BROWN^KATHARINA^LOU|2|N. 12345 SOME
+STREET^^MEAD^WA^99021^USA|(509)466-6801&lt;cr&gt;<br>
+GT1|1||BROWN^CARY^JOE||N. 12345 SOME STREET^^MEAD^WA^99021^USA|(509)466-6801
+|(509)466-0396|19600309|M||1|402941703||||WISMER*MARTIN|||456789|01&lt;cr&gt;<br>
+IN1|1|PPO|WA02|WSIC (WA State Code)|11223 FOURTH STREET^^MEAD^WA^99021^USA|ANN
+MILLER|(509)333-1234|987654321||||19901101||||BROWN^CARY^JOE|1|19600309|N.
+12345 SOME
+STREET^^MEAD^WA^99021^USA|||||||||||||||||402941703||||||01|M&lt;cr&gt;<br>
+ACC|19940105125700|WR|WISMER*MARTIN&lt;cr&gt;<br>
+DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940110105309|00&lt;cr&gt;<br>
+AUT|PPO|WA02|WSIC (WA State
+Code)|19940110|19940510|123456789|175|1&lt;cr&gt;<br>
+MSH|^~\&amp;|JIME|EWHIN|BLAKEMD|EWHIN|19940111154812||MCF|JIME1123|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7899&lt;cr&gt;<br>
+MSH|^~\&amp;|JIME|EWHIN|BLAKEMD|EWHIN|19940112152401||RRI^I11|JIME1124|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7899&lt;cr&gt;<br>
+RF1|A|R|MED|RP|O|REF4502|19940111|19940510|19940111&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER|BLAKEM7899&lt;cr&gt;<br>
+CTD|PR|JONES^BUCK|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER&lt;cr&gt;<br>
+PRD|RT|JIMENEZ^JOSE^^^DR||^^^JIME&amp;EWHIN^^^^^JIMENEZ AND
+SMITH||||531886&lt;cr&gt;<br>
+PID|||1234567891^1^M10||BROWN^CARY^JOE||19600309|M||C|N. 12345 SOME
+STREET^^MEAD^WA^
+99021^USA|SPO|(509)466-6801|(509)466-0396|ENGL|M|M||402941703|BROWN*CJ4298^WA&lt;cr&gt;<br>
+DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0&lt;cr&gt;<br>
+PR1|1|C4|45378|Colonoscopy|19940111141509|00&lt;cr&gt;<br>
+NTE|||Patient is doing well.~Full recovery expected.&lt;cr&gt;
+</p>
+
+<h3>
+<A NAME="Heading105">11.7.6 RQC inquiry message using an I05 event with an immediate response</A></h3>
+
+<p>In
+this example, Dr. Blake is querying a reference laboratory for the results of
+all lab work performed on Cary Joe Brown between the dates of 03/20/94 and
+03/22/94 and requests that the data be returned in a record or data elemented
+format.  The message request contains all of the patient identification, as
+well as the provider identification necessary for the responding facility to
+qualify the request.  <br>
+MSH|^~\&amp;|BLAKEMD|EWHIN|EHS_LAB|EWHIN|19940410113142||RQC^I05|BLAKEM7899|P|2.4|||NE|AL&lt;cr&gt;<br>
+QRD|19940504144501|R|I|BLAKEM7899|||5^RD|PATIENT|RES|ALL&lt;cr&gt;<br>
+QRF|EHS_LAB^EWHIN|19940320000000|19940322235959&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N.12828NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER|BLAKEM7899&lt;cr&gt;<br>
+CTD|PR|JONES^BUCK|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER&lt;cr&gt;<br>
+PRD|RT|EMPLAB^EMPIRE LAB||^^^EHS_LAB&amp;EWHIN^^^^^EIMPIRE
+LABORATORIES&lt;cr&gt;<br>
+PID|||1234567891^1^M10||BROWN^CARY^JOE||19600309|M||C|N.12345SOME
+STREET^^MEAD^WA^
+99021^USA|SPO|(509)466-6801|(509)466-0396|ENGL|M|M||402941703|BROWN*CJ4298^WA&lt;cr&gt;<br>
+MSH|^~\&amp;|EHS_LAB|EWHIN|BLAKEMD|EWHIN|19940411152401||RPI^I05|EHSLAB4250|P|2.4|||ER|ER&lt;cr&gt;<br>
+MSA|AA|BLAKEM7899&lt;cr&gt;<br>
+QRD|19940504144501|R|I|BLAKEM7899|||5^RD|PATIENT|RES|ALL&lt;cr&gt;<br>
+QRF|EHS_LAB^EWHIN|19940320000000|19940322235959&lt;cr&gt;<br>
+PRD|RP|BLAKE^BEVERLY^^^DR^MD|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER|BLAKEM7899&lt;cr&gt;<br>
+CTD|PR|JONES^BUCK|N. 12828 NEWPORT
+HIGHWAY^^MEAD^WA^99021|^^^BLAKEMD&amp;EWHIN^^^^^BLAKE MEDICAL
+CENTER&lt;cr&gt;<br>
+PRD|RT|EMPLAB^EMPIRE LAB||^^^EHS_LAB&amp;EWHIN^^^^^EIMPIRE
+LABORATORIES&lt;cr&gt;<br>
+PID|||1234567891^1^M10||BROWN^CARY^JOE||19600309|M||C|N. 12345 SOME
+STREET^^MEAD^WA^
+99021^USA|SPO|(509)466-6801|(509)466-0396|ENGL|M|M||402941703|BROWN*CJ4298^WA&lt;cr&gt;<br>
+OBR|1||1045813^LAB|L1505.003^COMPLETE BLOOD COUNT
+(D)|||19940320104700|""|1^EA||||
+|19940320112400||CARMI||||||19940320104955|||F&lt;cr&gt;<br>
+OBX|1|ST|L1550.000^HEMOGLOBIN, AUTO
+HEME||11.6|g/dl|12.0-16.0|L|||F&lt;cr&gt;<br>
+OBX|2|ST|L1551.003^HEMATOCRIT (D)||36.4|%|36-45||||F&lt;cr&gt;<br>
+OBX|3|ST|L1552.000^RBC, AUTO HEME||3.94|mil/ul|4.1-5.1|L|||F&lt;cr&gt;<br>
+OBX|4|ST|L1553.000^MCV, AUTO HEME||92.4|fl|80-100||||F&lt;cr&gt;<br>
+OBX|5|ST|L1554.000^MCH, AUTO HEME||29.3|pg|26-34||||F&lt;cr&gt;<br>
+OBX|6|ST|L1555.000^MCHC, AUTO HEME||31.8|g/dl|31-37||||F&lt;cr&gt;<br>
+OBX|7|ST|L1557.000^RBC DISTRIBUTION WIDTH||15.3|%|0-14.8|H|||F&lt;cr&gt;<br>
+OBX|8|ST|L1558.003^PLATELET COUNT (D)||279|th/ul|140-440||||F&lt;cr&gt;<br>
+OBX|9|ST|L1559.000^WBC, AUTO HEME||7.9|th/ul|4.5-11.0||||F&lt;cr&gt;<br>
+OBX|10|ST|L1561.100^NEUTROPHILS, % AUTO||73.8|%|||||F&lt;cr&gt;<br>
+OBX|11|ST|L1561.510^LYMPHOCYTES, % AUTO||16.6|%|||||F&lt;cr&gt;<br>
+OBX|12|ST|L1562.010^MONOCYTES, % AUTO||7.3|%|||||F&lt;cr&gt;<br>
+OBX|13|ST|L1563.010^EOSINOPHILS, % AUTO||1.7|%|||||F&lt;cr&gt;<br>
+OBX|14|ST|L1564.010^BASOPHILS, % AUTO||0.7|%|||||F&lt;cr&gt;<br>
+OBX|15|ST|L1565.010^NEUTROPHILS, ABS AUTO||5.8|th/ul|1.8-7.7||||F&lt;cr&gt;<br>
+OBX|16|ST|L1566.010^LYMPHOCYTES, ABS AUTO||1.3|th/ul|1.0-4.8||||F&lt;cr&gt;<br>
+OBX|17|ST|L1567.010^MONOYCYTES, ABS AUTO||0.6|th/ul|0.1-0.8||||F&lt;cr&gt;<br>
+OBX|18|ST|L1568.010^EOSINOPHILS, ABS AUTO||0.1|th/ul|0-0.7||||F&lt;cr&gt;<br>
+OBX|19|ST|L1569.000^BASOPHILS, ABS AUTO||0.1|th/ul|0-0.2||||F&lt;cr&gt;<br>
+OBX|20|ST|L2110.003^PROTHROMBIN TIME
+(D)||30.7|sec|11.1-14.0|HH|||F&lt;cr&gt;<br>
+NTE|1|L|COAGULATION CRITICAL VALUES CALLED TO VICKIE QUASCHNICK~AT 1130 BY
+VON~Therapeutic Ranges(oral anticoagulant):~Most clinical situations:  16.1 -
+21.1 sec -~  (1.3 - 1.7 times the mean of the normal range)~Mech heart valve,
+recurrent embolism:  18.6 - 23.6 sec -~  (1.5 - 1.9 times the mean of the
+normal range)&lt;cr&gt;<br>
+OBX|21|ST|L2110.500^INR||5.95||||||F&lt;cr&gt;<br>
+NTE|1|L|Therapeutic Range (oral anticoagulant):~  Most clinical situations:
+2.0 - 3.0~  Mech heart valve, recurrent embolism:  3.0 - 4.0&lt;cr&gt;<br>
+OBX|22|ST|L3110.003^SODIUM (D)||141|mmol/l|135-146||||F&lt;cr&gt;<br>
+OBX|23|ST|L3111.003^POTASSIUM (D)||3.8|mmol/l|3.5-5.1||||F&lt;cr&gt;<br>
+OBX|24|ST|L3112.003^CHLORIDE (D)||111|mmol/l|98-108|H|||F&lt;cr&gt;<br>
+OBX|25|ST|L3113.003^CO2 (TOTAL) (D)||23.7|mmol/l|23-30||||F&lt;cr&gt;<br>
+OBX|26|ST|L3114.000^ANION GAP||6||7-17|L|||F&lt;cr&gt;<br>
+OBX|27|ST|L3120.003^CREATININE (D)||1.4|mg/dl|0.5-1.2|H|||F&lt;cr&gt;<br>
+OBX|28|ST|L3121.003^UREA NITROGEN (D)||24|mg/dl|7-25||||F&lt;cr&gt;<br>
+OBX|29|ST|L3123.003^GLUCOSE (D)||123|mg/dl|65-115|H|||F&lt;cr&gt;<br>
+OBX|30|ST|L3126.003^CALCIUM (D)||8.7|mg/dl|8.4-10.2||||F&lt;cr&gt;<br>
+OBR|2||1045825^LAB|L2560.000^BLOOD GAS, ARTERIAL (R)|||19940320105800|""|
+1^EA|||||19940320105800||CARMI||||||19940320105844|||F&lt;cr&gt;<br>
+OBX|1|ST|L2565.000^PH, ARTERIAL BLD GAS (R)||7.46||7.35-7.45|H|||F&lt;cr&gt;<br>
+OBX|2|ST|L2566.000^PCO2, ARTERIAL BLOOD GAS||28|mm/Hg|35-45|LL|||F&lt;cr&gt;<br>
+NTE|1|L|BLOOD GAS ANALYSIS CRITICAL VALUE(S) CALLED TO~DR.
+CARLSON.&lt;cr&gt;<br>
+OBX|3|ST|L2567.000^PO2, ARTERIAL BLOOD GAS||83|mm/Hg|80-100||||F&lt;cr&gt;<br>
+OBX|4|ST|L2568.000^O2 SAT, ART BLD GAS (R)||96|%|95-99||||F&lt;cr&gt;<br>
+OBX|5|ST|L2569.000^BASE EX, ARTERIAL BLD
+GAS||-2.1|mEq/l|-2.0-2.0|L|||F&lt;cr&gt;<br>
+OBX|6|ST|L2570.000^HCO3, ARTERIAL BLD GAS||19.4|mEq/l|22-26|L|||F&lt;cr&gt;<br>
+OBX|7|ST|L2571.000^PATIENT TEMP, ABG||96.2|deg F|||||F&lt;cr&gt;<br>
+OBX|8|ST|L2572.000^MODE, ABG||ROOM AIR||||||F&lt;cr&gt;<br>
+OBR|3||1045812^LAB|L2310.003^URINALYSISD)|||19940320121800|""|1^EA|||||19940320121800||CARMI||||||19940320104953|||F&lt;cr&gt;<br>
+OBX|1|ST|L2320.303^SPECIFIC GRAVITY, UR
+(D)||1.015||1.002-1.030||||F&lt;cr&gt;<br>
+OBX|2|ST|L2320.403^PH, UR (D)||7.0||5.0-7.5||||F&lt;cr&gt;<br>
+OBX|3|ST|L2320.503^PROTEIN, QUAL, UR (D)||NEG|mg/dl|||||F&lt;cr&gt;<br>
+OBX|4|ST|L2320.703^GLUCOSE, QUAL, UR (D)||0|mg/dl|0-30||||F&lt;cr&gt;<br>
+OBX|5|ST|L2320.803^KETONES, UR (D)||NEG|mg/dl|||||F&lt;cr&gt;<br>
+OBX|6|ST|L2320.903^OCCULT BLOOD, UR (D)||SMALL|||A|||F&lt;cr&gt;<br>
+OBX|7|ST|L2321.003^BILIRUBIN, UR (D)||NEG||||||F&lt;cr&gt;<br>
+OBX|8|ST|L2321.100^LEUKOCYTES, UR||MOD|||A|||F&lt;cr&gt;<br>
+OBX|9|ST|L2321.200^NITRITES, UR||NEG||||||F&lt;cr&gt;<br>
+OBX|10|ST|L2321.300^UROBILINOGEN, UR||NEG||||||F&lt;cr&gt;<br>
+OBX|11|ST|L2342.000^MICRO SPUN VOLUME, UR||8|ml|8-8||||F&lt;cr&gt;<br>
+OBX|12|ST|L2350.003^RBC, UR (D)||5-10|/hpf|||||F&lt;cr&gt;<br>
+OBX|13|ST|L2350.100^WBC, UR||&gt;100|/hpf|||||F&lt;cr&gt;<br>
+OBX|14|ST|L2350.200^EPITHELIAL CELLS, UR||2+||||||F&lt;cr&gt;<br>
+OBX|15|ST|L2350.300^BACTERIA, UR||2+|||A|||F&lt;cr&gt;
+</p>
+
+<h2>
+<A NAME="Heading106">11.8 OUTSTANDING ISSUES</A></h2>
+
+
+<h3>
+<A NAME="Heading107">11.8.1 HL7 overlapping with ASC X12N</A></h3>
+
+<p>There
+have been discussions regarding overlap of the proposed Patient Referral
+Chapter with recent development efforts by a committee within the ASC X12N
+organization.  In the Healthcare Task Group (Task Group 2) of the ASC X12N
+Insurance Subcommittee, the Services Review Working Group (Working Group 10)
+has been working on a referral transaction (Transaction 278).  This transaction
+has been designed from a payor perspective by focusing on <i>certification</i>
+of a referral or <i>notification</i> that a referral took place.  This focus
+deals primarily with the financial or reimbursement side of a referral.  There
+are some similarities between the two messages.  However, there are also some
+clear differences.  For example, the ASC X12 transaction does not provide for
+provider-to-provider referrals containing clinical data.  Referrals containing
+a patient's clinical record along with diagnoses and requested procedures are
+the major focus of the work being done by HL7.  In an effort to alleviate some
+of the controversy that this issue has caused, sections of this HL7 Patient
+Referral chapter have been removed.  These sections dealt primarily with
+eligibility and plan coverage information.  That information will be
+specifically handled by ASC X12N transactions 271 and 272, and the new
+interactive transactions.<br>
+There are some convergence activities currently in progress.  The HL7 - X12
+Joint Coordinating Committee has been formed to facilitate efforts to unify
+these two standard development organizations as well as others.  Work is in
+progress to harmonize HL7 trigger events within X12N transactions, as well as
+in joint data modeling.  There has also been some work done at the working
+group level to harmonize the common data segments of the two respective
+referral messages.  There is ongoing participation by both HL7 committees and
+X12N work groups to achieve a certain level of data compatibility.<br>
+The HL7 Board of Directors has directed HL7 to continue development of the
+Patient Referral Chapter for the following reasons:<br>
+The HL7 - X12 coordination is ongoing, but will not be complete in time for
+Standard Version 2.3.<br>
+The HL7 Patient Referral Chapter addresses business needs that the X12
+transaction does not (e.g., transmission of codified clinical data).
+</p>
+</body></html>

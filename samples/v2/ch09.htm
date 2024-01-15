@@ -1,0 +1,3119 @@
+<HTML><HEAD>
+<TITLE>HL7 V2.4 Chapter 9</TITLE></HEAD>
+<BODY BACKGROUND="" BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1>
+HL7 V2.4 Contents
+</H1>
+<A HREF="hl7.htm">Contents</A><br>
+<A HREF="ch01.htm">1 . Introduction</A><br>
+<A HREF="ch02.htm">2 .Control </A><br>
+<A HREF="ch03.htm">3 .Patient Administration</A><br>
+<A HREF="ch04.htm">4 .Order Entry</A><br>
+<A HREF="ch05.htm">5 .Query</A><br>
+<A HREF="ch06.htm">6. Financial Management</A><br>
+<A HREF="ch07.htm">7 .Observation Reporting</A><br>
+<A HREF="ch08.htm">8 .Master Files</A><br>
+<A HREF="ch09.htm">9 .Medical Records/Information Management (Document Management)</A><br>
+<A HREF="ch10.htm">10 .Scheduling</A><br>
+<A HREF="ch11.htm">11 .Patient Referral</A><br>
+<A HREF="ch12.htm">12 .Patient Care</A><br>
+<A HREF="ch13.htm">13 .Clinical Laboratory Automation</A><br>
+<A HREF="ch14.htm">14 .Application Management</A><br>
+<A HREF="ch15.htm">15 .Personnel Management</A><br>
+<A HREF="AppendixA.htm">A .Data Definition Tables</A><br>
+<A HREF="AppendixB.htm">B. Lower Layer Protocols</A><br>
+<A HREF="AppendixC.htm">C. Version 2.4 BNF Message Descriptions</A><br>
+<A HREF="AppendixD.htm">D. Glossary</A><br>
+
+<hr size=4>
+
+<H1>
+HL7 V2.4 Chapter 9</H1>
+<UL>
+<LI><A HREF="#Heading1">9 .<BR>Medical Records/Information Management<BR> (Document Management)</A>
+<UL>
+<LI><A HREF="#Heading2">9.1 CHAPTER 9 CONTENTS</A>
+<LI><A HREF="#Heading3">9.2 PURPOSES</A>
+<UL>
+<LI><A HREF="#Heading4">9.2.1 Definition of terms and concepts</A>
+<UL>
+<LI><A HREF="#Heading5"> </A>
+<LI><A HREF="#Heading6">9.2.1.1 Addendum:</A>
+<LI><A HREF="#Heading7">9.2.1.2 Archived:</A>
+<LI><A HREF="#Heading8">9.2.1.3 Canceled:</A>
+<LI><A HREF="#Heading9">9.2.1.4 Composite document:</A>
+<LI><A HREF="#Heading10">9.2.1.5 Document completion table:</A>
+<LI><A HREF="#Heading11">9.2.1.6 Authenticated:</A>
+<UL>
+<LI><A HREF="#Heading12">9.2.1.6.1 Dictated:</A>
+<LI><A HREF="#Heading13">9.2.1.6.2 Documented:</A>
+<LI><A HREF="#Heading14">9.2.1.6.3 In progress/assigned:</A>
+<LI><A HREF="#Heading15">9.2.1.6.4 Incomplete:</A>
+</UL>
+<LI><A HREF="#Heading16">9.2.1.7 Legally authenticated:</A>
+<UL>
+<LI><A HREF="#Heading17">9.2.1.7.1 Pre-authenticated:</A>
+</UL>
+<LI><A HREF="#Heading18">9.2.1.8 Edited document:</A>
+<LI><A HREF="#Heading19">9.2.1.9 New or original document:</A>
+<LI><A HREF="#Heading20">9.2.1.10 Obsolete:</A>
+<LI><A HREF="#Heading21">9.2.1.11 Purged:</A>
+<LI><A HREF="#Heading22">9.2.1.12 Replacement document:</A>
+<LI><A HREF="#Heading23">9.2.1.13 Restricted:</A>
+<LI><A HREF="#Heading24">9.2.1.14 Revised document:</A>
+<LI><A HREF="#Heading25">9.2.1.15 Transcription:</A>
+</UL>
+</UL>
+<LI><A HREF="#Heading26">9.3 DOCUMENT MANAGEMENT SECTION</A>
+<LI><A HREF="#Heading27">9.4 ASSUMPTIONS</A>
+<LI><A HREF="#Heading28">9.5 TRIGGER EVENTS AND MESSAGE DEFINITIONS</A>
+<UL>
+<LI><A HREF="#Heading29">9.5.1 MDM/ACK - original document notification (event T01)</A>
+<LI><A HREF="#Heading30">9.5.2 MDM/ACK - original document notification and content (event T02) </A>
+<LI><A HREF="#Heading31">9.5.3 MDM/ACK - document status change notification (event T03) </A>
+<LI><A HREF="#Heading32">9.5.4 MDM/ACK - document status change notification and content (event T04)</A>
+<LI><A HREF="#Heading33">9.5.5 MDM/ACK - document addendum notification (event T05)</A>
+<LI><A HREF="#Heading34">9.5.6 MDM/ACK - document addendum notification and content (event T06)</A>
+<LI><A HREF="#Heading35">9.5.7 MDM/ACK - document edit  notification (event T07)</A>
+<LI><A HREF="#Heading36">9.5.8 MDM/ACK - document edit notification and content (event T08)</A>
+<LI><A HREF="#Heading37">9.5.9 MDM/ACK - document replacement notification (event T09)</A>
+<LI><A HREF="#Heading38">9.5.10 MDM/ACK -  document replacement notification and content (event T10)</A>
+<LI><A HREF="#Heading39">9.5.11 MDM/ACK - document cancel notification (event T11)</A>
+</UL>
+<LI><A HREF="#Heading40">9.6 MESSAGE SEGMENTS</A>
+<UL>
+<LI><A HREF="#Heading41">9.6.1 TXA - transcription document header segment</A>
+<UL>
+<LI><A HREF="#Heading42">9.6.1.0 TXA  field definitions</A>
+<LI><A HREF="#Heading43">9.6.1.1 TXA-1  Set ID - TXA (SI)  00914</A>
+<LI><A HREF="#Heading44">9.6.1.2 TXA-2  Document type   (IS)   00915</A>
+<LI><A HREF="#Heading45">9.6.1.3 TXA-3  Document content presentation  (ID)   00916</A>
+<LI><A HREF="#Heading46">9.6.1.4 TXA-4  Activity date/time (TS)   00917</A>
+<LI><A HREF="#Heading47">9.6.1.5 TXA-5  Primary activity provider code/name  (XCN)   00918</A>
+<LI><A HREF="#Heading48">9.6.1.6 TXA-6  Origination date/time  (TS)   00919</A>
+<LI><A HREF="#Heading49">9.6.1.7 TXA-7  Transcription date/time  (TS)   00920</A>
+<LI><A HREF="#Heading50">9.6.1.8 TXA-8  Edit date/time  (TS)   00921</A>
+<LI><A HREF="#Heading51">9.6.1.9 TXA-9  Originator code/name  (XCN)   00922</A>
+<LI><A HREF="#Heading52">9.6.1.10 TXA-10  Assigned document authenticator (XCN)   00923</A>
+<LI><A HREF="#Heading53">9.6.1.11 TXA-11  Transcriptionist code/name  (XCN)   00924</A>
+<LI><A HREF="#Heading54">9.6.1.12 TXA-12  Unique document number  (EI)   00925</A>
+<LI><A HREF="#Heading55">9.6.1.13 TXA-13  Parent document number  (EI)   00926</A>
+<LI><A HREF="#Heading56">9.6.1.14 TXA-14  Placer order number  (EI)   00216</A>
+<LI><A HREF="#Heading57">9.6.1.15 TXA-15  Filler order number  (EI)   00217</A>
+<LI><A HREF="#Heading58">9.6.1.16 TXA-16  Unique document file name  (ST)   00927</A>
+<LI><A HREF="#Heading59">9.6.1.17 TXA-17  Document completion status  (ID)   00928</A>
+<LI><A HREF="#Heading60">9.6.1.18 TXA-18  Document confidentiality status   (ID)  00929</A>
+<LI><A HREF="#Heading61">9.6.1.19 TXA-19  Document availability status (ID)   00930</A>
+<LI><A HREF="#Heading62">9.6.1.20 TXA-20  Document storage status (ID)   00932</A>
+<LI><A HREF="#Heading63">9.6.1.21 TXA-21  Document change reason  (ST)   00933</A>
+<LI><A HREF="#Heading64">9.6.1.22 TXA-22  Authentication person, time stamp (set)  (PPN)   00934</A>
+<UL>
+<LI><A HREF="#Heading65">9.6.1.22.1 Authentication person (component)  (XCN)</A>
+<LI><A HREF="#Heading66">9.6.1.22.2 Authentication time stamp (component)  (TS)   </A>
+</UL>
+<LI><A HREF="#Heading67">9.6.1.23 TXA-23  Distributed copies  (XCN)   00935</A>
+</UL>
+<LI><A HREF="#Heading68">9.6.2 OBX - observation segment usage</A>
+</UL>
+<LI><A HREF="#Heading69">9.7 EXAMPLE MESSAGE</A>
+<LI><A HREF="#Heading70">9.8 QUERY</A>
+<UL>
+<LI><A HREF="#Heading71">9.8.1 QRY/DOC - document query (event T12)</A>
+<UL>
+<LI><A HREF="#Heading72"> </A>
+<LI><A HREF="#Heading73">9.8.1.1 Query usage notes</A>
+</UL>
+</UL>
+<LI><A HREF="#Heading74">9.9 OUTSTANDING ISSUES</A>
+</UL>
+</UL>
+<hr size=4>
+
+<h1>
+<A NAME="Heading1">9 .<BR>Medical Records/Information Management<BR> (Document Management)</A></h1>
+
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter
+Chair/Editor:
+</p></TD>
+<TD colspan=1 align="left"><p>Wayne
+Tracy, MS<br>Health Patterns, LLC
+</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter
+Chair/Editor:
+</p></TD>
+<TD colspan=1 align="left"><p>Harry
+Rhodes<br>American Health Information Management Association
+</p></TD>
+</TR>
+</TABLE>
+<p><b>Note:</b>
+No substantive changes were made to this chapter for Version 2.4.
+</p>
+
+<h2>
+<A NAME="Heading2">9.1 CHAPTER 9 CONTENTS</A></h2>
+
+
+<h2>
+<A NAME="Heading3">9.2 PURPOSES</A></h2>
+
+<p>This
+chapter currently supports document management.  In the future, it is intended
+also to support the data exchange needs of applications supporting other
+medical record functions, including chart location and tracking, deficiency
+analysis, consents, and release of information.  The main purpose of the
+medical record is to produce an accurate, legal, and legible document that
+serves as a comprehensive account of healthcare services provided to a
+patient.<br>
+This chapter defines the transactions at the seventh level, i.e., the abstract
+messages.  Various schemes may be used to generate the actual characters that
+comprise the messages according to the communications environment.  The HL7
+Encoding Rules will be used where there is not a complete Presentation Layer.
+This is described in Chapter 1, "Relationship to Other Protocols."   The
+examples in this chapter were constructed using the HL7 Encoding Rules.
+</p>
+
+<h3>
+<A NAME="Heading4">9.2.1 Definition of terms and concepts</A></h3>
+
+<p>This
+part provides definition of terms used throughout this chapter.  The intent of
+this part is to provide clarification on use and interpretation.</p>
+
+<h4>
+<A NAME="Heading5"> </A></h4>
+
+
+<h4>
+<A NAME="Heading6">9.2.1.1 Addendum:</A></h4>
+
+<p>An
+appendage to an existing document that contains supplemental information.  The
+parent document remains in place and its content is unaltered.
+</p>
+
+<h4>
+<A NAME="Heading7">9.2.1.2 Archived:</A></h4>
+
+<p>A
+storage status in which a document has been stored off-line for long-term access.
+</p>
+
+<h4>
+<A NAME="Heading8">9.2.1.3 Canceled:</A></h4>
+
+<p>An
+availability status in which a document has been "removed" from a patient's
+record with no replacement.  This is done when a document has been erroneously
+created or assigned to the incorrect patient.
+</p>
+
+<h4>
+<A NAME="Heading9">9.2.1.4 Composite document:</A></h4>
+
+<p>A
+document which consists of an original document and one or more addenda.
+</p>
+
+<h4>
+<A NAME="Heading10">9.2.1.5 Document completion table:</A></h4>
+
+<p>The
+following terms are used to describe the workflow progression of a document:
+</p>
+
+<h4>
+<A NAME="Heading11">9.2.1.6 Authenticated:</A></h4>
+
+<p>A
+completion status in which a document or entry has been signed manually or
+electronically by one or more individuals who attest to its accuracy.  No
+explicit determination is made that the assigned individual has performed the
+authentication.  While the standard allows multiple instances of
+authentication, it would be typical to have a single instance of
+authentication, usually by the assigned individual.
+</p>
+
+<h5>
+<A NAME="Heading12">9.2.1.6.1 Dictated:</A></h5>
+
+<p>A
+completion status in which information has been orally recorded but not yet
+transcribed.
+</p>
+
+<h5>
+<A NAME="Heading13">9.2.1.6.2 Documented:</A></h5>
+
+<p>A
+completion status in which document content, other than dictation, has been
+received but has not been translated into the final electronic format.
+Examples include paper documents, whether hand-written or typewritten, and
+intermediate electronic forms, such as voice to text.
+</p>
+
+<h5>
+<A NAME="Heading14">9.2.1.6.3 In progress/assigned:</A></h5>
+
+<p>A
+workflow status in which the recipient has assigned the material to personnel
+to perform the task of transcription.  The document remains in this state until
+the document is transcribed.
+</p>
+
+<h5>
+<A NAME="Heading15">9.2.1.6.4 Incomplete:</A></h5>
+
+<p>A
+completion status in which information is known to be missing from a
+transcribed document.
+</p>
+
+<h4>
+<A NAME="Heading16">9.2.1.7 Legally authenticated:</A></h4>
+
+<p>A
+completion status in which a document or entry has been signed manually or
+electronically by the individual who is legally responsible for that document
+or entry. This is the most mature state in the workflow progression.
+</p>
+
+<h5>
+<A NAME="Heading17">9.2.1.7.1 Pre-authenticated:</A></h5>
+
+<p>A
+completion status in which a document is transcribed but not authenticated.
+</p>
+
+<h4>
+<A NAME="Heading18">9.2.1.8 Edited document:</A></h4>
+
+<p>A
+document that alters an existing document which had not been made available for
+patient care  (see also Section 9.1.1.10, "Replacement document").
+</p>
+
+<h4>
+<A NAME="Heading19">9.2.1.9 New or original document:</A></h4>
+
+<p>The
+first version of a document.  The original may or may not be final or
+authenticated.  An original document should have a set of associated statuses
+to define its current condition.
+</p>
+
+<h4>
+<A NAME="Heading20">9.2.1.10 Obsolete:</A></h4>
+
+<p>An
+availability status in which a document has been replaced by a document which
+contains revised content.  
+</p>
+
+<h4>
+<A NAME="Heading21">9.2.1.11 Purged:</A></h4>
+
+<p>A
+storage status in which a document is no longer available in this system.  
+</p>
+
+<h4>
+<A NAME="Heading22">9.2.1.12 Replacement document:</A></h4>
+
+<p>A
+document that replaces an existing document. The original document becomes
+obsolete, but is still retained in the system for historical reference.
+</p>
+
+<h4>
+<A NAME="Heading23">9.2.1.13 Restricted:</A></h4>
+
+<p>A
+confidentiality status in which access to a document has institutionally
+assigned limitations.
+</p>
+
+<h4>
+<A NAME="Heading24">9.2.1.14 Revised document:</A></h4>
+
+<p>This
+is not a supported trigger event.   See Sections 9.1.1.6, "Edited document",
+and 9.1.1.10 "Replacement document".
+</p>
+
+<h4>
+<A NAME="Heading25">9.2.1.15 Transcription:</A></h4>
+
+<p>A
+process of transforming dictated or otherwise documented information into an
+electronic format. 
+</p>
+
+<h2>
+<A NAME="Heading26">9.3 DOCUMENT MANAGEMENT SECTION</A></h2>
+
+<p>This
+section defines the Medical Document Management (MDM) transaction set.  It
+supports transmission of new or updated documents or information about their
+status(es).  The trigger events and messages may be divided into two broad
+categories, one which describes the statuses of documents, and one which both
+describes the statuses and contains the document content itself.<br>
+The document management section is concerned primarily with the management of
+those documents and entries which are created as a result of a transcription
+process.  These documents are created in two distinct contexts, one of which is
+related to an order and describes the procedures or activities associated with
+that order, and another which occurs independent of the order process.  The
+scope of this section also includes any document that contains data derived
+from orders or results but which must be treated as aggregate display data due
+to system limitations.  This is a transition strategy to support integration of
+data across the continuum of care.<br>
+The content of a document can be represented with one or more observation
+segments (OBX).  Where headings or separations naturally exist within the text,
+it is preferred that each of these blocks be represented as a separate OBX
+record.  <b>Where systems are able to decompose the text into separate medical
+concepts, the most atomic level of granularity of content should be
+represented, ideally with each medical concept being represented in its own OBX
+segment</b>.  Many of these concepts can be represented as coded entities.  
+</p>
+
+<h2>
+<A NAME="Heading27">9.4 ASSUMPTIONS</A></h2>
+
+<p>Within
+this section, we have created a single message whose contents vary predicated
+on the trigger event.  The following assumptions are made when the Medical
+Document Management (MDM) message is used:<br>
+*	The application system is responsible for meeting all legal requirements (on
+the local, state, and federal levels) in the areas of document authentication,
+confidentiality, and retention.<br>
+*	All documents are unique, and document numbers and file names are not
+reused.<br>
+*	Documents may be associated with one or more orders.
+</p>
+
+<h2>
+<A NAME="Heading28">9.5 TRIGGER EVENTS AND MESSAGE DEFINITIONS</A></h2>
+
+<p>Each
+triggering event is listed below, along with the applicable form of the message
+exchange. The notation used to describe the sequence, optionality, and
+repetition of segments is described in Chapter 2, "Format for Defining Abstract
+Messages."  There are two classes of events, those which contain notifications
+only, and those which contain both notifications and content (text contained in
+OBX segments).  <br>
+These triggering events are mainly associated with documents or entries that
+will be or have been transcribed. The types and appearance of the transcribed
+documents can vary greatly within a healthcare organization and between
+organizations.  However, the main purpose of the transcription process is to
+document patient care or diagnostic results in a legible manner; these
+documents then become part of the legal medical record.  The conceptual purpose
+of document notification is to facilitate updating the receiving system(s) with
+information from the source system(s), typically dictation or transcription
+systems, to indicate that an electronic document has been created or altered.
+The document notification message can be attached to an entire document (i.e.,
+transcribed document) or can be transmitted stand-alone.  In either case, the
+document notification is transmitted in the form of an unsolicited update or in
+response to a record-oriented query.  A document notification message can be
+created under a variety of circumstances such as when: 1) dictation has been
+completed; 2) a document has been transcribed; or 3) the status of a document
+has been changed, for example, when a document has been authenticated.
+</p>
+
+<h3>
+<A NAME="Heading29">9.5.1 MDM/ACK - original document notification (event T01)</A></h3>
+
+<p>This
+is a notification of the creation of a document without the accompanying
+content.  There are multiple approaches by which systems become aware of
+documents:<br>
+<b>Scenario A: </b>A document is dictated and chart tracking system is notified
+that it has been dictated and is awaiting transcription. <br>
+<b>Scenario B:</b> Dictation is transcribed and chart tracking system is
+notified that the document exists and requires authentication. <br>
+<b>Scenario C:</b> A provider orders a series of three X-rays.  The radiologist
+dictates a single document which covers all three orders.  Multiple placer
+numbers are used to identify each of these orders.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T01^MDM_T01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Original
+Document Notification
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p>
+<BR></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T01^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading30">9.5.2 MDM/ACK - original document notification and content (event T02) </A></h3>
+
+<p>This
+is a notification of the creation of a document with the accompanying
+content.<br>
+<b>Scenario A:</b> Dictation is transcribed and the chart tracking system is
+notified that the document exists and requires authentication.  The content of
+the document is transmitted along with the notification.  <br>
+<b>Scenario B:</b> A provider orders a series of three X-rays.  The
+radiologist's dictation is transcribed in a single document, which covers all
+three orders.  Multiple placer numbers are used to identify each of the orders
+within the single document message.  The notification and document content are
+transmitted.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T02^MDM_T02</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Original
+Document Notification &amp; Content
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{<u>OBX</u>}
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result
+(one or more required)
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T02^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error
+Information
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading31">9.5.3 MDM/ACK - document status change notification (event T03) </A></h3>
+
+<p>This
+is a notification of a change in a status of a document without the
+accompanying content. <br>
+Scenario: A document is authenticated.  Notification is sent to the chart
+tracking system and is used to update the document status from
+pre-authenticated to authenticated or legally authenticated.<br>
+A change in any of the following independent status characteristics would cause
+a message to be sent:<br>
+*	Completion Status <br>
+*	Confidentiality Status<br>
+*	Availability Status (the Availability Status of "cancelled" is supported in
+T11 (document cancel notification) or T03)<br>
+*	Storage Status<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T03^MDM_T01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Status Change Notification
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T03^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading32">9.5.4 MDM/ACK - document status change notification and content (event T04)</A></h3>
+
+<p>This
+is a notification of a change in a status of a document with the accompanying
+content. <br>
+Scenario: A document is authenticated.  Notification is sent to the chart
+tracking system and is used to update the document status from
+pre-authenticated to authenticated or legally authenticated.  The document
+content is also transmitted.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T04^MDM_T02</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Status Change Notification &amp; Content
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+{OBX}
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result
+(one or more required)
+</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T04^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading33">9.5.5 MDM/ACK - document addendum notification (event T05)</A></h3>
+
+<p>This
+is a notification of an addendum to a document without the accompanying
+content. <br>
+Scenario:  Author dictates additional information as an addendum to a
+previously transcribed document.  A new document is transcribed.  This addendum
+has its own new unique document ID that is linked to the original document via
+the parent ID.  Addendum document notification is transmitted.  This creates a
+composite document.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T05^MDM_T01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Addendum Notification 
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T05^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading34">9.5.6 MDM/ACK - document addendum notification and content (event T06)</A></h3>
+
+<p>This
+is a notification of an addendum to a document with the accompanying content.
+<br>
+Scenario:  Author dictates additional information as an addendum to a
+previously transcribed document.  A new document is transcribed.  This addendum
+has its own new unique document ID that is linked to the original document via
+the parent ID.  Addendum document notification is transmitted, along with the
+document content.  This creates a composite document.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T06^MDM_T02</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Addendum Notification &amp; Content
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {OBX}
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result
+(one or more required)
+</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T06^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading35">9.5.7 MDM/ACK - document edit  notification (event T07)</A></h3>
+
+<p><b>Note:
+</b>The only valid use of this trigger event is for documents whose
+availability status is "Unavailable," i.e., the document has not been made
+available for patient care.<br>
+This is a notification of an edit to a document without the accompanying
+content. <br>
+Scenario:  Errors, which need to be corrected, are discovered in a document.
+The original document is edited, and an edit notification is sent.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T07^MDM_T01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Edit Notification 
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T07^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading36">9.5.8 MDM/ACK - document edit notification and content (event T08)</A></h3>
+
+<p><b>Note</b>:
+The only valid use of this trigger event is for documents whose availability
+status is "Unavailable," i.e., the document has not been made available for
+patient care.<br>
+This is a notification of an edit to a document with the accompanying content.
+<br>
+Scenario:   Errors, which need to be corrected, are discovered in a document.
+The original document is edited, and an edit notification and document content
+are sent.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T08^MDM_T02</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Edit  Notification &amp; Content
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {OBX}
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result
+(one or more required)
+</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T08^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading37">9.5.9 MDM/ACK - document replacement notification (event T09)</A></h3>
+
+<p><b>Note</b>:
+This trigger event is generally used when the original document availability
+status is "Available."<br>
+This is a notification of replacement to a document without the accompanying
+content. <br>
+Scenario:  Errors discovered in a document are corrected.  The original
+document is replaced with the revised document.  The replacement document has
+its own new unique document ID that is linked to the original document via the
+parent ID.  The availability status of the original document is changed to
+"Obsolete" but the original document should be retained in the system for
+historical reference.  Document replacement notification is sent.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T09^MDM_T01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Replacement Notification 
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p>
+<BR></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T09^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading38">9.5.10 MDM/ACK -  document replacement notification and content (event T10)</A></h3>
+
+<p>Scenario:
+  Errors discovered in a document are corrected.  The original document is
+replaced with the revised document.  The replacement document has its own new
+unique document ID that is linked to the original document via the parent ID.
+The availability status of the original document is changed to "Obsolete" but
+the original document should be retained in the system for historical
+reference.  Document replacement notification and document content are sent.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T10^MDM_T02</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Replacement Notification &amp; Content 
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p>
+<BR></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ {OBX}
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation/Result
+(one or more required)
+</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T10^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading39">9.5.11 MDM/ACK - document cancel notification (event T11)</A></h3>
+
+<p>This
+is a notification of a cancellation of a document.   This trigger event should
+be used only for an original document with an availability status of
+"Unavailable."  When a document has been made available for patient care, the
+process should be to replace the original document, which then becomes
+obsolete.  The replacement document describes why the erroneous information
+exists.<br>
+Scenario:  When the author dictated a document, the wrong patient
+identification was given, and the document was transcribed and sent to the
+wrong patient's record.  When the error is discovered, a cancellation notice is
+sent to remove the document from general access in the wrong patient's record.
+In these cases, a reason should be supplied in the cancellation message.  To
+protect patient privacy, the correct patient's identifying information should
+not be placed on the erroneous document that is retained in the wrong patient's
+record for historical reference.  A new document notification and content will
+be created using a T02 (original document notification and content) event and
+sent for association with the correct patient's record.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>MDM^T11^MDM_T01</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Cancel Notification
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PID</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>PV1</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>TXA</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^T11^ACK</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h2>
+<A NAME="Heading40">9.6 MESSAGE SEGMENTS</A></h2>
+
+
+<h3>
+<A NAME="Heading41">9.6.1 TXA - transcription document header segment</A></h3>
+
+<p>The
+TXA segment contains information specific to a transcribed document but does
+not include the text of the document.  The message is created as a result of a
+document status change.  This information is used to update other healthcare
+systems to identify reports that are available in the transcription system.  By
+maintaining the TXA message information in these systems, the information is
+available when constructing queries to the transcription system requesting the
+full document text.<br>
+<center>HL7 Attribute Table - TXA
+<a name="TXA"></a>
+- Transcription Document Header</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p></TH>
+<TH><p><b>LEN</b></p></TH>
+<TH><p><b>DT</b></p></TH>
+<TH><p><b>OPT</b></p></TH>
+<TH><p><b>RP/#</b></p></TH>
+<TH><p><b>TBL#</b></p></TH>
+<TH><p><b>ITEM#</b></p></TH>
+<TH><p>ELEMENT
+NAME
+</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>SI</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00914</p></TD>
+<TD colspan=1 align="center"><p>Set
+ID- TXA
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>IS</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0270</u></p></TD>
+<TD colspan=1 align="center"><p>00915</p></TD>
+<TD colspan=1 align="center"><p>Document
+Type
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0191</p></TD>
+<TD colspan=1 align="center"><p>00916</p></TD>
+<TD colspan=1 align="center"><p>Document
+Content Presentation
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00917</p></TD>
+<TD colspan=1 align="center"><p>Activity
+Date/Time
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XCN</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00918</p></TD>
+<TD colspan=1 align="center"><p>Primary
+Activity Provider Code/Name
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00919</p></TD>
+<TD colspan=1 align="center"><p>Origination
+Date/Time
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00920</p></TD>
+<TD colspan=1 align="center"><p>Transcription
+Date/Time
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8 </p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00921</p></TD>
+<TD colspan=1 align="center"><p>Edit Date/Time</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XCN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00922</p></TD>
+<TD colspan=1 align="center"><p>Originator
+Code/Name
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>10</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XCN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00923</p></TD>
+<TD colspan=1 align="center"><p>Assigned Document Authenticator
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>11</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XCN</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00924</p></TD>
+<TD colspan=1 align="center"><p>Transcriptionist Code/Name</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>12</p>
+<BR></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>EI</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00925</p></TD>
+<TD colspan=1 align="center"><p>Unique
+Document Number
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>13</p></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>EI</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00926</p></TD>
+<TD colspan=1 align="center"><p>Parent Document Number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>14</p></TD>
+<TD colspan=1 align="center"><p>22</p></TD>
+<TD colspan=1 align="center"><p>EI</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00216</p></TD>
+<TD colspan=1 align="center"><p>Placer
+Order Number
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>15</p></TD>
+<TD colspan=1 align="center"><p>22</p></TD>
+<TD colspan=1 align="center"><p>EI</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00217</p></TD>
+<TD colspan=1 align="center"><p>Filler Order Number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>16</p></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>ST</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00927</p></TD>
+<TD colspan=1 align="center"><p>Unique
+Document File Name
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>17</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0271</u></p></TD>
+<TD colspan=1 align="center"><p>00928</p></TD>
+<TD colspan=1 align="center"><p>Document Completion Status</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>18</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0272</u></p></TD>
+<TD colspan=1 align="center"><p>00929</p></TD>
+<TD colspan=1 align="center"><p>Document
+Confidentiality Status
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>19</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0273</u></p></TD>
+<TD colspan=1 align="center"><p>00930</p></TD>
+<TD colspan=1 align="center"><p>Document Availability Status</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>20</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0275</u></p></TD>
+<TD colspan=1 align="center"><p>00932</p></TD>
+<TD colspan=1 align="center"><p>Document
+Storage Status
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>21</p></TD>
+<TD colspan=1 align="center"><p>30</p></TD>
+<TD colspan=1 align="center"><p>ST</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00933</p></TD>
+<TD colspan=1 align="center"><p>Document Change Reason</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>22</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>PPN</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00934</p></TD>
+<TD colspan=1 align="center"><p>Authentication
+Person, Time Stamp
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>23</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XCN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00935</p></TD>
+<TD colspan=1 align="center"><p>Distributed Copies (Code and Name of Recipients)
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading42">9.6.1.0 TXA  field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading43">9.6.1.1 TXA-1  Set ID - TXA (SI)  00914</A></h4>
+
+<p>Definition:
+ This field contains a number that uniquely identifies this transaction for the
+purpose of adding, changing, or deleting the transaction.
+</p>
+
+<h4>
+<A NAME="Heading44">9.6.1.2 TXA-2  Document type   (IS)   00915</A></h4>
+
+<p>Definition:
+ This field identifies the type of document (as defined in the transcription
+system).  Refer to<i> </i><cite>User-defined Table 0270 - Document
+type</cite><i> </i>for suggested values.  The organization is free to add more
+entries.<br>
+<center>User-defined Table 0270 - Document type 
+<a name="HL70270"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AR</p></TD>
+<TD colspan=1 align="center"><p>Autopsy
+report
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>CD</p></TD>
+<TD colspan=1 align="center"><p>Cardiodiagnostics</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>CN</p></TD>
+<TD colspan=1 align="center"><p>Consultation</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>DI</p></TD>
+<TD colspan=1 align="center"><p>Diagnostic imaging
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>DS</p></TD>
+<TD colspan=1 align="center"><p>Discharge summary
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>ED</p></TD>
+<TD colspan=1 align="center"><p>Emergency department report
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>HP</p></TD>
+<TD colspan=1 align="center"><p>History
+and physical examination
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>OP</p></TD>
+<TD colspan=1 align="center"><p>Operative report
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>PC</p></TD>
+<TD colspan=1 align="center"><p>Psychiatric consultation
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>PH</p></TD>
+<TD colspan=1 align="center"><p>Psychiatric history and physical examination
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>PN</p></TD>
+<TD colspan=1 align="center"><p>Procedure
+note
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>PR</p></TD>
+<TD colspan=1 align="center"><p>Progress
+note
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SP</p></TD>
+<TD colspan=1 align="center"><p>Surgical pathology
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>Transfer summary
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading45">9.6.1.3 TXA-3  Document content presentation  (ID)   00916</A></h4>
+
+<p>Definition:
+ This is a conditional field which is required whenever the message contains
+content as presented in one or more OBX segments.  This field identifies the
+method by which this document was obtained or originated.  Refer to 
+<cite>HL7 Table 0191 - Type of referenced data</cite>
+for valid values.
+<br>
+<center>HL7 Table 0191 - Type of referenced data
+<a name="HL70191"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AP</p></TD>
+<TD colspan=1 align="center"><p>Other
+application data, typically uninterpreted binary data  (HL7 V2.3 and later)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AU</p></TD>
+<TD colspan=1 align="center"><p>Audio
+data  (HL7 V2.3 and later)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>FT</p></TD>
+<TD colspan=1 align="center"><p>Formatted text (HL7 V2.2 only)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>IM</p></TD>
+<TD colspan=1 align="center"><p>Image data  (HL7 V2.3 and later)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>multipart</p></TD>
+<TD colspan=1 align="center"><p>MIME
+multipart package
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>NS</p></TD>
+<TD colspan=1 align="center"><p>Non-scanned
+image (HL7 V2.2 only)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SD</p></TD>
+<TD colspan=1 align="center"><p>Scanned
+document (HL7 V2.2 only)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SI</p></TD>
+<TD colspan=1 align="center"><p>Scanned image (HL7 V2.2 only)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>TEXT</p></TD>
+<TD colspan=1 align="center"><p>Machine
+readable text document (HL7 V2.3.1 and later)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>TX</p></TD>
+<TD colspan=1 align="center"><p>Machine
+readable text document (HL7 V2.2 only)
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading46">9.6.1.4 TXA-4  Activity date/time (TS)   00917</A></h4>
+
+<p>Definition:
+ This field contains the date/time identified in the document as the date a
+procedure or activity was performed.  This date can identify date of surgery,
+non-invasive procedure, consultation, examination, etc.
+</p>
+
+<h4>
+<A NAME="Heading47">9.6.1.5 TXA-5  Primary activity provider code/name  (XCN)   00918</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, use instead of the CN data type. &lt;ID number
+(ST)&gt; ^ &lt;family name (FN)&gt; ^ &lt;given name (ST)&gt; ^ &lt;second and
+further given names or initials thereof  (ST)&gt; ^ &lt;suffix (e.g., JR or
+III) (ST)&gt; ^ &lt;prefix (e.g., DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt;
+^ &lt;source table (IS)&gt; ^ &lt;assigning authority (HD)&gt; ^ &lt;name type
+code (ID)&gt;  ^ &lt;identifier check digit (ST)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;identifier type code (IS)&gt; ^
+&lt;assigning facility (HD)&gt; ^ &lt;name representation code (ID)&gt; ^
+&lt;name context (CE)&gt; ^ &lt;name validity range (DR)&gt; ^ &lt; name
+assembly order (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains the name of the person identified in the
+document as being responsible for performing the procedure or activity.  This
+field includes the code and name (if available) of the caregiver. This field is
+conditional based upon the presence of a value in <i>TXA-4-Activity
+date/time</i>.
+</p>
+
+<h4>
+<A NAME="Heading48">9.6.1.6 TXA-6  Origination date/time  (TS)   00919</A></h4>
+
+<p>Definition:
+ This field contains the date and time the document was created (i.e.,
+dictated, recorded, etc.).
+</p>
+
+<h4>
+<A NAME="Heading49">9.6.1.7 TXA-7  Transcription date/time  (TS)   00920</A></h4>
+
+<p>Definition:
+ This field contains the date and time the input was actually transcribed.
+This field is conditional based upon the presence of a value in
+<i>TXA-17-Document completion status</i> of anything except "dictated."
+</p>
+
+<h4>
+<A NAME="Heading50">9.6.1.8 TXA-8  Edit date/time  (TS)   00921</A></h4>
+
+<p>Definition:
+ This field contains the date and time the document was edited.
+</p>
+
+<h4>
+<A NAME="Heading51">9.6.1.9 TXA-9  Originator code/name  (XCN)   00922</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, use instead of the CN data type. &lt;ID number
+(ST)&gt; ^ &lt;family name (FN)&gt; ^ &lt;given name (ST)&gt; ^ &lt;second and
+further given names or initials thereof  (ST)&gt; ^ &lt;suffix (e.g., JR or
+III) (ST)&gt; ^ &lt;prefix (e.g., DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt;
+^ &lt;source table (IS)&gt; ^ &lt;assigning authority (HD)&gt; ^ &lt;name type
+code (ID)&gt;  ^ &lt;identifier check digit (ST)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;identifier type code (IS)&gt; ^
+&lt;assigning facility (HD)&gt; ^ &lt;name representation code (ID)&gt; ^
+&lt;name context (CE)&gt; ^ &lt;name validity range (DR)&gt; ^ &lt; name
+assembly order (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field identifies the person who originated (i.e., dictated)
+the document.  The document originator may differ from the person responsible
+for authenticating the document.
+</p>
+
+<h4>
+<A NAME="Heading52">9.6.1.10 TXA-10  Assigned document authenticator (XCN)   00923</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, use instead of the CN data type. &lt;ID number
+(ST)&gt; ^ &lt;family name (FN)&gt; ^ &lt;given name (ST)&gt; ^ &lt;second and
+further given names or initials thereof  (ST)&gt; ^ &lt;suffix (e.g., JR or
+III) (ST)&gt; ^ &lt;prefix (e.g., DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt;
+^ &lt;source table (IS)&gt; ^ &lt;assigning authority (HD)&gt; ^ &lt;name type
+code (ID)&gt;  ^ &lt;identifier check digit (ST)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;identifier type code (IS)&gt; ^
+&lt;assigning facility (HD)&gt; ^ &lt;name representation code (ID)&gt; ^
+&lt;name context (CE)&gt; ^ &lt;name validity range (DR)&gt; ^ &lt; name
+assembly order (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field identifies the person(s) responsible for authenticating
+the document, who may differ from the originator.  Multiple persons may be
+responsible for authentication, especially in teaching facilities.  This field
+is allowed to repeat an undefined number of times.
+</p>
+
+<h4>
+<A NAME="Heading53">9.6.1.11 TXA-11  Transcriptionist code/name  (XCN)   00924</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, use instead of the CN data type. &lt;ID number
+(ST)&gt; ^ &lt;family name (FN)&gt; ^ &lt;given name (ST)&gt; ^ &lt;second and
+further given names or initials thereof  (ST)&gt; ^ &lt;suffix (e.g., JR or
+III) (ST)&gt; ^ &lt;prefix (e.g., DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt;
+^ &lt;source table (IS)&gt; ^ &lt;assigning authority (HD)&gt; ^ &lt;name type
+code (ID)&gt;  ^ &lt;identifier check digit (ST)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;identifier type code (IS)&gt; ^
+&lt;assigning facility (HD)&gt; ^ &lt;name representation code (ID)&gt; ^
+&lt;name context (CE)&gt; ^ &lt;name validity range (DR)&gt; ^ &lt; name
+assembly order (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field identifies the person transcribing the document. This
+is a conditional value; it is required on all transcribed documents.
+</p>
+
+<h4>
+<A NAME="Heading54">9.6.1.12 TXA-12  Unique document number  (EI)   00925</A></h4>
+
+<p><tt>Components:
+ &lt;entity identifier (ST)&gt; ^ &lt;namespace ID (IS)&gt; ^ &lt;universal ID
+(st)&gt; ^ &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains a unique document identification number
+assigned by the sending system. This document number is used to assist the
+receiving system in matching future updates to the document, as well as to
+identify the document in a query.  When the vendor does not provide a unique
+document ID number, some type of document identifier should be entered here, or
+the Unique Document File name should be utilized.  See Chapter 2, Section
+2.9.55, "XTN - extended telecommunication number."  Where the system does not
+customarily have a document filler number, this number could serve as that
+value, as well.
+</p>
+
+<h4>
+<A NAME="Heading55">9.6.1.13 TXA-13  Parent document number  (EI)   00926</A></h4>
+
+<p><tt>Components:
+ &lt;entity identifier (ST)&gt; ^ &lt;namespace ID (IS)&gt; ^ &lt;universal ID
+(ST)&gt; ^ &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains a document number that identifies the parent
+document to which this document belongs.  The parent document number can be
+used to assist the receiving system in matching future updates to this
+document.  This is a conditional field that is always required on T05 (document
+addendum notification), T06 (document addendum notification and content), T09
+(document replacement notification), and T10 (document replacement notification
+and content) events.  
+</p>
+
+<h4>
+<A NAME="Heading56">9.6.1.14 TXA-14  Placer order number  (EI)   00216</A></h4>
+
+<p><tt>Components:
+ &lt;entity identifier (ST)&gt; ^ &lt;namespace ID (IS)&gt; ^ &lt;universal ID
+(ST)&gt; ^ &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field is the placer application's order number.<br>
+This is a composite field.  The first component is a string of characters that
+identifies an individual order (e.g., OBR).  It is assigned by the placer
+(ordering application).  It identifies an order uniquely among all orders from
+a particular ordering application.  The second through fourth components
+contain the (filler) assigning authority of the placing application.  The
+(filler) assigning authority is a string of characters that will be uniquely
+associated with an application.  A given institution or group of
+intercommunicating institutions should establish a unique list of applications
+that may be potential placers and fillers and assign unique entity identifiers.
+The components are separated by component delimiters.
+</p>
+
+<h4>
+<A NAME="Heading57">9.6.1.15 TXA-15  Filler order number  (EI)   00217</A></h4>
+
+<p><tt>Components:
+ &lt;entity identifier (ST)&gt; ^ &lt;namespace ID (IS)&gt; ^ &lt;universal ID
+(ST)&gt; ^ &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field is the order number associated with the filling
+application.  Where a transcription service or similar organization creates the
+document and uses an internally unique identifier, that number should be
+inserted in this field.  Its first component is a string of characters that
+identifies an order detail segment (e.g., OBR).  This string must uniquely
+identify the order (as specified in the order detail segment) from other orders
+in a particular filling application (e.g., transcription service).  This
+uniqueness must persist over time.  Where a number is reused over time, a date
+can be affixed to the non-unique number to make it unique.<br>
+The second through fourth components contains the (filler) assigning authority.
+The (filler) assigning authority is a string of characters that uniquely
+defines the application from other applications on the network.  The second
+through fourth components of the filler order number always identify the actual
+filler of an order.<br>
+ For further details, please see the definitions provided in Chapter 4.
+</p>
+
+<h4>
+<A NAME="Heading58">9.6.1.16 TXA-16  Unique document file name  (ST)   00927</A></h4>
+
+<p>Definition:
+ This field contains a unique name assigned to a document by the sending
+system.  The file name is used to assist the receiving system in matching
+future updates to the document.
+</p>
+
+<h4>
+<A NAME="Heading59">9.6.1.17 TXA-17  Document completion status  (ID)   00928</A></h4>
+
+<p>Definition:
+ This field identifies the current completion state of the document.  This is a
+required, table-driven field.  Refer to <cite>HL7 table 0271 - Document
+completion status</cite> for valid values.<br>
+<center>HL7 Table 0271 - Document completion status 
+<a name="HL70271"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description
+</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>DI</p></TD>
+<TD colspan=1 align="center"><p>Dictated</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>DO</p></TD>
+<TD colspan=1 align="center"><p>Documented</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>IP</p></TD>
+<TD colspan=1 align="center"><p>In
+Progress
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>IN</p></TD>
+<TD colspan=1 align="center"><p>Incomplete</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>PA</p></TD>
+<TD colspan=1 align="center"><p>Pre-authenticated</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AU</p></TD>
+<TD colspan=1 align="center"><p>Authenticated</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>LA</p></TD>
+<TD colspan=1 align="center"><p>Legally
+authenticated
+</p></TD>
+</TR>
+</TABLE>
+<p><center>Figure
+9-1. Document completion status state transition table</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Transition
+(Action)
+</b></p></TH>
+<TH><p><b>Old
+State
+</b></p></TH>
+<TH><p><b>New
+State
+</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T01
+Original Notification<br>
+T02 Original Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+<TD colspan=1 align="center"><p>Dictated<br>
+In Progress<br>
+Incomplete<br>
+Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T03
+Status Change Notification<br>
+T04 Status Change Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>Dictated</p></TD>
+<TD colspan=1 align="center"><p>In
+Progress<br>
+Incomplete<br>
+Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>In
+Progress
+</p></TD>
+<TD colspan=1 align="center"><p>Incomplete<br>
+Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Incomplete</p></TD>
+<TD colspan=1 align="center"><p>Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Pre-authenticated</p></TD>
+<TD colspan=1 align="center"><p>Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Authenticated</p></TD>
+<TD colspan=1 align="center"><p>Legally
+authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Legally
+authenticated
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Documented</p></TD>
+<TD colspan=1 align="center"><p>Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T05
+Addendum Notification<br>
+T06 Addendum Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+<TD colspan=1 align="center"><p>Dictated<br>
+In Progress<br>
+Incomplete<br>
+Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T07
+Edit Notification<br>
+T08 Edit Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>Dictated</p></TD>
+<TD colspan=1 align="center"><p>In
+Progress<br>
+Incomplete<br>
+Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>In
+Progress
+</p></TD>
+<TD colspan=1 align="center"><p>Incomplete<br>
+Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Incomplete</p></TD>
+<TD colspan=1 align="center"><p>Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Pre-authenticated</p></TD>
+<TD colspan=1 align="center"><p>Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Authenticated</p></TD>
+<TD colspan=1 align="center"><p>Legally
+authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Legally
+authenticated
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Documented</p></TD>
+<TD colspan=1 align="center"><p>Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T09
+Replacement Notification<br>
+T10 Replacement Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+<TD colspan=1 align="center"><p>Dictated<br>
+In Progress<br>
+Incomplete<br>
+Pre-authenticated<br>
+Authenticated<br>
+Legally authenticated
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T11
+Cancel Notification
+</p></TD>
+<TD colspan=1 align="center"><p>Dictated<br>In
+Progress<br>Incomplete<br>Pre-authenticated<br>and Availability status of
+"Unavailable"
+</p></TD>
+<TD colspan=1 align="center"><p>Canceled</p></TD>
+</TR>
+</TABLE>
+<p><b>Note</b>:
+NA means not applicable. Document confidentiality status (ID)   00929
+</p>
+
+<h4>
+<A NAME="Heading60">9.6.1.18 TXA-18  Document confidentiality status   (ID)  00929</A></h4>
+
+<p>Definition:
+ This is an optional field which identifies the degree to which special
+confidentiality protection should be applied to this information.  The
+assignment of data elements to these categories is left to the discretion of
+the healthcare organization.  Refer to <cite>HL7 table 0272 - Document
+confidentiality status</cite> for valid values.<br>
+<center>HL7 Table 0272 - Document confidentiality status 
+<a name="HL70272"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description
+</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>V</p></TD>
+<TD colspan=1 align="center"><p>Very
+restricted
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><p>Restricted</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>U</p></TD>
+<TD colspan=1 align="center"><p>Usual
+control
+</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading61">9.6.1.19 TXA-19  Document availability status (ID)   00930</A></h4>
+
+<p>Definition:
+ This is an optional field which identifies a document's availability for use
+in patient care.  If an organization's business rules allow a document to be
+used for patient care before it is authenticated, the value of this field
+should be set to "AV."  If a document has been made available for patient care,
+it cannot be changed or deleted.  If an erroneous document has been made
+available at any point in time and a replacement is not appropriate, then it
+may be marked as "Canceled" and removed, as in the case of a document being
+assigned to the wrong patient.  Additional information must be provided via an
+addendum, which is separately authenticated and date/time stamped.  If the
+content of a document whose status is "Available" must be revised, this is done
+by issuing a replacement, which is separately authenticated and date/time
+stamped.  Refer to <cite>HL7 table 0273 - Document availability status</cite>
+for valid values.<br>
+<center>HL7 Table 0273 - Document availability status 
+<a name="HL70273"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description
+</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AV</p></TD>
+<TD colspan=1 align="center"><p>Available
+for patient care
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>CA</p></TD>
+<TD colspan=1 align="center"><p>Deleted</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>OB</p></TD>
+<TD colspan=1 align="center"><p>Obsolete</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>UN</p></TD>
+<TD colspan=1 align="center"><p>Unavailable
+for patient care
+</p></TD>
+</TR>
+</TABLE>
+<p><center>Figure
+9-2.  Document availability status state transition table</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Transition
+(Action)
+</b></p></TH>
+<TH><p><b>Old
+State
+</b></p></TH>
+<TH><p><b>New
+State
+</b></p></TH>
+<TH><p><b>Notes</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T01
+Original Notification<br>
+T02 Original Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+<TD colspan=1 align="center"><p>Unavailable<br>
+Available
+</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T03
+Status Change Notification<br>
+T04 Status Change Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>Unavailable</p></TD>
+<TD colspan=1 align="center"><p>Unavailable<br>
+Available<br>
+Obsolete
+</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Available</p></TD>
+<TD colspan=1 align="center"><p>Available<br>
+Obsolete
+</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>Obsolete</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T05
+Addendum Notification<br>
+T06 Addendum Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+<TD colspan=1 align="center"><p>Unavailable<br>
+Available
+</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T07
+Edit Notification<br>
+T08 Edit Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>Unavailable</p></TD>
+<TD colspan=1 align="center"><p>Unavailable<br>
+Available
+</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T09
+Replacement Notification<br>
+T10 Replacement Notification and Content
+</p></TD>
+<TD colspan=1 align="center"><p>NA</p></TD>
+<TD colspan=1 align="center"><p>Unavailable<br>
+Available
+</p></TD>
+<TD colspan=1 align="center"><p>Set
+parent document to "obsolete"
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>T11
+Cancel
+</p></TD>
+<TD colspan=1 align="center"><p>Unavailable</p></TD>
+<TD colspan=1 align="center"><p>Delete</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+</TABLE>
+<p><b>Note</b>:
+NA means not applicable.
+</p>
+
+<h4>
+<A NAME="Heading62">9.6.1.20 TXA-20  Document storage status (ID)   00932</A></h4>
+
+<p>Definition:
+ This optional field identifies the storage status of the document.  Refer to
+<cite>HL7 table 0275 - Document storage status</cite> for valid values.<br>
+<center>HL7 Table 0275 - Document storage status 
+<a name="HL70275"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description
+</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AC</p></TD>
+<TD colspan=1 align="center"><p>Active</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AA</p></TD>
+<TD colspan=1 align="center"><p>Active
+and archived
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>AR</p></TD>
+<TD colspan=1 align="center"><p>Archived
+(not active)
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>PU</p></TD>
+<TD colspan=1 align="center"><p>Purged</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading63">9.6.1.21 TXA-21  Document change reason  (ST)   00933</A></h4>
+
+<p>Definition:
+ This free text field (limited to 30 characters) contains the reason for
+document status change.
+</p>
+
+<h4>
+<A NAME="Heading64">9.6.1.22 TXA-22  Authentication person, time stamp (set)  (PPN)   00934</A></h4>
+
+<p><tt>Components:
+&lt;ID number (ST)&gt; ^ &lt;family name (FN)&gt; ^ &lt;given name (ST) ^
+&lt;second and further given names or initials thereof (ST)&gt;^  &lt;suffix
+(e.g., JR or III) (ST)&gt; ^ &lt;prefix (e.g., DR) (ST)&gt; ^ &lt;degree (e.g.,
+MD) (IS)&gt; ^ &lt;source table (IS)&gt; ^ &lt;assigning authority (HD)&gt; ^
+&lt;name type code(ID)&gt;  ^ &lt;identifier check digit (ST)&gt; ^ &lt;code
+identifying the check digit scheme employed (ID )&gt; ^ &lt;identifier type
+code (IS)&gt; ^ &lt;assigning facility (HD)&gt; ^ &lt; date/time action
+performed (TS)&gt; ^ &lt;name representation code (ID)&gt; ^ &lt;name context
+(CE)&gt; ^ &lt;name validity range (DR)&gt; ^ &lt;name assembly order
+(ID)&gt;</tt><br>
+Definition:  This is a conditional field.  When the status of
+<i>TXA-17-Document completion status</i> is equal to AU (authenticated) or LA
+(legally authenticated), all components are required.  This field contains a
+set of components describing by whom and when authentication was performed.
+Whenever any one of the ID number - Name type code component s is valued, the
+when authenticated component, which is time stamp, must be valued as non-null.
+If the time component of a set is valued as non-null, the person component
+becomes required. These subcomponents are normally delimited by an ampersand
+(&amp;).  See Chapter 2.  
+</p>
+
+<h5>
+<A NAME="Heading65">9.6.1.22.1 Authentication person (component)  (XCN)</A></h5>
+
+<p><tt>Components:
+In Version 2.3 and later, use instead of the CN data type.  &lt;ID number
+(ST)&gt; ^ &lt;family name (FN)&gt; ^ &lt;given name (ST)&gt; ^ &lt;second and
+further given names or initials thereof  (ST)&gt; ^ &lt;suffix (e.g., JR or
+III) (ST)&gt; ^ &lt;prefix (e.g., DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt;
+^ &lt;source table (IS)&gt; ^ &lt;assigning authority (HD)&gt; ^ &lt;name type
+code (ID)&gt;  ^ &lt;identifier check digit (ST)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;identifier type code (IS)&gt; ^
+&lt;assigning facility (HD)&gt; ^ &lt;name representation code (ID)&gt; ^
+&lt;name context (CE)&gt; ^ &lt;name validity range (DR)&gt; ^ &lt; name
+assembly order (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This component identifies the person who has authenticated the
+document (either manually or electronically).
+</p>
+
+<h5>
+<A NAME="Heading66">9.6.1.22.2 Authentication time stamp (component)  (TS)   </A></h5>
+
+<p>Definition:
+ This component contains the date and time the document was authenticated
+(either manually or electronically).
+</p>
+
+<h4>
+<A NAME="Heading67">9.6.1.23 TXA-23  Distributed copies  (XCN)   00935</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, use instead of the CN data type.  &lt;ID number
+(ST)&gt; ^ &lt;family name (FN)&gt; ^ &lt;given name (ST)&gt; ^ &lt;second and
+further given names or initials thereof  (ST)&gt; ^ &lt;suffix (e.g., JR or
+III) (ST)&gt; ^ &lt;prefix (e.g., DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt;
+^ &lt;source table (IS)&gt; ^ &lt;assigning authority (HD)&gt; ^ &lt;name type
+code (ID)&gt;  ^ &lt;identifier check digit (ST)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;identifier type code (IS)&gt; ^
+&lt;assigning facility (HD)&gt; ^ &lt;name representation code (ID)&gt; ^
+&lt;name context (CE)&gt; ^ &lt;name validity range (DR)&gt; ^ &lt; name
+assembly order (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field identifies the persons who received a copy of this
+document. 
+</p>
+
+<h3>
+<A NAME="Heading68">9.6.2 OBX - observation segment usage</A></h3>
+
+<p>The
+OBX segment is documented in its entirety in Chapter 7.  Its usage as it
+applies to Medical Records/ Information Management is documented here for
+clarity.<br>
+<center>HL7 Attribute Table - OBX 
+<a name="OBX"></a>-
+Observation Segment</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p></TH>
+<TH><p><b>LEN</b></p></TH>
+<TH><p><b>DT</b></p></TH>
+<TH><p><b>OPT</b></p></TH>
+<TH><p><b>RP/#</b></p></TH>
+<TH><p><b>TBL#</b></p></TH>
+<TH><p><b>ITEM#</b></p></TH>
+<TH><p>ELEMENT
+NAME
+</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>4</p>
+<BR></TD>
+<TD colspan=1 align="center"><p>SI</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00569</p></TD>
+<TD colspan=1 align="center"><p>Set
+ID- OBX
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0125</p></TD>
+<TD colspan=1 align="center"><p>00570</p></TD>
+<TD colspan=1 align="center"><p>Value
+ Type
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00571</p></TD>
+<TD colspan=1 align="center"><p>Observation
+Identifier
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>20</p></TD>
+<TD colspan=1 align="center"><p>ST</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00572</p></TD>
+<TD colspan=1 align="center"><p>Observation
+Sub-Id
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>*</p></TD>
+<TD colspan=1 align="center"><p>*</p></TD>
+<TD colspan=1 align="center"><p>C/R</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00573</p></TD>
+<TD colspan=1 align="center"><p>Observation
+Value
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00574</p></TD>
+<TD colspan=1 align="center"><p>Units</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p></TD>
+<TD colspan=1 align="center"><p>60</p></TD>
+<TD colspan=1 align="center"><p>ST</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00575</p></TD>
+<TD colspan=1 align="center"><p>References
+Range
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y/5</p></TD>
+<TD colspan=1 align="center"><p>0078</p></TD>
+<TD colspan=1 align="center"><p>00576</p></TD>
+<TD colspan=1 align="center"><p>Abnormal
+Flags
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9</p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+<TD colspan=1 align="center"><p>NM</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00577</p></TD>
+<TD colspan=1 align="center"><p>Probability</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>10</p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0080</p></TD>
+<TD colspan=1 align="center"><p>00578</p></TD>
+<TD colspan=1 align="center"><p>Nature
+of Abnormal Test
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>11</p></TD>
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>R/NA</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0085</p></TD>
+<TD colspan=1 align="center"><p>00579</p></TD>
+<TD colspan=1 align="center"><p>Observation
+Result Status
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>12</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00580</p></TD>
+<TD colspan=1 align="center"><p>Date
+Last Observation Normal Values
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>13</p></TD>
+<TD colspan=1 align="center"><p>20</p></TD>
+<TD colspan=1 align="center"><p>ST</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00581</p></TD>
+<TD colspan=1 align="center"><p>User
+Defined Access Checks
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>14</p></TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00582</p>
+<BR></TD>
+<TD colspan=1 align="center"><p>Date/Time
+of Observation
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>15</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00583</p></TD>
+<TD colspan=1 align="center"><p>Producer's
+ID
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>16</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>XCN</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00584</p></TD>
+<TD colspan=1 align="center"><p>Responsible
+Observer
+</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>17</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00936</p></TD>
+<TD colspan=1 align="center"><p>Observation
+Method
+</p></TD>
+</TR>
+</TABLE>
+<p>C
+= For fields OBX-12, OBX-13, and OBX-15, the field should be valued
+conditionally.  These fields should be valued only when the result
+(OBX-5-observation value) contains a single concept.  This is typically true
+when the result type is numeric, ID, or CE.  When multiple medical concepts are
+expressed, the values of these three fields are ambiguous.* =  256 K or site
+negotiated<br>
+Specialized usage: Observation Identifier/Observation Sub-ID have been used as
+optional fields that are not required in unstructured text where the nature of
+the document has been identified in <i>TXA-2-Document type</i>, which is a
+required field, but is expressly allowed in the richer structured
+documentation.  An example includes cases where anatomic reports may have
+separate OBXs for gross examination, microscopic examination, clinical
+impression, and final diagnosis.  Another possible use includes imbedding
+non-textual observations within textual reports. 
+</p>
+
+<h2>
+<A NAME="Heading69">9.7 EXAMPLE MESSAGE</A></h2>
+
+<p>The
+following is an example of an original transmission of a history and physical
+examination which has been authenticated prior to this message being
+initiated:<br>
+MSH|...&lt;cr&gt;<br>
+EVN|T02|19960215154405||04|097220^Smith^Frederick^A^Jr^Dr^MD^| &lt;cr&gt;<br>
+PID|...&lt;cr&gt;<br>
+PR1|...&lt;cr&gt;<br>
+TXA|0001|HP^history &amp;
+physical|TX^text|19960213213000|099919^Tracy^Wayne^R^III^Mr^MS^|<br>19960213153000|19960215134500||099919^Tracy^Wayne^R^III^Mr^MS^|097220^Smith^Frederick^A^Jr^Dr^MD^|01234567^Baxter^Catherine^S^Ms|1996021500001^transA|||example.doc|LA|UC|AV||AC|||||097220^Smith^Frederick^A^Jr^Dr^MD^|
+&lt;cr&gt;<br>
+OBX|1|CE|2000.40^CHIEF COMPLAINT|| ... &lt;cr&gt;<br>
+OBX|2|ST|2000.01^SOURCE||PATIENT &lt;cr&gt;<br>
+OBX|3|TX|2000.02^PRESENT ILLNESS||SUDDEN ONSET OF CHEST PAIN. 2 DAYS, PTA
+ASSOCIATED WITH NAUSEA, VOMITING &amp; SOB.  NO RELIEF WITH ANTACIDS OR NTG. NO
+OTHER SX. NOT PREVIOUSLY ILL.&lt;cr&gt;<br>
+ .<br>
+ .<br>
+and so on.
+</p>
+
+<h2>
+<A NAME="Heading70">9.8 QUERY</A></h2>
+
+<p>A
+query may be used to retrieve a list of documents or a specific document.  See
+Chapter 5 for details of queries.
+</p>
+
+<h3>
+<A NAME="Heading71">9.8.1 QRY/DOC - document query (event T12)</A></h3>
+
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>QRY^T12</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Query
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>QRD</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Definition
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+ QRF  ]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Filter
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>DOC^T12</u></b></tt></p></TH>
+<TH colspan=1 align="left"><p><tt><b><u>Document
+Response
+</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgement
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+[ERR]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[QAK]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Acknowledgement
+</tt></p></TD>
+<TD colspan=1 align="center"><p>5</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>QRD</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Definition
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [EVN]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PID
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Identification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ PV1
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Patient
+Visit
+</tt></p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ <u>TXA
+</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Document
+Notification
+</tt></p></TD>
+<TD colspan=1 align="center"><p>9</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+   [{OBX}]
+</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Observation</tt></p></TD>
+<TD colspan=1 align="center"><p>7</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>}</tt></p></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[DSC]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Continuation
+Pointer
+</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading72"> </A></h4>
+
+
+<h4>
+<A NAME="Heading73">9.8.1.1 Query usage notes</A></h4>
+
+<p>The
+QRD and QRF segments are defined in Chapter 5, Sections 5.10.5.3, "QRD -
+original style query definition segment," and 5.10.5.4, "QRF - original style
+query filter segment."<br>
+The subject filters contained in the QRD and QRF segments describe the kind of
+information that is required to satisfy the request.  They are defined by local
+agreement between the inquiring system and the ancillary system.  See the
+Implementation Guide for detailed examples of the use of query filter
+fields.<br>
+The Set ID fields in the various segments (including PID) are used to count the
+number of segments of one kind transmitted at one level of the hierarchy.<br>
+<i>QRD-12-Query results level</i> determines the amount of data requested.  See
+Chapter 2, Section 5.10.5.3.12, "Query results level."
+</p>
+
+<h2>
+<A NAME="Heading74">9.9 OUTSTANDING ISSUES</A></h2>
+
+<p>None.</p>
+</body></html>

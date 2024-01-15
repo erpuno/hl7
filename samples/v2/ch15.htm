@@ -1,0 +1,4553 @@
+<HTML><HEAD>
+<TITLE>HL7 V2.4 Chapter 15</TITLE></HEAD>
+<BODY BACKGROUND="" BGCOLOR="#FFFFFF" TEXT="#000000">
+<H1>
+HL7 V2.4 Contents
+</H1>
+<A HREF="hl7.htm">Contents</A><br>
+<A HREF="ch01.htm">1 . Introduction</A><br>
+<A HREF="ch02.htm">2 .Control </A><br>
+<A HREF="ch03.htm">3 .Patient Administration</A><br>
+<A HREF="ch04.htm">4 .Order Entry</A><br>
+<A HREF="ch05.htm">5 .Query</A><br>
+<A HREF="ch06.htm">6. Financial Management</A><br>
+<A HREF="ch07.htm">7 .Observation Reporting</A><br>
+<A HREF="ch08.htm">8 .Master Files</A><br>
+<A HREF="ch09.htm">9 .Medical Records/Information Management (Document Management)</A><br>
+<A HREF="ch10.htm">10 .Scheduling</A><br>
+<A HREF="ch11.htm">11 .Patient Referral</A><br>
+<A HREF="ch12.htm">12 .Patient Care</A><br>
+<A HREF="ch13.htm">13 .Clinical Laboratory Automation</A><br>
+<A HREF="ch14.htm">14 .Application Management</A><br>
+<A HREF="ch15.htm">15 .Personnel Management</A><br>
+<A HREF="AppendixA.htm">A .Data Definition Tables</A><br>
+<A HREF="AppendixB.htm">B. Lower Layer Protocols</A><br>
+<A HREF="AppendixC.htm">C. Version 2.4 BNF Message Descriptions</A><br>
+<A HREF="AppendixD.htm">D. Glossary</A><br>
+
+<hr size=4>
+<H1>
+HL7 V2.4 Chapter 15</H1>
+<UL>
+<LI><A HREF="#Heading1">15 .<BR>Personnel Management</A>
+<UL>
+<LI><A HREF="#Heading2">15.1 CHAPTER 15 CONTENTS</A>
+<LI><A HREF="#Heading3">15.2 PURPOSE</A>
+<UL>
+<LI><A HREF="#Heading4">15.2.1 Usage of chapter 15 vs. chapter 8</A>
+</UL>
+<LI><A HREF="#Heading5">15.3 TRIGGER EVENTS AND MESSAGE DESCRIPTIONS</A>
+<UL>
+<LI><A HREF="#Heading6">15.3.1 PMU/ACK - Add personnel record (event B01)</A>
+<LI><A HREF="#Heading7">15.3.2 PMU/ACK - Update personnel record (event B02)</A>
+<LI><A HREF="#Heading8">15.3.3 PMU/ACK - Delete personnel record (event B03)</A>
+<LI><A HREF="#Heading9">15.3.4 PMU/ACK - Activate practicing person (event B04)</A>
+<LI><A HREF="#Heading10">15.3.5 PMU/ACK - Deactivate practicing person (event B05)</A>
+<LI><A HREF="#Heading11">15.3.6 PMU/ACK - Terminate practicing person (event B06)</A>
+<LI><A HREF="#Heading12">15.3.7 QBP/RSP - Query information (event Q25/K25) </A>
+</UL>
+<LI><A HREF="#Heading13">15.4 MESSAGE SEGMENTS</A>
+<UL>
+<LI><A HREF="#Heading14">15.4.1 AFF - Professional affiliation segment  </A>
+<UL>
+<LI><A HREF="#Heading15">15.4.1.0 AFF field definitions</A>
+<LI><A HREF="#Heading16">15.4.1.1 AFF-1   Set ID - AFF-  (SI)   01427</A>
+<LI><A HREF="#Heading17">15.4.1.2 AFF-2   Professional organization  (XON)   01444</A>
+<LI><A HREF="#Heading18">15.4.1.3 AFF-3   Professional organization address  (XAD)   01445</A>
+<LI><A HREF="#Heading19">15.4.1.4 AFF-4   Professional organization affiliation date range  (DR)   01446</A>
+<LI><A HREF="#Heading20">15.4.1.5 AFF-5   Professional affiliation additional information  (ST)   01447</A>
+</UL>
+<LI><A HREF="#Heading21">15.4.2 EDU - Educational detail segment  </A>
+<UL>
+<LI><A HREF="#Heading22">15.4.2.0 EDU field definitions</A>
+<LI><A HREF="#Heading23">15.4.2.1 EDU-1   Set ID - EDU  (SI)   01448</A>
+<LI><A HREF="#Heading24">15.4.2.2 EDU-2   Academic degree  (IS)   01449</A>
+<LI><A HREF="#Heading25">15.4.2.3 EDU-3   Academic degree program date range  (DR)   01597</A>
+<LI><A HREF="#Heading26">15.4.2.4 EDU-4   Academic degree program participation date range  (DR)   01450</A>
+<LI><A HREF="#Heading27">15.4.2.5 EDU-5   Academic degree granted date  (DT)   01451</A>
+<LI><A HREF="#Heading28">15.4.2.6 EDU-6   School  (XON)   01452</A>
+<LI><A HREF="#Heading29">15.4.2.7 EDU-7   School type code  (CE)   01453</A>
+<LI><A HREF="#Heading30">15.4.2.8 EDU-8   School address  (XAD)   01454</A>
+</UL>
+<LI><A HREF="#Heading31">15.4.3 LAN - Language detail segment  </A>
+<UL>
+<LI><A HREF="#Heading32">15.4.3.0 LAN field definitions</A>
+<LI><A HREF="#Heading33">15.4.3.1 LAN-1   Set ID - LAN  (SI)   01455</A>
+<LI><A HREF="#Heading34">15.4.3.2 LAN-2   Language code  (CE)   01456</A>
+<LI><A HREF="#Heading35">15.4.3.3 LAN-3   Language ability code  (CE)   01457</A>
+<LI><A HREF="#Heading36">15.4.3.4 LAN-4   Language proficiency code  (CE)   01458</A>
+</UL>
+<LI><A HREF="#Heading37">15.4.4 ORG - Practitioner organization unit segment </A>
+<UL>
+<LI><A HREF="#Heading38">15.4.4.0 ORG field definitions</A>
+<LI><A HREF="#Heading39">15.4.4.1 ORG-1   Set ID - ORG  (SI)   01459</A>
+<LI><A HREF="#Heading40">15.4.4.2 ORG-2   Organization unit code  (CE)   01460</A>
+<LI><A HREF="#Heading41">15.4.4.3 ORG-3   Organization unit type code  (CE)   01625</A>
+<LI><A HREF="#Heading42">15.4.4.4 ORG-4   Primary org unit indicator  (ID)   01462</A>
+<LI><A HREF="#Heading43">15.4.4.5 ORG-5   Practitioner org unit identifier  (CX)   01463</A>
+<LI><A HREF="#Heading44">15.4.4.6 ORG-6   Health care provider type code  (CE)   01464</A>
+<LI><A HREF="#Heading45">15.4.4.7 ORG-7   Health care provider classification code   (CE)   01614</A>
+<LI><A HREF="#Heading46">15.4.4.8 ORG-8   Health care provider area of specialization code  (CE)   01615</A>
+<LI><A HREF="#Heading47">15.4.4.9 ORG-9   Effective date range  (DR)   01465</A>
+<LI><A HREF="#Heading48">15.4.4.10 ORG-10   Employment status code  (CE)   01276</A>
+<LI><A HREF="#Heading49">15.4.4.11 ORG-11   Board approval indicator  (ID)   01467</A>
+<LI><A HREF="#Heading50">15.4.4.12 ORG-12   Primary care physician indicator  (ID)   01468</A>
+</UL>
+<LI><A HREF="#Heading51">15.4.5 PRA - Practitioner detail segment </A>
+<UL>
+<LI><A HREF="#Heading52">15.4.5.0 PRA field definitions</A>
+<LI><A HREF="#Heading53">15.4.5.1 PRA-1   Primary key value - PRA  (CE)   00685</A>
+<LI><A HREF="#Heading54">15.4.5.2 PRA-2   Practitioner group  (CE)   00686</A>
+<LI><A HREF="#Heading55">15.4.5.3 PRA-3   Practitioner category  (IS)   00687</A>
+<LI><A HREF="#Heading56">15.4.5.4 PRA-4   Provider billing  (ID)   00688</A>
+<LI><A HREF="#Heading57">15.4.5.5 PRA-5   Specialty  (CM)   00689</A>
+<LI><A HREF="#Heading58">15.4.5.6 PRA-6   Practitioner ID numbers  (CM)   00690</A>
+<LI><A HREF="#Heading59">15.4.5.7 PRA-7   Privileges  (CM)   00691</A>
+<LI><A HREF="#Heading60">15.4.5.8 PRA-8   Date entered practice  (DT)   01296</A>
+<LI><A HREF="#Heading61">15.4.5.9 PRA-9   Institution (CE)   01613</A>
+<LI><A HREF="#Heading62">15.4.5.10 PRA-10   Date left practice  (DT)   01348</A>
+<LI><A HREF="#Heading63">15.4.5.11 PRA-11   Government reimbursement billing eligibility  (CE)   01388</A>
+<LI><A HREF="#Heading64">15.4.5.12 PRA-12   Set ID - PRA  (SI)   01616</A>
+</UL>
+<LI><A HREF="#Heading65">15.4.6 STF - Staff identification segment </A>
+<UL>
+<LI><A HREF="#Heading66">15.4.6.0 STF field definitions</A>
+<LI><A HREF="#Heading67">15.4.6.1 STF-1   Primary key value - STF  (CE)   00671</A>
+<LI><A HREF="#Heading68">15.4.6.2 STF-2   Staff ID code  (CX)   00672</A>
+<LI><A HREF="#Heading69">15.4.6.3 STF-3   Staff name  (XPN)   00673</A>
+<LI><A HREF="#Heading70">15.4.6.4 STF-4   Staff type  (IS)   00674</A>
+<LI><A HREF="#Heading71">15.4.6.5 STF-5   Administrative sex  (IS)   00111</A>
+<LI><A HREF="#Heading72">15.4.6.6 STF-6   Date/time of birth  (TS)   00110</A>
+<LI><A HREF="#Heading73">15.4.6.7 STF-7   Active/inactive flag (ID)   00675</A>
+<LI><A HREF="#Heading74">15.4.6.8 STF-8   Department  (CE)   00676</A>
+<LI><A HREF="#Heading75">15.4.6.9 STF-9   Hospital service - STF  (CE)   00677</A>
+<LI><A HREF="#Heading76">15.4.6.10 STF-10   Phone  (XTN)   00678</A>
+<LI><A HREF="#Heading77">15.4.6.11 STF-11   Office/home address  (XAD)   00679</A>
+<LI><A HREF="#Heading78">15.4.6.12 STF-12   Institution activation date  (CM)   00680</A>
+<LI><A HREF="#Heading79">15.4.6.13 STF-13   Institution inactivation date  (CM)   00681</A>
+<LI><A HREF="#Heading80">15.4.6.14 STF-14   Backup person ID  (CE)   00682</A>
+<LI><A HREF="#Heading81">15.4.6.15 STF-15   E-mail address  (ST)   00683</A>
+<LI><A HREF="#Heading82">15.4.6.16 STF-16   Preferred method of contact  (CE)   00684</A>
+<LI><A HREF="#Heading83">15.4.6.17 STF-17   Marital status (CE)   00119</A>
+<LI><A HREF="#Heading84">15.4.6.18 STF-18   Job title (ST)   00785</A>
+<LI><A HREF="#Heading85">15.4.6.19 STF-19   Job code/class  (JCC)   00786</A>
+<LI><A HREF="#Heading86">15.4.6.20 STF-20   Employment status code (CE)   01276</A>
+<LI><A HREF="#Heading87">15.4.6.21 STF-21   Additional insured on auto (ID)   01275</A>
+<LI><A HREF="#Heading88">15.4.6.22 STF-22   Driver's license number - staff'  (DLN)   01302</A>
+<LI><A HREF="#Heading89">15.4.6.23 STF-23   Copy auto ins  (ID)   01229</A>
+<LI><A HREF="#Heading90">15.4.6.24 STF-24   Auto ins expires  (DT)   01232</A>
+<LI><A HREF="#Heading91">15.4.6.25 STF-25   Date last DMV review (DT)   01298</A>
+<LI><A HREF="#Heading92">15.4.6.26 STF-26   Date next DMV review (DT)   01234</A>
+<LI><A HREF="#Heading93">15.4.6.27 STF-27   Race  (CE)   00113</A>
+<LI><A HREF="#Heading94">15.4.6.28 STF-28   Ethnic group  (CE)   00125</A>
+<LI><A HREF="#Heading95">15.4.6.29 STF-29   Re-activate approval indicator  (ID)  01596</A>
+</UL>
+</UL>
+<LI><A HREF="#Heading96">15.5 EXAMPLE TRANSACTIONS</A>
+<UL>
+<LI><A HREF="#Heading97">15.5.1 Add personnel record - event B01</A>
+</UL>
+<LI><A HREF="#Heading98">15.6 OUTSTANDING ISSUES</A>
+</UL>
+</UL>
+<hr size=4>
+
+<h1>
+<A NAME="Heading1">15 .<BR>Personnel Management</A></h1>
+
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter-Chair/Editor:</p>
+</TD>
+<TD colspan=1 align="left"><p>Frank Oemig<br>Tenovis GmbH &amp; Co KG
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>Chapter-Chair/Editor:</p>
+</TD>
+<TD colspan=1 align="left"><p>Dr.
+Bernd Blobel<br>University of Magdeburg
+</p>
+</TD>
+</TR>
+</TABLE>
+<h2>
+<A NAME="Heading2">15.1 CHAPTER 15 CONTENTS</A></h2>
+
+
+<h2>
+<A NAME="Heading3">15.2 PURPOSE</A></h2>
+
+<p>The
+Personnel Management transactions set provides for the transmission of new or
+updated healthcare administration information about individual healthcare
+practitioners and supporting staff members.  Since many systems (e.g.,
+security, scheduling, orders, etc.), must be able to closely monitor changes in
+certain information regarding individual healthcare practitioners, the
+Personnel Management transaction set is used to clearly identify these events.
+For example, it is important to a Security System to be aware of when a staff
+member was hired or specific role has been terminated.  Prior to Version 2.4,
+master file updates were the only method to update this information.  However,
+when any of these changes are reported as master file update notifications, it
+is not obvious which of the data has been changed, and is cumbersome to process
+efficiently.  It should be noted that Personnel Management functions that do
+not affect healthcare administration (e.g. benefits) are not addressed in this
+chapter.<br>
+Generally, information is entered into a Personnel Management system and passed
+to other systems requiring individual healthcare practitioner data either in
+the form of an unsolicited update or a response to a record-oriented query. <br>
+This document defines the transactions that occur at the application layer (the
+seventh level of the ISO-OSI models), that is, the abstract messages.  The
+examples included in this chapter were constructe
+d
+using the HL7 Encoding Rules
+,
+Trigger Events and Messages.<br>
+Each trigger event is documented below, along with the applicable form of the
+message exchange.  The notation used to describe the sequence, optionality, and
+repetition of segments is described in Chapter 2, Section 2.12, "Chapter
+Formats for Defining HL7 Messages."<br>
+The trigger events that follow are served by the unsolicited Personnel
+Management update (PMU) and General Acknowledgment (ACK) response.<br>
+The information that is included in any of these trigger event transactions can
+be more than the minimum necessary to communicate that event.  Any of the
+fields occurring in the segments listed for the message can be used.  A few or
+many fields can be used as agreed upon during implementation.  However, please
+note, that when the contents of a field change for a field that is not
+necessarily related to the trigger event, it is a matter for implementation
+negotiation as to whether the receiving systems can capture this changed data.
+</p>
+
+<h3>
+<A NAME="Heading4">15.2.1 Usage of chapter 15 vs. chapter 8</A></h3>
+
+<p>Chapter
+8 deals with master file maintenance.<br>
+Chapter 15 manages operational relationships based on trigger events.
+</p>
+
+<h2>
+<A NAME="Heading5">15.3 TRIGGER EVENTS AND MESSAGE DESCRIPTIONS</A></h2>
+
+
+<h3>
+<A NAME="Heading6">15.3.1 PMU/ACK - Add personnel record (event B01)</A></h3>
+
+<p>An
+event B01 signals to add a new record for healthcare administration information
+about an individual healthcare practitioner establishing a relationship between
+that practitioner and the institution.<br>
+The EVN segment is used to indicate the effective or planned date.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>PMU^B01^PMU_B01</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>PMU Message
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Event Type
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>STF</u></tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Staff</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>PRA</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Practitioner</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>ORG</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Organization</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>AFF</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Affiliation</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>LAN</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Language</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>EDU</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Education</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^B01^ACK</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message Header</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Message Acknowledgment</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR ]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p></TD>
+<TD colspan=1 align="center"><p>2</p></TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading7">15.3.2 PMU/ACK - Update personnel record (event B02)</A></h3>
+
+<p>An
+event B02 signals to update the record with the healthcare administration
+information about an individual healthcare practitioner. <br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>PMU^B02^PMU_B01</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>PMU Message
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Event Type
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>STF</u></tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Staff</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[<u>PRA</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Practitioner</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>ORG</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Organization</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>AFF</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Affiliation</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>LAN</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Language</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>EDU</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Education</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^B02^ACK</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Acknowledgment
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ ERR ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading8">15.3.3 PMU/ACK - Delete personnel record (event B03)</A></h3>
+
+<p>An
+event B03 signals to delete the record with the healthcare administration
+information about an individual healthcare practitioner to correct erroneous
+entries.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>PMU^B03^PMU_B03</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>PMU Message
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Event Type
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>STF</u></tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Staff</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^B03^ACK</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>General Acknowledgment
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Acknowledgment
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ ERR ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading9">15.3.4 PMU/ACK - Activate practicing person (event B04)</A></h3>
+
+<p>An
+event B04 signals that a staff member is available for work (e.g. schedules can
+be created) and has a relationship with the institution.  This message applies
+to STF-7.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>PMU^B04^PMU_B04</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>PMU
+Message
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>STF</u></tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Staff</tt></p></TD>
+<TD colspan=1 align="center"><p>15</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{ [ <u>PRA</u> ] }</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Practitioner</tt></p></TD>
+<TD colspan=1 align="center"><p>15</p></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ <u>ORG</u> ]</tt></p></TD>
+<TD colspan=1 align="left"><p><tt>Organization</tt></p></TD>
+<TD colspan=1 align="center"><p>15</p></TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^B04^ACK</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>General Acknowledgment</u></b></tt></p></TH>
+<TH><p>Chapter</p></TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+ERR ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading10">15.3.5 PMU/ACK - Deactivate practicing person (event B05)</A></h3>
+
+<p>An
+event B05 indicates that a staff member is temporarily unavailable for work,
+while maintaining a relationship with the institution.  This message applies to
+STF-7.<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>PMU^B05^PMU_B04</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>PMU Message
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>STF</u></tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Staff</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>PRA</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Practitioner</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+<u>ORG</u> ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Organization</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^B05^ACK</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+ERR ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading11">15.3.6 PMU/ACK - Terminate practicing person (event B06)</A></h3>
+
+<p>An
+event B06 signals that the formal relationship between a staff member and the
+institution has ended (e.g. upon termination).<br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>PMU^B06^PMU_B04</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>PMU
+Message
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>EVN</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Event
+Type
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt><u>STF</u></tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Staff</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{
+[ <u>PRA</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Practitioner</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+<u>ORG</u> ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Organization</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>ACK^B06^ACK</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>General
+Acknowledgment
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgment
+</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+ERR ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading12">15.3.7 QBP/RSP - Query information (event Q25/K25) </A></h3>
+
+<p>The
+following trigger event is served by the following Conformance Statement:
+Another application determines a need for Personnel data about a person and
+sends a query to a system providing this information.<br>
+</p>
+<TABLE BORDER>
+<TR align="left">
+<TH colspan=1 align="left"><p><b>Conformance
+Statement ID:
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p>Q25</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Query
+Table Type:
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>Query</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Query
+Name:
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>Personnel
+Information by Segment
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Query
+Trigger:
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>QBP^Q25^QBP_Q21</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Query
+Mode:
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>Both</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Response
+Trigger:
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>RSP^K25^RSP_K25</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Query
+Characteristics
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>Returns
+response sorted by <i>STF-3-Staff Name
+</i></p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Purpose:</b></p>
+</TD>
+<TD colspan=1 align="left"><p>Retrieve
+all available personnel information based upon the values of one or more
+commonly used search parameters
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Response
+Characteristics:
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>Returns
+response sorted by StaffName unless otherwise specified.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><b>Based
+on Segment Pattern: 
+</b></p>
+</TD>
+<TD colspan=1 align="left"><p>PMU_B01</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>QBP^Q25^QBP_Q21</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Personnel
+Information Message
+</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Group
+Control
+</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Comment</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Support
+Indicator
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p><tt>see</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>3.3.56</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE BORDER>
+<TR align="left">
+<TH colspan=1 align="left"><p><b>Fld.
+Seq.
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>ColName</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Key/</b><br>
+<b>Search
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Sort</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>LEN</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>TYPE</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Opt</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Rep</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Match
+Op
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>TBL</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Segment
+Field Name
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>LOINC
+or HL7 code/ Domain
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Element
+Name
+</b></p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>1</p>
+</TD>
+<TD colspan=1 align="left"><p>StaffIDCode</p>
+</TD>
+<TD colspan=1 align="left"><p>S</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>60</p>
+</TD>
+<TD colspan=1 align="left"><p>CX</p>
+</TD>
+<TD colspan=1 align="left"><p>O</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>=</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>STF.2</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>STF-2:
+ Staff ID Code
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>2</p>
+</TD>
+<TD colspan=1 align="left"><p>StaffName</p>
+</TD>
+<TD colspan=1 align="left"><p>S</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>48</p>
+</TD>
+<TD colspan=1 align="left"><p>XPN</p>
+</TD>
+<TD colspan=1 align="left"><p>O</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>=</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>STF.3</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>STF-3:
+ Staff Name
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>3</p>
+</TD>
+<TD colspan=1 align="left"><p>PractitionerCategory</p>
+</TD>
+<TD colspan=1 align="left"><p>S</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>3</p>
+</TD>
+<TD colspan=1 align="left"><p>IS</p>
+</TD>
+<TD colspan=1 align="left"><p>O</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>in</p>
+</TD>
+<TD colspan=1 align="left"><p><u>0186</u></p>
+</TD>
+<TD colspan=1 align="left"><p>PRA.3</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>PRA-3:
+ Practitioner Category
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>4</p>
+</TD>
+<TD colspan=1 align="left"><p>Language</p>
+</TD>
+<TD colspan=1 align="left"><p>S</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>60</p>
+</TD>
+<TD colspan=1 align="left"><p>CE</p>
+</TD>
+<TD colspan=1 align="left"><p>O</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>in</p>
+</TD>
+<TD colspan=1 align="left"><p><u>0296</u></p>
+</TD>
+<TD colspan=1 align="left"><p>LAN.2</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>LAN-2:
+ Language
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>5</p>
+</TD>
+<TD colspan=1 align="left"><p>LanguageAbility</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>60</p>
+</TD>
+<TD colspan=1 align="left"><p>CE</p>
+</TD>
+<TD colspan=1 align="left"><p>C</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>in</p>
+</TD>
+<TD colspan=1 align="left"><p><u>0403</u></p>
+</TD>
+<TD colspan=1 align="left"><p>LAN.3</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>LAN-3:
+ Language Ability
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>6</p>
+</TD>
+<TD colspan=1 align="left"><p>LanguageProficiency</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>60</p>
+</TD>
+<TD colspan=1 align="left"><p>CE</p>
+</TD>
+<TD colspan=1 align="left"><p>C</p>
+</TD>
+<TD colspan=1 align="left"><p>Y</p>
+</TD>
+<TD colspan=1 align="left"><p>in</p>
+</TD>
+<TD colspan=1 align="left"><p><u>0404</u></p>
+</TD>
+<TD colspan=1 align="left"><p>LAN.4</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>LAN-4:
+ Language Proficiency
+</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE BORDER>
+<TR align="left">
+<TH colspan=1 align="left"><p><b>Input
+Parameter
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Comp
+Name
+</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>DT</b></p>
+</TH>
+<TH colspan=1 align="left"><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>StaffIDCode</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>CX</p>
+</TD>
+<TD colspan=1 align="left"><p>Components:
+&lt;ID (ST)&gt; ^ &lt;check digit (ST)&gt; ^ &lt;code identifying the check
+digit scheme employed (ID)&gt; ^ &lt;assigning authority (HD)&gt; ^
+&lt;identifier type code (IS)&gt; ^ &lt;assigning facility (HD)&gt;
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>This
+field contains a personnel identification code or institution user number, used
+by the institution to identify the requested person.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>If
+this field is not valued, all values for this field are considered to be a match.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>The
+following components may be specified:
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>ID</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>If
+this field, STF.2.1, is not valued, all values for this field are considered to
+be a match.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>Assigning
+Authority
+</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>If
+this field, STF.2.4, is not valued, all values for this field are considered to
+be a match.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>Identifier
+type code
+</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>If
+this field, STF.2.5, is not valued, all values for this field are considered to
+be a match.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>StaffName</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>XPN</p>
+</TD>
+<TD colspan=1 align="left"><p>If
+this field is not valued, all values for this field are considered to be a match.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>PractitionerCategory</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>IS</p>
+</TD>
+<TD colspan=1 align="left"><p>If
+this field is not valued, all values for this field are considered to be a
+match.  If this field contains multiple values, the Server will record a match
+for any of the match values specified.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>Language</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>CE</p>
+</TD>
+<TD colspan=1 align="left"><p>If
+this field is not valued, all values for this field are considered to be a
+match.  If this field contains multiple values, the Server will record a match
+for any of the match values specified.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>LanguageAbility</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>CE</p>
+</TD>
+<TD colspan=1 align="left"><p>The
+Server will evaluate this field only if the Language field is specified;
+otherwise, this field will be ignored.  If this field is not valued, all values
+for this field are considered to be a match.  If this field contains multiple
+values, the Server will record a match for any of the match values specified.
+</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p>LanguageProficiency</p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p>CE</p>
+</TD>
+<TD colspan=1 align="left"><p>The
+Server will evaluate this field only if the Language field is specified;
+otherwise, this field will be ignored.  If this field is not valued, all values
+for this field are considered to be a match.  If this field contains multiple
+values, the Server will record a match for any of the match values specified.
+</p>
+</TD>
+</TR>
+</TABLE>
+<p><br>
+</p>
+<TABLE>
+<TR align="left">
+<TH colspan=1 align="left"><p><tt><b><u>RSP^K25^RSP_K25</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Personnel
+Information Message
+</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Group
+Control
+</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Comment</u></b></tt></p>
+</TH>
+<TH colspan=1 align="left"><p><tt><b><u>Support
+Indicator
+</u></b></tt></p>
+</TH>
+<TH><p>Chapter</p>
+</TH>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSH</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Header
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>2.16.9</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>MSA</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Message
+Acknowledgement
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>2.16.8</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[ERR]</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Error</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>2.16.5</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>QAK</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Query
+Acknowledgement
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>5.5.2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>QPD</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Query
+Parameter Definition
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>5.5.4</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>RCP</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Response
+Control Parameter
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>5.5.6</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>{</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p><tt>Query
+Result Cluster 
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ <u>STF
+</u></tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Staff</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>15.4.6</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ [ <u>PRA</u> ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Practitioner</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>15.4.5</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ { [ <u>ORG</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Organization</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>15.4.4</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ { [ <u>AFF</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Affiliation</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>15.4.1</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ { [ <u>LAN</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Language</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>15.4.3</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>
+ { [ <u>EDU</u> ] }
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Education</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>15.4.2</p>
+</TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>}</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><p><tt>End
+Query Results
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+</TR>
+<TR align="left">
+<TD colspan=1 align="left"><p><tt>[
+DSC ]
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><p><tt>Continuation
+Pointer
+</tt></p>
+</TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="center"><p>2.16.4</p>
+</TD>
+</TR>
+</TABLE>
+<h2>
+<A NAME="Heading13">15.4 MESSAGE SEGMENTS</A></h2>
+
+<p>The
+following segments are defined for the Personnel Management 
+messages.</p>
+
+<h3>
+<A NAME="Heading14">15.4.1 AFF - Professional affiliation segment  </A></h3>
+
+<p>The
+AFF segment adds detailed information regarding professional affiliations with
+which the staff member identified by the STF segment is/was associated.  
+<a name="AFF"></a><br>
+<center>HL7 Attribute Table - AFF - Professional Affiliation</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p>
+</TH>
+<TH><p><b>LEN</b></p>
+</TH>
+<TH><p><b>DT</b></p>
+</TH>
+<TH><p><b>OPT</b></p>
+</TH>
+<TH><p><b>RP/#</b></p>
+</TH>
+<TH><p><b>TBL#</b></p>
+</TH>
+<TH><p><b>ITEM#</b></p>
+</TH>
+<TH><p>ELEMENT
+NAME
+</p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>SI</p>
+</TD>
+<TD colspan=1 align="center"><p>R</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01427</p>
+</TD>
+<TD colspan=1 align="center"><p>Set
+ID - AFF
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>XON</p>
+</TD>
+<TD colspan=1 align="center"><p>R</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01444</p>
+</TD>
+<TD colspan=1 align="center"><p>Professional
+Organization
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>XAD</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01445</p>
+</TD>
+<TD colspan=1 align="center"><p>Professional
+Organization Address
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p>
+</TD>
+<TD colspan=1 align="center"><p>52</p>
+</TD>
+<TD colspan=1 align="center"><p>DR</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01446</p>
+</TD>
+<TD colspan=1 align="center"><p>Professional
+Organization Affiliation Date Range
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>ST</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01447</p>
+</TD>
+<TD colspan=1 align="center"><p>Professional
+Affiliation Additional Information
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading15">15.4.1.0 AFF field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading16">15.4.1.1 AFF-1   Set ID - AFF-  (SI)   01427</A></h4>
+
+<p>Definition:
+This field contains the number that identifies this transaction.  For the first
+occurrence of the segment, the sequence number shall be one, for the second
+occurrence, the sequence number shall be two, etc.
+</p>
+
+<h4>
+<A NAME="Heading17">15.4.1.2 AFF-2   Professional organization  (XON)   01444</A></h4>
+
+<p><tt>Components:
+&lt;organization name (ST)&gt; ^ &lt;organization name type code (IS)&gt; ^
+&lt;ID number (NM)&gt; ^ &lt;check digit (NM)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;assigning authority (HD)&gt; ^
+&lt;identifier type code (IS)&gt; ^ &lt;assigning facility ID (HD)&gt; ^
+&lt;name representation code(ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority: &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility: &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains the official name of the association promoting
+specific professional interests with which the staff member is affiliated.
+</p>
+
+<h4>
+<A NAME="Heading18">15.4.1.3 AFF-3   Professional organization address  (XAD)   01445</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, replaces the AD data type.  &lt;street address
+(ST)&gt; ^ &lt;other designation (ST)&gt; ^ &lt;city (ST)&gt; ^ &lt;state or
+province (ST)&gt; ^ &lt;zip or postal code (ST)&gt; ^ &lt;country (ID)&gt; ^
+&lt; address type (ID)&gt;<b> </b>^ &lt;other geographic designation (ST)&gt;
+^<b> </b>&lt;county/parish code (IS)&gt; ^ &lt;census tract (IS)&gt; ^
+&lt;address representation code (ID)&gt; ^ &lt;address validity range
+(DR)&gt;</tt><br>
+Definition:  This field contains the postal address of the professional
+organization with which the Staff Member is associated.
+</p>
+
+<h4>
+<A NAME="Heading19">15.4.1.4 AFF-4   Professional organization affiliation date range  (DR)   01446</A></h4>
+
+<p><tt>Components:
+ &lt;range start date/time (TS)&gt; ^ &lt;range end date/time (TS)&gt;</tt><br>
+Definition:  This field contains the period the staff member started and ended
+membership in the professional organization.
+</p>
+
+<h4>
+<A NAME="Heading20">15.4.1.5 AFF-5   Professional affiliation additional information  (ST)   01447</A></h4>
+
+<p>Definition:
+ This field contains miscellaneous additional information related to the staff
+member's membership in the professional organization.
+</p>
+
+<h3>
+<A NAME="Heading21">15.4.2 EDU - Educational detail segment  </A></h3>
+
+<p>The
+EDU segment adds detailed educational information to the staff member
+identified by the STF segment.  An EDU segment may optionally follow an STF
+segment.  An EDU segment must always have been preceded by a corresponding STF
+segment.
+<a name="EDU"></a><br>
+<center>HL7 Attribute Table - EDU - Educational Detail </center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p>
+</TH>
+<TH><p><b>LEN</b></p>
+</TH>
+<TH><p><b>DT</b></p>
+</TH>
+<TH><p><b>OPT</b></p>
+</TH>
+<TH><p><b>RP/#</b></p>
+</TH>
+<TH><p><b>TBL#</b></p>
+</TH>
+<TH><p><b>ITEM#</b></p>
+</TH>
+<TH><p>ELEMENT
+NAME
+</p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>SI</p>
+</TD>
+<TD colspan=1 align="center"><p>R</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01448</p>
+</TD>
+<TD colspan=1 align="center"><p>Set
+ID - EDU
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>10</p>
+</TD>
+<TD colspan=1 align="center"><p>IS</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0360</p>
+</TD>
+<TD colspan=1 align="center"><p>01449</p>
+</TD>
+<TD colspan=1 align="center"><p>Academic
+Degree
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+<TD colspan=1 align="center"><p>52</p>
+</TD>
+<TD colspan=1 align="center"><p>DR</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01597</p>
+</TD>
+<TD colspan=1 align="center"><p>Academic
+Degree Program Date Range
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p>
+</TD>
+<TD colspan=1 align="center"><p>52</p>
+</TD>
+<TD colspan=1 align="center"><p>DR</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01450</p>
+</TD>
+<TD colspan=1 align="center"><p>Academic
+Degree Program ParticipationDate Range
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p>
+</TD>
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>DT</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01451</p>
+</TD>
+<TD colspan=1 align="center"><p>Academic
+Degree Granted Date
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>XON</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01452</p>
+</TD>
+<TD colspan=1 align="center"><p>School</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p></TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0402</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01453</p>
+</TD>
+<TD colspan=1 align="center"><p>School
+Type Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>XAD</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01454</p>
+</TD>
+<TD colspan=1 align="center"><p>School
+Address
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading22">15.4.2.0 EDU field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading23">15.4.2.1 EDU-1   Set ID - EDU  (SI)   01448</A></h4>
+
+<p>Definition:
+This field contains the number that identifies this transaction.  For the first
+occurrence of the segment, the sequence number shall be one, for the second
+occurrence, the sequence number shall be two, etc.
+</p>
+
+<h4>
+<A NAME="Heading24">15.4.2.2 EDU-2   Academic degree  (IS)   01449</A></h4>
+
+<p>Definition:
+ This field contains the standard classification awarded upon completion of a
+unified program of study.  HL7 suggests using values in <i>User-defined Table
+0360 - Degree</i>.
+</p>
+
+<h4>
+<A NAME="Heading25">15.4.2.3 EDU-3   Academic degree program date range  (DR)   01597</A></h4>
+
+<p>Definition:
+ This field contains the date range when the academic degree program took place.
+</p>
+
+<h4>
+<A NAME="Heading26">15.4.2.4 EDU-4   Academic degree program participation date range  (DR)   01450</A></h4>
+
+<p>Definition:
+ This field contains the date range during which the staff member participated
+in the academic degree program.
+</p>
+
+<h4>
+<A NAME="Heading27">15.4.2.5 EDU-5   Academic degree granted date  (DT)   01451</A></h4>
+
+<p>Definition:
+ This field contains the date the academic degree was granted to the staff
+member.
+</p>
+
+<h4>
+<A NAME="Heading28">15.4.2.6 EDU-6   School  (XON)   01452</A></h4>
+
+<p><tt>Components:
+&lt;organization name (ST)&gt; ^ &lt;organization name type code (IS)&gt; ^
+&lt;ID number (NM)&gt; ^ &lt;check digit (NM)&gt; ^ &lt;code identifying the
+check digit scheme employed (ID)&gt; ^ &lt;assigning authority (HD)&gt; ^
+&lt;identifier type code (IS)&gt; ^ &lt;assigning facility ID (HD)&gt; ^
+&lt;name representation code(ID)&gt;</tt><br>
+<tt>Subcomponents of assigning authority: &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility: &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains the official name of the academic institution
+that granted the degree to the Staff Member.
+</p>
+
+<h4>
+<A NAME="Heading29">15.4.2.7 EDU-7   School type code  (CE)   01453</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the categorization of the academic institution
+that granted the degree to the Staff Member.  HL7 suggests using values in
+<cite>User-defined Table 0402 - School type</cite>.
+<a name="HL70402"></a><br>
+<center>User-defined Table 0402 - School type</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>D</p>
+</TD>
+<TD colspan=1 align="center"><p>Dental</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>G</p>
+</TD>
+<TD colspan=1 align="center"><p>Graduate</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>M</p>
+</TD>
+<TD colspan=1 align="center"><p>Medical</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>U</p>
+</TD>
+<TD colspan=1 align="center"><p>Undergraduate</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading30">15.4.2.8 EDU-8   School address  (XAD)   01454</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, replaces the AD data type.  &lt;street address
+(ST)&gt; ^ &lt;other designation (ST)&gt; ^ &lt;city (ST)&gt; ^ &lt;state or
+province (ST)&gt; ^ &lt;zip or postal code (ST)&gt; ^ &lt;country (ID)&gt; ^
+&lt; address type (ID)&gt;<b> </b>^ &lt;other geographic designation (ST)&gt;
+^<b> </b>&lt;county/parish code (IS)&gt; ^ &lt;census tract (IS)&gt; ^
+&lt;address representation code (ID)&gt; ^ &lt;address validity range
+(DR)&gt;</tt><br>
+Definition:  This field contains the postal address of the academic institution
+that granted the degree to the Staff Member.
+</p>
+
+<h3>
+<A NAME="Heading31">15.4.3 LAN - Language detail segment  </A></h3>
+
+<p>The
+LAN segment adds detailed language information to the staff member identified
+by the STF segment.  An LAN segment may optionally follow an STF segment.  An
+LAN segment must always have been preceded by a corresponding STF segment. 
+<a name="LAN"></a><br>
+<center>HL7 Attribute Table - LAN - Language Detail </center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p>
+</TH>
+<TH><p><b>LEN</b></p>
+</TH>
+<TH><p><b>DT</b></p>
+</TH>
+<TH><p><b>OPT</b></p>
+</TH>
+<TH><p><b>RP/#</b></p>
+</TH>
+<TH><p><b>TBL#</b></p>
+</TH>
+<TH><p><b>ITEM#</b></p>
+</TH>
+<TH><p>ELEMENT
+NAME
+</p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>SI</p>
+</TD>
+<TD colspan=1 align="center"><p>R</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01455</p>
+</TD>
+<TD colspan=1 align="center"><p>Set
+ID - LAN
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>R</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0296</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01456</p>
+</TD>
+<TD colspan=1 align="center"><p>Language
+Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p><u>0403</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01457</p>
+</TD>
+<TD colspan=1 align="center"><p>Language
+Ability Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0404</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01458</p>
+</TD>
+<TD colspan=1 align="center"><p>Language
+Proficiency Code
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading32">15.4.3.0 LAN field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading33">15.4.3.1 LAN-1   Set ID - LAN  (SI)   01455</A></h4>
+
+<p>Definition:
+This field contains the number that identifies this transaction.  For the first
+occurrence of the segment, the sequence number shall be one, for the second
+occurrence, the sequence number shall be two, etc.
+</p>
+
+<h4>
+<A NAME="Heading34">15.4.3.2 LAN-2   Language code  (CE)   01456</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the language about which the Staff Member's
+has some knowledge.  HL7 recommends using ISO table 639 as the suggested values
+in <i>User-defined Table 0296 - Language</i>.
+</p>
+
+<h4>
+<A NAME="Heading35">15.4.3.3 LAN-3   Language ability code  (CE)   01457</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the ability the Staff Member possesses with
+respect to the language.  HL7 recommends using values in <cite>HL7 Table 0403 -
+Language ability</cite>.
+<a name="HL70403"></a><br>
+<center>HL7 Table 0403 - Language ability</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>Read</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>Write</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+<TD colspan=1 align="center"><p>Speak</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p>
+</TD>
+<TD colspan=1 align="center"><p>Understand</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p>
+</TD>
+<TD colspan=1 align="center"><p>Sign</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading36">15.4.3.4 LAN-4   Language proficiency code  (CE)   01458</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the level of knowledge the Staff Member
+possesses with respect to the language ability.  HL7 suggests using values in
+<cite>HL7 Table 0404 - Language proficiency</cite>.
+<a name="HL70404"></a><br>
+<center>HL7 Table 0404 - Language proficiency</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>Excellent</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>Good</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+<TD colspan=1 align="center"><p>Fair</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p>
+</TD>
+<TD colspan=1 align="center"><p>Poor</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p>
+</TD>
+<TD colspan=1 align="center"><p>Some
+(level unknown)
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p>
+</TD>
+<TD colspan=1 align="center"><p>None</p>
+</TD>
+</TR>
+</TABLE>
+<h3>
+<A NAME="Heading37">15.4.4 ORG - Practitioner organization unit segment </A></h3>
+
+<p>The
+ORG segment relates a practitioner to an organization unit and adds detailed
+information regarding the practitioner's practicing specialty in that
+organization unit.  An ORG segment may optionally follow an STF segment.  An
+ORG segment must always have been preceded by a corresponding STF segment.  If
+no organization unit is specified, this segment is used to relate practitioners
+with their practicing specialties, including effective and end dates.  When it
+is not necessary to record organization unit or dates associated with the
+practicing specialty, this data is recorded in <i>PRA-3-Practitioner
+Category</i>.
+<a name="ORG"></a><br>
+<center>HL7 Attribute Table - ORG - Practitioner Organization Unit </center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p>
+</TH>
+<TH><p><b>LEN</b></p>
+</TH>
+<TH><p><b>DT</b></p>
+</TH>
+<TH><p><b>OPT</b></p>
+</TH>
+<TH><p><b>RP/#</b></p>
+</TH>
+<TH><p><b>TBL#</b></p>
+</TH>
+<TH><p><b>ITEM#</b></p>
+</TH>
+<TH><p>ELEMENT
+NAME
+</p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>SI</p>
+</TD>
+<TD colspan=1 align="center"><p>R</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01459</p>
+</TD>
+<TD colspan=1 align="center"><p>Set
+ID - ORG
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0405</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01460</p>
+</TD>
+<TD colspan=1 align="center"><p>Organization
+Unit Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0474</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01461</p>
+</TD>
+<TD colspan=1 align="center"><p>Organization
+Unit Type Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>ID</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0136</p>
+</TD>
+<TD colspan=1 align="center"><p>01462</p>
+</TD>
+<TD colspan=1 align="center"><p>Primary
+Org Unit Indicator
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>CX</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01463</p>
+</TD>
+<TD colspan=1 align="center"><p>Practitioner
+Org Unit Identifier
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0452</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01464</p>
+</TD>
+<TD colspan=1 align="center"><p>Health
+Care Provider Type Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0453</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01614</p>
+</TD>
+<TD colspan=1 align="center"><p>Health
+Care Provider Classification Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0454</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01615</p>
+</TD>
+<TD colspan=1 align="center"><p>Health
+Care Provider Area of Specialization Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9</p>
+</TD>
+<TD colspan=1 align="center"><p>52</p>
+</TD>
+<TD colspan=1 align="center"><p>DR</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01465</p>
+</TD>
+<TD colspan=1 align="center"><p>Effective
+Date Range
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>10</p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0066</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01276</p>
+</TD>
+<TD colspan=1 align="center"><p>Employment
+Status Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>11</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>ID</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0136</p>
+</TD>
+<TD colspan=1 align="center"><p>01467</p>
+</TD>
+<TD colspan=1 align="center"><p>Board
+Approval Indicator
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>12</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>ID</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0136</p>
+</TD>
+<TD colspan=1 align="center"><p>01468</p>
+</TD>
+<TD colspan=1 align="center"><p>Primary
+Care Physician Indicator
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading38">15.4.4.0 ORG field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading39">15.4.4.1 ORG-1   Set ID - ORG  (SI)   01459</A></h4>
+
+<p>Definition:
+This field contains the number that identifies this transaction.  For the first
+occurrence of the segment, the sequence number shall be one, for the second
+occurrence, the sequence number shall be two, etc.
+</p>
+
+<h4>
+<A NAME="Heading40">15.4.4.2 ORG-2   Organization unit code  (CE)   01460</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the hierarchical components of the
+organization unit, as defined by the institution.  Refer to<i>
+</i><cite>User-defined Table 0405 - Organization unit</cite> for suggested
+values.
+<a name="HL70405"></a><br>
+<center>User-defined Table 0405 - Organization unit </center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>No
+suggested values defined
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading41">15.4.4.3 ORG-3   Organization unit type code  (CE)   01625</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains a code indicating the classification of the
+organization unit.  HL7 suggests using values in <cite>User-defined Table 0474
+- Organization unit type</cite>.<br>
+<center>User-defined Table 0474 - Organization unit type 
+<a name="HL70474"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>D</p>
+</TD>
+<TD colspan=1 align="center"><p>Department</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>F</p>
+</TD>
+<TD colspan=1 align="center"><p>Facility</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>L</p>
+</TD>
+<TD colspan=1 align="center"><p>Local
+market area
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>M</p>
+</TD>
+<TD colspan=1 align="center"><p>Medical
+Center Area
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>U</p>
+</TD>
+<TD colspan=1 align="center"><p>Subdepartment</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>S</p>
+</TD>
+<TD colspan=1 align="center"><p>Subdivision</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>V</p>
+</TD>
+<TD colspan=1 align="center"><p>Division</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading42">15.4.4.4 ORG-4   Primary org unit indicator  (ID)   01462</A></h4>
+
+<p>Definition:
+ This field contains an indicator for whether this organization unit is the
+primary organization unit for this practitioner.  Refer to <i>HL7 Table 0136 -
+Yes/no indicator</i> for valid values.<br>
+	Y	this is the primary organization unit<br>
+	N	this is not the primary organization unit
+</p>
+
+<h4>
+<A NAME="Heading43">15.4.4.5 ORG-5   Practitioner org unit identifier  (CX)   01463</A></h4>
+
+<p><tt>Components:
+&lt;ID (ST)&gt; ^ &lt;check digit (ST)&gt; ^ &lt;code identifying the check
+digit scheme employed (ID)&gt; ^ &lt; assigning authority (HD)&gt; ^
+&lt;identifier type code (ID)&gt; ^ &lt; assigning facility (HD) ^
+&lt;effective date (DT)&gt; ^ &lt;expiration date (DT)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains an identification code used by the institution
+to identify this person at this specific organization unit.  If the person is
+identified with the same code at all organization units, then this data should
+be coded in <i>STF-2-staff ID codes</i>.
+</p>
+
+<h4>
+<A NAME="Heading44">15.4.4.6 ORG-6   Health care provider type code  (CE)   01464</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the major grouping of the service or
+occupation of the practitioner at a specific organization unit. For example,
+Behavioral Health &amp; Social Service.  HL7 suggests using values derived from
+the ANSI ASC X12 Health Care Provider Taxonomy, Level 1 - Type. <br>
+<center>HL7 Table 0452 - Health care provider type code
+<a name="HL70452"></a>
+</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SUGGESTION</p>
+</TD>
+<TD colspan=1 align="center"><p>ANSI
+ASC X12 Health Care Provider Taxonomy, Level 1 - Type   
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading45">15.4.4.7 ORG-7   Health care provider classification code   (CE)   01614</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the more specific service or occupation within
+the health care provider type of the practitioner at a specific organization
+unit.  For example, Counselor.  HL7 suggests using values derived from the ANSI
+ASC X12 Health Care Provider Taxonomy, Level 2 - Classification.<br>
+<center>HL7 Table 0453 - Health care provider classification 
+<a name="HL70453"></a>
+</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SUGGESTION</p>
+</TD>
+<TD colspan=1 align="center"><p>ANSI
+ASC X12 Health Care Provider Taxonomy, Level 2 -  Classification    
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading46">15.4.4.8 ORG-8   Health care provider area of specialization code  (CE)   01615</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the segment of the population that a health
+care provider chooses to service, a specific medical service, a specialization
+in treating a specific disease, or any other descriptive characteristic about
+the provider's practice relating to the services rendered of the practitioner
+at a specific organization unit.  For example, Mental Health.  HL7 suggests
+using values derived from the ANSI ASC X12 Health Care Provider Taxonomy, Level
+3 - specialization.<br>
+<center>HL7 Table 0454 - Health care provider area of specialization
+<a name="HL70454"></a>
+  </center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SUGGESTION</p>
+</TD>
+<TD colspan=1 align="center"><p>ANSI
+ASC X12 Health Care Provider Taxonomy, Level 3 - specialization  
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading47">15.4.4.9 ORG-9   Effective date range  (DR)   01465</A></h4>
+
+<p><tt>Components:
+ &lt;range start date/time (TS)&gt; ^ &lt;range end date/time (TS)&gt;</tt><br>
+Definition:  This field contains the date range in which the practitioner
+started and ended working at the specific organization unit in the specific
+practicing specialty category.
+</p>
+
+<h4>
+<A NAME="Heading48">15.4.4.10 ORG-10   Employment status code  (CE)   01276</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains a code indicating the working relationship of
+the practitioner at this organization unit.  It may be different than the work
+status specified in <i>STF-20</i>.  Refer to <cite>User-defined Table 0066 -
+Employment status</cite> for suggested values. <br>
+<center>User-defined Table 0066 - Employment status</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>No
+suggested values defined
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading49">15.4.4.11 ORG-11   Board approval indicator  (ID)   01467</A></h4>
+
+<p>Definition:
+ This field contains an indicator for whether this practice specialty requires
+board approval.  Refer to <i>HL7 Table 0136 - Yes/no indicator</i> for valid
+values.<br>
+	Y	this practice specialty requires board approval<br>
+	N	this practice specialty does not require board approval
+</p>
+
+<h4>
+<A NAME="Heading50">15.4.4.12 ORG-12   Primary care physician indicator  (ID)   01468</A></h4>
+
+<p>Definition:
+ This field contains an indicator for whether this practice specialty may act
+as a primary care physician (PCP).  Refer to <i>HL7 Table 0136 - Yes/no
+indicator</i> for valid values.<br>
+	Y	this practice specialty may act as a primary care physician<br>
+	N	this practice specialty may not act as a primary care physician
+</p>
+
+<h3>
+<A NAME="Heading51">15.4.5 PRA - Practitioner detail segment </A></h3>
+
+<p>
+The Technical Steward for the PRA segment is PAFM and Personnel Management<br>
+The PRA segment adds detailed medical practitioner information to the personnel
+identified by the STF segment.  A PRA segment may optionally follow an STF
+segment.  A PRA segment must always have been preceded by a corresponding STF
+segment.  The PRA segment may also be used for staff who work in healthcare who
+are not practitioners, but need to be certified, e.g., "medical records staff."
+<a name="PRA"></a><br>
+<center>HL7 Attribute Table - PRA - Practitioner Detail </center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p></TH>
+<TH><p><b>LEN</b></p></TH>
+<TH><p><b>DT</b></p></TH>
+<TH><p><b>OPT</b></p></TH>
+<TH><p><b>RP/#</b></p></TH>
+<TH><p><b>TBL#</b></p></TH>
+<TH><p><b>ITEM#</b></p></TH>
+<TH><p>ELEMENT NAME</p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>9999</p></TD>
+<TD colspan=1 align="center"><p>00685</p></TD>
+<TD colspan=1 align="center"><p>Primary Key Value - PRA</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p></TD>
+<TD colspan=1 align="center"><p>250</p></TD>
+<TD colspan=1 align="center"><p>CE</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><p>Y</p></TD>
+<TD colspan=1 align="center"><p><u>0358</u></p></TD>
+<TD colspan=1 align="center"><p>00686</p></TD>
+<TD colspan=1 align="center"><p>Practitioner Group</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>3</p></TD>
+<TD colspan=1 align="center"><p>IS</p></TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p><u>0186</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00687</p>
+</TD>
+<TD colspan=1 align="center"><p>Practitioner Category
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p></TD>
+<TD colspan=1 align="center"><p>1</p></TD>
+<TD colspan=1 align="center"><p>ID</p></TD>
+<TD colspan=1 align="center"><p>O</p></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0187</u></p></TD>
+<TD colspan=1 align="center"><p>00688</p></TD>
+<TD colspan=1 align="center"><p>Provider Billing</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p>
+</TD>
+<TD colspan=1 align="center"><p>100</p>
+</TD>
+<TD colspan=1 align="center"><p>CM</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p><u>0337</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00689</p>
+</TD>
+<TD colspan=1 align="center"><p>Specialty</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p>
+</TD>
+<TD colspan=1 align="center"><p>100</p>
+</TD>
+<TD colspan=1 align="center"><p>CM</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p><u>0338</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00690</p>
+</TD>
+<TD colspan=1 align="center"><p>Practitioner ID Numbers</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p>
+</TD>
+<TD colspan=1 align="center"><p>200</p>
+</TD>
+<TD colspan=1 align="center"><p>CM</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00691</p>
+</TD>
+<TD colspan=1 align="center"><p>Privileges</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>DT</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01296</p>
+</TD>
+<TD colspan=1 align="center"><p>Date Entered Practice</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01613</p>
+</TD>
+<TD colspan=1 align="center"><p>Institution </p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>10</p>
+</TD>
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>DT</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01348</p>
+</TD>
+<TD colspan=1 align="center"><p>Date Left Practice
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>11</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p><u>0401</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01388</p>
+</TD>
+<TD colspan=1 align="center"><p>Government Reimbursement Billing Eligibility
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>12</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>SI</p>
+</TD>
+<TD colspan=1 align="center"><p>C</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01616</p>
+</TD>
+<TD colspan=1 align="center"><p>Set
+ID - PRA
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading52">15.4.5.0 PRA field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading53">15.4.5.1 PRA-1   Primary key value - PRA  (CE)   00685</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  For MFN Master File Notification, this field is required and must
+match <i>MFE-4-primary key value</i>, to identify which entry is being
+referenced.  For all other messages, this field should not be used.
+</p>
+
+<h4>
+<A NAME="Heading54">15.4.5.2 PRA-2   Practitioner group  (CE)   00686</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the name and/or code of a group of
+practitioners to which this practitioner belongs.  Refer to <cite>User-defined
+Table 0358 Practitioner group</cite> for suggested values. 
+<a name="HL70358"></a><br>
+<center>User-defined Table 0358 - Practitioner group</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>No
+suggested values defined
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading55">15.4.5.3 PRA-3   Practitioner category  (IS)   00687</A></h4>
+
+<p>Definition:
+ This field contains the category of practitioner. Refer to <cite>User-defined
+Table 0186 - Practitioner category</cite> for suggested values. Values may
+include codes for staff physician, courtesy physician, resident, physician
+assistant, physical therapist, psychiatrist, psychologist, pharmacist,
+registered nurse, licensed practical nurse, licensed vocational nurse, nurse
+practitioner, etc. If the provider works in different Practitioner Categories
+in different organization units, then this information should be recorded
+separately in ORG-6,7,8.
+<a name="HL70186"></a><br>
+<center>User-defined Table 0186 - Practitioner category</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>No suggested values defined</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading56">15.4.5.4 PRA-4   Provider billing  (ID)   00688</A></h4>
+
+<p>Definition:
+ This field indicates how provider services are billed.  Refer to<i> </i><u>HL7
+Table 0187 - Provider billing</u> for valid values.
+<a name="HL70187"></a><br>
+<center>HL7 Table 0187 - Provider billing</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>I</p></TD>
+<TD colspan=1 align="center"><p>Institution bills for provider</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>P</p></TD>
+<TD colspan=1 align="center"><p>Provider does own billing</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading57">15.4.5.5 PRA-5   Specialty  (CM)   00689</A></h4>
+
+<p><tt>Components:
+ &lt;specialty name (ST)&gt; ^ &lt;governing board (ST)&gt; ^ &lt;eligible or
+certified (ID)&gt; ^ &lt;date of certification (DT)&gt;</tt><br>
+Definition:  This repeating field is made up of multiple components to record
+the practitioner's specialties.  The multiple components of each specialty are:
+(1) specialty name or abbreviation, identifies provider's specialty, (2) name
+of specialty governing board, (3) Certification Status, (4) certified date
+contains the date of certification, if certified.  Refer to <cite>HL7 Table
+0337 - Certification status</cite> for valid values.
+<a name="HL70337"></a><br>
+<center>HL7 Table 0337 - Certification status</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>C</p></TD>
+<TD colspan=1 align="center"><p>Certified</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>E</p></TD>
+<TD colspan=1 align="center"><p>Eligible</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading58">15.4.5.6 PRA-6   Practitioner ID numbers  (CM)   00690</A></h4>
+
+<p><tt>Components:
+ &lt;ID number (ST)&gt; ^ &lt;type of ID number (IS)&gt; ^ &lt;state/other
+qualifying info (ST)&gt; ^ &lt;expiration date&gt;</tt><br>
+Definition:  This repeating field contains this practitioner's license numbers
+and other ID numbers.  This is a field made up of the following components: (1)
+the ID number, and (2) the type of number, and optionally (3) the state or
+province in which it is valid, if relevant, or other qualifying information.
+It is recommended that state qualifications use the abbreviations from the
+postal service of the country.  The practitioner ID number type (component 2)
+is a user-defined table (<u>Table 0338</u>).  
+<a name="HL70338"></a><br>
+<center>User-defined Table 0338 - Practitioner ID number type</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p></TH>
+<TH><p><b>Description</b></p></TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>CY</p></TD>
+<TD colspan=1 align="center"><p>County number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>DEA</p></TD>
+<TD colspan=1 align="center"><p>Drug Enforcement Agency no.</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>GL</p></TD>
+<TD colspan=1 align="center"><p>General ledger number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>L&amp;I</p></TD>
+<TD colspan=1 align="center"><p>Labor and industries number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>MCD</p></TD>
+<TD colspan=1 align="center"><p>Medicaid number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>MCR</p></TD>
+<TD colspan=1 align="center"><p>Medicare number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>QA</p></TD>
+<TD colspan=1 align="center"><p>QA number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>SL</p></TD>
+<TD colspan=1 align="center"><p>State license number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>TAX</p></TD>
+<TD colspan=1 align="center"><p>Tax ID number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>TRL</p></TD>
+<TD colspan=1 align="center"><p>Training license number</p></TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>UPIN</p></TD>
+<TD colspan=1 align="center"><p>Unique physician ID no.</p></TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading59">15.4.5.7 PRA-7   Privileges  (CM)   00691</A></h4>
+
+<p><tt>Components:
+ &lt;privilege (CE)&gt; &amp; &lt;privilege class (CE)&gt; ^ &lt;expiration
+date (DT)&gt; ^ &lt;activation date (DT)&gt; ^ &lt;facility (EI)&gt;</tt><br>
+<tt>Subcomponents for privilege:  &lt; identifier (ID)&gt; &amp; &lt;text
+(ST)&gt; &amp; &lt;name of coding system (IS)&gt; &amp; &lt;alternate
+identifier (ID)&gt; &amp; &lt;text (ST)&gt; &amp; &lt;name of alternate coding
+system (ST)&gt;</tt><br>
+<tt>Subcomponents for privilege class:  &lt; identifier (ID)&gt; &amp; &lt;text
+(ST)&gt; &amp; &lt;name of coding system (IS)&gt; &amp; &lt;alternate
+identifier (ID)&gt; &amp; &lt;text (ST)&gt; &amp; &lt;name of alternate coding
+system (ST)&gt;</tt><br>
+<tt>Subcomponents for facility:  &lt; entity identifier (ST)&gt; &amp;
+&lt;namespace ID (IS)&gt;  &amp;  &lt;universal ID&gt; &amp;  &lt;universal ID
+type (ID)&gt;</tt><br>
+Definition:  This field contains the institutional privileges which this
+provider may exercise.  Depends upon institutional needs.  For example, admit,
+transfer, discharge, place orders, verify orders, review results, etc.  Can
+also be used for privileges other than patient services.  This is a repeating
+field, with each privilege made up of the following components: (1) privilege;
+(2) privilege class; (3) privilege expiration date, if any; (4) privilege
+activation date, if any, and (5) facility.  Note that the privilege and
+privilege class components are CE data types, and thus they are encoded with
+the subcomponent delimiter (&amp;) rather than the component delimiter (^).
+The facility component is an EI data type specifying the facility to which the
+privilege applies and is encoded with the subcomponent delimiter (&amp;) rather
+than the component delimiter (^).  The facility component is an EI data type
+specifying the facility to which the privilege applies and is encoded with the
+subcomponent delimiter (&amp;) rather than the component delimiter (^).<br>
+<tt>Components: &lt;date (TS)&gt; ^ &lt;institution name (CE)&gt;</tt><br>
+<tt>Subcomponents for institution name:  &lt;identifier (ST)&gt; &amp; &lt;text
+(ST) &amp; &lt;name of coding system (IS)&gt; &amp; &lt;alternate identifier
+(ST)&gt; &amp; &lt;alternate text (ST)&gt; &amp; &lt;name of alternate coding
+system (ST)&gt;
+</tt></p>
+
+<h4>
+<A NAME="Heading60">15.4.5.8 PRA-8   Date entered practice  (DT)   01296</A></h4>
+
+<p>Definition:
+ This field contains the date the practitioner began practicing at the present
+institution (e.g., at hospital, at physician organization, at managed care
+network).
+</p>
+
+<h4>
+<A NAME="Heading61">15.4.5.9 PRA-9   Institution (CE)   01613</A></h4>
+
+<p><tt>Components:
+ &lt;identifier (ST)&gt; &amp; &lt;text (ST) &amp; &lt;name of coding system
+(IS)&gt; &amp; &lt;alternate identifier (ST)&gt; &amp; &lt;alternate text
+(ST)&gt; &amp; &lt;name of alternate coding system (ST)&gt;</tt><br>
+Definition:  This field contains the institution the practitioner began or
+intends to begin practicing at (e.g., at hospital, at physician organization,
+at managed care network).
+</p>
+
+<h4>
+<A NAME="Heading62">15.4.5.10 PRA-10   Date left practice  (DT)   01348</A></h4>
+
+<p>Definition:
+ This field contains the date the practitioner ended or intends to end
+practicing at the given institution (e.g., at hospital, at physician
+organization, at managed care network).
+</p>
+
+<h4>
+<A NAME="Heading63">15.4.5.11 PRA-11   Government reimbursement billing eligibility  (CE)   01388</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains a code that indicates the agency that the
+practitioner is authorized to bill for medical services.  Refer to
+<cite>User-defined Table 0401 - Government reimbursement program</cite> for
+valid values.  This is a repeating field.<br>
+<center>User-defined Table 0401 - Government reimbursement program
+<a name="HL70401"></a></center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>MM</p>
+</TD>
+<TD colspan=1 align="center"><p>Medicare</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>C</p>
+</TD>
+<TD colspan=1 align="center"><p>Medi-Cal</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading64">15.4.5.12 PRA-12   Set ID - PRA  (SI)   01616</A></h4>
+
+<p>Definition:
+For all messages except the Staff/Practitioner Master File Notification, this
+field is required and contains the number that identifies this transaction.
+For the first occurrence of the segment, the sequence number shall be one, for
+the second occurrence, the sequence number shall be two, etc.  For the
+Staff/Practitioner Master File Notification message, this field should not be
+used.
+</p>
+
+<h3>
+<A NAME="Heading65">15.4.6 STF - Staff identification segment </A></h3>
+
+<p>The
+Technical Steward for the STF segment is PAFM and Personnel Management.<br>
+The STF segment can identify any personnel referenced by information systems.
+These can be providers, staff, system users, and referring agents.  In a
+network environment, this segment can be used to define personnel to other
+applications; for example, order entry clerks, insurance verification clerks,
+admission clerks, as well as provider demographics. When using the STF and PRA
+segments in the Staff/Practitioner Master File message, <i>MFE-4-primary key
+value</i> is used to link all the segments pertaining to the same master file
+entry.  Therefore, in the MFE segment, <i>MFE-4-primary key value</i> must be
+filled in.  Other segments may follow the STF segment to provide data for a
+particular type of staff member. The PRA segment (practitioner) is one such.
+It may optionally follow the STF segment in order to add practitioner-specific
+data. Other segments may be defined as needed. When using the segments included
+in this chapter for other then Staff/Practitioner Master File messages,
+disregard references to <i>MFE-4 - primary key value</i>.
+<a name="STF"></a><br>
+<center>HL7 Attribute Table - STF - Staff Identification </center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>SEQ</b></p>
+</TH>
+<TH><p><b>LEN</b></p>
+</TH>
+<TH><p><b>DT</b></p>
+</TH>
+<TH><p><b>OPT</b></p>
+</TH>
+<TH><p><b>RP/#</b></p>
+</TH>
+<TH><p><b>TBL#</b></p>
+</TH>
+<TH><p><b>ITEM#</b></p>
+</TH>
+<TH><p>ELEMENT
+NAME
+</p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>C</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>9999</p>
+</TD>
+<TD colspan=1 align="center"><p>00671</p>
+</TD>
+<TD colspan=1 align="center"><p>Primary
+Key Value - STF
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>60</p>
+</TD>
+<TD colspan=1 align="center"><p>CX</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00672</p>
+</TD>
+<TD colspan=1 align="center"><p>Staff
+ID Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>3</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>XPN</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00673</p>
+</TD>
+<TD colspan=1 align="center"><p>Staff
+Name
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>4</p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>IS</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p><u>0182</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00674</p>
+</TD>
+<TD colspan=1 align="center"><p>Staff
+Type
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>5</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>IS</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0001</p>
+</TD>
+<TD colspan=1 align="center"><p>00111</p>
+</TD>
+<TD colspan=1 align="center"><p>Administrative
+Sex
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>6</p>
+</TD>
+<TD colspan=1 align="center"><p>26</p></TD>
+<TD colspan=1 align="center"><p>TS</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00110</p>
+</TD>
+<TD colspan=1 align="center"><p>Date/Time
+Of Birth
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>7</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>ID</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0183</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00675</p>
+</TD>
+<TD colspan=1 align="center"><p>Active/Inactive
+Flag
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p><u>0184</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00676</p>
+</TD>
+<TD colspan=1 align="center"><p>Department</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>9</p></TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p>0069</p></TD>
+<TD colspan=1 align="center"><p>00677</p>
+</TD>
+<TD colspan=1 align="center"><p>Hospital
+Service - STF
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>10</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>XTN</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00678</p>
+</TD>
+<TD colspan=1 align="center"><p>Phone</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>11</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>XAD</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00679</p>
+</TD>
+<TD colspan=1 align="center"><p>Office/Home
+Address
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>12</p>
+</TD>
+<TD colspan=1 align="center"><p>26</p>
+</TD>
+<TD colspan=1 align="center"><p>CM</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00680</p>
+</TD>
+<TD colspan=1 align="center"><p>Institution
+Activation Date
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>13</p>
+</TD>
+<TD colspan=1 align="center"><p>26</p>
+</TD>
+<TD colspan=1 align="center"><p>CM</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00681</p>
+</TD>
+<TD colspan=1 align="center"><p>Institution
+Inactivation Date
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>14</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><p>-
+- - -
+</p>
+</TD>
+<TD colspan=1 align="center"><p>00682</p>
+</TD>
+<TD colspan=1 align="center"><p>Backup
+Person ID
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>15</p>
+</TD>
+<TD colspan=1 align="center"><p>40</p>
+</TD>
+<TD colspan=1 align="center"><p>ST</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Y</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00683</p>
+</TD>
+<TD colspan=1 align="center"><p>E-Mail
+Address
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>16</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0185</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00684</p>
+</TD>
+<TD colspan=1 align="center"><p>Preferred
+Method Of Contact
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>17</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0002</p>
+</TD>
+<TD colspan=1 align="center"><p>00119</p>
+</TD>
+<TD colspan=1 align="center"><p>Marital
+Status
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>18</p>
+</TD>
+<TD colspan=1 align="center"><p>20</p>
+</TD>
+<TD colspan=1 align="center"><p>ST</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>00785</p>
+</TD>
+<TD colspan=1 align="center"><p>Job
+Title
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>19</p>
+</TD>
+<TD colspan=1 align="center"><p>20</p>
+</TD>
+<TD colspan=1 align="center"><p>JCC</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0327/
+0328
+</p>
+</TD>
+<TD colspan=1 align="center"><p>00786</p>
+</TD>
+<TD colspan=1 align="center"><p>Job
+Code/Class
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>20</p>
+</TD>
+<TD colspan=1 align="center"><p>2</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0066</u></p>
+</TD>
+<TD colspan=1 align="center"><p>01276</p>
+</TD>
+<TD colspan=1 align="center"><p>Employment
+Status Code
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>21</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>ID</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0136</p>
+</TD>
+<TD colspan=1 align="center"><p>01275</p>
+</TD>
+<TD colspan=1 align="center"><p>Additional
+Insured on  Auto
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>22</p>
+</TD>
+<TD colspan=1 align="center"><p>25</p>
+</TD>
+<TD colspan=1 align="center"><p>DLN</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01302</p>
+</TD>
+<TD colspan=1 align="center"><p>Driver's
+License Number - Staff
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>23</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>ID</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0136</p>
+</TD>
+<TD colspan=1 align="center"><p>01229</p>
+</TD>
+<TD colspan=1 align="center"><p>Copy
+ Auto Ins
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>24</p>
+</TD>
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>DT</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01232</p>
+</TD>
+<TD colspan=1 align="center"><p>Auto
+Ins. Expires
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>25</p>
+</TD>
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>DT</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01298</p>
+</TD>
+<TD colspan=1 align="center"><p>Date
+Last DMV Review
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>26</p>
+</TD>
+<TD colspan=1 align="center"><p>8</p>
+</TD>
+<TD colspan=1 align="center"><p>DT</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>01234</p>
+</TD>
+<TD colspan=1 align="center"><p>Date
+Next DMV Review
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>27</p>
+</TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p><u>0005</u></p>
+</TD>
+<TD colspan=1 align="center"><p>00113</p>
+</TD>
+<TD colspan=1 align="center"><p>Race</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>28</p></TD>
+<TD colspan=1 align="center"><p>250</p>
+</TD>
+<TD colspan=1 align="center"><p>CE</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0189</p>
+</TD>
+<TD colspan=1 align="center"><p>00125</p>
+</TD>
+<TD colspan=1 align="center"><p>Ethnic
+Group
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>29</p>
+</TD>
+<TD colspan=1 align="center"><p>1</p>
+</TD>
+<TD colspan=1 align="center"><p>ID</p>
+</TD>
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>0136</p>
+</TD>
+<TD colspan=1 align="center"><p>01596</p>
+</TD>
+<TD colspan=1 align="center"><p>Re-activation
+Approval Indicator
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading66">15.4.6.0 STF field definitions</A></h4>
+
+
+<h4>
+<A NAME="Heading67">15.4.6.1 STF-1   Primary key value - STF  (CE)   00671</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  For MFN Master File Notification, this field is required and must
+match <i>MFE-4-primary key value</i> to identify which entry is being
+referenced.  For all other messages, this field should not be used.
+</p>
+
+<h4>
+<A NAME="Heading68">15.4.6.2 STF-2   Staff ID code  (CX)   00672</A></h4>
+
+<p><tt>Components:
+&lt;ID (ST)&gt; ^ &lt;check digit (ST)&gt; ^ &lt;code identifying the check
+digit scheme employed (ID)&gt; ^ &lt; assigning authority (HD)&gt; ^
+&lt;identifier type code (ID)&gt; ^ &lt; assigning facility (HD) ^
+&lt;effective date (DT)&gt; ^ &lt;expiration date (DT)&gt;</tt><br>
+<tt>Subcomponents of assigning authority:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+<tt>Subcomponents of assigning facility:  &lt;namespace ID (IS)&gt; &amp;
+&lt;universal ID (ST)&gt; &amp; &lt;universal ID type (ID)&gt;</tt><br>
+Definition:  This field contains a personnel identification code or institution
+user number, used by the institution to identify this person.  Repeating field
+allows multiple ID codes per person, with the type of ID code indicated in the
+third component of the coded entry data type.   If a Staff Member has Staff ID
+codes that are valid only in specific organization units, that Staff ID code
+should be recorded in the ORG-Practitioner Organization Unit segment.
+</p>
+
+<h4>
+<A NAME="Heading69">15.4.6.3 STF-3   Staff name  (XPN)   00673</A></h4>
+
+<p><tt>Components:
+In Version 2.3, replaces the PN data type.  &lt;family name (FN)&gt; ^
+&lt;given name (ST)&gt; ^ &lt;second and further given names or initials
+thereof (ST)&gt; ^ &lt;suffix (e.g., JR or III) (ST)&gt; ^ &lt;prefix (e.g.,
+DR) (ST)&gt; ^ &lt;degree (e.g., MD) (IS)&gt; ^<b> </b>&lt;name type code (ID)
+&gt; ^ &lt;name representation code (ID)&gt; ^ &lt;name context (CE)&gt; ^
+&lt;name validity range (DR)&gt; ^ &lt;name assembly order (ID)&gt;</tt><br>
+<tt>Subcomponents of family name:  &lt;family name (ST)&gt; &amp; &lt;own
+family name prefix (ST)&gt; &amp; &lt;own family name (ST)&gt; &amp; &lt;family
+name prefix from partner/spouse (ST)&gt; &amp; &lt;family name from
+partner/spouse (ST)&gt;</tt><br>
+Definition:  This field contains the staff person's name.  This field may
+repeat to transmit multiple names for the same person.
+</p>
+
+<h4>
+<A NAME="Heading70">15.4.6.4 STF-4   Staff type  (IS)   00674</A></h4>
+
+<p>Definition:
+ This field contains a code identifying what type of staff. Refer to
+<cite>User-defined Table 0182 - Staff type</cite> for suggested values.  Values
+may include codes for staff, practitioner (physician, nurse, therapist, etc.),
+referral agent or agency, etc.
+<a name="HL70182"></a><br>
+<center>User-defined Table 0182 - Staff type</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>...</p>
+</TD>
+<TD colspan=1 align="center"><p>No
+suggested values defined
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading71">15.4.6.5 STF-5   Administrative sex  (IS)   00111</A></h4>
+
+<p>Definition:
+ This field contains the staff person's sex.  Refer to <i>User-defined Table
+0001 - Administrative Sex</i> for suggested values.
+</p>
+
+<h4>
+<A NAME="Heading72">15.4.6.6 STF-6   Date/time of birth  (TS)   00110</A></h4>
+
+<p>Definition:
+ This field contains a staff member's date and time of birth.
+</p>
+
+<h4>
+<A NAME="Heading73">15.4.6.7 STF-7   Active/inactive flag (ID)   00675</A></h4>
+
+<p>Definition:
+ This field indicates whether person is currently a valid staff member.  Refer
+to <cite>HL7 Table 0183 - Active/inactive</cite> for valid values.
+<a name="HL70183"></a><br>
+<center>HL7 Table 0183 - Active/inactive</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>A</p>
+</TD>
+<TD colspan=1 align="center"><p>Active
+Staff
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>I</p>
+</TD>
+<TD colspan=1 align="center"><p>Inactive
+Staff
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading74">15.4.6.8 STF-8   Department  (CE)   00676</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the institution department to which this
+person reports or belongs.  Refer to <cite>User-defined Table 0184 -
+Departmen</cite><i>t</i> for suggested values.
+<a name="HL70184"></a><br>
+<center>User-defined Table 0184 - Department</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>...</p>
+</TD>
+<TD colspan=1 align="center"><p>No
+suggested values defined
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading75">15.4.6.9 STF-9   Hospital service - STF  (CE)   00677</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the hospital or ancillary service with which
+this staff person is associated.  Refer to 
+<cite>User-defined
+Table 0069 - Hospital service</cite> for suggested values.
+</p>
+
+<h4>
+<A NAME="Heading76">15.4.6.10 STF-10   Phone  (XTN)   00678</A></h4>
+
+<p><tt>Components:
+ [<b>N</b>NN] [(999)]999-9999 [X99999] [B99999] [C any text] ^
+&lt;telecommunication use code (ID)&gt; ^ &lt;telecommunication equipment type
+(ID)&gt; ^ &lt;email address (ST)&gt; ^ &lt;county code (NM)&gt; ^
+&lt;area/city code (NM)&gt; ^ &lt;phone number (NM) ^ &lt;extension (NM)&gt; ^
+&lt;any text (ST)&gt; </tt><br>
+Definition:  This field contains the staff person's phone number.  This is a
+repeating field with a component for indicating which phone number is which. It
+is recommended that the last part of the XTN, [C any text], start with a code
+from the table associated below with <i>STF-16-preferred method of contact</i>,
+in order to indicate the type of each phone number in this repeating field.
+</p>
+
+<h4>
+<A NAME="Heading77">15.4.6.11 STF-11   Office/home address  (XAD)   00679</A></h4>
+
+<p><tt>Components:
+In Version 2.3 and later, replaces the AD data type.  &lt;street address
+(ST)&gt; ^ &lt;other designation (ST)&gt; ^ &lt;city (ST)&gt; ^ &lt;state or
+province (ST)&gt; ^ &lt;zip or postal code (ST)&gt; ^ &lt;country (ID)&gt; ^
+&lt; address type (ID)&gt;<b> </b>^ &lt;other geographic designation (ST)&gt;
+^<b> </b>&lt;county/parish code (IS)&gt; ^ &lt;census tract (IS)&gt; ^
+&lt;address representation code (ID)&gt; ^ &lt;address validity range
+(DR)&gt;</tt><br>
+<tt>Subcomponents of street address: &lt;street address (ST&gt; &amp;
+&lt;street name (ST)&gt; &amp; &lt;dwelling number (ST)&gt;</tt><br>
+Definition:  This field contains the office address and home address of the
+staff person.  This is a repeating field.
+</p>
+
+<h4>
+<A NAME="Heading78">15.4.6.12 STF-12   Institution activation date  (CM)   00680</A></h4>
+
+<p><tt>Components:
+&lt;date (TS)&gt; ^ &lt;institution name (CE)&gt;</tt><br>
+<tt>Subcomponents for institution name:  &lt;identifier (ST)&gt; &amp; &lt;text
+(ST) &amp; &lt;name of coding system (IS)&gt; &amp; &lt;alternate identifier
+(ST)&gt; &amp; &lt;alternate text (ST)&gt; &amp; &lt;name of alternate coding
+system (ST)&gt;</tt><br>
+Definition:  This field contains the date when staff became active for an
+institution.  This is a repeating field.
+</p>
+
+<h4>
+<A NAME="Heading79">15.4.6.13 STF-13   Institution inactivation date  (CM)   00681</A></h4>
+
+<p><tt>Components:
+&lt;date (TS)&gt; ^ &lt;institution name (CE)&gt;</tt><br>
+<tt>Subcomponents for institution name:  &lt;identifier (ST)&gt; &amp; &lt;text
+(ST) &amp; &lt;name of coding system (IS)&gt; &amp; &lt;alternate identifier
+(ST)&gt; &amp; &lt;alternate text (ST)&gt; &amp; &lt;name of alternate coding
+system (ST)&gt;</tt><br>
+Definition:  This field contains the date when staff became inactive for an
+institution.  This is a repeating field.
+</p>
+
+<h4>
+<A NAME="Heading80">15.4.6.14 STF-14   Backup person ID  (CE)   00682</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the <i>MFE-4-primary key value</i> of the
+master file entry that corresponds to the designated backup person for this
+staff person.
+</p>
+
+<h4>
+<A NAME="Heading81">15.4.6.15 STF-15   E-mail address  (ST)   00683</A></h4>
+
+<p>Definition:
+ <b><i>This field has been retained for backward compatibility.</i></b>  (It is
+now present in the fourth component of <i>STF-10-phone</i>).
+</p>
+
+<h4>
+<A NAME="Heading82">15.4.6.16 STF-16   Preferred method of contact  (CE)   00684</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field indicates which of a group of multiple phone numbers is
+the preferred method of contact for this person.  Note that all values of this
+code refer to this segment's phone field, except for the value "E," which
+refers to the E-mail address field.  If more than one phone number of the
+preferred type exists in <i>STF-10-phone</i>, this field refers to the first
+such instance.  Refer to<i> </i><cite>HL7 Table 0185 - Preferred method of
+contact</cite> for valid values.
+<a name="HL70185"></a><br>
+<center>HL7 Table 0185 - Preferred method of contact</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>B</p>
+</TD>
+<TD colspan=1 align="center"><p>Beeper
+Number
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>C</p>
+</TD>
+<TD colspan=1 align="center"><p>Cellular
+Phone Number
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>E</p>
+</TD>
+<TD colspan=1 align="center"><p>E-Mail
+Address (for backward compatibility)
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>F</p>
+</TD>
+<TD colspan=1 align="center"><p>FAX
+Number
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>H</p>
+</TD>
+<TD colspan=1 align="center"><p>Home
+Phone Number
+</p>
+</TD>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>O</p>
+</TD>
+<TD colspan=1 align="center"><p>Office
+Phone Number
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading83">15.4.6.17 STF-17   Marital status (CE)   00119</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field contains the staff member's marital status.  Refer to
+<i>User-defined Table 0002 - Marital status</i> for suggested values.  Same
+values as those for <i>PID-16-marital status</i>.
+</p>
+
+<h4>
+<A NAME="Heading84">15.4.6.18 STF-18   Job title (ST)   00785</A></h4>
+
+<p>Definition:
+ This field contains a descriptive name of the staff member's occupation (e.g.,
+Sr. Systems Analyst, Sr. Accountant).
+</p>
+
+<h4>
+<A NAME="Heading85">15.4.6.19 STF-19   Job code/class  (JCC)   00786</A></h4>
+
+<p><tt>Components:
+&lt;job code (IS)&gt; ^ &lt;job class (IS)&gt;</tt><br>
+Definition: This field contains the staff member's job code and employee
+classification.  Refer to <i>User-defined Table 0327 - Job code</i> and
+<i>User-defined Table 0328 - Employee classification</i> for suggested values.
+</p>
+
+<h4>
+<A NAME="Heading86">15.4.6.20 STF-20   Employment status code (CE)   01276</A></h4>
+
+<p>Definition:
+ This field contains the code that indicates the staff member's employment
+status, e.g., full-time, part-time, self-employed, etc. Refer to
+<cite>User-defined Table 0066 - Employment status</cite> for suggested
+values.<br>
+<center>User-defined Table 0066 - Employment status</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><p>see
+chapter 6
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading87">15.4.6.21 STF-21   Additional insured on auto (ID)   01275</A></h4>
+
+<p>Definition:
+ This field contains an indicator for whether the present institution is named
+as an additional insured on the staff member's auto insurance, especially for
+use when staff is a driver for the institution.   Refer to <i>HL7 Table 0136 -
+Yes/no indicator</i> for valid values.<br>
+	Y	indicates that the institution is named as an additional insured<br>
+	N	indicates that the institution is not named as an additional insured
+</p>
+
+<h4>
+<A NAME="Heading88">15.4.6.22 STF-22   Driver's license number - staff'  (DLN)   01302</A></h4>
+
+<p><tt>Components:
+ &lt;license number (ST)&gt; ^ &lt;issuing state, province, country (IS)&gt; ^
+&lt;expiration date (DT)</tt><br>
+Definition:  This field contains the driver's license information of staff,
+especially for use when staff is a driver for the institution.  For state or
+province refer to official postal codes for that country; for country refer to
+ISO 3166 for codes.
+</p>
+
+<h4>
+<A NAME="Heading89">15.4.6.23 STF-23   Copy auto ins  (ID)   01229</A></h4>
+
+<p>Definition:
+ This field contains an indicator for whether the institution has on file a
+copy of the staff member's auto insurance, especially for use when staff is a
+driver for the institution.   Refer to <i>HL7 Table 0136 - Yes/no indicator</i>
+for valid values.<br>
+	Y	indicates that the institution has a copy on file<br>
+	N	indicates that the institution does not have a copy on file
+</p>
+
+<h4>
+<A NAME="Heading90">15.4.6.24 STF-24   Auto ins expires  (DT)   01232</A></h4>
+
+<p>Definition:
+ This field contains the date on which the staff member's driver's license
+expires, especially for use when staff is a driver for the institution.
+</p>
+
+<h4>
+<A NAME="Heading91">15.4.6.25 STF-25   Date last DMV review (DT)   01298</A></h4>
+
+<p>Definition:
+ This field contains the date of the staff member's most recent Department of
+Motor Vehicles review, especially for use when staff is a driver for the
+institution.
+</p>
+
+<h4>
+<A NAME="Heading92">15.4.6.26 STF-26   Date next DMV review (DT)   01234</A></h4>
+
+<p>Definition:
+ This field contains the date of the staff member's next Department of Motor
+Vehicles review, especially for use when staff is a driver for the institution.
+</p>
+
+<h4>
+<A NAME="Heading93">15.4.6.27 STF-27   Race  (CE)   00113</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field refers to the person's race.  Refer to
+<cite>User-defined Table 0005 - Race</cite> for suggested values.  The second
+triplet of the CE data type for race (alternate identifier, alternate text, and
+name of alternate coding system) is reserved for governmentally assigned codes.
+<a name="HL70005"></a><br>
+<center>User-defined Table 0005 - Race</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>...</p>
+</TD>
+<TD colspan=1 align="center"><p>see
+chapter 3
+</p>
+</TD>
+</TR>
+</TABLE>
+<h4>
+<A NAME="Heading94">15.4.6.28 STF-28   Ethnic group  (CE)   00125</A></h4>
+
+<p><tt>Components:
+&lt;identifier (ST)&gt; ^ &lt;text (ST)&gt; ^ &lt;name of coding system
+(IS)&gt; ^ &lt;alternate identifier (ST)&gt; ^ &lt;alternate text (ST)&gt; ^
+&lt;name of alternate coding system (IS)&gt;</tt><br>
+Definition:  This field further defines the person's ancestry.  Refer to
+<i>User-defined Table 0189 - Ethnic group</i> for suggested values. The second
+couplet of the CE data type for ethnic group (alternate identifier, alternate
+text, and name of alternate coding system) is reserved for governmentally
+assigned codes. In the United States, a current use is to report ethnicity in
+line with US federal standards for Hispanic origin.<br>
+<center>User-defined Table 0189 - Ethnic group</center><br>
+</p>
+<TABLE BORDER>
+<TR align="center">
+<TH><p><b>Value</b></p>
+</TH>
+<TH><p><b>Description</b></p>
+</TH>
+</TR>
+<TR align="center">
+<TD colspan=1 align="center"><p>...</p>
+</TD>
+<TD colspan=1 align="center"><p>see
+chapter 3
+</p>
+</TD>
+</TR>
+</TABLE>
+<p></p>
+
+<h4>
+<A NAME="Heading95">15.4.6.29 STF-29   Re-activate approval indicator  (ID)  01596</A></h4>
+
+<p>Definition:
+ This field contains an indicator for whether the re-activation of this record
+requires special approval.  Refer to <i>HL7 Table 0136 - Yes/no indicator</i>
+for valid values.<br>
+	Y	the re-activation requires approval<br>
+	N	this re-activation does not require approval
+</p>
+
+<h2>
+<A NAME="Heading96">15.5 EXAMPLE TRANSACTIONS</A></h2>
+
+
+<h3>
+<A NAME="Heading97">15.5.1 Add personnel record - event B01</A></h3>
+
+<p>MSH|^~\&amp;|HL7REG|UH|HL7LAB|CH|199902280700||PMU^B01^PMU_B01|MSGID002|P|2.4|&lt;cr&lt;<br>
+EVN|B01|199902280700|&lt;cr&gt;<br>
+STF|PMF98123789182^^PLW|U2246^^^PLW~111223333^^^USSSA^SS|KILDARE^RICHARD^J^JR^DR^M.D.|P|M|19511004|A|^ICU|^MED|(206)689-1999X345CO~(206)283-3334CH(206)689-1345X789CB|214
+JOHNSON ST^SUITE 200^SEATTLE^WA^98199^H~3029 24TH AVE W^^SEATTLE, WA^98198^O
+|19890125^UMC&amp;University Medical
+Center&amp;L01||PMF88123453334|74160.2326@COMPUSERV.COM|B<br>
+PRA|PMF98123789182^^PLW|^KILDARE FAMILY PRACTICE|ST|I|OB/GYN^STATE BOARD OF
+OBSTETRICS AND
+GYNECOLOGY^C^19790123|1234887609^UPIN~1234987^CTY^MECOSTA~223987654^TAX~1234987757^DEA~12394433879^MDD^CA|ADMIT&amp;&amp;ADT^MED&amp;&amp;L2^19941231~DISCH&amp;&amp;ADT^MED&amp;&amp;L2^19941231|<br>
+AFF|1|AMERICAN MEDICAL ASSOCIATION|123 MAIN STREET^^OUR TOWN^CA^98765^U.S.A.^M
+|19900101|<br>
+LAN|1|ESL^SPANISH^ISO639|1^READ^HL70403|1^EXCELLENT^HL70404|<br>
+LAN|2|ESL^SPANISH^ISO639|2^WRITE^HL70403|2^GOOD^HL70404|<br>
+LAN|3|FRE^FRENCH^ISO639|3^SPEAK^HL70403|3^FAIR^HL70404|<br>
+EDU|1|BA^BACHELOR OF ARTS^HL70360|19810901^19850601|YALE
+UNIVERSITY^L|U^HL70402|456 CONNECTICUT AVENUE^^NEW HAVEN^CO^87654^U.S.A.^M|<br>
+EDU|2|MD^DOCTOR OF MEDICINE^HL70360|19850901^19890601|HARVARD MEDICAL SCHOOL^L
+|M^HL70402|123 MASSACHUSETTS AVENUE^CAMBRIDGE^MA^76543^U.S.A.^M|
+</p>
+
+<h2>
+<A NAME="Heading98">15.6 OUTSTANDING ISSUES</A></h2>
+
+<p>Proposals
+for the specification of additional events and messages should be submitted to
+the Personnel Management SIG.
+</p>
+</body></html>
