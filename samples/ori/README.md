@@ -11,14 +11,15 @@ Features
 Document Correspondence
 -----------------------
 
-| HL7                 | eHealth             |
-| ------------------- | ------------------- |
-| Patient             | patient             |
-| Organization        | legal_entitities    |
-| HealthcareServicesn | healthcare_services |
-| Practitioner        | employees           |
-| PractitionerRole    | employee_roles      |
-| CareTeam            | divisions           |
+| HL7                 | eHealth                    |
+| ------------------- | -------------------------- |
+| Person              | person_request, preperson  |
+| Patient             | persons                    |
+| Organization        | legal_entitities           |
+| HealthcareServices  | healthcare_services        |
+| Practitioner        | employees                  |
+| PractitionerRole    | employee_roles             |
+| CareTeam            | divisions                  |
 
 Credits
 -------
