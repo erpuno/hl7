@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><Patient xmlns="http://hl7.org/fhir">
+  <id value="patient-uslab-example2"/>
+  <text><status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: patient-uslab-example2</p><p><b>identifier</b>: 18547545 (USUAL)</p><p><b>name</b>: Todd G. Lerr (OFFICIAL)</p><p><b>telecom</b>: ph: (555)7259890(HOME), ph: (555)7256030(WORK)</p><p><b>gender</b>: male</p><p><b>birthDate</b>: 07/06/2012</p><p><b>deceased</b>: false</p><p><b>address</b>: 123 North 102nd Street Apt 4d Harrisburg PA 17102 USA (HOME)</p><h3>Contacts</h3><table><tr><td>-</td><td><b>Relationship</b></td><td><b>Name</b></td><td><b>Telecom</b></td><td><b>Address</b></td></tr><tr><td>*</td><td>guardian <span>(Details : {[not stated] code &#39;guardian&#39; = &#39;??)</span></td><td>Bea G Smith </td><td>ph: (555)7259890</td><td>123 North 102nd Street Apt 4d Harrisburg PA 17102 USA (HOME)</td></tr></table></div></text><extension url="http://hl7.org/fhir/StructureDefinition/us-core-race">
+    <valueCodeableConcept>
+      <coding>
+        <code value="2106-3"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/us-core-ethnicity">
+    <valueCodeableConcept>
+      <coding>
+        <code value="2135-2"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+<!--    EH: limit to single identifier that orderer can match to patient system can be URL    -->
+  <identifier>
+    <use value="usual"/>
+    <system value="urn:oid:2.16.840.1.113883.3.72.5.30.2"/>
+    <value value="18547545"/>
+  </identifier>
+<!--   name use limited to official and anonymous   -->
+  <name>
+    <use value="official"/>
+    <family value="Lerr"/>
+    <given value="Todd"/>
+    <given value="G."/>
+    <suffix value="Jr"/>
+  </name>
+  <telecom>
+    <system value="phone"/>
+    <value value="(555)7259890"/>
+    <use value="home"/>
+  </telecom>
+  <telecom>
+    <system value="phone"/>
+    <value value="(555)7256030"/>
+    <use value="work"/>
+  </telecom>
+<!--    use FHIR code system for male / female    -->
+  <gender value="male"/>
+  <birthDate value="2012-06-07"/>
+  <deceasedBoolean value="false"/>
+  <address>
+  <!--    EH replace with example.org temporarily to pass validation
+<extension url="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-county">
+			<extension url="http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding">
+   -->
+    <extension url="http://example.org/us-core-county">
+      <extension url="http://example.org//iso21090-SC-coding">
+        <valueCoding>
+          <system value="https://www.census.gov/geo/reference"/>
+          <code value="42043"/>
+        </valueCoding>
+      </extension>
+    </extension>
+    <use value="home"/>
+    <line value="123 North 102nd Street"/>
+    <line value="Apt 4d"/>
+    <city value="Harrisburg"/>
+    <state value="PA"/>
+    <postalCode value="17102"/>
+    <country value="USA"/>
+  </address>
+  <contact>
+    <relationship>
+      <coding>
+        <code value="guardian"/>
+      </coding>
+    </relationship>
+    <name>
+      <family value="Smith"/>
+      <given value="Bea"/>
+      <given value="G"/>
+    </name>
+    <telecom>
+      <system value="phone"/>
+      <value value="(555)7259890"/>
+    </telecom>
+    <address>
+      <extension url="http://example.org/us-core-county">
+        <extension url="http://example.org//iso21090-SC-coding">
+        <!--    EH replace with example.org temporarily to pass validation
+			<extension url="http://hl7.org/fhir/StructureDefinition/us-core-county">
+				<extension url="http://hl7.org/fhir/StructureDefinition/iso21090-SC-coding">
+   -->
+          <valueCoding>
+            <system value="https://www.census.gov/geo/reference"/>
+            <code value="42043"/>
+          </valueCoding>
+        </extension>
+      </extension>
+      <use value="home"/>
+      <line value="123 North 102nd Street"/>
+      <line value="Apt 4d"/>
+      <city value="Harrisburg"/>
+      <state value="PA"/>
+      <postalCode value="17102"/>
+      <country value="USA"/>
+    </address>
+  </contact>
+</Patient>
