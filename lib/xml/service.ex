@@ -1,4 +1,4 @@
-defmodule HL7.XML do
+defmodule HL7.Service do
    # Reference Implementation: http://hapi.fhir.org/
 
    def createOrganization() do

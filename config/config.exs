@@ -1,6 +1,7 @@
 use Mix.Config
 
 config :hl7,
+  port: 9234,
   # Default HL7 message field separator (MSH.1)
   field_sep: "|",
   # Default HL7 encoding characters (i.e. separators for components, repetitions, subcomponents
