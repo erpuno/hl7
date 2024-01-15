@@ -1,4 +1,4 @@
-# HL7: FHIR Applicarion Server
+# HL7: FHIR Application Server
 
 ## Features
 
