@@ -16,10 +16,10 @@ Document Correspondence
 | Person              | person_request, preperson  |
 | Patient             | persons                    |
 | Organization        | legal_entitities           |
+| Location            | divisions                  |
 | HealthcareServices  | healthcare_services        |
 | Practitioner        | employees                  |
 | PractitionerRole    | employee_roles             |
-| CareTeam            | divisions                  |
 
 Credits
 -------
