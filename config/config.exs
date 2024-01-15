@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :ex_hl7,
+config :hl7,
   # Default HL7 message field separator (MSH.1)
   field_sep: "|",
   # Default HL7 encoding characters (i.e. separators for components, repetitions, subcomponents
