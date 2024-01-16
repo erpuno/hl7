@@ -5,8 +5,9 @@ defmodule HL7 do
   alias HL7.{Codec, Message, Reader, Segment, Type, Writer}
   require Record
 
-  @schema [ :"Person", :"Patient", :"Composition", :"DeviceDefinition",
-            :"Location", :"Organization", :"Patient", :"Person" ]
+  @schema [ :"Person", :"Patient", :"Location", :"Organization",
+            :"Composition",
+            :"DeviceDefinition", :"DeviceDispense", :"DeviceRequest" ]
 
   Enum.each(@schema,
     fn t ->
