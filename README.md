@@ -2,8 +2,7 @@
 
 ## Features
 
-* Text V2
-* XML V3
+* JSON Schema Validations
 * HTTP Endpoints
 
 ## Credits

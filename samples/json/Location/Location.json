@@ -10,8 +10,7 @@
   }],
   "status" : "active",
   "name" : "South Wing, second floor",
-  "alias" : ["BU MC, SW, F2",
-  "Burgers University Medical Center, South Wing, second floor"],
+  "alias" : ["BU MC, SW, F2", "Burgers University Medical Center, South Wing, second floor"],
   "description" : "Second floor of the Old South Wing, formerly in use by Psychiatry",
   "mode" : "instance",
   "contact" : [{

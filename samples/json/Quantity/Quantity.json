@@ -1,0 +1,9 @@
+{
+  "id" : "1",
+  "resourceType": "Quantity",
+  "value" : 120,
+  "comparator" : "<=",
+  "unit" : "кг",
+  "system" : "https://hl7.erp.uno",
+  "code" : "123"
+}

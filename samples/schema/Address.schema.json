@@ -1,0 +1,70 @@
+{
+  "schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/Address",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "Address": {
+      "allOf": [
+        {
+          "description": "An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.",
+          "properties": {
+            "use": {
+              "description": "The purpose of this address.",
+              "enum": [
+                "home",
+                "work",
+                "temp",
+                "old"
+              ],
+              "type": "string"
+            },
+            "type": {
+              "description": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
+              "enum": [
+                "postal",
+                "physical",
+                "both"
+              ],
+              "type": "string"
+            },
+            "text": {
+              "description": "A full text representation of the address.",
+              "type": "string"
+            },
+            "line": {
+              "description": "This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "city": {
+              "description": "The name of the city, town, village or other community or delivery center.",
+              "type": "string"
+            },
+            "district": {
+              "description": "The name of the administrative area (county).",
+              "type": "string"
+            },
+            "state": {
+              "description": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).",
+              "type": "string"
+            },
+            "postalCode": {
+              "description": "A postal code designating a region defined by the postal service.",
+              "type": "string"
+            },
+            "country": {
+              "description": "Country - a nation as commonly understood or generally accepted.",
+              "type": "string"
+            },
+            "period": {
+              "description": "Time period when address was/is in use.",
+              "$ref": "Period.schema.json#/definitions/Period"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

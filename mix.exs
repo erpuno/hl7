@@ -29,7 +29,7 @@ defmodule HL7.Mixfile do
   def package do
     [ files: ["lib", "mix.exs", "README.md", "LICENSE", "NOTICE"],
       maintainers: ["Namdak Tonpa"],
-      licenses: ["Apache 2.0"],
+      licenses: ["ISC"],
       links: %{"GitHub" => "https://github.com/erpuno/hl7"}
     ]
   end
