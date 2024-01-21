@@ -32,6 +32,12 @@ defmodule HL7 do
     end
   )
 
+  def validate() do
+      {:ok, state} = :xmerl_xsd.process_schema("fhir-single.xsd")
+      {entity ,_} = :xmerl_scan.file("/samples/xml/Contract/Contract.xml")
+      :xmerl_xsd.validate(entity, state)
+  end
+
   def schema(), do: @schema
 
   def testReader() do

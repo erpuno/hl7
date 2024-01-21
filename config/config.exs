@@ -1,5 +1,7 @@
 use Mix.Config
 
+config :xema, loader: My.Loader
+
 config :hl7,
   port: 9234,
   # Default HL7 message field separator (MSH.1)

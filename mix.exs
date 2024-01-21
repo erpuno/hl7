@@ -12,7 +12,7 @@ defmodule HL7.Mixfile do
   end
 
   def application do
-    [ extra_applications: [:logger, :plug_cowboy],
+    [ extra_applications: [:logger, :plug_cowboy, :xmerl],
       mod: {HL7.Application,[]}
     ]
   end
@@ -20,6 +20,7 @@ defmodule HL7.Mixfile do
   def deps do
     [
       {:ex_doc, "~> 0.21", only: :dev},
+      {:json_xema, "~> 0.3"},
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.2"}
     ]

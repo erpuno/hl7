@@ -11,7 +11,6 @@
   edrpou = [],
   kveds = [],
   addresses = [],
-  phones = [],
   email = [],
   website = [],
   receiverFundsCode = [],
