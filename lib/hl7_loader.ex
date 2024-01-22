@@ -1,4 +1,4 @@
-defmodule My.Loader do
+defmodule HL7.Loader do
   @moduledoc false
 
   @behaviour Xema.Loader

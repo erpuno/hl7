@@ -17,7 +17,7 @@ defmodule HL7.Endpoint do
   post "/$meta"     do HL7.Service.postMeta(conn) end
   get  "/:type/:id"              do HL7.Service.get3(conn,"",type,id) end
   put  "/:type/:id"              do HL7.Service.put3(conn,"",type,id) end
-  delete ":type/:id"             do HL7.Service.delete3(conn,"",type,id) end
+  delete "/:type/:id"            do HL7.Service.delete3(conn,"",type,id) end
   post "/_search"                do HL7.Service.post2(conn,"","_search") end
   post "/:res/_search"           do HL7.Service.post3(conn,"",res,"_search") end
   post "/:comp/:id/_search"      do HL7.Service.post4(conn,"",comp,id,"_search") end

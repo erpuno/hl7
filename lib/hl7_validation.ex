@@ -1,17 +1,17 @@
 defmodule HL7.Validation do
  
-  def test() do
-      {_,bin} = :file.read_file "samples/schema/Quantity.schema.json"
-      schemaJson = Jason.decode!(bin)
-      {_,obj} = :file.read_file "samples/json/Quantity/Quantity.json"
-      loc = Jason.decode!(obj, keys: :atoms)
+  def test(name \\ "Quantity") do
+      {_,schemaBin} = :file.read_file "samples/schema/#{name}.schema.json"
+      schemaJson = Jason.decode!(schemaBin)
+      {_,objBin} = :file.read_file "samples/json/#{name}/#{name}.json"
       schema = Xema.from_json_schema(schemaJson)
-      verify = %{verified: Xema.valid?(schema, loc)}
-      {schema,loc,verify}
+      obj = Jason.decode!(objBin, keys: :atoms)
+      verify = Xema.valid?(schema, obj)
+      {schema,obj,verify}
   end
 
-  def location() do
-      {_,bin} = :file.read_file "samples/json/Location/Location.json"
+  def location(name \\ "Location") do
+      {_,bin} = :file.read_file "samples/json/#{name}/#{name}.json"
       {_,map} = Jason.decode(bin, keys: :atoms)
       map
   end
@@ -43,8 +43,8 @@ defmodule HL7.Validation do
         },
         additional_properties: false
       }
-      
-      Xema.validate(locationSchema, location())
+      obj = location()
+      {locationSchema,obj,Xema.validate(locationSchema, obj)}
   end
 
 end
