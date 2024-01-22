@@ -4,4 +4,4 @@ config :xema,
   loader: HL7.Loader
 
 config :hl7,
-  port: 9234,
+  port: 9234
