@@ -16,7 +16,7 @@ defmodule Xema.Ref do
           uri: URI.t() | nil
         }
 
-  @derive {Inspect, optional: [:pointer, :uri]}
+#  @derive {Inspect, optional: [:pointer, :uri]}
   defstruct pointer: nil,
             uri: nil
 
@@ -34,7 +34,7 @@ defmodule Xema.Ref do
   @spec new(String.t(), URI.t() | nil) :: Ref.t()
   def new(%Xema.Ref{
           pointer: pointer,
-          uri: uri
+          uri: _uri
           }, _), do: new(pointer)
 
   def new("#" <> _ = pointer, _uri), do: new(pointer)

@@ -95,6 +95,13 @@
           },
           "type": "array"
         },
+        "telecom": {
+          "description": "The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.",
+          "items": {
+            "$ref": "ContactPoint.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
         "address": {
           "description": "Physical location.",
           "$ref": "Address.schema.json#/definitions/Address"

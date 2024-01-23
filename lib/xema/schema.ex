@@ -175,7 +175,7 @@ defmodule Xema.Schema do
     :unique_items,
     :validator
   ]
-  @derive {Inspect, optional: @fields}
+#  @derive {Inspect, optional: @fields}
   defstruct @fields ++ [type: :any]
 
   @typedoc """
@@ -314,29 +314,16 @@ defmodule Xema.Schema do
   """
   @spec fetch!(Schema.t(), Ref.t() | String.t()) :: Schema.t()
   def fetch!(%Schema{} = schema, pointer) do
-
-
-    case fetch(schema, pointer) do
-      {:ok, schema} -> schema
-      :error ->
-
-          ref = :maps.get(:definitions, schema)
-          base = :filename.basename(pointer)
-          name = "schema/" <> base <> ".schema.json"
-
-          refs = :application.get_env(:hl7, :definitions, [])
-          :io.format 'name: ~p, pointer: ~p~n',[name, pointer]
-
-                    {_,bin} = :file.read_file name
-                    schema = Jason.decode!(bin)
-                    %{schema: xema} = schema |> Xema.from_json_schema()
-                    defs = :application.get_env(:hl7, :definitions, [])
-                    :application.set_env(:hl7, :definitions, [{base,xema}|defs])
-
-          res  = case :lists.keyfind(base, 1, refs) do
-                     false -> raise SchemaError, {:ref_not_found, pointer}
-                     {_,schema} -> schema end
-    end
+      case fetch(schema, pointer) do
+           {:ok, schema} -> schema
+           :error ->base = :filename.basename(pointer)
+                     name = "schema/" <> base <> ".schema.json"
+                     refs = :application.get_env(:hl7, :definitions, [])
+                     :io.format 'fetch: ~p~n',[name]
+                     case :lists.keyfind(base, 1, refs) do
+                          false -> raise SchemaError, {:ref_not_found, pointer}
+                          {_,schema} -> schema end
+      end
   end
 
   # Validates the type/types in the given keywords.

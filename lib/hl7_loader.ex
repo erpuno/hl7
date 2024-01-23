@@ -9,8 +9,7 @@ defmodule HL7.Loader do
       name = "schema/" <> base <> ".schema.json"
       refs = :application.get_env(:hl7, :definitions, [])
       case :lists.keyfind(base, 1, refs) do
-           false -> :io.format 'Uri: ~p~n', [name]
-                    {_,bin} = :file.read_file name
+           false -> {_,bin} = :file.read_file name
                     schema = Jason.decode!(bin)
                     %{schema: xema} = schema |> Xema.from_json_schema()
                     defs = :application.get_env(:hl7, :definitions, [])
