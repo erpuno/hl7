@@ -35,7 +35,7 @@ defmodule Xema.Ref do
   def new(%Xema.Ref{
           pointer: pointer,
           uri: uri
-        }, _), do: new(pointer)
+          }, _), do: new(pointer)
 
   def new("#" <> _ = pointer, _uri), do: new(pointer)
 

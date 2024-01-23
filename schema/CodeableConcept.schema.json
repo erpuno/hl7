@@ -1,6 +1,6 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "https://hl7.erp.uno/schema/CodeableConcept",
+  "$id": "https://hl7.erp.uno/schema/CodeableConcept.schema.json",
   "$ref": "#/definitions/CodeableConcept",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {

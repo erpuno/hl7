@@ -1,13 +1,13 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "https://hl7.erp.uno/schema/Duration.schema.json",
-  "$ref": "#/definitions/Duration",
+  "$id": "http://hl7.erp.uno/schema/Distance.schema.json",
+  "$ref": "#/definitions/Distance",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
-    "Duration": {
+    "Distance": {
       "allOf": [
         {
-          "description": "A length of time.",
+          "description": "A length - a value with a unit that is a physical distance.",
           "properties": {}
         }
       ]

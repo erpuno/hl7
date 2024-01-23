@@ -1,6 +1,6 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "https://hl7.erp.uno/schema/Extension",
+  "$id": "https://hl7.erp.uno/schema/Extension.schema.json",
   "$ref": "#/definitions/Extension",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
@@ -92,37 +92,25 @@
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "type": "string"
             },
-            "valueElement": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Element#/definitions/Element"
-            },
-            "valueExtension": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Extension#/definitions/Extension"
-            },
-            "valueBackboneElement": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/BackboneElement#/definitions/BackboneElement"
-            },
             "valueNarrative": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Narrative#/definitions/Narrative"
+              "$ref": "Narrative.schema.json#/definitions/Narrative"
             },
             "valueAnnotation": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Annotation#/definitions/Annotation"
+              "$ref": "Annotation.schema.json#/definitions/Annotation"
             },
             "valueAttachment": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Attachment#/definitions/Attachment"
+              "$ref": "Attachment.schema.json#/definitions/Attachment"
             },
             "valueIdentifier": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Identifier#/definitions/Identifier"
+              "$ref": "Identifier.schema.json#/definitions/Identifier"
             },
             "valueCodeableConcept": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/CodeableConcept#/definitions/CodeableConcept"
+              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
             },
             "valueCoding": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -130,111 +118,103 @@
             },
             "valueQuantity": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Quantity#/definitions/Quantity"
+              "$ref": "Quantity.schema.json#/definitions/Quantity"
             },
             "valueDuration": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Duration#/definitions/Duration"
+              "$ref": "Duration.schema.json#/definitions/Duration"
             },
             "valueSimpleQuantity": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Quantity#/definitions/Quantity"
+              "$ref": "Quantity.schema.json#/definitions/Quantity"
             },
             "valueDistance": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Distance#/definitions/Distance"
+              "$ref": "Distance.schema.json#/definitions/Distance"
             },
             "valueCount": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Count#/definitions/Count"
+              "$ref": "Count.schema.json#/definitions/Count"
             },
             "valueMoney": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Money#/definitions/Money"
+              "$ref": "#/definitions/Money"
             },
             "valueAge": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Age#/definitions/Age"
+              "$ref": "#/definitions/Age"
             },
             "valueRange": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Range#/definitions/Range"
+              "$ref": "Range.schema.json#/definitions/Range"
             },
             "valuePeriod": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Period#/definitions/Period"
+              "$ref": "Period.schema.json#/definitions/Period"
             },
             "valueRatio": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Ratio#/definitions/Ratio"
+              "$ref": "#/definitions/Ratio"
             },
             "valueReference": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Reference#/definitions/Reference"
+              "$ref": "Reference.schema.json#/definitions/Reference"
             },
             "valueSampledData": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/SampledData#/definitions/SampledData"
+              "$ref": "#/definitions/SampledData"
             },
             "valueSignature": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Signature#/definitions/Signature"
-            },
-            "valueHumanName": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/HumanName#/definitions/HumanName"
+              "$ref": "Signature.schema.json#/definitions/Signature"
             },
             "valueAddress": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Address#/definitions/Address"
+              "$ref": "#/definitions/Address"
             },
             "valueContactPoint": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/ContactPoint#/definitions/ContactPoint"
+              "$ref": "#/definitions/ContactPoint"
             },
             "valueTiming": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Timing#/definitions/Timing"
+              "$ref": "Timing.schema.json#/definitions/Timing"
             },
             "valueMeta": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Meta#/definitions/Meta"
+              "$ref": "#/definitions/Meta"
             },
             "valueElementDefinition": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/ElementDefinition#/definitions/ElementDefinition"
+              "$ref": "#/definitions/ElementDefinition"
             },
             "valueContactDetail": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/ContactDetail#/definitions/ContactDetail"
+              "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
             },
             "valueContributor": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Contributor#/definitions/Contributor"
-            },
-            "valueDosage": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/Dosage#/definitions/Dosage"
+              "$ref": "Contributor.schema.json#/definitions/Contributor"
             },
             "valueRelatedArtifact": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/RelatedArtifact#/definitions/RelatedArtifact"
+              "$ref": "#/definitions/RelatedArtifact"
             },
             "valueUsageContext": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/UsageContext#/definitions/UsageContext"
+              "$ref": "#/definitions/UsageContext"
             },
             "valueDataRequirement": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/DataRequirement#/definitions/DataRequirement"
+              "$ref": "DataRequirement.schema.json#/definitions/DataRequirement"
             },
             "valueParameterDefinition": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/ParameterDefinition#/definitions/ParameterDefinition"
+              "$ref": "#/definitions/ParameterDefinition"
             },
             "valueTriggerDefinition": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "https://hl7.erp.uno/schema/TriggerDefinition#/definitions/TriggerDefinition"
+              "$ref": "TriggerDefinition.schema.json#/definitions/TriggerDefinition"
             }
           }
         }

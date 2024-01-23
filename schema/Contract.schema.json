@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "https://hl7.erp.uno/schema/Contract",
+  "id": "https://hl7.erp.uno/schema/Contract.schema.json",
   "$ref": "#/definitions/Contract",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
@@ -41,7 +41,7 @@
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
           "items": {
-            "$ref": "Extension"
+            "$ref": "Extension.schema.json#/definitions/Extension"
           },
           "type": "array"
         },
@@ -73,7 +73,7 @@
         },
         "legalState": {
           "description": "Legal states of the formation of a legal instrument, which is a formally executed written document that can be formally attributed to its author, records and formally expresses a legally enforceable act, process, or contractual duty, obligation, or right, and therefore evidences that act, process, or agreement.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "instantiatesCanonical": {
           "description": "The URL pointing to a FHIR-defined Contract Definition that is adhered to in whole or part by this Contract.",
@@ -85,7 +85,7 @@
         },
         "contentDerivative": {
           "description": "The minimal content derived from the basal information source at a specific stage in its lifecycle.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "issued": {
           "description": "When this  Contract was issued.",
@@ -97,7 +97,7 @@
         },
         "expirationType": {
           "description": "Event resulting in discontinuation or termination of this Contract instance by one or more parties to the contract.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "subject": {
           "description": "The target entity impacted by or of interest to parties to the agreement.",
@@ -152,11 +152,11 @@
         },
         "scope": {
           "description": "A selector of legal concerns for this Contract definition, derivative, or instance in any legal state.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "topicCodeableConcept": {
           "description": "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "topicReference": {
           "description": "Narrows the range of legal concerns to focus on the achievement of specific contractual objectives.",
@@ -164,12 +164,12 @@
         },
         "type": {
           "description": "A high-level category for the legal instrument, whether constructed as a Contract definition, derivative, or instance in any legal state.  Provides additional information about its content within the context of the Contract\u0027s scope to distinguish the kinds of systems that would be interested in the contract.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "subType": {
           "description": "Sub-category for the Contract that distinguishes the kinds of systems that would be interested in the Contract within the context of the Contract\u0027s scope.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
@@ -245,7 +245,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -263,11 +263,11 @@
         },
         "type": {
           "description": "Precusory content structure and use, i.e., a boilerplate, template, application for a contract such as an insurance policy or benefits under a program, e.g., workers compensation.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "subType": {
           "description": "Detailed Precusory content type.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "publisher": {
           "description": "The  individual or organization that published the Contract precursor content.",
@@ -296,7 +296,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -326,7 +326,7 @@
         },
         "topicCodeableConcept": {
           "description": "The entity that the term applies to.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "topicReference": {
           "description": "The entity that the term applies to.",
@@ -334,11 +334,11 @@
         },
         "type": {
           "description": "A legal clause or condition contained within a contract that requires one or both parties to perform a particular requirement by some specified time or prevents one or both parties from performing a particular requirement by some specified time.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "subType": {
           "description": "A specialized legal clause or condition based on overarching contract type.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "text": {
           "description": "Statement of a provision in a policy or a contract.",
@@ -387,7 +387,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -439,7 +439,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -475,16 +475,16 @@
         },
         "type": {
           "description": "Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "decision": {
           "description": "Type of choice made by accepting party with respect to an offer made by an offeror/ grantee.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "decisionMode": {
           "description": "How the decision about a Contract was conveyed.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
@@ -521,7 +521,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -546,7 +546,7 @@
         },
         "role": {
           "description": "How the party participates in the offer.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         }
       },
       "additionalProperties": false,
@@ -560,7 +560,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -640,7 +640,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -658,12 +658,12 @@
         },
         "scope": {
           "description": "Differentiates the kind of the asset .",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "type": {
           "description": "Target entity type about which the term may be concerned.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
@@ -677,7 +677,7 @@
         "subtype": {
           "description": "May be a subtype or part of an offered asset.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
@@ -699,7 +699,7 @@
         "periodType": {
           "description": "Type of Asset availability for use or ownership.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
@@ -757,7 +757,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -780,7 +780,7 @@
         "code": {
           "description": "Coded representation of the context generally or of the Referenced entity, such as the asset holder type or location.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
@@ -796,7 +796,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -814,7 +814,7 @@
         },
         "entityCodeableConcept": {
           "description": "Specific type of Contract Valued Item that may be priced.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "entityReference": {
           "description": "Specific type of Contract Valued Item that may be priced.",
@@ -886,7 +886,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -908,7 +908,7 @@
         },
         "type": {
           "description": "Activity or service obligation to be done or not done, performed or not performed, effectuated or not by this Contract term.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "subject": {
           "description": "Entity of the action.",
@@ -919,7 +919,7 @@
         },
         "intent": {
           "description": "Reason or purpose for the action stipulated by this Contract Provision.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "linkId": {
           "description": "Id [identifier??] of the clause or question text related to this action in the referenced form or QuestionnaireResponse.",
@@ -930,7 +930,7 @@
         },
         "status": {
           "description": "Current state of the term action.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "context": {
           "description": "Encounter or Episode with primary association to specified term activity.",
@@ -973,13 +973,13 @@
         "performerType": {
           "description": "The type of individual that is desired or required to perform or not perform the action.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
         "performerRole": {
           "description": "The type of role or competency of an individual desired or required to perform or not perform the action.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         },
         "performer": {
           "description": "Indicates who or what is being asked to perform (or not perform) the ction.",
@@ -995,7 +995,7 @@
         "reasonCode": {
           "description": "Rationale for the action to be performed or not performed. Describes why the action is permitted or prohibited.",
           "items": {
-            "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
           },
           "type": "array"
         },
@@ -1047,7 +1047,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -1072,7 +1072,7 @@
         },
         "role": {
           "description": "Role type of agent assigned roles in this Contract.",
-          "$ref": "CodeableConcept.schema.jsoncodeableConcept"
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
         }
       },
       "additionalProperties": false,
@@ -1085,7 +1085,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -1129,7 +1129,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
@@ -1161,7 +1161,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.jsonstring"
+          "$ref": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",

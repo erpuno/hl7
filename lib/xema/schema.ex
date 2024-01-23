@@ -325,6 +325,7 @@ defmodule Xema.Schema do
           name = "schema/" <> base <> ".schema.json"
 
           refs = :application.get_env(:hl7, :definitions, [])
+          :io.format 'name: ~p, pointer: ~p~n',[name, pointer]
 
                     {_,bin} = :file.read_file name
                     schema = Jason.decode!(bin)
