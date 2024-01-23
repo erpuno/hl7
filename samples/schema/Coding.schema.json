@@ -1,14 +1,11 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "http://hl7.org/fhir/json-schema/Coding",
+  "$id": "https://hl7.erp.uno/schema/Coding.schema.json",
   "$ref": "#/definitions/Coding",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
     "Coding": {
        "allOf": [
-        {
-           "id": "1"
-        },
         {
          "description": "A reference to a code defined by a terminology system.",
           "properties": {

@@ -1,6 +1,7 @@
 defmodule HL7.Validation do
- 
-  def test(name \\ "Quantity") do
+
+  def test(name \\ "Location") do
+#      :application.set_env(:hl7, :definitions, [])
       {_,schemaBin} = :file.read_file "samples/schema/#{name}.schema.json"
       schemaJson = Jason.decode!(schemaBin)
       {_,objBin} = :file.read_file "samples/json/#{name}/#{name}.json"

@@ -1,14 +1,11 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "http://hl7.org/fhir/json-schema/Location",
+  "$id": "https://hl7.erp.uno/schema/Location.schema.json",
   "$ref": "#/definitions/Location",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
     "Location": {
       "allOf": [
-        {
-          "$ref": "DomainResource.schema.json#/definitions/DomainResource"
-        },
         {
           "description": "Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated.",
           "properties": {
@@ -23,7 +20,7 @@
               "description": "Unique code or number identifying the location to its users.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Identifier"
+                "$ref": "Identifier.schema.json#/definitions/Identifier"
               }
             },
             "status": {
@@ -35,21 +32,13 @@
               ],
               "type": "string"
             },
-            "_status": {
-              "description": "Extensions for status",
-              "$ref": "#/definitions/Element"
-            },
             "operationalStatus": {
               "description": "The Operational status covers operation values most relevant to beds (but can also apply to rooms/units/chair/etc such as an isolation unit/dialisys chair). This typically covers concepts such as contamination, housekeeping and other activities like maintenance.",
-              "$ref": "#/definitions/Coding"
+              "$ref": "Coding.Schema.json#/definitions/Coding"
             },
             "name": {
               "description": "Name of the location as used by humans. Does not need to be unique.",
               "type": "string"
-            },
-            "_name": {
-              "description": "Extensions for name",
-              "$ref": "#/definitions/Element"
             },
             "alias": {
               "description": "A list of alternate names that the location is known as, or was known as in the past.",
@@ -58,20 +47,9 @@
                 "type": "string"
               }
             },
-            "_alias": {
-              "description": "Extensions for alias",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Element"
-              }
-            },
             "description": {
               "description": "Description of the Location, which helps in finding or referencing the place.",
               "type": "string"
-            },
-            "_description": {
-              "description": "Extensions for description",
-              "$ref": "#/definitions/Element"
             },
             "mode": {
               "description": "Indicates whether a resource instance represents a specific location or a class of locations.",
@@ -80,10 +58,6 @@
                 "kind"
               ],
               "type": "string"
-            },
-            "_mode": {
-              "description": "Extensions for mode",
-              "$ref": "#/definitions/Element"
             },
             "type": {
               "description": "Indicates the type of function performed at the location.",
@@ -110,17 +84,17 @@
             },
             "managingOrganization": {
               "description": "The organization responsible for the provisioning and upkeep of the location.",
-              "$ref": "Referense.schema.json#/definitions/Reference"
+              "$ref": "Reference.schema.json#/definitions/Reference"
             },
             "partOf": {
               "description": "Another Location which this Location is physically part of.",
-              "$ref": "Referense.schema.json#/definitions/Reference"
+              "$ref": "Reference.schema.json#/definitions/Reference"
             },
             "endpoint": {
               "description": "Technical endpoints providing access to services operated for the location.",
               "type": "array",
               "items": {
-                "$ref": "Referense.schema.json#/definitions/Reference"
+                "$ref": "Reference.schema.json#/definitions/Reference"
               }
             }
           },

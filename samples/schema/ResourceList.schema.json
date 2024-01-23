@@ -1,370 +1,370 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "http://hl7.org/fhir/json-schema/ResourceList",
-  "$ref": "#/definitions/ResourceList",
+  "$id": "https://hl7.erp.uno/schema/ResourceList",
+  "$ref": "ResourceList.schema.json#/definitions/ResourceList",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
     "ResourceList": {
       "oneOf": [
         {
-          "$ref": "samples/schema/Account.json#/definitions/Account"
+          "$ref": "samples/schema/Account.schema.json#/definitions/Account"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ActivityDefinition#/definitions/ActivityDefinition"
+          "$ref": "samples/schema/ActivityDefinition.schema.json#/definitions/ActivityDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/AdverseEvent#/definitions/AdverseEvent"
+          "$ref": "samples/schema/AdverseEvent.schema.json#/definitions/AdverseEvent"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/AllergyIntolerance#/definitions/AllergyIntolerance"
+          "$ref": "samples/schema/AllergyIntolerance.schema.json#/definitions/AllergyIntolerance"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Appointment#/definitions/Appointment"
+          "$ref": "samples/schema/Appointment.schema.json#/definitions/Appointment"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/AppointmentResponse#/definitions/AppointmentResponse"
+          "$ref": "samples/schema/AppointmentResponse.schema.json#/definitions/AppointmentResponse"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/AuditEvent#/definitions/AuditEvent"
+          "$ref": "samples/schema/AuditEvent.schema.json#/definitions/AuditEvent"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Basic#/definitions/Basic"
+          "$ref": "samples/schema/Basic.schema.json#/definitions/Basic"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Binary#/definitions/Binary"
+          "$ref": "samples/schema/Binary.schema.json#/definitions/Binary"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/BodySite#/definitions/BodySite"
+          "$ref": "samples/schema/BodySite.schema.json#/definitions/BodySite"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Bundle#/definitions/Bundle"
+          "$ref": "samples/schema/Bundle.schema.json#/definitions/Bundle"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/CapabilityStatement#/definitions/CapabilityStatement"
+          "$ref": "samples/schema/CapabilityStatement.schema.json#/definitions/CapabilityStatement"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/CarePlan#/definitions/CarePlan"
+          "$ref": "samples/schema/CarePlan.schema.json#/definitions/CarePlan"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/CareTeam#/definitions/CareTeam"
+          "$ref": "samples/schema/CareTeam.schema.json#/definitions/CareTeam"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ChargeItem#/definitions/ChargeItem"
+          "$ref": "samples/schema/ChargeItem.schema.json#/definitions/ChargeItem"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Claim#/definitions/Claim"
+          "$ref": "samples/schema/Claim.schema.json#/definitions/Claim"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ClaimResponse#/definitions/ClaimResponse"
+          "$ref": "samples/schema/ClaimResponse.schema.json#/definitions/ClaimResponse"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ClinicalImpression#/definitions/ClinicalImpression"
+          "$ref": "samples/schema/ClinicalImpression.schema.json#/definitions/ClinicalImpression"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/CodeSystem#/definitions/CodeSystem"
+          "$ref": "samples/schema/CodeSystem.schema.json#/definitions/CodeSystem"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Communication#/definitions/Communication"
+          "$ref": "samples/schema/Communication.schema.json#/definitions/Communication"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/CommunicationRequest#/definitions/CommunicationRequest"
+          "$ref": "samples/schema/CommunicationRequest.schema.json#/definitions/CommunicationRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/CompartmentDefinition#/definitions/CompartmentDefinition"
+          "$ref": "samples/schema/CompartmentDefinition.schema.json#/definitions/CompartmentDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Composition#/definitions/Composition"
+          "$ref": "samples/schema/Composition.schema.json#/definitions/Composition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ConceptMap#/definitions/ConceptMap"
+          "$ref": "samples/schema/ConceptMap.schema.json#/definitions/ConceptMap"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Condition#/definitions/Condition"
+          "$ref": "samples/schema/Condition.schema.json#/definitions/Condition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Consent#/definitions/Consent"
+          "$ref": "samples/schema/Consent.schema.json#/definitions/Consent"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Contract#/definitions/Contract"
+          "$ref": "samples/schema/Contract.schema.json#/definitions/Contract"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Coverage#/definitions/Coverage"
+          "$ref": "samples/schema/Coverage.schema.json#/definitions/Coverage"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DataElement#/definitions/DataElement"
+          "$ref": "samples/schema/DataElement.schema.json#/definitions/DataElement"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DetectedIssue#/definitions/DetectedIssue"
+          "$ref": "samples/schema/DetectedIssue.schema.json#/definitions/DetectedIssue"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Device#/definitions/Device"
+          "$ref": "samples/schema/Device.schema.json#/definitions/Device"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DeviceComponent#/definitions/DeviceComponent"
+          "$ref": "samples/schema/DeviceComponent.schema.json#/definitions/DeviceComponent"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DeviceMetric#/definitions/DeviceMetric"
+          "$ref": "samples/schema/DeviceMetric.schema.json#/definitions/DeviceMetric"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DeviceRequest#/definitions/DeviceRequest"
+          "$ref": "samples/schema/DeviceRequest.schema.json#/definitions/DeviceRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DeviceUseStatement#/definitions/DeviceUseStatement"
+          "$ref": "samples/schema/DeviceUseStatement.schema.json#/definitions/DeviceUseStatement"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DiagnosticReport#/definitions/DiagnosticReport"
+          "$ref": "samples/schema/DiagnosticReport.schema.json#/definitions/DiagnosticReport"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DocumentManifest#/definitions/DocumentManifest"
+          "$ref": "samples/schema/DocumentManifest.schema.json#/definitions/DocumentManifest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DocumentReference#/definitions/DocumentReference"
+          "$ref": "samples/schema/DocumentReference.schema.json#/definitions/DocumentReference"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/DomainResource#/definitions/DomainResource"
+          "$ref": "samples/schema/DomainResource.schema.json#/definitions/DomainResource"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/EligibilityRequest#/definitions/EligibilityRequest"
+          "$ref": "samples/schema/EligibilityRequest.schema.json#/definitions/EligibilityRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/EligibilityResponse#/definitions/EligibilityResponse"
+          "$ref": "samples/schema/EligibilityResponse.schema.json#/definitions/EligibilityResponse"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Encounter#/definitions/Encounter"
+          "$ref": "samples/schema/Encounter.schema.json#/definitions/Encounter"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Endpoint#/definitions/Endpoint"
+          "$ref": "samples/schema/Endpoint.schema.json#/definitions/Endpoint"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/EnrollmentRequest#/definitions/EnrollmentRequest"
+          "$ref": "samples/schema/EnrollmentRequest.schema.json#/definitions/EnrollmentRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/EnrollmentResponse#/definitions/EnrollmentResponse"
+          "$ref": "samples/schema/EnrollmentResponse.schema.json#/definitions/EnrollmentResponse"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/EpisodeOfCare#/definitions/EpisodeOfCare"
+          "$ref": "samples/schema/EpisodeOfCare.schema.json#/definitions/EpisodeOfCare"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ExpansionProfile#/definitions/ExpansionProfile"
+          "$ref": "samples/schema/ExpansionProfile.schema.json#/definitions/ExpansionProfile"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ExplanationOfBenefit#/definitions/ExplanationOfBenefit"
+          "$ref": "samples/schema/ExplanationOfBenefit.schema.json#/definitions/ExplanationOfBenefit"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/FamilyMemberHistory#/definitions/FamilyMemberHistory"
+          "$ref": "samples/schema/FamilyMemberHistory.schema.json#/definitions/FamilyMemberHistory"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Flag#/definitions/Flag"
+          "$ref": "samples/schema/Flag.schema.json#/definitions/Flag"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Goal#/definitions/Goal"
+          "$ref": "samples/schema/Goal.schema.json#/definitions/Goal"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/GraphDefinition#/definitions/GraphDefinition"
+          "$ref": "samples/schema/GraphDefinition.schema.json#/definitions/GraphDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Group#/definitions/Group"
+          "$ref": "samples/schema/Group.schema.json#/definitions/Group"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/GuidanceResponse#/definitions/GuidanceResponse"
+          "$ref": "samples/schema/GuidanceResponse.schema.json#/definitions/GuidanceResponse"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/HealthcareService#/definitions/HealthcareService"
+          "$ref": "samples/schema/HealthcareService.schema.json#/definitions/HealthcareService"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ImagingManifest#/definitions/ImagingManifest"
+          "$ref": "samples/schema/ImagingManifest.schema.json#/definitions/ImagingManifest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ImagingStudy#/definitions/ImagingStudy"
+          "$ref": "samples/schema/ImagingStudy.schema.json#/definitions/ImagingStudy"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Immunization#/definitions/Immunization"
+          "$ref": "samples/schema/Immunization.schema.json#/definitions/Immunization"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ImmunizationRecommendation#/definitions/ImmunizationRecommendation"
+          "$ref": "samples/schema/ImmunizationRecommendation.schema.json#/definitions/ImmunizationRecommendation"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ImplementationGuide#/definitions/ImplementationGuide"
+          "$ref": "samples/schema/ImplementationGuide.schema.json#/definitions/ImplementationGuide"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Library#/definitions/Library"
+          "$ref": "samples/schema/Library.schema.json#/definitions/Library"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Linkage#/definitions/Linkage"
+          "$ref": "samples/schema/Linkage.schema.json#/definitions/Linkage"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/List#/definitions/List"
+          "$ref": "samples/schema/List.schema.json#/definitions/List"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Location#/definitions/Location"
+          "$ref": "samples/schema/Location.schema.json#/definitions/Location"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Measure#/definitions/Measure"
+          "$ref": "samples/schema/Measure.schema.json#/definitions/Measure"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/MeasureReport#/definitions/MeasureReport"
+          "$ref": "samples/schema/MeasureReport.schema.json#/definitions/MeasureReport"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Media#/definitions/Media"
+          "$ref": "samples/schema/Media.schema.json#/definitions/Media"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Medication#/definitions/Medication"
+          "$ref": "samples/schema/Medication.schema.json#/definitions/Medication"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/MedicationAdministration#/definitions/MedicationAdministration"
+          "$ref": "samples/schema/MedicationAdministration.schema.json#/definitions/MedicationAdministration"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/MedicationDispense#/definitions/MedicationDispense"
+          "$ref": "samples/schema/MedicationDispense.schema.json#/definitions/MedicationDispense"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/MedicationRequest#/definitions/MedicationRequest"
+          "$ref": "samples/schema/MedicationRequest.schema.json#/definitions/MedicationRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/MedicationStatement#/definitions/MedicationStatement"
+          "$ref": "samples/schema/MedicationStatement.schema.json#/definitions/MedicationStatement"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/MessageDefinition#/definitions/MessageDefinition"
+          "$ref": "samples/schema/MessageDefinition.schema.json#/definitions/MessageDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/MessageHeader#/definitions/MessageHeader"
+          "$ref": "samples/schema/MessageHeader.schema.json#/definitions/MessageHeader"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/NamingSystem#/definitions/NamingSystem"
+          "$ref": "samples/schema/NamingSystem.schema.json#/definitions/NamingSystem"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/NutritionOrder#/definitions/NutritionOrder"
+          "$ref": "samples/schema/NutritionOrder.schema.json#/definitions/NutritionOrder"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Observation#/definitions/Observation"
+          "$ref": "samples/schema/Observation.schema.json#/definitions/Observation"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/OperationDefinition#/definitions/OperationDefinition"
+          "$ref": "samples/schema/OperationDefinition.schema.json#/definitions/OperationDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/OperationOutcome#/definitions/OperationOutcome"
+          "$ref": "samples/schema/OperationOutcome.schema.json#/definitions/OperationOutcome"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Organization#/definitions/Organization"
+          "$ref": "samples/schema/Organization.schema.json#/definitions/Organization"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Parameters#/definitions/Parameters"
+          "$ref": "samples/schema/Parameters.schema.json#/definitions/Parameters"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Parameters#/definitions/Parameters"
+          "$ref": "samples/schema/Parameters.schema.json#/definitions/Parameters"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Patient#/definitions/Patient"
+          "$ref": "samples/schema/Patient.schema.json#/definitions/Patient"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/PaymentNotice#/definitions/PaymentNotice"
+          "$ref": "samples/schema/PaymentNotice.schema.json#/definitions/PaymentNotice"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/PaymentReconciliation#/definitions/PaymentReconciliation"
+          "$ref": "samples/schema/PaymentReconciliation.schema.json#/definitions/PaymentReconciliation"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Person#/definitions/Person"
+          "$ref": "samples/schema/Person.schema.json#/definitions/Person"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/PlanDefinition#/definitions/PlanDefinition"
+          "$ref": "samples/schema/PlanDefinition.schema.json#/definitions/PlanDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Practitioner#/definitions/Practitioner"
+          "$ref": "samples/schema/Practitioner.schema.json#/definitions/Practitioner"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/PractitionerRole#/definitions/PractitionerRole"
+          "$ref": "samples/schema/PractitionerRole.schema.json#/definitions/PractitionerRole"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Procedure#/definitions/Procedure"
+          "$ref": "samples/schema/Procedure.schema.json#/definitions/Procedure"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ProcedureRequest#/definitions/ProcedureRequest"
+          "$ref": "samples/schema/ProcedureRequest.schema.json#/definitions/ProcedureRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ProcessRequest#/definitions/ProcessRequest"
+          "$ref": "samples/schema/ProcessRequest.schema.json#/definitions/ProcessRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ProcessResponse#/definitions/ProcessResponse"
+          "$ref": "samples/schema/ProcessResponse.schema.json#/definitions/ProcessResponse"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Provenance#/definitions/Provenance"
+          "$ref": "samples/schema/Provenance.schema.json#/definitions/Provenance"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Questionnaire#/definitions/Questionnaire"
+          "$ref": "samples/schema/Questionnaire.schema.json#/definitions/Questionnaire"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/QuestionnaireResponse#/definitions/QuestionnaireResponse"
+          "$ref": "samples/schema/QuestionnaireResponse.schema.json#/definitions/QuestionnaireResponse"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ReferralRequest#/definitions/ReferralRequest"
+          "$ref": "samples/schema/ReferralRequest.schema.json#/definitions/ReferralRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/RelatedPerson#/definitions/RelatedPerson"
+          "$ref": "samples/schema/RelatedPerson.schema.json#/definitions/RelatedPerson"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/RequestGroup#/definitions/RequestGroup"
+          "$ref": "samples/schema/RequestGroup.schema.json#/definitions/RequestGroup"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ResearchStudy#/definitions/ResearchStudy"
+          "$ref": "samples/schema/ResearchStudy.schema.json#/definitions/ResearchStudy"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ResearchSubject#/definitions/ResearchSubject"
+          "$ref": "samples/schema/ResearchSubject.schema.json#/definitions/ResearchSubject"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Resource#/definitions/Resource"
+          "$ref": "samples/schema/Resource.schema.json#/definitions/Resource"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/RiskAssessment#/definitions/RiskAssessment"
+          "$ref": "samples/schema/RiskAssessment.schema.json#/definitions/RiskAssessment"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Schedule#/definitions/Schedule"
+          "$ref": "samples/schema/Schedule.schema.json#/definitions/Schedule"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/SearchParameter#/definitions/SearchParameter"
+          "$ref": "samples/schema/SearchParameter.schema.json#/definitions/SearchParameter"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Sequence#/definitions/Sequence"
+          "$ref": "samples/schema/Sequence.schema.json#/definitions/Sequence"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ServiceDefinition#/definitions/ServiceDefinition"
+          "$ref": "samples/schema/ServiceDefinition.schema.json#/definitions/ServiceDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Slot#/definitions/Slot"
+          "$ref": "samples/schema/Slot.schema.json#/definitions/Slot"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Specimen#/definitions/Specimen"
+          "$ref": "samples/schema/Specimen.schema.json#/definitions/Specimen"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/StructureDefinition#/definitions/StructureDefinition"
+          "$ref": "samples/schema/StructureDefinition.schema.json#/definitions/StructureDefinition"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/StructureMap#/definitions/StructureMap"
+          "$ref": "samples/schema/StructureMap.schema.json#/definitions/StructureMap"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Subscription#/definitions/Subscription"
+          "$ref": "samples/schema/Subscription.schema.json#/definitions/Subscription"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Substance#/definitions/Substance"
+          "$ref": "samples/schema/Substance.schema.json#/definitions/Substance"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/SupplyDelivery#/definitions/SupplyDelivery"
+          "$ref": "samples/schema/SupplyDelivery.schema.json#/definitions/SupplyDelivery"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/SupplyRequest#/definitions/SupplyRequest"
+          "$ref": "samples/schema/SupplyRequest.schema.json#/definitions/SupplyRequest"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/Task#/definitions/Task"
+          "$ref": "samples/schema/Task.schema.json#/definitions/Task"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/TestReport#/definitions/TestReport"
+          "$ref": "samples/schema/TestReport.schema.json#/definitions/TestReport"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/TestScript#/definitions/TestScript"
+          "$ref": "samples/schema/TestScript.schema.json#/definitions/TestScript"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/ValueSet#/definitions/ValueSet"
+          "$ref": "samples/schema/ValueSet.schema.json#/definitions/ValueSet"
         },
         {
-          "$ref": "http://hl7.org/fhir/json-schema/VisionPrescription#/definitions/VisionPrescription"
+          "$ref": "samples/schema/VisionPrescription.schema.json#/definitions/VisionPrescription"
         }
       ]
     }

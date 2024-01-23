@@ -1,14 +1,11 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "http://hl7.org/fhir/json-schema/Extension",
+  "$id": "https://hl7.erp.uno/schema/Extension",
   "$ref": "#/definitions/Extension",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
     "Extension": {
       "allOf": [
-        {
-          "$ref": "Element#/definitions/Element"
-        },
         {
           "description": "Optional Extension Element - found in all resources.",
           "properties": {
@@ -16,300 +13,228 @@
               "description": "Source of the definition for the extension code - a logical name or a URL.",
               "type": "string"
             },
-            "_url": {
-              "description": "Extensions for url",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueBoolean": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "type": "boolean"
-            },
-            "_valueBoolean": {
-              "description": "Extensions for valueBoolean",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
             },
             "valueInteger": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "-?([0]|([1-9][0-9]*))",
               "type": "number"
             },
-            "_valueInteger": {
-              "description": "Extensions for valueInteger",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueDecimal": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "-?([0]|([1-9][0-9]*))(\\.[0-9]+)?",
               "type": "number"
             },
-            "_valueDecimal": {
-              "description": "Extensions for valueDecimal",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueBase64Binary": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "type": "string"
-            },
-            "_valueBase64Binary": {
-              "description": "Extensions for valueBase64Binary",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
             },
             "valueInstant": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "type": "string"
             },
-            "_valueInstant": {
-              "description": "Extensions for valueInstant",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueString": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "type": "string"
             },
-            "_valueString": {
-              "description": "Extensions for valueString",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueUri": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "type": "string"
-            },
-            "_valueUri": {
-              "description": "Extensions for valueUri",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
             },
             "valueDate": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?",
               "type": "string"
             },
-            "_valueDate": {
-              "description": "Extensions for valueDate",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueDateTime": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?",
               "type": "string"
-            },
-            "_valueDateTime": {
-              "description": "Extensions for valueDateTime",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
             },
             "valueTime": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?",
               "type": "string"
             },
-            "_valueTime": {
-              "description": "Extensions for valueTime",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueCode": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
               "type": "string"
-            },
-            "_valueCode": {
-              "description": "Extensions for valueCode",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
             },
             "valueOid": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "urn:oid:(0|[1-9][0-9]*)(\\.(0|[1-9][0-9]*))*",
               "type": "string"
             },
-            "_valueOid": {
-              "description": "Extensions for valueOid",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueUuid": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
               "type": "string"
-            },
-            "_valueUuid": {
-              "description": "Extensions for valueUuid",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
             },
             "valueId": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "[A-Za-z0-9\\-\\.]{1,64}",
               "type": "string"
             },
-            "_valueId": {
-              "description": "Extensions for valueId",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueUnsignedInt": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "[0]|([1-9][0-9]*)",
               "type": "number"
-            },
-            "_valueUnsignedInt": {
-              "description": "Extensions for valueUnsignedInt",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
             },
             "valuePositiveInt": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "pattern": "[1-9][0-9]*",
               "type": "number"
             },
-            "_valuePositiveInt": {
-              "description": "Extensions for valuePositiveInt",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueMarkdown": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "type": "string"
             },
-            "_valueMarkdown": {
-              "description": "Extensions for valueMarkdown",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
-            },
             "valueElement": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Element#/definitions/Element"
+              "$ref": "https://hl7.erp.uno/schema/Element#/definitions/Element"
             },
             "valueExtension": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Extension#/definitions/Extension"
+              "$ref": "https://hl7.erp.uno/schema/Extension#/definitions/Extension"
             },
             "valueBackboneElement": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/BackboneElement#/definitions/BackboneElement"
+              "$ref": "https://hl7.erp.uno/schema/BackboneElement#/definitions/BackboneElement"
             },
             "valueNarrative": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Narrative#/definitions/Narrative"
+              "$ref": "https://hl7.erp.uno/schema/Narrative#/definitions/Narrative"
             },
             "valueAnnotation": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Annotation#/definitions/Annotation"
+              "$ref": "https://hl7.erp.uno/schema/Annotation#/definitions/Annotation"
             },
             "valueAttachment": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Attachment#/definitions/Attachment"
+              "$ref": "https://hl7.erp.uno/schema/Attachment#/definitions/Attachment"
             },
             "valueIdentifier": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Identifier#/definitions/Identifier"
+              "$ref": "https://hl7.erp.uno/schema/Identifier#/definitions/Identifier"
             },
             "valueCodeableConcept": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/CodeableConcept#/definitions/CodeableConcept"
+              "$ref": "https://hl7.erp.uno/schema/CodeableConcept#/definitions/CodeableConcept"
             },
             "valueCoding": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Coding#/definitions/Coding"
+              "$ref": "Coding.schema.json#/definitions/Coding"
             },
             "valueQuantity": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Quantity#/definitions/Quantity"
+              "$ref": "https://hl7.erp.uno/schema/Quantity#/definitions/Quantity"
             },
             "valueDuration": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Duration#/definitions/Duration"
+              "$ref": "https://hl7.erp.uno/schema/Duration#/definitions/Duration"
             },
             "valueSimpleQuantity": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Quantity#/definitions/Quantity"
+              "$ref": "https://hl7.erp.uno/schema/Quantity#/definitions/Quantity"
             },
             "valueDistance": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Distance#/definitions/Distance"
+              "$ref": "https://hl7.erp.uno/schema/Distance#/definitions/Distance"
             },
             "valueCount": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Count#/definitions/Count"
+              "$ref": "https://hl7.erp.uno/schema/Count#/definitions/Count"
             },
             "valueMoney": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Money#/definitions/Money"
+              "$ref": "https://hl7.erp.uno/schema/Money#/definitions/Money"
             },
             "valueAge": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Age#/definitions/Age"
+              "$ref": "https://hl7.erp.uno/schema/Age#/definitions/Age"
             },
             "valueRange": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Range#/definitions/Range"
+              "$ref": "https://hl7.erp.uno/schema/Range#/definitions/Range"
             },
             "valuePeriod": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Period#/definitions/Period"
+              "$ref": "https://hl7.erp.uno/schema/Period#/definitions/Period"
             },
             "valueRatio": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Ratio#/definitions/Ratio"
+              "$ref": "https://hl7.erp.uno/schema/Ratio#/definitions/Ratio"
             },
             "valueReference": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Reference#/definitions/Reference"
+              "$ref": "https://hl7.erp.uno/schema/Reference#/definitions/Reference"
             },
             "valueSampledData": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/SampledData#/definitions/SampledData"
+              "$ref": "https://hl7.erp.uno/schema/SampledData#/definitions/SampledData"
             },
             "valueSignature": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Signature#/definitions/Signature"
+              "$ref": "https://hl7.erp.uno/schema/Signature#/definitions/Signature"
             },
             "valueHumanName": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/HumanName#/definitions/HumanName"
+              "$ref": "https://hl7.erp.uno/schema/HumanName#/definitions/HumanName"
             },
             "valueAddress": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Address#/definitions/Address"
+              "$ref": "https://hl7.erp.uno/schema/Address#/definitions/Address"
             },
             "valueContactPoint": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/ContactPoint#/definitions/ContactPoint"
+              "$ref": "https://hl7.erp.uno/schema/ContactPoint#/definitions/ContactPoint"
             },
             "valueTiming": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Timing#/definitions/Timing"
+              "$ref": "https://hl7.erp.uno/schema/Timing#/definitions/Timing"
             },
             "valueMeta": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Meta#/definitions/Meta"
+              "$ref": "https://hl7.erp.uno/schema/Meta#/definitions/Meta"
             },
             "valueElementDefinition": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/ElementDefinition#/definitions/ElementDefinition"
+              "$ref": "https://hl7.erp.uno/schema/ElementDefinition#/definitions/ElementDefinition"
             },
             "valueContactDetail": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/ContactDetail#/definitions/ContactDetail"
+              "$ref": "https://hl7.erp.uno/schema/ContactDetail#/definitions/ContactDetail"
             },
             "valueContributor": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Contributor#/definitions/Contributor"
+              "$ref": "https://hl7.erp.uno/schema/Contributor#/definitions/Contributor"
             },
             "valueDosage": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/Dosage#/definitions/Dosage"
+              "$ref": "https://hl7.erp.uno/schema/Dosage#/definitions/Dosage"
             },
             "valueRelatedArtifact": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/RelatedArtifact#/definitions/RelatedArtifact"
+              "$ref": "https://hl7.erp.uno/schema/RelatedArtifact#/definitions/RelatedArtifact"
             },
             "valueUsageContext": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/UsageContext#/definitions/UsageContext"
+              "$ref": "https://hl7.erp.uno/schema/UsageContext#/definitions/UsageContext"
             },
             "valueDataRequirement": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/DataRequirement#/definitions/DataRequirement"
+              "$ref": "https://hl7.erp.uno/schema/DataRequirement#/definitions/DataRequirement"
             },
             "valueParameterDefinition": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/ParameterDefinition#/definitions/ParameterDefinition"
+              "$ref": "https://hl7.erp.uno/schema/ParameterDefinition#/definitions/ParameterDefinition"
             },
             "valueTriggerDefinition": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "http://hl7.org/fhir/json-schema/TriggerDefinition#/definitions/TriggerDefinition"
+              "$ref": "https://hl7.erp.uno/schema/TriggerDefinition#/definitions/TriggerDefinition"
             }
           }
         }

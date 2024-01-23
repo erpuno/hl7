@@ -1,14 +1,11 @@
 {
   "schema": "http://json-schema.org/draft-04/schema#",
-  "$id": "http://hl7.org/fhir/json-schema/CodeableConcept",
+  "$id": "https://hl7.erp.uno/schema/CodeableConcept",
   "$ref": "#/definitions/CodeableConcept",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
     "CodeableConcept": {
       "allOf": [
-        {
-          "$ref": "Element#/definitions/Element"
-        },
         {
           "description": "A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.",
           "properties": {
@@ -16,16 +13,12 @@
               "description": "A reference to a code defined by a terminology system.",
               "type": "array",
               "items": {
-                "$ref": "http://hl7.org/fhir/json-schema/Coding#/definitions/Coding"
+                "$ref": "Coding.schema.json#/definitions/Coding"
               }
             },
             "text": {
               "description": "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.",
               "type": "string"
-            },
-            "_text": {
-              "description": "Extensions for text",
-              "$ref": "#/definitions/Element"
             }
           }
         }

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-06/schema#",
-  "id": "http://hl7.org/fhir/json-schema/Contract",
+  "id": "https://hl7.erp.uno/schema/Contract",
   "$ref": "#/definitions/Contract",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
@@ -23,17 +23,9 @@
           "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
           "$ref": "uri"
         },
-        "_implicitRules": {
-          "description": "Extensions for implicitRules",
-          "$ref": "Element"
-        },
         "language": {
           "description": "The base language in which the resource is written.",
           "$ref": "code"
-        },
-        "_language": {
-          "description": "Extensions for language",
-          "$ref": "Element"
         },
         "text": {
           "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
@@ -71,25 +63,13 @@
           "description": "Canonical identifier for this contract, represented as a URI (globally unique).",
           "$ref": "uri"
         },
-        "_url": {
-          "description": "Extensions for url",
-          "$ref": "Element"
-        },
         "version": {
           "description": "An edition identifier used for business purposes to label business significant variants.",
           "$ref": "string"
         },
-        "_version": {
-          "description": "Extensions for version",
-          "$ref": "Element"
-        },
         "status": {
           "description": "The status of the resource instance.",
           "$ref": "code"
-        },
-        "_status": {
-          "description": "Extensions for status",
-          "$ref": "Element"
         },
         "legalState": {
           "description": "Legal states of the formation of a legal instrument, which is a formally executed written document that can be formally attributed to its author, records and formally expresses a legally enforceable act, process, or contractual duty, obligation, or right, and therefore evidences that act, process, or agreement.",
@@ -103,10 +83,6 @@
           "description": "The URL pointing to an externally maintained definition that is adhered to in whole or in part by this Contract.",
           "$ref": "uri"
         },
-        "_instantiatesUri": {
-          "description": "Extensions for instantiatesUri",
-          "$ref": "Element"
-        },
         "contentDerivative": {
           "description": "The minimal content derived from the basal information source at a specific stage in its lifecycle.",
           "$ref": "CodeableConcept.schema.jsoncodeableConcept"
@@ -114,10 +90,6 @@
         "issued": {
           "description": "When this  Contract was issued.",
           "$ref": "dateTime"
-        },
-        "_issued": {
-          "description": "Extensions for issued",
-          "$ref": "Element"
         },
         "applies": {
           "description": "Relevant time or time-period when this Contract is applicable.",
@@ -159,37 +131,18 @@
           "description": "A natural language name identifying this Contract definition, derivative, or instance in any legal state. Provides additional information about its content. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
           "$ref": "string"
         },
-        "_name": {
-          "description": "Extensions for name",
-          "$ref": "Element"
-        },
         "title": {
           "description": "A short, descriptive, user-friendly title for this Contract definition, derivative, or instance in any legal state.t giving additional information about its content.",
           "$ref": "string"
-        },
-        "_title": {
-          "description": "Extensions for title",
-          "$ref": "Element"
         },
         "subtitle": {
           "description": "An explanatory or alternate user-friendly title for this Contract definition, derivative, or instance in any legal state.t giving additional information about its content.",
           "$ref": "string"
         },
-        "_subtitle": {
-          "description": "Extensions for subtitle",
-          "$ref": "Element"
-        },
         "alias": {
           "description": "Alternative representation of the title for this Contract definition, derivative, or instance in any legal state., e.g., a domain specific contract number related to legislation.",
           "items": {
             "$ref": "string"
-          },
-          "type": "array"
-        },
-        "_alias": {
-          "description": "Extensions for alias",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         },
@@ -324,25 +277,13 @@
           "description": "The date (and optionally time) when the contract was published. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the contract changes.",
           "$ref": "dateTime"
         },
-        "_publicationDate": {
-          "description": "Extensions for publicationDate",
-          "$ref": "Element"
-        },
         "publicationStatus": {
           "description": "amended | appended | cancelled | disputed | entered-in-error | executable | executed | negotiable | offered | policy | rejected | renewed | revoked | resolved | terminated.",
           "$ref": "code"
         },
-        "_publicationStatus": {
-          "description": "Extensions for publicationStatus",
-          "$ref": "Element"
-        },
         "copyright": {
           "description": "A copyright statement relating to Contract precursor content. Copyright statements are generally legal restrictions on the use and publishing of the Contract precursor content.",
           "$ref": "markdown"
-        },
-        "_copyright": {
-          "description": "Extensions for copyright",
-          "$ref": "Element"
         }
       },
       "additionalProperties": false,
@@ -379,10 +320,6 @@
           "description": "When this Contract Provision was issued.",
           "$ref": "dateTime"
         },
-        "_issued": {
-          "description": "Extensions for issued",
-          "$ref": "Element"
-        },
         "applies": {
           "description": "Relevant time or time-period when this Contract Provision is applicable.",
           "$ref": "Period"
@@ -406,10 +343,6 @@
         "text": {
           "description": "Statement of a provision in a policy or a contract.",
           "$ref": "string"
-        },
-        "_text": {
-          "description": "Extensions for text",
-          "$ref": "Element"
         },
         "securityLabel": {
           "description": "Security labels that protect the handling of information about the term and its elements, which may be specifically identified..",
@@ -474,13 +407,6 @@
           "description": "Number used to link this term or term element to the applicable Security Label.",
           "items": {
             "$ref": "unsignedInt"
-          },
-          "type": "array"
-        },
-        "_number": {
-          "description": "Extensions for number",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         },
@@ -573,10 +499,6 @@
           "description": "Human readable form of this Contract Offer.",
           "$ref": "string"
         },
-        "_text": {
-          "description": "Extensions for text",
-          "$ref": "Element"
-        },
         "linkId": {
           "description": "The id of the clause or question text of the offer in the referenced questionnaire/response.",
           "items": {
@@ -584,24 +506,10 @@
           },
           "type": "array"
         },
-        "_linkId": {
-          "description": "Extensions for linkId",
-          "items": {
-            "$ref": "Element"
-          },
-          "type": "array"
-        },
         "securityLabelNumber": {
           "description": "Security labels that protects the offer.",
           "items": {
             "$ref": "unsignedInt"
-          },
-          "type": "array"
-        },
-        "_securityLabelNumber": {
-          "description": "Extensions for securityLabelNumber",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         }
@@ -673,72 +581,40 @@
           "pattern": "^true|false$",
           "type": "boolean"
         },
-        "_valueBoolean": {
-          "description": "Extensions for valueBoolean",
-          "$ref": "Element"
-        },
         "valueDecimal": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
           "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
           "type": "number"
-        },
-        "_valueDecimal": {
-          "description": "Extensions for valueDecimal",
-          "$ref": "Element"
         },
         "valueInteger": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
           "pattern": "^-?([0]|([1-9][0-9]*))$",
           "type": "number"
         },
-        "_valueInteger": {
-          "description": "Extensions for valueInteger",
-          "$ref": "Element"
-        },
         "valueDate": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
           "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
           "type": "string"
-        },
-        "_valueDate": {
-          "description": "Extensions for valueDate",
-          "$ref": "Element"
         },
         "valueDateTime": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
           "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
           "type": "string"
         },
-        "_valueDateTime": {
-          "description": "Extensions for valueDateTime",
-          "$ref": "Element"
-        },
         "valueTime": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
           "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?$",
           "type": "string"
-        },
-        "_valueTime": {
-          "description": "Extensions for valueTime",
-          "$ref": "Element"
         },
         "valueString": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
           "pattern": "^[ \\r\\n\\t\\S]+$",
           "type": "string"
         },
-        "_valueString": {
-          "description": "Extensions for valueString",
-          "$ref": "Element"
-        },
         "valueUri": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
           "pattern": "^\\S*$",
           "type": "string"
-        },
-        "_valueUri": {
-          "description": "Extensions for valueUri",
-          "$ref": "Element"
         },
         "valueAttachment": {
           "description": "Response to an offer clause or question text,  which enables selection of values to be agreed to, e.g., the period of participation, the date of occupancy of a rental, warrently duration, or whether biospecimen may be used for further research.",
@@ -820,10 +696,6 @@
           "description": "Description of the quality and completeness of the asset that imay be a factor in its valuation.",
           "$ref": "string"
         },
-        "_condition": {
-          "description": "Extensions for condition",
-          "$ref": "Element"
-        },
         "periodType": {
           "description": "Type of Asset availability for use or ownership.",
           "items": {
@@ -849,21 +721,10 @@
           "description": "Clause or question text (Prose Object) concerning the asset in a linked form, such as a QuestionnaireResponse used in the formation of the contract.",
           "$ref": "string"
         },
-        "_text": {
-          "description": "Extensions for text",
-          "$ref": "Element"
-        },
         "linkId": {
           "description": "Id [identifier??] of the clause or question text about the asset in the referenced form or QuestionnaireResponse.",
           "items": {
             "$ref": "string"
-          },
-          "type": "array"
-        },
-        "_linkId": {
-          "description": "Extensions for linkId",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         },
@@ -878,13 +739,6 @@
           "description": "Security labels that protects the asset.",
           "items": {
             "$ref": "unsignedInt"
-          },
-          "type": "array"
-        },
-        "_securityLabelNumber": {
-          "description": "Extensions for securityLabelNumber",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         },
@@ -933,10 +787,6 @@
         "text": {
           "description": "Context description.",
           "$ref": "string"
-        },
-        "_text": {
-          "description": "Extensions for text",
-          "$ref": "Element"
         }
       },
       "additionalProperties": false
@@ -978,10 +828,6 @@
           "description": "Indicates the time during which this Contract ValuedItem information is effective.",
           "$ref": "dateTime"
         },
-        "_effectiveTime": {
-          "description": "Extensions for effectiveTime",
-          "$ref": "Element"
-        },
         "quantity": {
           "description": "Specifies the units by which the Contract Valued Item is measured or counted, and quantifies the countable or measurable Contract Valued Item instances.",
           "$ref": "Quantity"
@@ -994,17 +840,9 @@
           "description": "A real number that represents a multiplier used in determining the overall value of the Contract Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.",
           "$ref": "decimal"
         },
-        "_factor": {
-          "description": "Extensions for factor",
-          "$ref": "Element"
-        },
         "points": {
           "description": "An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Valued Item delivered. The concept of Points allows for assignment of point values for a Contract Valued Item, such that a monetary amount can be assigned to each point.",
           "$ref": "decimal"
-        },
-        "_points": {
-          "description": "Extensions for points",
-          "$ref": "Element"
         },
         "net": {
           "description": "Expresses the product of the Contract Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points \u003d net Amount. Quantity, factor and points are assumed to be 1 if not supplied.",
@@ -1014,17 +852,9 @@
           "description": "Terms of valuation.",
           "$ref": "string"
         },
-        "_payment": {
-          "description": "Extensions for payment",
-          "$ref": "Element"
-        },
         "paymentDate": {
           "description": "When payment is due.",
           "$ref": "dateTime"
-        },
-        "_paymentDate": {
-          "description": "Extensions for paymentDate",
-          "$ref": "Element"
         },
         "responsible": {
           "description": "Who will make payment.",
@@ -1041,24 +871,10 @@
           },
           "type": "array"
         },
-        "_linkId": {
-          "description": "Extensions for linkId",
-          "items": {
-            "$ref": "Element"
-          },
-          "type": "array"
-        },
         "securityLabelNumber": {
           "description": "A set of security labels that define which terms are controlled by this condition.",
           "items": {
             "$ref": "unsignedInt"
-          },
-          "type": "array"
-        },
-        "_securityLabelNumber": {
-          "description": "Extensions for securityLabelNumber",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         }
@@ -1090,10 +906,6 @@
           "description": "True if the term prohibits the  action.",
           "$ref": "boolean"
         },
-        "_doNotPerform": {
-          "description": "Extensions for doNotPerform",
-          "$ref": "Element"
-        },
         "type": {
           "description": "Activity or service obligation to be done or not done, performed or not performed, effectuated or not by this Contract term.",
           "$ref": "CodeableConcept.schema.jsoncodeableConcept"
@@ -1116,13 +928,6 @@
           },
           "type": "array"
         },
-        "_linkId": {
-          "description": "Extensions for linkId",
-          "items": {
-            "$ref": "Element"
-          },
-          "type": "array"
-        },
         "status": {
           "description": "Current state of the term action.",
           "$ref": "CodeableConcept.schema.jsoncodeableConcept"
@@ -1138,21 +943,10 @@
           },
           "type": "array"
         },
-        "_contextLinkId": {
-          "description": "Extensions for contextLinkId",
-          "items": {
-            "$ref": "Element"
-          },
-          "type": "array"
-        },
         "occurrenceDateTime": {
           "description": "When action happens.",
           "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
           "type": "string"
-        },
-        "_occurrenceDateTime": {
-          "description": "Extensions for occurrenceDateTime",
-          "$ref": "Element"
         },
         "occurrencePeriod": {
           "description": "When action happens.",
@@ -1173,13 +967,6 @@
           "description": "Id [identifier??] of the clause or question text related to the requester of this action in the referenced form or QuestionnaireResponse.",
           "items": {
             "$ref": "string"
-          },
-          "type": "array"
-        },
-        "_requesterLinkId": {
-          "description": "Extensions for requesterLinkId",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         },
@@ -1205,13 +992,6 @@
           },
           "type": "array"
         },
-        "_performerLinkId": {
-          "description": "Extensions for performerLinkId",
-          "items": {
-            "$ref": "Element"
-          },
-          "type": "array"
-        },
         "reasonCode": {
           "description": "Rationale for the action to be performed or not performed. Describes why the action is permitted or prohibited.",
           "items": {
@@ -1233,24 +1013,10 @@
           },
           "type": "array"
         },
-        "_reason": {
-          "description": "Extensions for reason",
-          "items": {
-            "$ref": "Element"
-          },
-          "type": "array"
-        },
         "reasonLinkId": {
           "description": "Id [identifier??] of the clause or question text related to the reason type or reference of this  action in the referenced form or QuestionnaireResponse.",
           "items": {
             "$ref": "string"
-          },
-          "type": "array"
-        },
-        "_reasonLinkId": {
-          "description": "Extensions for reasonLinkId",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         },
@@ -1265,13 +1031,6 @@
           "description": "Security labels that protects the action.",
           "items": {
             "$ref": "unsignedInt"
-          },
-          "type": "array"
-        },
-        "_securityLabelNumber": {
-          "description": "Extensions for securityLabelNumber",
-          "items": {
-            "$ref": "Element"
           },
           "type": "array"
         }
