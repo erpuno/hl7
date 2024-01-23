@@ -12,13 +12,6 @@
   "alias" : ["BU MC, SW, F2", "Burgers University Medical Center, South Wing, second floor"],
   "description" : "Second floor of the Old South Wing, formerly in use by Psychiatry",
   "mode" : "instance",
-  {
-    "telecom" : [{
-      "system" : "url",
-      "value" : "http://sampleorg.com/southwing",
-      "use" : "work"
-    }]
-  }],
   "address" : {
     "use" : "work",
     "line" : ["Galapagosweg 91, Building A"],

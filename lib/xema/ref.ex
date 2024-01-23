@@ -63,7 +63,7 @@ defmodule Xema.Ref do
     case fetch_by_key!(key(ref), master, root) do
       {%Schema{}, _root} = schema ->
         schema
-
+      {:root, root} -> {%Schema{}, root} # 5HT
       {xema, root} ->
         case fragment(ref) do
           nil ->

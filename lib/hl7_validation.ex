@@ -7,11 +7,14 @@ defmodule HL7.Validation do
   end
 
   def testItem(name) do
-      {_,schemaBin} = :file.read_file "schema/#{name}.schema.json"
+      schemaFile = "schema/#{name}.schema.json"
+      {_,schemaBin} = :file.read_file schemaFile
       schemaJson = Jason.decode!(schemaBin)
-      {_,objBin} = :file.read_file "samples/json/#{name}/#{name}.json"
+      file = "samples/json/#{name}/#{name}.json"
+      {_,objBin} = :file.read_file file
+      :io.format '> file: ~p, schema: ~p~n', [file, schemaFile]
       schema = Xema.from_json_schema(schemaJson)
-      obj = Jason.decode!(objBin, keys: :atoms)
+      obj = Jason.decode!(objBin)
       verify = Xema.valid?(schema, obj)
       {name,verify}
   end

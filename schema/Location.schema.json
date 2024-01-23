@@ -4,13 +4,12 @@
   "$ref": "#/definitions/Location",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
-    "ResourceList": {
-      "oneOf": [
-        {
-          "$ref": "#/definitions/Location"
-        }
-      ]
-    },
+    "code": {},
+    "uri": {},
+    "decimal": {},
+    "string": {},
+    "markdown": {},
+    "ResourceList": {},
     "Location": {
       "description": "Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.",
       "properties": {
@@ -123,20 +122,6 @@
           },
           "type": "array"
         },
-        "hoursOfOperation": {
-          "description": "What days/times during a week is this location usually open, and any exceptions where the location is not available.",
-          "items": {
-            "$ref": "Availability.schema.json#/definitions/Availability"
-          },
-          "type": "array"
-        },
-        "virtualService": {
-          "description": "Connection details of a virtual service (e.g. shared conference call facility with dedicated number/details).",
-          "items": {
-            "$ref": "VirtualServiceDetail.schema.json#/definitions/VirtualServiceDetail"
-          },
-          "type": "array"
-        },
         "endpoint": {
           "description": "Technical endpoints providing access to services operated for the location.",
           "items": {
@@ -156,7 +141,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "string.schema.json#/definitions/string"
+          "$ref": "#/definitions/string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
