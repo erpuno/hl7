@@ -108,10 +108,6 @@
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "$ref": "Identifier.schema.json#/definitions/Identifier"
             },
-            "valueCodeableConcept": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-            },
             "valueCoding": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "$ref": "Coding.schema.json#/definitions/Coding"
@@ -138,11 +134,11 @@
             },
             "valueMoney": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/Money"
+              "$ref": "Money.schema.json#/definitions/Money"
             },
             "valueAge": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/Age"
+              "$ref": "Age.schema.json#/definitions/Age"
             },
             "valueRange": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -154,15 +150,11 @@
             },
             "valueRatio": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/Ratio"
+              "$ref": "Ratio.schema.json#/definitions/Ratio"
             },
             "valueReference": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "$ref": "Reference.schema.json#/definitions/Reference"
-            },
-            "valueSampledData": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/SampledData"
             },
             "valueSignature": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -170,11 +162,11 @@
             },
             "valueAddress": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/Address"
+              "$ref": "Address.schema.json#/definitions/Address"
             },
             "valueContactPoint": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/ContactPoint"
+              "$ref": "ContactPoint.schema.json#/definitions/ContactPoint"
             },
             "valueTiming": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -182,11 +174,7 @@
             },
             "valueMeta": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/Meta"
-            },
-            "valueElementDefinition": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/ElementDefinition"
+              "$ref": "Meta.schema.json#/definitions/Meta"
             },
             "valueContactDetail": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
@@ -196,21 +184,9 @@
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "$ref": "Contributor.schema.json#/definitions/Contributor"
             },
-            "valueRelatedArtifact": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/RelatedArtifact"
-            },
-            "valueUsageContext": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/UsageContext"
-            },
             "valueDataRequirement": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "$ref": "DataRequirement.schema.json#/definitions/DataRequirement"
-            },
-            "valueParameterDefinition": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "#/definitions/ParameterDefinition"
             },
             "valueTriggerDefinition": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",

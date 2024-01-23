@@ -15,7 +15,6 @@ defmodule HL7.Loader do
                     %{schema: xema} = schema |> Xema.from_json_schema()
                     defs = :application.get_env(:hl7, :definitions, [])
                     :application.set_env(:hl7, :definitions, [{base,xema}|defs])
-                    # :io.format 'ENV: ~p~n', [[{base,xema}|defs]]
                     {:ok, xema}
           {_,schema} -> {:ok, schema}
       end

@@ -7,7 +7,7 @@
     "ResourceList": {
       "oneOf": [
         {
-          "$ref": "Location.schema.json#/definitions/Location"
+          "$ref": "#/definitions/Location"
         }
       ]
     },

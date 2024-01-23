@@ -256,11 +256,13 @@ defmodule Xema.Behaviour do
     end)
   end
 
-  defp update_remote_ids(%{refs: refs} = xema) do
-    refs = Enum.into(refs, %{}, fn {key, ref} -> {key, update_master_ids(ref)} end)
-
+  defp update_remote_ids(xema) do
+    refs = :maps.get(:refs, xema)
+    refs2 = Enum.into(refs, %{}, fn {key, ref} ->
+     :io.format 'ref: ~p~n', [{}]
+      {key, update_master_ids(ref)} end)
     Map.update!(xema, :refs, fn value ->
-      Map.merge(value, refs)
+      Map.merge(value, refs2)
     end)
   end
 
