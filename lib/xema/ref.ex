@@ -32,6 +32,11 @@ defmodule Xema.Ref do
   Creates a new reference from the given `pointer` and `uri`.
   """
   @spec new(String.t(), URI.t() | nil) :: Ref.t()
+  def new(%Xema.Ref{
+          pointer: pointer,
+          uri: uri
+        }, _), do: new(pointer)
+
   def new("#" <> _ = pointer, _uri), do: new(pointer)
 
   def new(pointer, uri) when is_binary(pointer),

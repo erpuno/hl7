@@ -34,7 +34,7 @@
             },
             "operationalStatus": {
               "description": "The Operational status covers operation values most relevant to beds (but can also apply to rooms/units/chair/etc such as an isolation unit/dialisys chair). This typically covers concepts such as contamination, housekeeping and other activities like maintenance.",
-              "$ref": "Coding.Schema.json#/definitions/Coding"
+              "$ref": "Coding.schema.json#/definitions/Coding"
             },
             "name": {
               "description": "Name of the location as used by humans. Does not need to be unique.",
@@ -61,13 +61,13 @@
             },
             "type": {
               "description": "Indicates the type of function performed at the location.",
-              "$ref": "#/definitions/CodeableConcept"
+              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
             },
             "telecom": {
               "description": "The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/ContactPoint"
+                "$ref": "ContactPoint.schema.json#/definitions/ContactPoint"
               }
             },
             "address": {
