@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :hl7,
   loader: HL7.Loader,
