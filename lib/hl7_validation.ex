@@ -3,7 +3,10 @@ defmodule HL7.Validation do
   def test() do
       :application.set_env(:hl7, :definitions, [])
       :lists.map fn x -> testItem(:lists.concat([x])) end,
-      [ :Identifier, :Quantity, :Reference, :Location, :Extension, :Patient, :Specimen ]
+      [ :Identifier, :Quantity, :Reference, :Location,
+        :Extension, :Patient, :Specimen, :Observation,
+        :List
+      ]
   end
 
   def testItem(name) do
