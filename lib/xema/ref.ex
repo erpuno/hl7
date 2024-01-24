@@ -123,6 +123,10 @@ defmodule Xema.Ref do
     {Map.fetch!(master.refs, key), master}
   end
 
+  def normalize(key) do
+      :erlang.iolist_to_binary(hd(:string.tokens(:erlang.binary_to_list(:filename.basename(key)),'.')))
+  end
+
   defp fetch_by_key!(key, master, root) do
     case Map.get(root.refs, key) do
       nil ->
