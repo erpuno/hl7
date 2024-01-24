@@ -20,18 +20,17 @@ defmodule HL7.Service do
          Jason.encode!([%{ "resourceType" => "Parameters",
             "parameters" => [
                %{ "name" => "return",
-                  "valueMeta" => %{
-                     "profile" => [
-                       "https://ehealth.gov.ua/StrudctureDefinition/Person",
-                       "https://ehealth.gov.ua/StrudctureDefinition/Patients",
-                       "https://ehealth.gov.ua/StrudctureDefinition/Organization",
-                       "https://ehealth.gov.ua/StrudctureDefinition/Location"
-                      ],
-                     "security" => [%{"system" => "https://ehealth.gov.ua/CodeSystem/v4", "code" => "N", "display" => "normal" }],
-                     "tag" => [%{"system" => "https://ehealth.gov.ua/tag/", "code" => "N", "display" => "normal" }]
-                   }
-                } ]
-           }])) end
+             "valueMeta" => %{
+               "profile" => [ "https://hl7.erp.uno/schema/Person.schema.json",
+                              "https://hl7.erp.uno/schema/Patient.schema.json",
+                              "https://hl7.erp.uno/schema/Organization.schema.json",
+                              "https://hl7.erp.uno/schema/Location.schema.json"  ],
+              "security" => [%{"system" => "https://hl7.erp.uno/CodeSystem/v4",
+                                 "code" => "N",
+                              "display" => "normal" }],
+                   "tag" => [%{"system" => "https://hl7.erp.uno/tag/",
+                                 "code" => "N",
+                              "display" => "normal" }]}}]}])) end
 
    def get3(conn,base,type,id) do
        :io.format 'GET/3 #{base}/#{type}/#{id}', []

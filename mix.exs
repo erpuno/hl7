@@ -4,7 +4,7 @@ defmodule HL7.Mixfile do
   def project do
     [ app: :hl7,
       version: "1.0.0",
-      elixir: ">= 1.15.0",
+      elixir: ">= 1.12.0",
       description: "ISO/HL7 FHIR Application Server",
       deps: deps(),
       package: package(),

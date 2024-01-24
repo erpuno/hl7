@@ -123,23 +123,23 @@ defmodule Xema.Ref do
     {Map.fetch!(master.refs, key), master}
   end
 
-  def normalize(key) do
-      :erlang.iolist_to_binary(hd(:string.tokens(:erlang.binary_to_list(:filename.basename(key)),'.')))
-  end
 
   defp fetch_by_key!(key, master, root) do
     case Map.get(root.refs, key) do
       nil ->
-        nk = :erlang.iolist_to_binary(hd(:string.tokens(:erlang.binary_to_list(:filename.basename(key)),'.')))
-        %{schema: %Schema{definitions: defs}} = root
-        %{schema: %Schema{definitions: defs2}} = master
+        nk = normalize(key)
         case Map.get(master.refs, nk) do
              nil ->
                   schema3 = HL7.Loader.loadSchema(nk)
                   {Map.fetch!(schema3.definitions, nk), root}
-             s -> {Map.fetch!(master.refs, key), root}
+             _ -> {Map.fetch!(master.refs, key), root}
         end
       schema -> {schema, root}
     end
   end
+
+  def normalize(key) do
+      :erlang.iolist_to_binary(hd(:string.tokens(:erlang.binary_to_list(:filename.basename(key)),'.')))
+  end
+
 end
