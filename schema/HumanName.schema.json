@@ -1,0 +1,153 @@
+{
+  "schema": "http://json-schema.org/draft-06/schema#",
+  "$id": "https://hl7.erp.uno/schema/HumanName.schema.json",
+  "$ref": "#/definitions/HumanName",
+  "definitions": {
+    "Reference": {
+      "allOf": [
+        {
+          "description": "A reference from one resource to another.",
+          "properties": {
+            "reference": {
+              "description": "A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with \u0027#\u0027) refer to contained resources.",
+              "type": "string"
+            },
+            "identifier": {
+              "description": "An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.",
+              "$ref": "#/definitions/Identifier"
+            },
+            "display": {
+              "description": "Plain text narrative that identifies the resource in addition to the resource reference.",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+     "Period": {
+      "allOf": [
+        {
+          "description": "A time period defined by a start and end date and optionally time.",
+          "properties": {
+            "start": {
+              "description": "The start of the period. The boundary is inclusive.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "end": {
+              "description": "The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          }
+        }
+      ]
+    },
+    "Identifier": {
+      "allOf": [
+        {
+          "description": "A technical identifier - identifies some entity uniquely and unambiguously.",
+          "properties": {
+            "use": {
+              "description": "The purpose of this identifier.",
+              "enum": [
+                "usual",
+                "official",
+                "temp",
+                "secondary"
+              ],
+              "type": "string"
+            },
+            "type": {
+              "description": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+            },
+            "system": {
+              "description": "Establishes the namespace for the value - that is, a URL that describes a set values that are unique.",
+              "type": "string"
+            },
+            "value": {
+              "description": "The portion of the identifier typically relevant to the user and which is unique within the context of the system.",
+              "type": "string"
+            },
+            "period": {
+              "description": "Time period during which identifier is/was valid for use.",
+              "$ref": "#/definitions/Period"
+            },
+            "assigner": {
+              "description": "Organization that issued/manages the identifier.",
+              "$ref": "#/definitions/Reference"
+            }
+          }
+        }
+      ]
+    },
+    "HumanName": {
+      "allOf": [
+      {
+        "description": "A name, normally of a human, that can be used for other living entities (e.g. animals but not organizations) that have been assigned names by a human and may need the use of name parts or the need for usage information.",
+        "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "use": {
+          "description": "Identifies the purpose for this name.",
+          "enum": [
+            "usual",
+            "official",
+            "temp",
+            "nickname",
+            "anonymous",
+            "old",
+            "maiden"
+          ]
+        },
+        "text": {
+          "description": "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.",
+          "type": "string"
+        },
+        "family": {
+          "description": "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.",
+          "type": "string"
+        },
+        "given": {
+          "description": "Given name.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "prefix": {
+          "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "suffix": {
+          "description": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "period": {
+          "description": "Indicates the period of time when this name was valid for the named person.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "type": "object"
+       }
+      ]
+    }
+  }
+}
+

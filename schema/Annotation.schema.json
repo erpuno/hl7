@@ -32,7 +32,7 @@
           "properties": {
             "authorReference": {
               "description": "The individual responsible for making the annotation.",
-              "$ref": "Reference.schema.json#/definitions/Reference"
+              "$ref": "#/definitions/Reference"
             },
             "authorString": {
               "description": "The individual responsible for making the annotation.",

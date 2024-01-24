@@ -3,6 +3,14 @@ defmodule HL7.Loader do
 
   @behaviour Xema.Loader
 
+  def loadSchema(id) do
+      name = "schema/" <> id <> ".schema.json"
+      {_,bin} = :file.read_file name
+      schema = Jason.decode!(bin)
+      %{schema: xema} = schema |> Xema.from_json_schema()
+      xema
+  end
+
   @spec fetch(binary) :: {:ok, map} | {:error, any}
   def fetch(uri) do
       base = :filename.basename(uri.path, '.schema.json')

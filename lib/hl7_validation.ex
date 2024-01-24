@@ -3,7 +3,7 @@ defmodule HL7.Validation do
   def test() do
       :application.set_env(:hl7, :definitions, [])
       :lists.map fn x -> testItem(:lists.concat([x])) end,
-      [ :Identifier, :Quantity, :Reference, :Location, :Patient ]
+      [ :Identifier, :Quantity, :Reference, :Location, :Extension, :Patient, :Specimen ]
   end
 
   def testItem(name) do
@@ -14,7 +14,7 @@ defmodule HL7.Validation do
       {_,objBin} = :file.read_file file
       schema = Xema.from_json_schema(schemaJson)
       obj = Jason.decode!(objBin)
-      verify = Xema.valid?(schema, obj)
+      verify = Xema.validate(schema, obj)
       {name,verify}
   end
 

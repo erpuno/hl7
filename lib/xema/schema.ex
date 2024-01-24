@@ -316,10 +316,10 @@ defmodule Xema.Schema do
   def fetch!(%Schema{} = schema, pointer) do
       case fetch(schema, pointer) do
            {:ok, schema} -> schema
-           :error ->base = :filename.basename(pointer)
+           :error -> base = :filename.basename(pointer)
                      name = "schema/" <> base <> ".schema.json"
                      refs = :application.get_env(:hl7, :definitions, [])
-                     :io.format 'fetch: ~p~n',[name]
+                     #:io.format 'fetch: ~p~n',[name]
                      case :lists.keyfind(base, 1, refs) do
                           false -> raise SchemaError, {:ref_not_found, pointer}
                           {_,schema} -> schema end

@@ -63,7 +63,8 @@ defmodule Xema.Ref do
     case fetch_by_key!(key(ref), master, root) do
       {%Schema{}, _root} = schema ->
         schema
-      {:root, root} -> {%Schema{}, root} # 5HT
+      {:root, root} ->
+        {%Schema{}, root} # 5HT
       {xema, root} ->
         case fragment(ref) do
           nil ->
@@ -72,6 +73,8 @@ defmodule Xema.Ref do
           fragment ->
             {Map.fetch!(xema.refs, fragment), xema}
         end
+      _ ->
+       :io.format 'Undhandled Case: ~p~n', [{key(ref)}]
     end
   end
 
@@ -122,7 +125,16 @@ defmodule Xema.Ref do
 
   defp fetch_by_key!(key, master, root) do
     case Map.get(root.refs, key) do
-      nil -> {Map.fetch!(master.refs, key), root}
+      nil ->
+        nk = :erlang.iolist_to_binary(hd(:string.tokens(:erlang.binary_to_list(:filename.basename(key)),'.')))
+        %{schema: %Schema{definitions: defs}} = root
+        %{schema: %Schema{definitions: defs2}} = master
+        case Map.get(master.refs, nk) do
+             nil ->
+                  schema3 = HL7.Loader.loadSchema(nk)
+                  {Map.fetch!(schema3.definitions, nk), root}
+             s -> {Map.fetch!(master.refs, key), root}
+        end
       schema -> {schema, root}
     end
   end
