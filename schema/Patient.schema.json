@@ -4,9 +4,17 @@
   "$ref": "#/definitions/Patient",
   "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
   "definitions": {
-    "uri": { "properties": {} },
     "date": { "properties": {} },
-    "code": { "properties": {} },
+    "code": {
+      "pattern": "^[^\\s]+( [^\\s]+)*$",
+      "type": "string",
+      "description": "A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"
+    },
+    "uri": {
+      "pattern": "^\\S*$",
+      "type": "string",
+      "description": "String of characters used to identify a name or a resource"
+    },
     "Patient": {
       "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
       "properties": {
