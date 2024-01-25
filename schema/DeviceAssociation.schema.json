@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "id": "http://hl7.erp.uno/schema/DeviceAssociation.schema.json",
   "$ref": "#/definitions/DeviceAssociation",
   "description": "see https://hl7.org/fhir/json.html for information about the FHIR Json Schemas",
