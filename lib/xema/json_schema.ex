@@ -201,7 +201,7 @@ defmodule Xema.JsonSchema do
   end
 
   defp to_existing_atom(str, opts \\ []) do
-    case Keyword.get(opts, :atom, :existing) do
+    case Keyword.get(opts, :atom, :force) do
       :existing -> String.to_existing_atom(str)
       :force -> String.to_atom(str)
     end

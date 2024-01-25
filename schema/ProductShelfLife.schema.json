@@ -1,0 +1,24 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/schema/ProductShelfLife.schema.json",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "ProductShelfLife": {
+       "description": "54t245t",
+       "properties": {
+          "type" : {
+              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "periodDuration": {
+              "$ref": "Duration.schema.json#/definitions/Duration"
+          },
+          "periodString": {
+              "type": "string"
+          },
+          "specialPrecautionsForStorage" : {
+              "items" : { "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept" }
+          }
+       }
+    }
+  }
+}
