@@ -5,7 +5,7 @@ defmodule HL7.Validation do
       :lists.map fn x -> testItem(:lists.concat([x])) end,
       [ :Identifier, :Quantity, :Reference, :Location,
         :Extension, :Patient, :Specimen, :Observation,
-        :List, :Encounter, :Contract
+        :List, :Encounter, :Contract, :Device
       ]
   end
 

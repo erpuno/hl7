@@ -1,0 +1,61 @@
+{
+  "resourceType" : "Device",
+  "id" : "device-example-specimen-container-green-gel-vacutainer",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Device</b><a name=\"device-example-specimen-container-green-gel-vacutainer\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Device &quot;device-example-specimen-container-green-gel-vacutainer&quot; </p></div><p><b>identifier</b>: id:\u00a0345675</p><p><b>displayName</b>: device-example-specimen-container-green-gel-vacutainer</p><blockquote><p><b>property</b></p><p><b>type</b>: Tube Type <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (codes#tube-type)</span></p><p><b>value</b>: Green Gel <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (types#green-gel)</span></p></blockquote><blockquote><p><b>property</b></p><p><b>type</b>: Amount <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (codes#amount)</span></p><p><b>value</b>: 4.5 mL <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (capacities#4.5mL)</span></p></blockquote><blockquote><p><b>property</b></p><p><b>type</b>: Additive <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (codes#additive)</span></p><p><b>value</b>: lithium heparin <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (additive#lihep)</span></p></blockquote></div>"
+  },
+  "identifier" : [{
+    "system" : "http://acme.com/containers/id",
+    "value" : "345675"
+  }],
+  "displayName" : "device-example-specimen-container-green-gel-vacutainer",
+  "property" : [{
+    "type" : {
+      "coding" : [{
+        "system" : "http://acme.com/containers/codes",
+        "code" : "tube-type",
+        "display" : "Tube Type"
+      }]
+    },
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://acme.com/containers/types",
+        "code" : "green-gel",
+        "display" : "Green Gel"
+      }]
+    }
+  },
+  {
+    "type" : {
+      "coding" : [{
+        "system" : "http://acme.com/containers/codes",
+        "code" : "amount",
+        "display" : "Amount"
+      }]
+    },
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://acme.com/containers/capacities",
+        "code" : "4.5mL",
+        "display" : "4.5 mL"
+      }]
+    }
+  },
+  {
+    "type" : {
+      "coding" : [{
+        "system" : "http://acme.com/containers/codes",
+        "code" : "additive",
+        "display" : "Additive"
+      }]
+    },
+    "valueCodeableConcept" : {
+      "coding" : [{
+        "system" : "http://acme.com/containers/additive",
+        "code" : "lihep",
+        "display" : "lithium heparin"
+      }]
+    }
+  }]
+}
