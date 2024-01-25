@@ -6,7 +6,7 @@ defmodule HL7.Validation do
       [ :Identifier, :Quantity, :Reference, :Location,
         :Extension, :Patient, :Specimen, :Observation,
         :List, :Encounter, :Contract, :Device, :Organization,
-        :DeviceDefinition
+        :DeviceDefinition, :DeviceAssociation
       ]
   end
 

@@ -7,7 +7,6 @@
     "code": { "properties": {} },
     "uri": { "properties": {} },
     "decimal": {},
-    "string": {},
     "markdown": {},
     "ResourceList": {},
     "Location": {
@@ -71,12 +70,12 @@
         },
         "name": {
           "description": "Name of the location as used by humans. Does not need to be unique.",
-          "$ref": "#/definitions/string"
+          "type": "string"
         },
         "alias": {
           "description": "A list of alternate names that the location is known as, or was known as, in the past.",
           "items": {
-            "$ref": "#/definitions/string"
+            "type": "string"
           },
           "type": "array"
         },
@@ -148,7 +147,7 @@
       "properties": {
         "id": {
           "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "$ref": "#/definitions/string"
+          "type": "string"
         },
         "extension": {
           "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
