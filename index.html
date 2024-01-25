@@ -52,8 +52,9 @@
       :lists.map fn x -> testItem(:lists.concat([x])) end,
 
       [ :Identifier, :Quantity, :Reference, :Location,
-        :Extension, :Patient, :Specimen, :Observation,
-        :List, :Encounter, :Contract
+        :Extension,  :Patient,  :Specimen,  :Observation,
+        :List, :Encounter, :Contract, :Device, :Organization,
+        :DeviceDefinition, :DeviceAssociation, :DetectedIssue
       ]
 
   end
