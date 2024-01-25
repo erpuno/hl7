@@ -1,0 +1,79 @@
+<html><head><meta charset="utf-8" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="" />
+<meta name="author" content="Maxim Sokhatsky" /><title>HL7</title>
+    <link rel="stylesheet" href="https://n2o.dev/blank.css" />
+    <link rel="stylesheet" href="https://n2o.dev/zima.css" />
+    <link rel="stylesheet" href="https://n2o.dev/pro/pro.css" />
+</head><body><nav>
+    <a href="https://erp.uno/en/">ERP</a>
+    <a href="https://mail.erp.uno" style="background:#ededed;">HL7</a>
+</nav><header>
+    <a href="https://github.com/erpuno/hl7"><img src="https://openmoji.org/data/color/svg/2695.svg" /></a>
+    <h1>FHIR</h1>
+</header><aside>
+    <article>
+        <section>
+            <h3>SYNOPSIS</h3>
+            <div>ISO/HL7 27931:2009 is a simple HL7 server implementation with following features:</div>
+            <div>
+                 <ul><li>JSON Schema Circular Validator RFC Draft-7; </li>
+                     <li>MongoDB, RocksDB and Mnesia backends;</li>
+                     <li>Erlang records as schema source for GRPC/JavaScript/Swift;</li>
+                     <li>HTTP API using Plug;</li>
+                     <li>Compact Codebase 5K LOC.</li></ul></div>
+                <div>
+                ISO/HL7 is based on eHealth code review.</div><br/>
+        </section>
+        <section>
+            <h3><a href="https://n2o.dev">MODULES</a></h3>
+            <div><ul><li><a href="man/hl7_endpoint.htm">ENDPOINT</a></li>
+                     <li><a href="man/hl7_service.htm">SERVICE</a></li>
+                     <li><a href="man/hl7_validation.htm">VALIDATION</a></li>
+                     <li><a href="man/hl7_loader.htm">LOADER</a></li>
+                     <li><a href="man/hl7_application.htm">APPLICATION</a></li></ul></div>
+            <br />
+            <div>
+                APR 2024 © <a href="https://github.com/5HT">5HT</a> ISC<br />
+                VER 0.1
+            </div>
+        </section>
+        <section>
+        </section>
+    </article>
+</aside><main>
+    <section>
+
+    <h3>JSON Schema</h3>
+    <p></p>
+    <figure><code>
+  def test() do
+      :application.set_env(:hl7, :definitions, [])
+      :lists.map fn x -> testItem(:lists.concat([x])) end,
+
+      [ :Identifier, :Quantity, :Reference, :Location,
+        :Extension, :Patient, :Specimen, :Observation,
+        :List, :Encounter, :Contract
+      ]
+
+  end
+
+  def testItem(name) do
+      schemaFile = "schema/#{name}.schema.json"
+      {_,schemaBin} = :file.read_file schemaFile
+      schemaJson = Jason.decode!(schemaBin)
+      file = "samples/json/#{name}/#{name}.json"
+      {_,objBin} = :file.read_file file
+      schema = Xema.from_json_schema(schemaJson)
+      obj = Jason.decode!(objBin)
+      verify = Xema.validate(schema, obj)
+      {name,verify}
+  end
+
+    </code></figure>
+
+     <p>ISO/HL7 is written in Erlang/OTP and supports <a href="https://rocksdb.org">RocksDB</a> or
+                     <a href="http://erlang.org/doc/man/mnesia.html">Mnesia</a> databases.</p>
+    </section>
+</main><footer>
+    Made with <span class="heart">❤</span> to N2O
+</footer></body></html>
