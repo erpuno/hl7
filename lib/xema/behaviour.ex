@@ -460,6 +460,7 @@ defmodule Xema.Behaviour do
   defp map(value, _fun, _id), do: value
 
   defp circulars(%{refs: refs} = xema) do
+#    :io.format '~p~n', [Map.keys(refs)]
     Enum.reduce(refs, [], fn {ref, schema}, acc ->
       Enum.concat(
         circulars(schema),
