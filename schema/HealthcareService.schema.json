@@ -199,7 +199,7 @@
     "HealthcareService_AvailableTime": {
       "allOf": [
         {
-          "$ref": "BackboneElement#/definitions/BackboneElement"
+          "$ref": "BackboneElement.schema.json#/definitions/BackboneElement"
         },
         {
           "description": "The details of a healthcare service available at a location.",
@@ -260,7 +260,7 @@
     "HealthcareService_NotAvailable": {
       "allOf": [
         {
-          "$ref": "BackboneElement#/definitions/BackboneElement"
+          "$ref": "BackboneElement.schema.json#/definitions/BackboneElement"
         },
         {
           "description": "The details of a healthcare service available at a location.",

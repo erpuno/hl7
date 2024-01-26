@@ -1,12 +1,12 @@
 defmodule HL7.Validation do
 
   def suite() do
-      [ :BodyStructure,
-        :DeviceAssociation,
+      [ 
         :Identifier, :Quantity, :Reference, :Location,
         :Extension, :Patient, :Specimen, :Observation,
         :List, :Encounter, :Contract, :Device, :Organization,
-        :DeviceDefinition,  :DetectedIssue
+        :DeviceDefinition, :DeviceAssociation, :DetectedIssue,
+        :BodyStructure,
       ]
   end
 

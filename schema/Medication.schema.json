@@ -1,204 +1,225 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "https://hl7.er.uno/schema/Medication.schema.json",
+  "id": "https://hl7.erp.uno/schema/Medication.schema.json",
   "$ref": "#/definitions/Medication",
-  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "description": "see https://hl7.org/fhir/json.html for information about the FHIR Json Schemas",
   "definitions": {
+    "dateTime": {
+      "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]{1,9})?)?)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)?)?)?$",
+      "type": "string",
+      "description": "A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a UTC offset SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates."
+    },
+    "code": {
+      "pattern": "^[^\\s]+( [^\\s]+)*$",
+      "type": "string",
+      "description": "A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"
+    },
+    "uri": {
+      "pattern": "^\\S*$",
+      "type": "string",
+      "description": "String of characters used to identify a name or a resource"
+    },
     "Medication": {
-      "allOf": [
-        {
-          "$ref": "DomainResource.schema.json#/definitions/DomainResource"
+      "description": "This resource is primarily used for the identification and definition of a medication, including ingredients, for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a Medication resource",
+          "const": "Medication"
         },
-        {
-          "description": "This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.",
-          "properties": {
-            "resourceType": {
-              "description": "This is a Medication resource",
-              "type": "string",
-              "enum": [
-                "Medication"
-              ]
-            },
-            "code": {
-              "description": "A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.",
-              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-            },
-            "status": {
-              "description": "A code to indicate if the medication is in active use.",
-              "enum": [
-                "active",
-                "inactive",
-                "entered-in-error"
-              ],
-              "type": "string"
-            },
-            "_status": {
-              "description": "Extensions for status",
-              "$ref": "Element.schema.json#/definitions/Element"
-            },
-            "isBrand": {
-              "description": "Set to true if the item is attributable to a specific manufacturer.",
-              "type": "boolean"
-            },
-            "_isBrand": {
-              "description": "Extensions for isBrand",
-              "$ref": "Element.schema.json#/definitions/Element"
-            },
-            "isOverTheCounter": {
-              "description": "Set to true if the medication can be obtained without an order from a prescriber.",
-              "type": "boolean"
-            },
-            "_isOverTheCounter": {
-              "description": "Extensions for isOverTheCounter",
-              "$ref": "Element.schema.json#/definitions/Element"
-            },
-            "manufacturer": {
-              "description": "Describes the details of the manufacturer of the medication product.  This is not intended to represent the distributor of a medication product.",
-              "$ref": "Reference.schema.json#/definitions/Reference"
-            },
-            "form": {
-              "description": "Describes the form of the item.  Powder; tablets; capsule.",
-              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-            },
-            "ingredient": {
-              "description": "Identifies a particular constituent of interest in the product.",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Medication_Ingredient"
-              }
-            },
-            "package": {
-              "description": "Information that only applies to packages (not products).",
-              "$ref": "#/definitions/Medication_Package"
-            },
-            "image": {
-              "description": "Photo(s) or graphic representation(s) of the medication.",
-              "type": "array",
-              "items": {
-                "$ref": "Attachment.schema.json#/definitions/Attachment"
-              }
-            }
+        "id": {
+          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+          "type": "string"
+        },
+        "meta": {
+          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+          "$ref": "Meta.schema.json#/definitions/Meta"
+        },
+        "implicitRules": {
+          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+          "$ref": "#/definitions/uri"
+        },
+        "_implicitRules": {
+          "description": "Extensions for implicitRules",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "language": {
+          "description": "The base language in which the resource is written.",
+          "$ref": "#/definitions/code"
+        },
+        "_language": {
+          "description": "Extensions for language",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+          "$ref": "Narrative.schema.json#/definitions/Narrative"
+        },
+        "contained": {
+          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning.",
+          "items": {
+            "$ref": "ResourceList.schema.json#/definitions/ResourceList"
           },
-          "required": [
-            "resourceType"
-          ]
+          "type": "array"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "Business identifier for this medication.",
+          "items": {
+            "$ref": "Identifier.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "code": {
+          "description": "A code (or set of codes) that specify this medication, or a textual description if no code is available. Usage note: This could be a standard medication code such as a code from RxNorm, SNOMED CT, IDMP etc. It could also be a national or local formulary code, optionally with translations to other code systems.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "status": {
+          "description": "A code to indicate if the medication is in active use.",
+          "$ref": "#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "marketingAuthorizationHolder": {
+          "description": "The company or other legal entity that has authorization, from the appropriate drug regulatory authority,  to market a medicine in one or more jurisdictions.  Typically abbreviated MAH.Note:  The MAH may manufacture the product and may also contract the manufacturing of the product to one or more companies (organizations).",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "doseForm": {
+          "description": "Describes the form of the item.  Powder; tablets; capsule.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "totalVolume": {
+          "description": "When the specified product code does not infer a package size, this is the specific amount of drug in the product.  For example, when specifying a product that has the same strength (For example, Insulin glargine 100 unit per mL solution for injection), this attribute provides additional clarification of the package amount (For example, 3 mL, 10mL, etc.).",
+          "$ref": "Quantity.schema.json#/definitions/Quantity"
+        },
+        "ingredient": {
+          "description": "Identifies a particular constituent of interest in the product.",
+          "items": {
+            "$ref": "#/definitions/Medication_Ingredient"
+          },
+          "type": "array"
+        },
+        "batch": {
+          "description": "Information that only applies to packages (not products).",
+          "$ref": "#/definitions/Medication_Batch"
+        },
+        "definition": {
+          "description": "A reference to a knowledge resource that provides more information about this medication.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
         }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resourceType"
       ]
     },
     "Medication_Ingredient": {
-      "allOf": [
-        {
-          "$ref": "BackboneElement.schema.json#/definitions/BackboneElement"
+      "description": "This resource is primarily used for the identification and definition of a medication, including ingredients, for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
         },
-        {
-          "description": "This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.",
-          "properties": {
-            "itemCodeableConcept": {
-              "description": "The actual ingredient - either a substance (simple ingredient) or another medication.",
-              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-            },
-            "itemReference": {
-              "description": "The actual ingredient - either a substance (simple ingredient) or another medication.",
-              "$ref": "Reference.schema.json#/definitions/Reference"
-            },
-            "isActive": {
-              "description": "Indication of whether this ingredient affects the therapeutic action of the drug.",
-              "type": "boolean"
-            },
-            "_isActive": {
-              "description": "Extensions for isActive",
-              "$ref": "Element.schema.json#/definitions/Element"
-            },
-            "amount": {
-              "description": "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet.",
-              "$ref": "Ratio.schema.json#/definitions/Ratio"
-            }
-          }
-        }
-      ]
-    },
-    "Medication_Package": {
-      "allOf": [
-        {
-          "$ref": "BackboneElement.schema.json#/definitions/BackboneElement"
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
         },
-        {
-          "description": "This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.",
-          "properties": {
-            "container": {
-              "description": "The kind of container that this package comes as.",
-              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-            },
-            "content": {
-              "description": "A set of components that go to make up the described item.",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Medication_Content"
-              }
-            },
-            "batch": {
-              "description": "Information about a group of medication produced or packaged from one production run.",
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Medication_Batch"
-              }
-            }
-          }
-        }
-      ]
-    },
-    "Medication_Content": {
-      "allOf": [
-        {
-          "$ref": "BackboneElement#/definitions/BackboneElement"
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
         },
-        {
-          "description": "This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.",
-          "properties": {
-            "itemCodeableConcept": {
-              "description": "Identifies one of the items in the package.",
-              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
-            },
-            "itemReference": {
-              "description": "Identifies one of the items in the package.",
-              "$ref": "Reference.schema.json#/definitions/Reference"
-            },
-            "amount": {
-              "description": "The amount of the product that is in the package.",
-              "$ref": "Quantity.schema.json#/definitions/Quantity"
-            }
-          }
+        "item": {
+          "description": "The ingredient (substance or medication) that the ingredient.strength relates to.  This is represented as a concept from a code system or described in another resource (Substance or Medication).",
+          "$ref": "CodeableReference.schema.json#/definitions/CodeableReference"
+        },
+        "isActive": {
+          "description": "Indication of whether this ingredient affects the therapeutic action of the drug.",
+          "type": "boolean"
+        },
+        "_isActive": {
+          "description": "Extensions for isActive",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "strengthRatio": {
+          "description": "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet.",
+          "$ref": "Ratio.schema.json#/definitions/Ratio"
+        },
+        "strengthCodeableConcept": {
+          "description": "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "strengthQuantity": {
+          "description": "Specifies how many (or how much) of the items there are in this Medication.  For example, 250 mg per tablet.  This is expressed as a ratio where the numerator is 250mg and the denominator is 1 tablet but can also be expressed a quantity when the denominator is assumed to be 1 tablet.",
+          "$ref": "Quantity.schema.json#/definitions/Quantity"
         }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item"
       ]
     },
     "Medication_Batch": {
-      "allOf": [
-        {
-          "$ref": "BackboneElement.schema.json#/definitions/BackboneElement"
+      "description": "This resource is primarily used for the identification and definition of a medication, including ingredients, for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
         },
-        {
-          "description": "This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.",
-          "properties": {
-            "lotNumber": {
-              "description": "The assigned lot number of a batch of the specified product.",
-              "type": "string"
-            },
-            "_lotNumber": {
-              "description": "Extensions for lotNumber",
-              "$ref": "Element.schema.json#/definitions/Element"
-            },
-            "expirationDate": {
-              "description": "When this specific batch of product will expire.",
-              "type": "string",
-              "pattern": "-?([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
-            },
-            "_expirationDate": {
-              "description": "Extensions for expirationDate",
-              "$ref": "Element.schema.json#/definitions/Element"
-            }
-          }
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "lotNumber": {
+          "description": "The assigned lot number of a batch of the specified product.",
+          "type2": "string"
+        },
+        "_lotNumber": {
+          "description": "Extensions for lotNumber",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "expirationDate": {
+          "description": "When this specific batch of product will expire.",
+          "$ref": "#/definitions/dateTime"
+        },
+        "_expirationDate": {
+          "description": "Extensions for expirationDate",
+          "$ref": "Element.schema.json#/definitions/Element"
         }
-      ]
+      },
+      "type": "object",
+      "additionalProperties": false
     }
   }
 }
