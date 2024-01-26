@@ -1,8 +1,6 @@
 defmodule HL7.Validation do
 
-  def test() do
-      :application.set_env(:hl7, :definitions, [])
-      :lists.map fn x -> testItem(:lists.concat([x])) end,
+  def suite() do
       [ :Identifier, :Quantity, :Reference, :Location,
         :Extension, :Patient, :Specimen, :Observation,
         :List, :Encounter, :Contract, :Device, :Organization,
@@ -11,6 +9,30 @@ defmodule HL7.Validation do
         :Practitioner, :PractitionerRole,
         :Medication, :MedicationDispense, :MedicationRequest
       ]
+  end
+
+  def loadSchema() do
+      :lists.map(fn x -> loadSchema(:lists.concat([x])) end, suite())
+  end
+
+  def test() do
+      :application.set_env(:hl7, :definitions, [])
+#      loadSchema()
+      :lists.map fn x ->
+         {time,{res,_}} = :timer.tc(fn -> testItem(:lists.concat([x])) end)
+         :io.format 'Timer: ~p, Item: ~p~n', [time,res]
+         {time,:erlang.iolist_to_binary res}
+       end, suite()
+  end
+
+  def loadSchema(name) do
+      schemaFile = "schema/#{name}.schema.json"
+      {_,schemaBin} = :file.read_file schemaFile
+      schemaJson = Jason.decode!(schemaBin)
+      %{schema: xema} = schemaJson |> Xema.from_json_schema()
+      defs = :application.get_env(:hl7, :definitions, [])
+      :application.set_env(:hl7, :definitions, [{:erlang.iolist_to_binary(name),xema}|defs])
+      xema
   end
 
   def testItem(name) do
