@@ -4,7 +4,7 @@
   "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
     "ProductShelfLife": {
-       "description": "54t245t",
+       "description": "Product Shelf Life",
        "properties": {
           "type" : {
               "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
