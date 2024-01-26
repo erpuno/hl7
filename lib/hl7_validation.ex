@@ -16,7 +16,7 @@ defmodule HL7.Validation do
   def testItem(name) do
       schemaFile = "schema/#{name}.schema.json"
       {_,schemaBin} = :file.read_file schemaFile
-      :io.format 'file: ~p~n', [schemaFile]
+#      :io.format 'file: ~p~n', [schemaFile]
       schemaJson = Jason.decode!(schemaBin)
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
