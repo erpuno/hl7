@@ -130,7 +130,7 @@ defmodule Xema.Ref do
         nk = normalize(key)
         case Map.get(master.refs, nk) do
              nil ->
-                  schema3 = HL7.Loader.loadSchema(nk)
+                  %{schema: schema3} = HL7.Loader.loadSchema(nk)
                   {Map.fetch!(schema3.definitions, nk), root}
              _ -> {Map.fetch!(master.refs, key), root}
         end

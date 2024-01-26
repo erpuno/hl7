@@ -1,7 +1,7 @@
 {
   "schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://hl7.erp.uno/schema/Address.schema.json",
-  "$ref": "#/definitions/Address",
+  "$id": "https://hl7.erp.uno/schema/CodeableReference.schema.json",
+  "$ref": "#/definitions/CodeableReference",
   "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions" : {
     "CodeableReference": {

@@ -317,10 +317,11 @@ defmodule Xema.Schema do
       case fetch(schema, pointer) do
            {:ok, schema} -> schema
            :error -> base = :filename.basename(pointer)
-                     refs = :application.get_env(:hl7, :definitions, [])
-                     case :lists.keyfind(base, 1, refs) do
-                          false -> raise SchemaError, {:ref_not_found, pointer}
-                          {_,schema} -> schema end
+                     refs = :application.get_env(:hl7, "#{base}", [])
+                     case refs do
+                          [] -> raise SchemaError, {:ref_not_found, pointer}
+                          %{schema: schema} -> schema
+                                        end
       end
   end
 
