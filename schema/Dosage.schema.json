@@ -1,14 +1,11 @@
 {
-  "$schema": "http://json-schema.org/draft-74/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "id": "https://hl7.erp.uno/schema/Dosage.schema.json",
   "$ref": "#/definitions/Dosage",
   "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
     "Dosage": {
       "allOf": [
-        {
-          "$ref": "Element#/definitions/Element"
-        },
         {
           "description": "Indicates how the medication is/was taken or should be taken by the patient.",
           "properties": {
@@ -17,17 +14,9 @@
               "type": "number",
               "pattern": "-?([0]|([1-9][0-9]*))"
             },
-            "_sequence": {
-              "description": "Extensions for sequence",
-              "$ref": "Element.schema.json#/definitions/Element"
-            },
             "text": {
               "description": "Free text dosage instructions e.g. SIG.",
               "type": "string"
-            },
-            "_text": {
-              "description": "Extensions for text",
-              "$ref": "Element.schema.json#/definitions/Element"
             },
             "additionalInstruction": {
               "description": "Supplemental instruction - e.g. \"with meals\".",
@@ -40,10 +29,6 @@
               "description": "Instructions in terms that are understood by the patient or consumer.",
               "type": "string"
             },
-            "_patientInstruction": {
-              "description": "Extensions for patientInstruction",
-              "$ref": "Element.schema.json#/definitions/Element"
-            },
             "timing": {
               "description": "When medication should be administered.",
               "$ref": "Timing.schema.json#/definitions/Timing"
@@ -51,10 +36,6 @@
             "asNeededBoolean": {
               "description": "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).",
               "type": "boolean"
-            },
-            "_asNeededBoolean": {
-              "description": "Extensions for asNeededBoolean",
-              "$ref": "Element.schema.json#/definitions/Element"
             },
             "asNeededCodeableConcept": {
               "description": "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).",

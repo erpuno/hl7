@@ -7,13 +7,16 @@ defmodule HL7.Validation do
         :Extension, :Patient, :Specimen, :Observation,
         :List, :Encounter, :Contract, :Device, :Organization,
         :DeviceDefinition, :DeviceAssociation, :DetectedIssue,
-        :BodyStructure
+        :BodyStructure, :Procedure, :Coverage,
+        :Practitioner, :PractitionerRole,
+        :Medication, :MedicationDispense, :MedicationRequest
       ]
   end
 
   def testItem(name) do
       schemaFile = "schema/#{name}.schema.json"
       {_,schemaBin} = :file.read_file schemaFile
+      :io.format 'file: ~p~n', [schemaFile]
       schemaJson = Jason.decode!(schemaBin)
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
