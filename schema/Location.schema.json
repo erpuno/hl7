@@ -4,10 +4,22 @@
   "$ref": "#/definitions/Location",
   "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
-    "code": { "properties": {} },
-    "uri": { "properties": {} },
+    "markdown": {
+      "pattern": "^^[\\s\\S]+$$",
+      "type": "string",
+      "description": "A string that may contain Github Flavored Markdown syntax for optional processing by a mark down presentation engine"
+    },
+    "code": {
+      "pattern": "^[^\\s]+( [^\\s]+)*$",
+      "type": "string",
+      "description": "A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"
+    },
+    "uri": {
+      "pattern": "^\\S*$",
+      "type": "string",
+      "description": "String of characters used to identify a name or a resource"
+    },
     "decimal": {},
-    "markdown": {},
     "ResourceList": {},
     "Location": {
       "description": "Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.",
