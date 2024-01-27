@@ -118,7 +118,7 @@ $ curl -X GET "http://localhost:9234/\$meta"
 ```
 
 ```sh
-$time curl -X PUT "http://localhost:9234/List/\$validate" -d @samples/json/List/List.json
+$ time curl -X PUT "http://localhost:9234/List/\$validate" -d @samples/json/List/List.json
 {
   "base": "",
   "id": "01111313-long",
