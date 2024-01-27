@@ -21,7 +21,7 @@ iex(1)>
 
 Validation (μs):
 
-```
+```elixir
 [
    {281, "Identifier"},
    {117, "Quantity"},
