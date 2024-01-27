@@ -83,7 +83,7 @@ Security-sensitive types: `Consent`, `Permission`, `Provenance`, `Signature`.
 Dictionary-related types: `CodeSystem`, `ValueSet`, `ConceptMap`, `NamingSystem`,
 `Coding`, `CodeableConcept`, `CodeableReference`, `Coding`.
 
-## Administration
+### Administration
 
 Administrative types: `Patient`, `RelatedPerson`, `Person`, `Group`, `Practitioner`,
 `PractitionerRole`, `Organization`, `Account`, `Location`, `HealthcareService`,
