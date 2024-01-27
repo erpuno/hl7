@@ -6,7 +6,7 @@
 * FHIR Protocol Version R5
 * HTTP Endpoints
 * Erlang Records Internal Representation
-* Extremely Compact Codebase (<5K LOC)
+* Extremely Compact Codebase (<10K LOC)
 
 ### Setup
 
