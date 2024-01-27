@@ -113,7 +113,7 @@ Medications types: `Medication`, `MedicationDispense`, `MedicationRequest`,
 
 Financial data types: `Account`, `Contract`, `Claim`, `Enrollment`, `Coverage`, `PaymentNotice`.
 
-### Financial
+### Workflow
 
 Workflow modeling data types: `ActivityDefinition`, `Definition`, `EventDefinition`, `MessageDefinition`, `PlanDefinition`, `ObservationDefinition`, `ClinicalUse`, `Measure`, `OperationDefinition`, `Requirements`.
 
