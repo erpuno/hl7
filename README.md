@@ -103,7 +103,7 @@ Diagnostic data types: `Observation`, `Specimen`, `BodyStructure`.
 
 Medications types: `Medication`, `MedicationDispense`, `MedicationRequest`,
 `MedicationStatement`, `MedicationAdministration`,
-`Immunization`, `ImmunizationEvaluation`, `ImmunizationRecommendation`
+`Immunization`, `ImmunizationEvaluation`, `ImmunizationRecommendation`.
 
 ### Financial
 
