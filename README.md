@@ -23,8 +23,8 @@ Validation (μs):
 
 ```elixir
 [
-   {281, :Identifier},
-   {117, 'Quantity'},
+   {281, "Identifier"},
+   {117, "Quantity"},
    {47, "Reference"},
    {231, "Location"},
    {385, "Extension"},
