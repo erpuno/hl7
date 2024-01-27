@@ -1,5 +1,7 @@
 # ISO/HL7: FHIR Application Server
 
+Minimalistic scalable microseconds-precise FHIR application server in Elixir.
+
 ## Features
 
 * Fast (<5ms) JSON Schema Draft 7 Circular Validator 
