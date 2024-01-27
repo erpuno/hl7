@@ -46,6 +46,8 @@ Validation (μs):
 ```
 
 Note that `List` instance is 64K JSON object.
+Note that best possible (fastest) validation at a given platform
+can only be achieved with a validation code compiler.
 
 ## HL7/FHIR HTTP API
 
