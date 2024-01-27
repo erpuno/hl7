@@ -43,6 +43,8 @@ Validation (μs):
  ]
 ```
 
+Note that `List` instance is 64K JSON object.
+
 ## HL7/FHIR R5 Protocol Modules
 
 * General
