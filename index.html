@@ -47,31 +47,31 @@
     <a name=principles><h3>API</h3></a>
     <p>The HL7/FHIR HTTP API:</p>
     <figure><code>
-  get  "/"
-  post "/"
-  get  "/$meta"
-  post "/$meta"
-  get  "/metadata"
-  get  "/_history"
-  get  "/_diff"
-  get  "/$export"
-  post "/$export"
-  post "/$diff"
-  post "/$reindex"
-  post "/:type/$validate"
-  get  "/:type/:id"
-  put  "/:type/:id"
+     get "/"
+    post "/"
+     get "/$meta"
+    post "/$meta"
+     get "/metadata"
+     get "/_history"
+     get "/_diff"
+     get "/$export"
+    post "/$export"
+    post "/$diff"
+    post "/$reindex"
+    post "/:type/$validate"
+     get "/:type/:id"
+     put "/:type/:id"
   delete "/:type/:id"
-  post "/_search"
-  post "/:res/_search"
-  post "/:comp/:id/_search"
-  post "/:comp/:id/:res/_search"
+    post "/_search"
+    post "/:res/_search"
+    post "/:comp/:id/_search"
+    post "/:comp/:id/:res/_search"
     </code></figure>
     </section>
 
     <section>
     <a name=principles><h3>MODULES</h3></a>
-    <p>HL7/FHIR R5 Protocol Modules:</p>
+    <p>HL7/FHIR R5 Protocol Modules are grouped by Protocol Profile domains each under distinct jurisdiction.</p>
     <p><b class=se>Primitive</b>. Internal data types: instant, time, date, dateTime, base64binary, decimal, integer64, boolean, url, code, string, integer, uri, canonical, markdown, id, oid, uuid, unsignedInt, positiveInt.</p>
     <p><b class=se>General</b>. General-purpose types: Address, Age, Annotation, Attachment, ContactPoint, Count, Distance, Dosage, Duration, Element, HumanName, Identifier, Meta, Money, Period, Quantity, Ratio, Range, RatioRange, Reference, SampledData, Signature, Timing.</p>
     <p><b class=se>Foundation</b>. Infrastructural types: Resource, DomainResource, Basic, Bundle, Composition, List, Subscription.</p>
