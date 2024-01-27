@@ -44,7 +44,7 @@ defmodule HL7.Service do
        :io.format 'GET/4:#{type}/#{id}/#{spec}', []
        send_resp(conn, 200, encode([%{"type" => type, "id" => id, "spec" => spec}])) end
 
-   def post4(conn,"",type,"" = id,"$validate" = spec) do
+   def post4(conn,_,type,id,"$validate" = spec) do
        {:ok, body, conn} = Plug.Conn.read_body(conn, [])
        schema = HL7.Loader.loadSchema("#{type}") 
        obj = Jason.decode!(body)
