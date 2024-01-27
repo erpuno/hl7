@@ -15,8 +15,7 @@
         <section>
             <h3>SYNOPSIS</h3>
             <div>Minimalistic scalable microseconds precise FHIR application server in Elixir.
-                 ISO/HL7 27931:2009 is a simple HL7 application server
-                 implementation with the following features:</div>
+                 ISO/HL7 27931:2009 is a simple implementation with the following features:</div>
             <div>
                  <ul><li>Fast (&lt;5ms) JSON Schema Circular Validator RFC Draft-7; </li>
                      <li>MongoDB, RocksDB and Mnesia backends;</li>
@@ -25,7 +24,7 @@
                      <li>FHIR Protocol Version R5;</li>
                      <li>Compact Codebase (10K LOC).</li></ul></div>
                 <div>
-                ISO/HL7 could be used as starter pack or SDK for medical systems.</div><br/>
+                ISO/HL7 FHIR could be used as starter pack or SDK for medical systems.</div><br/>
         </section>
         <section>
             <h3><a href="https://n2o.dev">MODULES</a></h3>
@@ -45,34 +44,61 @@
     </article>
 </aside><main>
     <section>
+    <a name=principles><h3>API</h3></a>
+    <p>The HL7/FHIR HTTP API:</p>
+    <figure><code>
+  get  "/"
+  post "/"
+  get  "/$meta"
+  post "/$meta"
+  get  "/metadata"
+  get  "/_history"
+  get  "/_diff"
+  get  "/$export"
+  post "/$export"
+  post "/$diff"
+  post "/$reindex"
+  post  ":type/$validate"
+  get  ":type/:id"
+  put  ":type/:id"
+  delete ":type/:id"
+  post "/_search"
+  post "/:res/_search"
+  post "/:comp/:id/_search"
+  post "/:comp/:id/:res/_search"
+    </code></figure>
+    </section>
 
-    <h3>JSON Schema</h3>
+    <section>
+    <a name=principles><h3>MODULES</h3></a>
+    <p>HL7/FHIR R5 Protocol Modules:</p>
+    <p><b class=se>Primitive</b>. Internal data types: instant, time, date, dateTime, base64binary, decimal, integer64, boolean, url, code, string, integer, uri, canonical, markdown, id, oid, uuid, unsignedInt, positiveInt.</p>
+    <p><b class=se>General</b>. General-purpose types: Address, Age, Annotation, Attachment, ContactPoint, Count, Distance, Dosage, Duration, Element, HumanName, Identifier, Meta, Money, Period, Quantity, Ratio, Range, RatioRange, Reference, SampledData, Signature, Timing.</p>
+    <p><b class=se>Foundation</b>. Infrastructural types: Resource, DomainResource, Basic, Bundle, Composition, List, Subscription.</p>
+    <p><b class=se>Security</b>. Security-sensitive types: Consent, Permission, Provenance, Signature.</p>
+    <p><b class=se>Terminology</b>. Dictionary-related types: CodeSystem, ValueSet, ConceptMap, NamingSystem, Coding, CodeableConcept, CodeableReference, Coding.</p>
+    <p><b class=se>Administration</b>. Administrative types: Patient, RelatedPerson, Person, Group, Practitioner, PractitionerRole, Organization, Account, Location, HealthcareService, Endpoint, Schedule, Slot, SpecimenDefinition, EpisodOfCare, Encounter, EncounterHistory, Appointment, Flag, ObservationDefinition, NutritionProduct, Device, DeviceDefinition, DeviceMetric, DeviceUsage, DeviceAssociation.</p>
+    <p><b class=se>Clinical</b>. Clinical data types: Condition, Procedure, CarePlan, Goal, DetectedIssue.</p>
+    <p><b class=se>Diagnostic</b>. Diagnostic data types: Observation, Specimen, BodyStructure.</p>
+    <p><b class=se>Financial</b>. Financial data types: Account, Contract, Claim, Enrollment, Coverage, PaymentNotice.</p>
+    <p><b class=se>Workflow</b>. Workflow modeling data types: ActivityDefinition, Definition, EventDefinition, MessageDefinition, PlanDefinition, ObservationDefinition, ClinicalUse, Measure, OperationDefinition, Requirements.</p>
+    </section>
+    <section>
+
+    <h3>SCHEMA</h3>
     <p></p>
     <figure><code>
-  def test() do
-      :application.set_env(:hl7, :definitions, [])
-      :lists.map fn x -> testItem(:lists.concat([x])) end,
-
-      [ :Identifier, :Quantity, :Reference, :Location,
-        :Extension,  :Patient,  :Specimen,  :Observation,
-        :List, :Encounter, :Contract, :Device, :Organization,
-        :DeviceDefinition, :DeviceAssociation, :DetectedIssue
-      ]
-
-  end
-
-  def testItem(name) do
-      schemaFile = "schema/#{name}.schema.json"
-      {_,schemaBin} = :file.read_file schemaFile
-      schemaJson = Jason.decode!(schemaBin)
-      file = "samples/json/#{name}/#{name}.json"
-      {_,objBin} = :file.read_file file
-      schema = Xema.from_json_schema(schemaJson)
-      obj = Jason.decode!(objBin)
-      verify = Xema.validate(schema, obj)
-      {name,verify}
-  end
-
+  curl -X POST "http://localhost:9234/List/\$validate" -d @samples/json/List/List.json
+  {
+    "base": "",
+    "id": "01111313-long",
+    "spec": "$validate",
+    "type": "List",
+    "verify": {
+      "code": "success",
+      "message": "Object conforms to List of R5 schema."
+    }
+  }
     </code></figure>
 
      <p>ISO/HL7 is written in Erlang/OTP and supports <a href="https://rocksdb.org">RocksDB</a> or
