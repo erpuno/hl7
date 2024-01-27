@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "http://hl7.erp.uno/schema/BodyStructure.schema.json",
+  "id": "https://hl7.erp.uno/schema/BodyStructure.schema.json",
   "$ref": "#/definitions/BodyStructure",
-  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "description": "see https://hl7.org/fhir/json.html for information about the FHIR Json Schemas",
   "definitions": {
     "markdown": {
       "pattern": "^^[\\s\\S]+$$",

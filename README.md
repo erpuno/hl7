@@ -22,25 +22,25 @@ iex(1)>
 Validation (μs):
 
 ```elixir
-[
-   {281, "Identifier"},
-   {117, "Quantity"},
-   {47, "Reference"},
-   {231, "Location"},
-   {385, "Extension"},
-   {1129, "Patient"},
-   {453, "Specimen"},
-   {1178, "Observation"},
-   {2088, "List"},
-   {1234, "Encounter"},
-   {499, "Contract"},
-   {891, "Device"},
-   {377, "Organization"},
-   {1529, "DeviceDefinition"},
-   {1814, "DeviceAssociation"},
-   {378, "DetectedIssue"},
-   {2068, "BodyStructure"}
-]
+ [
+   {201, "Identifier"},
+   {193, "Quantity"},
+   {174, "Reference"},
+   {557, "Location"},
+   {869, "Extension"},
+   {463, "Patient"},
+   {695, "Specimen"},
+   {571, "Observation"},
+   {2175, "List"},
+   {417, "Encounter"},
+   {1435, "Contract"},
+   {369, "Device"},
+   {885, "Organization"},
+   {787, "DeviceDefinition"},
+   {873, "DeviceAssociation"},
+   {392, "DetectedIssue"},
+   {441, "BodyStructure"}
+ ]
 ```
 
 ## HL7/FHIR R5 Protocol Modules
