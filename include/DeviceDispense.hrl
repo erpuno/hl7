@@ -16,10 +16,6 @@
   details = [], % properties
   paymentId = [],
   paymentAmount = [],
-  insertedAt = [],
-  insertedBy = [],
-  updatedAt = [],
-  updatedBy = [],
   signedContentLinks = [],
   partOf = [],
   encounter = [],

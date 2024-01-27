@@ -17,10 +17,6 @@
   properties = [],
   note = [],
   parentDevice = [],
-  insertedAt = [],
-  insertedBy = [],
-  updatedAt = [],
-  updatedBy = [],
   isActive = []
 }).
 

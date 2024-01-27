@@ -14,11 +14,7 @@
   taxId = [],
   status = [],
   deathDate = [],
-  isActive = true :: boolean(),
-  insertedAt = [] :: [] | calendar:datetime(),
-  insertedBy = [] :: list() | binary(),
-  updatedAt = [] :: []  | calendar:datetime(),
-  updatedBy = [] :: list() | binary()
+  isActive = true :: boolean()
 }).
 
 -endif.
