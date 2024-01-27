@@ -124,7 +124,7 @@ $time curl -X PUT "http://localhost:9234/List/\$validate" -d @samples/json/List/
   "id": "",
   "spec": "$validate",
   "type": "List",
-  "verify": "ok"
+  "verify": "success"
 }
 real    0m0.011s
 user    0m0.005s
