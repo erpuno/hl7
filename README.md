@@ -18,34 +18,7 @@ $ iex -S mix
 ISO/HL7 27931:2009 application server listening at port: 9234.
 JSON Schema: Draft-07, FHIR Protocol Version: R5.
 Interactive Elixir (1.12.2) - press Ctrl+C to exit (type h() ENTER for help)
-iex(1)> :application.which_applications
-[
-  {:hl7, 'ISO/HL7 FHIR Application Server', '1.0.0'},
-  {:jsone, 'A JSON parser.\n', '1.5.1'},
-  {:plug_cowboy, 'A Plug adapter for Cowboy', '2.6.2'},
-  {:cowboy_telemetry, 'Telemetry instrumentation for Cowboy', '0.4.0'},
-  {:cowboy, 'Small, fast, modern HTTP server.', '2.10.0'},
-  {:ranch, 'Socket acceptor pool for TCP protocols.', '1.8.0'},
-  {:cowlib, 'Support library for manipulating Web protocols.', '2.12.1'},
-  {:plug, 'Compose web applications with functions', '1.15.3'},
-  {:telemetry, 'Dynamic dispatching library for metrics and instrumentations', '1.2.1'},
-  {:plug_crypto, 'Crypto-related functionality for the web', '2.0.0'},
-  {:mime, 'A MIME type module for Elixir', '2.0.5'},
-  {:eex, 'eex', '1.12.2'},
-  {:logger, 'logger', '1.12.2'},
-  {:hex, 'hex', '2.0.6'},
-  {:inets, 'INETS  CXC 138 49', '7.5'},
-  {:ssl, 'Erlang/OTP SSL application', '10.6.1'},
-  {:public_key, 'Public key infrastructure', '1.11.3'},
-  {:asn1, 'The Erlang ASN1 compiler version 5.0.17', '5.0.17'},
-  {:crypto, 'CRYPTO', '5.0.5'},
-  {:mix, 'mix', '1.12.2'},
-  {:iex, 'iex', '1.12.2'},
-  {:elixir, 'elixir', '1.12.2'},
-  {:compiler, 'ERTS  CXC 138 10', '8.0.4'},
-  {:stdlib, 'ERTS  CXC 138 10', '3.17'},
-  {:kernel, 'ERTS  CXC 138 10', '8.2'}
-]
+iex(1)> 
 ```
 
 Validation (μs):
