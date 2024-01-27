@@ -67,10 +67,10 @@ defmodule HL7.Endpoint do
   post "/$export"    do HL7.Service.postExport(conn) end
   post "/$diff"      do HL7.Service.postDiff(conn) end
   post "/$reindex"   do HL7.Service.reindex(conn) end
-  post  ":type/$validate" do HL7.Service.post4(conn,"",type,"","$validate") end
-  get  ":type/:id"        do HL7.Service.get4(conn,"",type,id,"$base") end
-  put  ":type/:id"        do HL7.Service.put4(conn,"",type,id,"$base") end
-  delete ":type/:id"      do HL7.Service.delete4(conn,"",type,id,"$base") end
+  post "/:type/$validate" do HL7.Service.post4(conn,"",type,"","$validate") end
+  get  "/:type/:id"       do HL7.Service.get4(conn,"",type,id,"$base") end
+  put  "/:type/:id"       do HL7.Service.put4(conn,"",type,id,"$base") end
+  delete "/:type/:id"     do HL7.Service.delete4(conn,"",type,id,"$base") end
   post "/_search"                do HL7.Service.post2(conn,"","_search") end
   post "/:res/_search"           do HL7.Service.post3(conn,"",res,"_search") end
   post "/:comp/:id/_search"      do HL7.Service.post4(conn,"",comp,id,"_search") end
