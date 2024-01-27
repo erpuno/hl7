@@ -5,9 +5,9 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 ## Features
 
 * Fast (<5ms) JSON Schema Draft 7 Circular Validator 
-* FHIR Protocol Version R5 (90/155 supported)
+* FHIR Protocol Version R5 (100/155 supported)
 * HTTP Endpoints
-* Erlang Records Internal Representation
+* Erlang Records Internal Representation (for type-checking purpose)
 * Extremely Compact Codebase (<10K LOC)
 
 ### Setup
@@ -112,6 +112,10 @@ Medications types: `Medication`, `MedicationDispense`, `MedicationRequest`,
 ### Financial
 
 Financial data types: `Account`, `Contract`, `Claim`, `Enrollment`, `Coverage`, `PaymentNotice`.
+
+### Financial
+
+Workflow modeling data types: `ActivityDefinition`, `Definition`, `EventDefinition`, `MessageDefinition`, `PlanDefinition`, `ObservationDefinition`, `ClinicalUse`, `Measure`, `OperationDefinition`, `Requirements`.
 
 ## Credits
 
