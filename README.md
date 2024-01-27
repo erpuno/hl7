@@ -121,10 +121,13 @@ $ curl -X GET "http://localhost:9234/\$meta"
 $time curl -X PUT "http://localhost:9234/List/\$validate" -d @samples/json/List/List.json
 {
   "base": "",
-  "id": "",
+  "id": "01111313-long",
   "spec": "$validate",
   "type": "List",
-  "verify": "success"
+  "verify": {
+    "code": "success",
+    "message": "Object conforms to List of R5 schema."
+  }
 }
 real    0m0.011s
 user    0m0.005s
