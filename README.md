@@ -1,9 +1,11 @@
 # ISO/HL7: FHIR Application Server
 
+Minimalistic scalable microseconds precise FHIR application server in Elixir.
+
 ## Features
 
 * Fast (<5ms) JSON Schema Draft 7 Circular Validator 
-* FHIR Protocol Version R5
+* FHIR Protocol Version R5 (90/155 supported)
 * HTTP Endpoints
 * Erlang Records Internal Representation
 * Extremely Compact Codebase (<10K LOC)
