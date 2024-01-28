@@ -12,7 +12,7 @@ defmodule HL7.Mixfile do
   end
 
   def package do
-    [ files: ["lib", "include", "mix.exs", "README.md", "LICENSE"],
+    [ files: ["lib", "include", "priv", "schema", "samples", "mix.exs", "README.md", "LICENSE"],
       maintainers: ["Namdak Tonpa"],
       licenses: ["ISC"],
       links: %{"GitHub" => "https://github.com/erpuno/hl7"}
