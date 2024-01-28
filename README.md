@@ -1,5 +1,7 @@
 # ISO/HL7: FHIR Application Server
 
+[![Hex pm](http://img.shields.io/hexpm/v/hl7.svg?style=flat&x=1)](https://hex.pm/packages/hl7)
+
 Minimalistic scalable microseconds precise FHIR application server in Elixir.
 
 ## Features
