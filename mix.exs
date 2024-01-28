@@ -27,7 +27,7 @@ defmodule HL7.Mixfile do
 
   def deps do
     [
-#      {:ex_doc, "~> 0.21", only: :dev},
+      {:ex_doc, "~> 0.21", only: :dev},
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.2"}
     ]

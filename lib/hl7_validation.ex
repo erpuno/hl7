@@ -19,11 +19,12 @@ defmodule HL7.Validation do
   def test() do
       x = :lists.map fn x -> 
          {time,_} = :timer.tc(fn -> HL7.Loader.loadSchema "#{x}" end)
-          :io.format 'time: ~p, file: ~p.~n', [time,x]
+          :io.format 'load: ~p (μs), file: ~ts.~n', [time,"#{x}"]
          {time,x}
       end, suite()
       y = :lists.map fn x -> 
          {time,{name,_}} = :timer.tc(fn -> testItem "#{x}" end)
+          :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
          {time,name}
       end, suite()
       v = cache()
