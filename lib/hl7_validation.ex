@@ -1,7 +1,7 @@
 defmodule HL7.Validation do
 
   def suite() do
-      [ 
+      [
         :Identifier, :Quantity, :Reference, :Location,
         :Extension, :Patient, :Specimen, :Observation,
         :List, :Encounter, :Contract, :Device, :Organization,
@@ -17,12 +17,12 @@ defmodule HL7.Validation do
   end
 
   def test() do
-      x = :lists.map fn x -> 
+      x = :lists.map fn x ->
          {time,_} = :timer.tc(fn -> HL7.Loader.loadSchema "#{x}" end)
           :io.format 'load: ~p (μs), file: ~ts.~n', [time,"#{x}"]
          {time,x}
       end, suite()
-      y = :lists.map fn x -> 
+      y = :lists.map fn x ->
          {time,{name,_}} = :timer.tc(fn -> testItem "#{x}" end)
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
          {time,name}
@@ -34,7 +34,7 @@ defmodule HL7.Validation do
   def testItem(name) do
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
-      schema = HL7.Loader.loadSchema("#{name}") 
+      schema = HL7.Loader.loadSchema("#{name}")
       obj = Jason.decode!(objBin)
       verify = Xema.validate(schema, obj)
       {name,verify}

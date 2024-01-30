@@ -3,8 +3,8 @@ defmodule HL7.Service do
    import Plug.Conn
 
    def encode(x) do
-       case  Jason.encode(x) do 
-             {:ok, bin} -> bin <> "\n" 
+       case  Jason.encode(x) do
+             {:ok, bin} -> bin <> "\n"
              {:error, %Protocol.UndefinedError{description: _, protocol: _, value: {:error, %Xema.ValidationError{message: _, reason: err}}}} -> err <> "\n"
              {:error, %Xema.ValidationError{message: _, reason: err}} -> err <> "\n"
        end |> Jason.Formatter.pretty_print
