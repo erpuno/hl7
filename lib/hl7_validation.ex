@@ -6,7 +6,8 @@ defmodule HL7.Validation do
         :Extension, :Patient, :Specimen, :Observation,
         :List, :Encounter, :Contract, :Device, :Organization,
         :DeviceDefinition, :DeviceAssociation, :DetectedIssue,
-        :BodyStructure, :Account, :AdverseEvent, :CarePlan, :CareTeam
+        :BodyStructure, :Account, :AdverseEvent, :CarePlan, :CareTeam,
+        :AllergyIntolerance
       ]
   end
 
