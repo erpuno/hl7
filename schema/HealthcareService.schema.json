@@ -7,7 +7,7 @@
     "HealthcareService": {
       "allOf": [
         {
-          "$ref": "DomainResource#/definitions/DomainResource"
+          "$ref": "DomainResource.schema.json#/definitions/DomainResource"
         },
         {
           "description": "The details of a healthcare service available at a location.",
