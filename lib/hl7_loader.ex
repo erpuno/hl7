@@ -8,6 +8,7 @@ defmodule HL7.Loader do
       case refs do
            [] -> name = "schema/#{id}.schema.json"
                  {_,bin} = :file.read_file name
+                :io.format 'loadSchema: ~p~n', [name]
                  xema = Jason.decode!(bin) |> Xema.from_json_schema()
                  :application.set_env(:hl7, "#{id}", xema)
                  xema

@@ -10,7 +10,9 @@ defmodule HL7.Validation do
         :AllergyIntolerance, :Appointment, :AppointmentResponse,
         :AuditEvent, :Binary, :Bundle, :BodyStructure, :CapabilityStatement,
         :Claim, :ClaimResponse, :ChargeItem, :Basic, :BodySite, :ClinicalImpression,
-        :CodeSystem
+        :CodeSystem, :Composition, :ConceptMap, :Condition,
+        :Consent, :CoverageEligibilityRequest, :CoverageEligibilityResponse,
+        :DiagnosticReport, :DocumentReference
       ]
   end
 

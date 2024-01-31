@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/schema/ParameterDefinition.schema.json",
+  "$ref": "#/definitions/ParameterDefinition",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+     "Element": {
+      "allOf": [
+        {
+          "description": "Base definition for all elements in a resource.",
+          "properties": {
+            "id": {
+              "description": "unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+              "type": "string"
+            },
+            "_id": {
+              "description": "Extensions for id",
+              "$ref": "#/definitions/Element"
+            },
+            "extension": {
+              "description": "May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+              "type": "array",
+              "items": {
+                "$ref": "Extension.schema.json#/definitions/Extension"
+              }
+            }
+          }
+        }
+      ]
+    },
+   "ParameterDefinition": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Element"
+        },
+        {
+          "description": "The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.",
+          "properties": {
+            "name": {
+              "description": "The name of the parameter used to allow access to the value of the parameter in evaluation contexts.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "_name": {
+              "description": "Extensions for name",
+              "$ref": "#/definitions/Element"
+            },
+            "use": {
+              "description": "Whether the parameter is input or output for the module.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "_use": {
+              "description": "Extensions for use",
+              "$ref": "#/definitions/Element"
+            },
+            "min": {
+              "description": "The minimum number of times this parameter SHALL appear in the request or response.",
+              "type": "number",
+              "pattern": "-?([0]|([1-9][0-9]*))"
+            },
+            "_min": {
+              "description": "Extensions for min",
+              "$ref": "#/definitions/Element"
+            },
+            "max": {
+              "description": "The maximum number of times this element is permitted to appear in the request or response.",
+              "type": "string"
+            },
+            "_max": {
+              "description": "Extensions for max",
+              "$ref": "#/definitions/Element"
+            },
+            "documentation": {
+              "description": "A brief discussion of what the parameter is for and how it is used by the module.",
+              "type": "string"
+            },
+            "_documentation": {
+              "description": "Extensions for documentation",
+              "$ref": "#/definitions/Element"
+            },
+            "type": {
+              "description": "The type of the parameter.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "_type": {
+              "description": "Extensions for type",
+              "$ref": "#/definitions/Element"
+            },
+            "profile": {
+              "description": "If specified, this indicates a profile that the input data must conform to, or that the output data will conform to.",
+              "$ref": "Reference.schema.json#/definitions/Reference"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
