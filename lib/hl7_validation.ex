@@ -15,7 +15,7 @@ defmodule HL7.Validation do
         :DiagnosticReport, :DocumentReference, :Endpoint, :EnrollmentRequest,
         :EpisodeOfCare, :ExplanationOfBenefit, :FamilyMemberHistory, :Flag,
         :Communication, :CommunicationRequest, :CompartmentDefinition, :DataRequirement,
-        :Immunization, :ImmunizationRecommendation
+        :Immunization, :ImmunizationRecommendation, :Person
       ]
   end
 
