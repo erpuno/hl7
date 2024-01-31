@@ -5,14 +5,17 @@ defmodule HL7.Validation do
         :Identifier, :Quantity, :Reference, :Location,
         :Extension, :Patient, :Specimen, :Observation,
         :List, :Encounter, :Contract, :Device, :Organization,
-        :DeviceDefinition, :DeviceAssociation, :DetectedIssue,
-        :BodyStructure, :Account, :AdverseEvent, :CarePlan, :CareTeam,
+        :DeviceDefinition, :DeviceAssociation, :DeviceMetric, :DeviceRequest, :DeviceDispense,
+        :DetectedIssue, :BodyStructure, :Account, :AdverseEvent, :CarePlan, :CareTeam,
         :AllergyIntolerance, :Appointment, :AppointmentResponse,
         :AuditEvent, :Binary, :Bundle, :BodyStructure, :CapabilityStatement,
         :Claim, :ClaimResponse, :ChargeItem, :Basic, :BodySite, :ClinicalImpression,
         :CodeSystem, :Composition, :ConceptMap, :Condition,
         :Consent, :CoverageEligibilityRequest, :CoverageEligibilityResponse,
-        :DiagnosticReport, :DocumentReference
+        :DiagnosticReport, :DocumentReference, :Endpoint, :EnrollmentRequest,
+        :EpisodeOfCare, :ExplanationOfBenefit, :FamilyMemberHistory, :Flag,
+        :Communication, :CommunicationRequest, :CompartmentDefinition, :DataRequirement,
+        :Immunization, :ImmunizationRecommendation
       ]
   end
 
@@ -40,6 +43,7 @@ defmodule HL7.Validation do
   def testItem(name) do
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
+      :io.format 'testItem: ~p~n', [file]
       schema = HL7.Loader.loadSchema("#{name}")
       obj = Jason.decode!(objBin)
       verify = Xema.validate(schema, obj)
