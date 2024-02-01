@@ -556,7 +556,7 @@ defmodule Xema.Validator do
     x = value / multiple_of
 
     case x - Float.floor(x) do
-      0.0 -> :ok
+      +0.0 -> :ok
       _ -> {:error, %{value: value, multiple_of: multiple_of}}
     end
   end
