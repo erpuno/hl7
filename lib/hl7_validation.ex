@@ -35,13 +35,16 @@ defmodule HL7.Validation do
          {time,x}
       end, set()
       y = :lists.map fn x ->
-         {time,{name,status}} = :timer.tc(fn -> testItem "#{x}" end)
+         {time,{name,code}} = :timer.tc(fn -> testItem "#{x}" end)
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
-         {time,name,status}
+         {time,name,status(code)}
       end, set()
       v = cache()
       {v,length(v),x,y}
   end
+
+  def status(:ok) do :ok end
+  def status({:error, %Xema.ValidationError{reason: %{all_of: x}}}) do x end
 
   def testItem(name) do
       file = "samples/json/#{name}/#{name}.json"
