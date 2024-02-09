@@ -1,6 +1,6 @@
 defmodule HL7.Validation do
 
-#  def set(), do: [ :Claim ]
+#  def set(), do: [ :Subscription ]
   def set(), do: suite()
 
   def suite() do
@@ -19,7 +19,7 @@ defmodule HL7.Validation do
         :EpisodeOfCare, :ExplanationOfBenefit, :FamilyMemberHistory, :Flag,
         :Communication, :CommunicationRequest, :CompartmentDefinition, :DataRequirement,
         :Immunization, :ImmunizationRecommendation, :Person, :TerminologyCapabilities,
-        :ValueSet, :Slot, :Provenance
+        :ValueSet, :Slot, :Provenance, :MeasureReport, :Questionnaire, :Subscription
       ]
   end
 
@@ -51,6 +51,7 @@ defmodule HL7.Validation do
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
       schema = HL7.Loader.loadSchema("#{name}")
+      :io.format 'testItem schema: ~ts.~n', ["#{name}"]
       obj = Jason.decode!(objBin)
       verify = Xema.validate(schema, obj)
       {name,verify}
