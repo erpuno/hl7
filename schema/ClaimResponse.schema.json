@@ -1,8 +1,8 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://hl7.org/fhir/json-schema/ClaimResponse",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/schema/ClaimResponse.schema.json",
   "$ref": "#/definitions/ClaimResponse",
-  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
     "ClaimResponse": {
       "allOf": [

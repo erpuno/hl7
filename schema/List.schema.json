@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "https://hl7.erp.uno/schema/List.schema.json",
+  "$id": "https://hl7.erp.uno/schema/List.schema.json",
   "$ref": "#/definitions/List",
   "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {

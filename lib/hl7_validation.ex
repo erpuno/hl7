@@ -36,7 +36,7 @@ defmodule HL7.Validation do
   end
 
   def test() do
-      :lists.map fn x ->
+      _ = :lists.map fn x ->
           {time,_} = :timer.tc(fn -> HL7.Loader.loadSchema "#{x}" end)
           :io.format 'load: ~p (μs), file: ~ts.~n', [time,"#{x}"]
           {time,x}

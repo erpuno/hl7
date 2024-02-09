@@ -25,20 +25,15 @@ defmodule HL7.Service do
        :io.format 'HL7/$meta', []
        conn |> Plug.Conn.put_resp_content_type("application/json") |>
        send_resp(200,
-         encode([%{ "resourceType" => "Parameters",
+         encode([%{
+            "resourceType" => "Parameters",
             "parameters" => [
                %{ "name" => "return",
              "valueMeta" => %{
-               "profile" => [ "https://hl7.erp.uno/schema/Person.schema.json",
-                              "https://hl7.erp.uno/schema/Patient.schema.json",
-                              "https://hl7.erp.uno/schema/Organization.schema.json",
-                              "https://hl7.erp.uno/schema/Location.schema.json"  ],
-              "security" => [%{"system" => "https://hl7.erp.uno/CodeSystem/v4",
-                                 "code" => "N",
-                              "display" => "normal" }],
-                   "tag" => [%{"system" => "https://hl7.erp.uno/tag/",
-                                 "code" => "N",
-                              "display" => "normal" }]}}]}])) end
+               "profile" => :lists.map(fn x -> "https://hl7.erp.uno/" <> :erlang.iolist_to_binary(x) end,
+                               :filelib.wildcard('schema/*')),
+              "security" => [%{"system" => "https://hl7.erp.uno/CodeSystem/v4", "code" => "N", "display" => "normal" }],
+                   "tag" => [%{"system" => "https://hl7.erp.uno/tag/", "code" => "N", "display" => "normal" }]}}]}])) end
 
    def get4(conn,_base,type,id,spec) do
        :io.format 'GET/4:#{type}/#{id}/#{spec}', []

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://hl7.org/fhir/json-schema/DeviceUsage.schema.json",
+  "$id": "https://hl7.erp.uno/schema/DeviceUsage.schema.json",
   "$ref": "#/definitions/DeviceUsage",
   "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
