@@ -33,9 +33,7 @@
     }
   },
   "manufacturer": {
-    "reference": {
-      "reference": "Organization/hl7"
-    }
+    "reference": "Organization/hl7"
   },
   "lotNumber": "AAJN11K",
   "expirationDate": "2015-02-15",

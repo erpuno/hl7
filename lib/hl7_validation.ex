@@ -30,17 +30,17 @@ defmodule HL7.Validation do
 
   def test() do
       x = :lists.map fn x ->
-         {time,_} = :timer.tc(fn -> HL7.Loader.loadSchema "#{x}" end)
+          {time,_} = :timer.tc(fn -> HL7.Loader.loadSchema "#{x}" end)
           :io.format 'load: ~p (μs), file: ~ts.~n', [time,"#{x}"]
-         {time,x}
+          {time,x}
       end, set()
       y = :lists.map fn x ->
-         {time,{name,code}} = :timer.tc(fn -> testItem "#{x}" end)
+          {time,{name,code}} = :timer.tc(fn -> testItem "#{x}" end)
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
-         {time,name,status(code)}
+          {time,name,status(code)}
       end, set()
       v = cache()
-      {v,length(v),x,y}
+      {v,length(v),x,:lists.split(:erlang.div(length(y),2),y)}
   end
 
   def status(:ok) do :ok end

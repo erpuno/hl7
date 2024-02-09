@@ -51,15 +51,7 @@
   "title": "Consultation Note",
   "attester": [
     {
-      "mode": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/composition-attestation-mode",
-            "code": "legal",
-            "display": "Legal"
-          }
-        ]
-      },
+      "mode": [ "legal" ],
       "time": "2012-01-04T09:10:14Z",
       "party": {
         "reference": "Practitioner/xcda-author",

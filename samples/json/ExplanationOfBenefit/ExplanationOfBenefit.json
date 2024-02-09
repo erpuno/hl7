@@ -82,6 +82,7 @@
       "value" : 135.57,
       "currency" : "USD"
     },
+    "type" : [],
     "udi" : [{
       "reference" : "Device/example"
     }],
@@ -156,6 +157,7 @@
         "value" : 200.00,
         "currency" : "USD"
       },
+      "type" : [],
       "udi" : [{
         "reference" : "Device/example"
       }],
@@ -186,6 +188,7 @@
           "value" : 200.00,
           "currency" : "USD"
         },
+        "type" : [],
         "udi" : [{
           "reference" : "Device/example"
         }],

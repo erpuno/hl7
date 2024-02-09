@@ -11,36 +11,10 @@
       "value": "49476534"
     }
   ],
-  "clinicalStatus": {
-    "coding": [
-      {
-        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
-        "code": "active",
-        "display": "Active"
-      }
-    ]
-  },
-  "verificationStatus": {
-    "coding": [
-      {
-        "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
-        "code": "confirmed",
-        "display": "Confirmed"
-      }
-    ]
-  },
-  "type": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/allergy-intolerance-type",
-        "code": "allergy",
-        "display": "Allergy"
-      }
-    ]
-  },
-  "category": [
-    "food"
-  ],
+  "clinicalStatus": "active",
+  "verificationStatus": "confirmed",
+  "type": "allergy",
+  "category": [ "food" ],
   "criticality": "high",
   "code": {
     "coding": [

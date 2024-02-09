@@ -67,12 +67,6 @@
             },
             "category": {
               "description": "Category of the identified substance.",
-              "enum": [
-                "food",
-                "medication",
-                "environment",
-                "biologic"
-              ],
               "type": "array",
               "items": {
                 "type": "string"

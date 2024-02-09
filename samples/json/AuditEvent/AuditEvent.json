@@ -36,13 +36,7 @@
   },
   "action": "C",
   "recorded": "2019-12-04T11:59:28.646+00:00",
-  "outcome": {
-    "code": {
-      "system": "http://terminology.hl7.org/CodeSystem/audit-event-outcome",
-      "code": "0",
-      "display": "Success"
-    }
-  },
+  "outcome": "0",
   "agent": [
     {
       "type": {
@@ -93,6 +87,7 @@
     }
   ],
   "source": {
+    "identifier": "12323",
     "observer": {
       "identifier": {
         "value": "hl7connect.healthintersections.com.au"

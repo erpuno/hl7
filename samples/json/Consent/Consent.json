@@ -12,6 +12,7 @@
     }
   ],
   "status": "active",
+  "patient": { "reference": "Patient/1" },
   "category": [
     {
       "coding": [

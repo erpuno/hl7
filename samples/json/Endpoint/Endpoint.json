@@ -9,6 +9,7 @@
     "system" : "http://example.org/enpoint-identifier",
     "value" : "epcp12"
   }],
+  "payloadType": [],
   "status" : "active",
   "connectionType" : [{
     "coding" : [{

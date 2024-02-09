@@ -138,12 +138,6 @@
           "properties": {
             "mode": {
               "description": "The type of attestation the authenticator offers.",
-              "enum": [
-                "personal",
-                "professional",
-                "legal",
-                "official"
-              ],
               "type": "array",
               "items": {
                 "type": "string"
