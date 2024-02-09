@@ -230,10 +230,6 @@
               "description": "If the parameter is a data type.",
               "$ref": "Meta.schema.json#/definitions/Meta"
             },
-            "valueElementDefinition": {
-              "description": "If the parameter is a data type.",
-              "$ref": "#/definitions/ElementDefinition"
-            },
             "valueContactDetail": {
               "description": "If the parameter is a data type.",
               "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
