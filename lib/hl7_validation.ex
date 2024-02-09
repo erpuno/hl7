@@ -19,7 +19,7 @@ defmodule HL7.Validation do
         :EpisodeOfCare, :ExplanationOfBenefit, :FamilyMemberHistory, :Flag,
         :Communication, :CommunicationRequest, :CompartmentDefinition, :DataRequirement,
         :Immunization, :ImmunizationRecommendation, :Person, :TerminologyCapabilities,
-        :ValueSet, :Slot, :Provenance, :MeasureReport, :Questionnaire, :Subscription
+        :ValueSet, :Slot, :Provenance, :MeasureReport, :Questionnaire, :Subscription, :Parameters
       ]
   end
 
