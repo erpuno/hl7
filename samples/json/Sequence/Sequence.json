@@ -1,0 +1,65 @@
+{
+  "resourceType" : "Sequence",
+  "id" : "sequence-example-fusion",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: MolecularSequence</b><a name=\"sequence-example-fusion\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource MolecularSequence &quot;sequence-example-fusion&quot; </p></div><p><b>type</b>: rna</p><blockquote><p><b>relative</b></p><p><b>coordinateSystem</b>: 1-based character counting <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#LA30102-0)</span></p><p><b>ordinalPosition</b>: 1</p><p><b>sequenceRange</b>: 1-3234</p><h3>StartingSequences</h3><table class=\"grid\"><tr><td>-</td><td><b>Sequence[x]</b></td><td><b>WindowStart</b></td><td><b>WindowEnd</b></td></tr><tr><td>*</td><td>NM_004327.4 <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (nuccore#NM_004327.4)</span></td><td>1</td><td>3234</td></tr></table></blockquote><blockquote><p><b>relative</b></p><p><b>coordinateSystem</b>: 1-based character counting <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#LA30102-0)</span></p><p><b>ordinalPosition</b>: 2</p><p><b>sequenceRange</b>: 3235-8367</p><h3>StartingSequences</h3><table class=\"grid\"><tr><td>-</td><td><b>Sequence[x]</b></td><td><b>WindowStart</b></td><td><b>WindowEnd</b></td></tr><tr><td>*</td><td>NM_005157.6 <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (nuccore#NM_005157.6)</span></td><td>174</td><td>5306</td></tr></table></blockquote></div>"
+  },
+  "type" : "rna",
+  "relative" : [{
+    "coordinateSystem" : {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "LA30102-0",
+        "display" : "1-based character counting"
+      }]
+    },
+    "ordinalPosition" : 1,
+    "sequenceRange" : {
+      "low" : {
+        "value" : 1
+      },
+      "high" : {
+        "value" : 3234
+      }
+    },
+    "startingSequence" : {
+      "sequenceCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://www.ncbi.nlm.nih.gov/nuccore",
+          "code" : "NM_004327.4"
+        }]
+      },
+      "windowStart" : 1,
+      "windowEnd" : 3234
+    }
+  },
+  {
+    "coordinateSystem" : {
+      "coding" : [{
+        "system" : "http://loinc.org",
+        "code" : "LA30102-0",
+        "display" : "1-based character counting"
+      }]
+    },
+    "ordinalPosition" : 2,
+    "sequenceRange" : {
+      "low" : {
+        "value" : 3235
+      },
+      "high" : {
+        "value" : 8367
+      }
+    },
+    "startingSequence" : {
+      "sequenceCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://www.ncbi.nlm.nih.gov/nuccore",
+          "code" : "NM_005157.6"
+        }]
+      },
+      "windowStart" : 174,
+      "windowEnd" : 5306
+    }
+  }]
+}

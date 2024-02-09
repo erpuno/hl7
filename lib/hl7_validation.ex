@@ -19,18 +19,22 @@ defmodule HL7.Validation do
         :EpisodeOfCare, :ExplanationOfBenefit, :FamilyMemberHistory, :Flag,
         :Communication, :CommunicationRequest, :CompartmentDefinition, :DataRequirement,
         :Immunization, :ImmunizationRecommendation, :Person, :TerminologyCapabilities,
-        :ValueSet, :Slot, :Provenance, :MeasureReport, :Questionnaire, :Subscription, :Parameters
+        :ValueSet, :Slot, :Provenance, :MeasureReport, :Questionnaire, :Subscription, :Parameters,
+        :MedicationStatement, :NamingSystem, :Media, :VisionPrescription, :Schedule, :Sequence,
+        :QuestionnaireResponse, :MessageDefinition, :MessageHeader, :NutritionOrder
       ]
   end
 
-  def cache() do
+  def clear_cache() do
       :lists.flatten(
-      :lists.map(fn {y,_} when is_binary(y) -> {y} ; _ -> [] end,
+      :lists.map(fn {y,_} when is_binary(y) ->
+        :application.set_env(:hl7, y, [])
+        ; _ -> [] end,
       :application.get_all_env(:hl7)))
   end
 
   def test() do
-      x = :lists.map fn x ->
+      :lists.map fn x ->
           {time,_} = :timer.tc(fn -> HL7.Loader.loadSchema "#{x}" end)
           :io.format 'load: ~p (μs), file: ~ts.~n', [time,"#{x}"]
           {time,x}
@@ -40,8 +44,9 @@ defmodule HL7.Validation do
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
           {time,name,status(code)}
       end, set()
-      v = cache()
-      {v,length(v),x,:lists.split(:erlang.div(length(y),2),y)}
+      {a,b}=:lists.split(:erlang.div(length(y),3),y)
+      {m,n}=:lists.split(:erlang.div(length(b),2),b)
+      {a,m,n}
   end
 
   def status(:ok) do :ok end
@@ -51,7 +56,7 @@ defmodule HL7.Validation do
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
       schema = HL7.Loader.loadSchema("#{name}")
-      :io.format 'testItem schema: ~ts.~n', ["#{name}"]
+#      :io.format 'testItem schema: ~ts.~n', ["#{name}"]
       obj = Jason.decode!(objBin)
       verify = Xema.validate(schema, obj)
       {name,verify}
