@@ -7,7 +7,7 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 ## Features
 
 * Fast (<5ms) JSON Schema Draft 7 Circular Validator
-* FHIR Protocol Version R5 (100/155 types supported)
+* FHIR Protocol Version R5 (135 types supported)
 * HTTP Endpoints
 * Erlang Records Internal Representation (for type-checking and compact memory footprint)
 * Extremely Compact Codebase (<10K LOC)
