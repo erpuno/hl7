@@ -23,7 +23,10 @@ defmodule HL7.Validation do
         :MedicationStatement, :NamingSystem, :Media, :VisionPrescription, :Schedule, :Sequence,
         :QuestionnaireResponse, :MessageDefinition, :MessageHeader, :NutritionOrder,
         :SearchParameter, :PaymentNotice, :PaymentReconciliation, :PlanDefinition, :SupplyDelivery,
-        :SupplyRequest, :Task, :TriggerDefinition
+        :SupplyRequest, :Task, :TriggerDefinition, :ActivityDefinition, :Coverage,
+        :DeviceComponent, :DeviceUsage, :DeviceUseStatement, :EnrollmentResponse, :HealthcareService,
+        :Measure, :MedicationRequest, :MedicationDispense, :PlanDefinition, :Practitioner,
+        :PractitionerRole, :Procedure, :ProcedureRequest, :Substance, :Medication
       ]
   end
 
@@ -31,6 +34,7 @@ defmodule HL7.Validation do
       :lists.flatten(
       :lists.map(fn {y,_} when is_binary(y) ->
         :application.set_env(:hl7, y, [])
+        {y}
         ; _ -> [] end,
       :application.get_all_env(:hl7)))
   end

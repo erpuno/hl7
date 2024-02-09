@@ -1,0 +1,41 @@
+{
+  "resourceType": "Substance",
+  "id": "example",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Substance</b><a name=\"example\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Substance &quot;example&quot; </p></div><p><b>identifier</b>: <span title=\" \n  &lt;text&gt;\n    &lt;status value=&quot;generated&quot;/&gt;\n    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;Apitoxin (known as Honey Bee Venom)&lt;/div&gt;\n  &lt;/text&gt;\n \">id: 1463</span></p><p><b>instance</b>: false</p><p><b>status</b>: active</p><p><b>category</b>: Allergen <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-substance-category.html\">Substance Category Codes</a>#allergen)</span></p><h3>Codes</h3><table class=\"grid\"><tr><td>-</td><td><b>Concept</b></td></tr><tr><td>*</td><td>apitoxin (Honey Bee Venom) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> ()</span></td></tr></table></div>"
+  },
+  "identifier": [
+    {
+      "system": "http://acme.org/identifiers/substances",
+      "value": "1463"
+    }
+  ],
+  "instance": [],
+  "status": "active",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/substance-category",
+          "code": "allergen",
+          "display": "Allergen"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "concept": {
+      "text": "apitoxin (Honey Bee Venom)"
+    }
+  },
+  "meta": {
+    "tag": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+        "code": "HTEST",
+        "display": "test health data"
+      }
+    ]
+  }
+}
