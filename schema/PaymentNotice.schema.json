@@ -1,13 +1,13 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://hl7.org/fhir/json-schema/PaymentNotice",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/schema/PaymentNotice.schema.json",
   "$ref": "#/definitions/PaymentNotice",
-  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
     "PaymentNotice": {
       "allOf": [
         {
-          "$ref": "DomainResource#/definitions/DomainResource"
+          "$ref": "DomainResource.schema.json#/definitions/DomainResource"
         },
         {
           "description": "This resource provides the status of the payment for goods and services rendered, and the request and response resource references.",
