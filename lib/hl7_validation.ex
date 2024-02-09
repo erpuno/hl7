@@ -22,7 +22,8 @@ defmodule HL7.Validation do
         :ValueSet, :Slot, :Provenance, :MeasureReport, :Questionnaire, :Subscription, :Parameters,
         :MedicationStatement, :NamingSystem, :Media, :VisionPrescription, :Schedule, :Sequence,
         :QuestionnaireResponse, :MessageDefinition, :MessageHeader, :NutritionOrder,
-        :SearchParameter, :PaymentNotice
+        :SearchParameter, :PaymentNotice, :PaymentReconciliation, :PlanDefinition, :SupplyDelivery,
+        :SupplyRequest, :Task, :TriggerDefinition
       ]
   end
 
