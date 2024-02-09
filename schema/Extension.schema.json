@@ -187,10 +187,6 @@
             "valueDataRequirement": {
               "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
               "$ref": "DataRequirement.schema.json#/definitions/DataRequirement"
-            },
-            "valueTriggerDefinition": {
-              "description": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
-              "$ref": "TriggerDefinition.schema.json#/definitions/TriggerDefinition"
             }
           }
         }
