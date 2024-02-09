@@ -1,0 +1,30 @@
+{
+   "resourceType": "Parameters",
+   "parameters": [
+      {
+        "name": "return",
+        "valueMeta": {
+          "profile": [
+            "https://hl7.erp.uno/schema/Person.schema.json",
+            "https://hl7.erp.uno/schema/Patient.schema.json",
+            "https://hl7.erp.uno/schema/Organization.schema.json",
+            "https://hl7.erp.uno/schema/Location.schema.json"
+          ],
+          "security": [
+            {
+              "code": "N",
+              "display": "normal",
+              "system": "https://hl7.erp.uno/CodeSystem/v4"
+            }
+          ],
+          "tag": [
+            {
+              "code": "N",
+              "display": "normal",
+              "system": "https://hl7.erp.uno/tag/"
+            }
+          ]
+        }
+      }
+    ]
+}
