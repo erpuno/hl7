@@ -26,25 +26,38 @@ iex(1)>
 Validation (μs):
 
 ```elixir
- [
-   {201, "Identifier"},
-   {193, "Quantity"},
-   {174, "Reference"},
-   {557, "Location"},
-   {869, "Extension"},
-   {463, "Patient"},
-   {695, "Specimen"},
-   {571, "Observation"},
-   {2175, "List"},
-   {417, "Encounter"},
-   {1435, "Contract"},
-   {369, "Device"},
-   {885, "Organization"},
-   {787, "DeviceDefinition"},
-   {873, "DeviceAssociation"},
-   {392, "DetectedIssue"},
-   {441, "BodyStructure"}
- ]
+> HL7.Validation.test
+  ...
+  ],
+  [
+    {:Person, 1071, "OK"},
+    {:PlanDefinition, 4544, "OK"},
+    {:PlanDefinition, 20023, "OK"},
+    {:Practitioner, 721, "OK"},
+    {:PractitionerRole, 2167, "OK"},
+    {:Procedure, 1065, "OK"},
+    {:ProcedureRequest, 2598, "OK"},
+    {:Provenance, 2510, "OK"},
+    {:Quantity, 351, "OK"},
+    {:Questionnaire, 3633, "OK"},
+    {:QuestionnaireResponse, 1215, "OK"},
+    {:Reference, 749, "OK"},
+    {:Schedule, 876, "OK"},
+    {:SearchParameter, 4247, "OK"},
+    {:Sequence, 3199, "OK"},
+    {:Slot, 879, "OK"},
+    {:Specimen, 1166, "OK"},
+    {:Subscription, 554, "OK"},
+    {:Substance, 690, "OK"},
+    {:SupplyDelivery, 1278, "OK"},
+    {:SupplyRequest, 9064, "OK"},
+    {:Task, 50683, "OK"},
+    {:TerminologyCapabilities, 3249, "OK"},
+    {:TriggerDefinition, 1955, "OK"},
+    {:ValueSet, 1616, "OK"},
+    {:VisionPrescription, 2435, "OK"}
+  ]
+]
 ```
 
 Note that `List` instance is 64K JSON object.
@@ -53,7 +66,7 @@ can only be achieved with a validation code compiler.
 
 ## HL7/FHIR HTTP API
 
-```elixir
+```el3ixir
 defmodule HL7.Endpoint do
   use Plug.Router
   plug Plug.Logger
