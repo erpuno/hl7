@@ -20,7 +20,8 @@ defmodule HL7.Validation do
         :ActivityDefinition, :Coverage, :DeviceComponent, :DeviceUsage, :DeviceUseStatement,
         :EnrollmentResponse, :HealthcareService, :Measure, :MedicationRequest, :MedicationDispense,
         :PlanDefinition, :Practitioner, :PractitionerRole, :Procedure, :ProcedureRequest,
-        :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation
+        :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
+        :EventDefinition
       ]
   end
 

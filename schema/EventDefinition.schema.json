@@ -1,0 +1,327 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/schema/EventDefinition.schema.json",
+  "$ref": "#/definitions/EventDefinition",
+  "description": "see http://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "markdown": {
+      "pattern": "^^[\\s\\S]+$$",
+      "type": "string",
+      "description": "A string that may contain Github Flavored Markdown syntax for optional processing by a mark down presentation engine"
+    },
+    "date": {
+      "description": "The date that the list was prepared.",
+      "type": "string",
+      "pattern": "-?([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+    },
+    "dateTime": {
+      "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]{1,9})?)?)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)?)?)?$",
+      "type": "string",
+      "description": "A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a UTC offset SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates."
+    },
+    "code": {
+      "pattern": "^[^\\s]+( [^\\s]+)*$",
+      "type": "string",
+      "description": "A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"
+    },
+    "uri": {
+      "pattern": "^\\S*$",
+      "type": "string",
+      "description": "String of characters used to identify a name or a resource"
+    },
+    "EventDefinition": {
+      "description": "The EventDefinition resource provides a reusable description of when a particular event can occur.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a EventDefinition resource",
+          "const": "EventDefinition"
+        },
+        "id": {
+          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+          "type": "string"
+        },
+        "meta": {
+          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+          "$ref": "Meta.schema.json#/definitions/Meta"
+        },
+        "implicitRules": {
+          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+          "$ref": "#/definitions/uri"
+        },
+        "_implicitRules": {
+          "description": "Extensions for implicitRules",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "language": {
+          "description": "The base language in which the resource is written.",
+          "$ref": "#/definitions/code"
+        },
+        "_language": {
+          "description": "Extensions for language",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+          "$ref": "Narrative.schema.json#/definitions/Narrative"
+        },
+        "contained": {
+          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning.",
+          "items": {
+            "$ref": "ResourceList.schema.json#/definitions/ResourceList"
+          },
+          "type": "array"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "url": {
+          "description": "An absolute URI that is used to identify this event definition when it is referenced in a specification, model, design or an instance; also called its canonical identifier. This SHOULD be globally unique and SHOULD be a literal address at which an authoritative instance of this event definition is (or will be) published. This URL can be the target of a canonical reference. It SHALL remain the same when the event definition is stored on different servers.",
+          "$ref": "#/definitions/uri"
+        },
+        "_url": {
+          "description": "Extensions for url",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "identifier": {
+          "description": "A formal identifier that is used to identify this event definition when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+          "items": {
+            "$ref": "Identifier.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "version": {
+          "description": "The identifier that is used to identify this version of the event definition when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the event definition author and is not expected to be globally unique. For example, it might be a timestamp (e.g. yyyymmdd) if a managed version is not available. There is also no expectation that versions can be placed in a lexicographical sequence.",
+          "type": "string"
+        },
+        "_version": {
+          "description": "Extensions for version",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "versionAlgorithmString": {
+          "description": "Indicates the mechanism used to compare versions to determine which is more current.",
+          "pattern": "^[ \\r\\n\\t\\S]+$",
+          "type": "string"
+        },
+        "_versionAlgorithmString": {
+          "description": "Extensions for versionAlgorithmString",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "versionAlgorithmCoding": {
+          "description": "Indicates the mechanism used to compare versions to determine which is more current.",
+          "$ref": "Coding.schema.json#/definitions/Coding"
+        },
+        "name": {
+          "description": "A natural language name identifying the event definition. This name should be usable as an identifier for the module by machine processing applications such as code generation.",
+          "type": "string"
+        },
+        "_name": {
+          "description": "Extensions for name",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "title": {
+          "description": "A short, descriptive, user-friendly title for the event definition.",
+          "type": "string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "status": {
+          "description": "The status of this event definition. Enables tracking the life-cycle of the content.",
+          "$ref": "#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "experimental": {
+          "description": "A Boolean value to indicate that this event definition is authored for testing purposes (or education/evaluation/marketing) and is not intended to be used for genuine usage.",
+          "type": "boolean"
+        },
+        "_experimental": {
+          "description": "Extensions for experimental",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "date": {
+          "description": "The date  (and optionally time) when the event definition was last significantly changed. The date must change when the business version changes and it must change if the status code changes. In addition, it should change when the substantive content of the event definition changes.",
+          "$ref": "#/definitions/dateTime"
+        },
+        "_date": {
+          "description": "Extensions for date",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "publisher": {
+          "description": "The name of the organization or individual responsible for the release and ongoing maintenance of the event definition.",
+          "type": "string"
+        },
+        "_publisher": {
+          "description": "Extensions for publisher",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "contact": {
+          "description": "Contact details to assist a user in finding and communicating with the publisher.",
+          "items": {
+            "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "A free text natural language description of the event definition from a consumer\u0027s perspective.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "useContext": {
+          "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These contexts may be general categories (gender, age, ...) or may be references to specific programs (insurance plans, studies, ...) and may be used to assist with indexing and searching for appropriate event definition instances.",
+          "items": {
+            "$ref": "UsageContext.schema.json#/definitions/UsageContext"
+          },
+          "type": "array"
+        },
+        "jurisdiction": {
+          "description": "A legal or geographic region in which the event definition is intended to be used.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "purpose": {
+          "description": "Explanation of why this event definition is needed and why it has been designed as it has.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_purpose": {
+          "description": "Extensions for purpose",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "copyright": {
+          "description": "A copyright statement relating to the event definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the event definition.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_copyright": {
+          "description": "Extensions for copyright",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "copyrightLabel": {
+          "description": "A short string (\u003c50 characters), suitable for inclusion in a page footer that identifies the copyright holder, effective period, and optionally whether rights are resctricted. (e.g. \u0027All rights reserved\u0027, \u0027Some rights reserved\u0027).",
+          "type": "string"
+        },
+        "_copyrightLabel": {
+          "description": "Extensions for copyrightLabel",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "approvalDate": {
+          "description": "The date on which the resource content was approved by the publisher. Approval happens once when the content is officially approved for usage.",
+          "$ref": "#/definitions/date"
+        },
+        "_approvalDate": {
+          "description": "Extensions for approvalDate",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "lastReviewDate": {
+          "description": "The date on which the resource content was last reviewed. Review happens periodically after approval but does not change the original approval date.",
+          "$ref": "#/definitions/date"
+        },
+        "_lastReviewDate": {
+          "description": "Extensions for lastReviewDate",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "effectivePeriod": {
+          "description": "The period during which the event definition content was or is planned to be in active use.",
+          "$ref": "Period.schema.json#/definitions/Period"
+        },
+        "topic": {
+          "description": "Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "author": {
+          "description": "An individiual or organization primarily involved in the creation and maintenance of the content.",
+          "items": {
+            "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "editor": {
+          "description": "An individual or organization primarily responsible for internal coherence of the content.",
+          "items": {
+            "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "reviewer": {
+          "description": "An individual or organization asserted by the publisher to be primarily responsible for review of some aspect of the content.",
+          "items": {
+            "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "endorser": {
+          "description": "An individual or organization asserted by the publisher to be responsible for officially endorsing the content for use in some setting.",
+          "items": {
+            "$ref": "ContactDetail.schema.json#/definitions/ContactDetail"
+          },
+          "type": "array"
+        },
+        "relatedArtifact": {
+          "description": "Related resources such as additional documentation, justification, or bibliographic references.",
+          "items": {
+            "$ref": "RelatedArtifact.schema.json#/definitions/RelatedArtifact"
+          },
+          "type": "array"
+        },
+        "subtitle": {
+          "description": "An explanatory or alternate title for the event definition giving additional information about its content.",
+          "type": "string"
+        },
+        "_subtitle": {
+          "description": "Extensions for subtitle",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "subjectCodeableConcept": {
+          "description": "A code or group definition that describes the intended subject of the event definition.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "subjectReference": {
+          "description": "A code or group definition that describes the intended subject of the event definition.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "usage": {
+          "description": "A detailed description of how the event definition is used from a clinical perspective.",
+          "$ref": "#/definitions/markdown"
+        },
+        "_usage": {
+          "description": "Extensions for usage",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "trigger": {
+          "description": "The trigger element defines when the event occurs. If more than one trigger condition is specified, the event fires whenever any one of the trigger conditions is met.",
+          "items": {
+            "$ref": "TriggerDefinition.schema.json#/definitions/TriggerDefinition"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger",
+        "resourceType"
+      ]
+    }
+  }
+}
