@@ -6,7 +6,7 @@ defmodule HL7.Validation do
         :List, :Encounter, :Contract, :Device, :Organization, :DeviceDefinition, :DeviceAssociation,
         :DeviceMetric, :DeviceRequest, :DeviceDispense, :DetectedIssue, :BodyStructure, :Account,
         :AdverseEvent, :CarePlan, :CareTeam, :AllergyIntolerance, :Appointment, :AppointmentResponse,
-        :AuditEvent, :Binary, :Bundle, :BodyStructure, :CapabilityStatement, :Claim, :ClaimResponse,
+        :AuditEvent, :Binary, :Bundle, :CapabilityStatement, :Claim, :ClaimResponse,
         :ChargeItem, :Basic, :BodySite, :ClinicalImpression, :CodeSystem, :Composition, :ConceptMap,
         :Condition, :Consent, :CoverageEligibilityRequest, :CoverageEligibilityResponse,
         :DiagnosticReport, :DocumentReference, :Endpoint, :EnrollmentRequest, :EpisodeOfCare,
