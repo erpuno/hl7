@@ -22,14 +22,14 @@ defmodule HL7.Validation do
         :PlanDefinition, :Practitioner, :PractitionerRole, :Procedure, :ProcedureRequest,
         :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
         :EventDefinition, :Goal, :ImagingSelection, :ImagingStudy, :MedicationAdministration,
-        :MedicationKnowledge
+        :MedicationKnowledge, :Contributor
       ]
   end
 
   def clear_cache() do
       :lists.flatten(
       :lists.map(fn {y,_} when is_binary(y) ->
-        :application.set_env(:hl7, y, [])
+#       :application.set_env(:hl7, y, [])
         {y}
         ; _ -> [] end,
       :application.get_all_env(:hl7)))
