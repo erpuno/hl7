@@ -19,7 +19,7 @@ defmodule HL7.Validation do
         :PlanDefinition, :SupplyDelivery, :SupplyRequest, :Task, :TriggerDefinition,
         :ActivityDefinition, :Coverage, :DeviceComponent, :DeviceUsage, :DeviceUseStatement,
         :EnrollmentResponse, :HealthcareService, :Measure, :MedicationRequest, :MedicationDispense,
-        :PlanDefinition, :Practitioner, :PractitionerRole, :Procedure, :ProcedureRequest,
+        :Practitioner, :PractitionerRole, :Procedure, :ProcedureRequest,
         :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
         :EventDefinition, :Goal, :ImagingSelection, :ImagingStudy, :MedicationAdministration,
         :MedicationKnowledge, :Contributor
