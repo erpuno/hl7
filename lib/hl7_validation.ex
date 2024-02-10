@@ -21,7 +21,8 @@ defmodule HL7.Validation do
         :EnrollmentResponse, :HealthcareService, :Measure, :MedicationRequest, :MedicationDispense,
         :PlanDefinition, :Practitioner, :PractitionerRole, :Procedure, :ProcedureRequest,
         :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
-        :EventDefinition
+        :EventDefinition, :Goal, :ImagingSelection, :ImagingStudy, :MedicationAdministration,
+        :MedicationKnowledge
       ]
   end
 

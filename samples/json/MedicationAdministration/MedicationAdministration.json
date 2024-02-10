@@ -1,0 +1,149 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "medadmin0301",
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: MedicationAdministration</b><a name=\"medadmin0301\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource MedicationAdministration &quot;medadmin0301&quot; </p></div><p><b>status</b>: in-progress</p><h3>Medications</h3><table class=\"grid\"><tr><td>-</td><td><b>Reference</b></td></tr><tr><td>*</td><td><a name=\"med0301\"> </a><blockquote><p/><p><a name=\"med0301\"> </a></p><p><b>code</b>: Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-ndc.html\">National drug codes</a>#0409-6531-02)</span></p></blockquote></td></tr></table><p><b>subject</b>: <a href=\"patient-example-a.html\">Patient/pat1: Donald Duck</a> &quot;Donald DUCK&quot;</p><p><b>encounter</b>: <a href=\"encounter-example-f001-heart.html\">Encounter/f001: encounter who leads to this prescription</a></p><p><b>occurence</b>: 2015-01-15T14:30:00+01:00 --&gt; (ongoing)</p><blockquote><p><b>performer</b></p><h3>Actors</h3><table class=\"grid\"><tr><td>-</td><td><b>Reference</b></td></tr><tr><td>*</td><td><a href=\"practitioner-example-f007-sh.html\">Practitioner/f007: Patrick Pump</a> &quot;Simone HEPS&quot;</td></tr></table></blockquote><h3>Reasons</h3><table class=\"grid\"><tr><td>-</td><td><b>Concept</b></td></tr><tr><td>*</td><td>Given as Ordered <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-reason-medication-given.html\">Reason Medication Given Codes</a>#b)</span></td></tr></table><p><b>request</b>: <a href=\"medicationrequest0318.html\">MedicationRequest/medrx0318</a></p><h3>Dosages</h3><table class=\"grid\"><tr><td>-</td><td><b>Text</b></td><td><b>Route</b></td><td><b>Method</b></td><td><b>Dose</b></td></tr><tr><td>*</td><td>500mg IV q6h x 3 days</td><td>Intravenous route (qualifier value) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#47625008)</span></td><td>IV Push <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> ()</span></td><td>500 mg<span style=\"background: LightGoldenRodYellow\"> (Details: UCUM code mg = 'mg')</span></td></tr></table><p><b>eventHistory</b>: <a name=\"signature\"> </a></p><blockquote><p/><p><a name=\"signature\"> </a></p><p><b>target</b>: <a href=\"servicerequest-example2.html\">ServiceRequest/physiotherapy</a></p><p><b>recorded</b>: 2 Feb 2017, 4:23:07 am</p><h3>Agents</h3><table class=\"grid\"><tr><td>-</td><td><b>Role</b></td><td><b>Who</b></td></tr><tr><td>*</td><td>author (originator) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.1.0/CodeSystem-v3-ParticipationType.html\">ParticipationType</a>#AUT)</span></td><td><a href=\"practitioner-example.html\">Practitioner/example: Dr Adam Careful</a> &quot;Adam CAREFUL&quot;</td></tr></table><h3>Signatures</h3><table class=\"grid\"><tr><td>-</td><td><b>Type</b></td><td><b>When</b></td><td><b>Who</b></td><td><b>TargetFormat</b></td><td><b>SigFormat</b></td><td><b>Data</b></td></tr><tr><td>*</td><td>Author's Signature (Details: urn:iso-astm:E1762-95:2013 code 1.2.840.10065.1.12.1.1 = 'Author's Signature', stated as 'Author's Signature')</td><td>2 Feb 2017, 4:23:07 am</td><td><a href=\"practitioner-example.html\">Practitioner/example: Dr Adam Careful</a> &quot;Adam CAREFUL&quot;</td><td>application/fhir+xml</td><td>application/signature+xml</td><td>dGhpcyBibG9iIGlzIHNuaXBwZWQ=</td></tr></table></blockquote></div>"
+  },
+  "contained": [
+    {
+      "resourceType": "Medication",
+      "id": "med0301",
+      "code": {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/sid/ndc",
+            "code": "0409-6531-02",
+            "display": "Vancomycin Hydrochloride (VANCOMYCIN HYDROCHLORIDE)"
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "Provenance",
+      "id": "signature",
+      "target": [
+        {
+          "reference": "ServiceRequest/physiotherapy"
+        }
+      ],
+      "recorded": "2017-02-01T17:23:07Z",
+      "agent": [
+        {
+          "role": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "AUT"
+                }
+              ]
+            }
+          ],
+          "who": {
+            "reference": "Practitioner/example",
+            "display": "Dr Adam Careful"
+          }
+        }
+      ],
+      "signature": [
+        {
+          "type": [
+            {
+              "system": "urn:iso-astm:E1762-95:2013",
+              "code": "1.2.840.10065.1.12.1.1",
+              "display": "Author's Signature"
+            }
+          ],
+          "when": "2017-02-01T17:23:07Z",
+          "who": {
+            "reference": "Practitioner/example",
+            "display": "Dr Adam Careful"
+          },
+          "targetFormat": "application/fhir+xml",
+          "sigFormat": "application/signature+xml",
+          "data": "dGhpcyBibG9iIGlzIHNuaXBwZWQ="
+        }
+      ]
+    }
+  ],
+  "status": "in-progress",
+  "medication": {
+    "reference": {
+      "reference": "#med0301"
+    }
+  },
+  "subject": {
+    "reference": "Patient/pat1",
+    "display": "Donald Duck"
+  },
+  "encounter": {
+    "reference": "Encounter/f001",
+    "display": "encounter who leads to this prescription"
+  },
+  "occurencePeriod": {
+    "start": "2015-01-15T14:30:00+01:00"
+  },
+  "performer": [
+    {
+      "actor": {
+        "reference": {
+          "reference": "Practitioner/f007",
+          "display": "Patrick Pump"
+        }
+      }
+    }
+  ],
+  "reason": [
+    {
+      "concept": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/reason-medication-given",
+            "code": "b",
+            "display": "Given as Ordered"
+          }
+        ]
+      }
+    }
+  ],
+  "request": {
+    "reference": "MedicationRequest/medrx0318"
+  },
+  "dosage": {
+    "text": "500mg IV q6h x 3 days",
+    "route": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "47625008",
+          "display": "Intravenous route (qualifier value)"
+        }
+      ]
+    },
+    "method": {
+      "text": "IV Push"
+    },
+    "dose": {
+      "value": 500,
+      "unit": "mg",
+      "system": "http://unitsofmeasure.org",
+      "code": "mg"
+    }
+  },
+  "eventHistory": [
+    {
+      "reference": "#signature",
+      "display": "Author's Signature"
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+        "code": "HTEST",
+        "display": "test health data"
+      }
+    ]
+  }
+}
