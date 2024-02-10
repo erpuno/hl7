@@ -7,7 +7,7 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 ## Features
 
 * Fast (<5ms) JSON Schema `draft-07` Circular Validator
-* FHIR Protocol Version R5 (135 types supported)
+* FHIR Protocol Version R5 (138)
 * HTTP Endpoints
 * Erlang Records Internal Representation (for type-checking and compact memory footprint)
 * Extremely Compact Codebase (<10K LOC)
@@ -18,7 +18,7 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 $ mix deps.get
 $ iex -S mix
 ISO/HL7 27931:2009 application server listening at port: 9234.
-JSON Schema: draft-07, FHIR Protocol Version: R5/135.
+JSON Schema: draft-07, FHIR Protocol Version: R5.
 Interactive Elixir (1.12.2) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```

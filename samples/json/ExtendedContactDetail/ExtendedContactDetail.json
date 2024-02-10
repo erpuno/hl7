@@ -1,0 +1,10 @@
+{
+  "resourceType":"ExtendedContactDetail",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "general.practice@example.org",
+          "use": "work"
+        }
+      ]
+    }
