@@ -24,7 +24,9 @@ defmodule HL7.Validation do
         :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
         :EventDefinition, :Goal, :ImagingSelection, :ImagingStudy, :MedicationAdministration,
         :MedicationKnowledge, :Contributor, :StructureDefinition, :TestScript, :TestReport, :Group,
-        :Linkage, :Library, :ImplementationGuide, :ImagingManifest, :GuidanceResponse, :GraphDefinition
+        :Linkage, :Library, :ImplementationGuide, :ImagingManifest, :GuidanceResponse, :GraphDefinition,
+        :Timing, :UsageContext, :StructureMap, :Signature, :SampledData, :ResourceList,
+        :Resource, :RelatedArtifact, :Ingredient
       ]
   end
 
@@ -62,6 +64,7 @@ defmodule HL7.Validation do
   def testItem(name) do
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
+      :io.format 'loadFile: ~p~n', [file]
       schema = HL7.Loader.loadSchema("#{name}")
       obj = Jason.decode!(objBin)
       verify = Xema.validate(schema, obj)

@@ -1,0 +1,23 @@
+{
+  "resourceType" : "RatioRange",
+  "charge" : {
+    "lowNumerator" : {
+      "value" : "103.50",
+      "unit" : "US$",
+      "code" : "USD",
+      "system" : "urn:iso:std:iso:4217"
+    },
+    "highNumerator" : {
+      "value" : "210.99",
+      "unit" : "US$",
+      "code" : "USD",
+      "system" : "urn:iso:std:iso:4217"
+    },
+    "denominator" : {
+      "value" : "1",
+      "unit" : "day",
+      "code" : "day",
+      "system" : "http://unitsofmeasure.org"
+    }
+  }
+}
