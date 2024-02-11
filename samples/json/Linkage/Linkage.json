@@ -1,0 +1,25 @@
+{
+  "resourceType" : "Linkage",
+  "id" : "example",
+  "text" : {
+    "status" : "extensions",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n  <p>\n     Links\n      defined by <a href=\"practitioner-example-f201-ab.html\">Practitioner/f201</a> &quot;Dokter Bronsig&quot; \n     :\n  </p>\n  <ul>\n    \n    <li>source: <a href=\"condition-example.html\">Condition/example: Severe burn of left ear (Date: 24-May 2012)</a> </li>\n    \n    <li>alternate: <a href=\"condition-example-linkage.html\">Condition/example-linkage: Severe burn of left ear (Date: 24-May 2012)</a> </li>\n    \n  </ul>\n</div>"
+  },
+  "author" : {
+    "reference" : "Practitioner/f201"
+  },
+  "item" : [{
+    "type" : "source",
+    "resource" : {
+      "reference" : "Condition/example",
+      "display" : "Severe burn of left ear (Date: 24-May 2012)"
+    }
+  },
+  {
+    "type" : "alternate",
+    "resource" : {
+      "reference" : "Condition/example-linkage",
+      "display" : "Severe burn of left ear (Date: 24-May 2012)"
+    }
+  }]
+}

@@ -1,5 +1,6 @@
 defmodule HL7.Validation do
 
+#  def suite() do [ :GraphDefinition ] end
   def suite() do
       [
         :Identifier, :Quantity, :Reference, :Location, :Extension, :Patient, :Specimen, :Observation,
@@ -22,7 +23,8 @@ defmodule HL7.Validation do
         :Practitioner, :PractitionerRole, :Procedure, :ProcedureRequest,
         :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
         :EventDefinition, :Goal, :ImagingSelection, :ImagingStudy, :MedicationAdministration,
-        :MedicationKnowledge, :Contributor
+        :MedicationKnowledge, :Contributor, :StructureDefinition, :TestScript, :TestReport, :Group,
+        :Linkage, :Library, :ImplementationGuide, :ImagingManifest, :GuidanceResponse
       ]
   end
 
