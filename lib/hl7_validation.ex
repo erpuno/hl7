@@ -24,7 +24,7 @@ defmodule HL7.Validation do
         :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
         :EventDefinition, :Goal, :ImagingSelection, :ImagingStudy, :MedicationAdministration,
         :MedicationKnowledge, :Contributor, :StructureDefinition, :TestScript, :TestReport, :Group,
-        :Linkage, :Library, :ImplementationGuide, :ImagingManifest, :GuidanceResponse
+        :Linkage, :Library, :ImplementationGuide, :ImagingManifest, :GuidanceResponse, :GraphDefinition
       ]
   end
 

@@ -41,6 +41,7 @@
     "system" : "http://example.org",
     "value" : "guidanceResponse1"
   }],
+  "module" : [],
   "moduleUri" : "http://someguidelineprovider.org/radiology-appropriateness-guidelines.html",
   "status" : "success",
   "subject" : {

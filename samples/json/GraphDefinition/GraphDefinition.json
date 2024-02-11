@@ -35,11 +35,23 @@
     "description" : "Generic resource that's the target of a list reference",
     "type" : "Resource"
   }],
+
   "link" : [{
     "description" : "Link from Composition.section to list",
     "sourceId" : "comp1",
     "path" : "Composition.section.entry",
     "targetId" : "list1",
+    "target" : [{
+       "description" : "Link from Composition.section to list",
+       "sourceId" : "comp1",
+       "path" : "Composition.section.entry",
+       "targetId" : "list1",
+       "compartment" : [{
+          "use" : "requires",
+          "rule" : "identical",
+          "code" : "Patient"
+       }]
+    }],
     "compartment" : [{
       "use" : "requires",
       "rule" : "identical",
@@ -50,6 +62,17 @@
     "description" : "Include any list entries",
     "sourceId" : "list1",
     "path" : "List.entry.item",
+    "target" : [{
+       "description" : "Link from Composition.section to list",
+       "sourceId" : "comp1",
+       "path" : "Composition.section.entry",
+       "targetId" : "list1",
+       "compartment" : [{
+          "use" : "requires",
+          "rule" : "identical",
+          "code" : "Patient"
+       }]
+    }],
     "targetId" : "resN",
     "compartment" : [{
       "use" : "requires",
