@@ -175,12 +175,12 @@ Internal data types: `instant`, `time`, `date`, `dateTime`, `base64binary`, `dec
 General-purpose types: `Address`, `Age`, `Annotation`, `Attachment`, 
 `ContactPoint`, `Count`, `Distance`, `Dosage`, `Duration`, `Element`,
 `HumanName`, `Identifier`, `Meta`, `Money`, `Period`, `Quantity`,
-`Ratio`, `Range`, `RatioRange`, `Reference`, `SampledData`, `Signature`, `Timing`.
+`Ratio`, `Range`, `RatioRange`, `Reference`, `SampledData`, `Timing`.
 
 ### Foundation
 
 Infrastructural types: `Resource`, `DomainResource`, `Basic`, `Bundle`,
-`Composition`, `List`, `Subscription`.
+`Composition`, `List`, `Subscription`, `Endpoint`, `ServiceDefinition`.
 
 ### Security
 
