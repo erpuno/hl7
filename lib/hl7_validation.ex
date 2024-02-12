@@ -25,7 +25,8 @@ defmodule HL7.Validation do
         :MedicationKnowledge, :Contributor, :StructureDefinition, :TestScript, :TestReport, :Group,
         :Linkage, :Library, :ImplementationGuide, :ImagingManifest, :GuidanceResponse, :GraphDefinition,
         :Timing, :UsageContext, :StructureMap, :Signature, :SampledData, :ResourceList,
-        :Resource, :RelatedArtifact, :MarketingStatus, :Ingredient, :ProductPackageDefinition, :Permission
+        :Resource, :RelatedArtifact, :MarketingStatus, :Ingredient, :ProductPackageDefinition, :Permission,
+        :Invoice
       ]
   end
 
