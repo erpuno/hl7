@@ -69,7 +69,22 @@ defmodule HL7.Service do
              {:error, %Xema.ValidationError{message: msg, reason: err}} = errors ->
              :io.format 'Validation Errors: ~p~n', [errors]
               Xema.ValidationError.travers_errors(errors, [], fun)
-             :ok -> [%{"details" => "Validation is successful!", "severity" => "information", "code" => "informational"}]
+             :ok ->
+                case Map.get(obj, "text") do
+                nil ->
+                [%{"details" => "Validation is successful!",
+                  "severity" => "information",
+                  "code" => "informational"},
+                 %{"details" => "dom-6: A resource should have narrative for robust management",
+                  "severity" => "warning",
+                  "expression" => type,
+                  "code" => "invariant"
+                  }]
+                _ ->
+               [%{"details" => "Validation is successful!",
+                  "severity" => "information",
+                  "code" => "informational"}]
+                end
        end
        :io.format 'POST/4:#{type}#{id}/#{spec}: ~p (~pKiB)', [res,:erlang.round(:erlang.size(body) / 1024)]
        send_resp(conn, 200, encode(%{"resourceType" => "OperationOutcome", "issues" => res})) end

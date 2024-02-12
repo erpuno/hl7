@@ -1,10 +1,6 @@
 {
    "resourceType":"List",
    "id":"01111313-long",
-   "text":{
-      "status":"generated",
-      "div":"List sample"
-   },
    "status":"current",
    "mode":"changes",
    "date":"2018-02-21T12:17:00+11:00",
