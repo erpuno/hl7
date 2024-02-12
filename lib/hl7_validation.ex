@@ -1,6 +1,5 @@
 defmodule HL7.Validation do
 
-#  def suite() do [ :GraphDefinition ] end
   def suite() do
       [
         :Identifier, :Quantity, :Reference, :Location, :Extension, :Patient, :Specimen, :Observation,
