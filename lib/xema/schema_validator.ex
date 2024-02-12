@@ -5,61 +5,36 @@ defmodule Xema.SchemaValidator do
 
   alias Xema.{Ref, Schema, SchemaError}
 
-  defp schema,
+  def schema,
     do:
       struct(Xema,
         refs: %{
           "#/definitions/keywords" => %Schema{
             properties: %{
-              examples: %Schema{
-                items: %Schema{type: true},
-                type: :list
-              },
+              examples: %Schema{items: %Schema{type: true}, type: :list },
               format: %Schema{type: :atom},
               if: %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
               exclusive_minimum: %Schema{type: [:boolean, :number]},
-              max_length: %Schema{
-                ref: %Ref{pointer: "#/definitions/non_negative_integer"}
-              },
-              max_items: %Schema{
-                ref: %Ref{pointer: "#/definitions/non_negative_integer"}
-              },
-              any_of: %Schema{
-                ref: %Ref{pointer: "#/definitions/schemas"}
-              },
+              max_length: %Schema{ref: %Ref{pointer: "#/definitions/non_negative_integer"}},
+              max_items: %Schema{ref: %Ref{pointer: "#/definitions/non_negative_integer"}},
+              any_of: %Schema{ref: %Ref{pointer: "#/definitions/schemas"}},
               pattern_properties: %Schema{
-                additional_properties: %Schema{
-                  ref: %Ref{pointer: "#/definitions/schema"}
-                },
-                property_names: %Schema{
-                  any_of: [
-                    %Schema{format: :regex, type: :string},
-                    %Schema{module: Regex, type: :struct}
-                  ]
-                },
+                additional_properties: %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
+                property_names: %Schema{any_of: [%Schema{format: :regex, type: :string},%Schema{module: Regex, type: :struct}]},
                 type: :map
               },
               const: %Schema{type: true},
               description: %Schema{type: :string},
-              one_of: %Schema{
-                ref: %Ref{pointer: "#/definitions/schemas"}
-              },
+              one_of: %Schema{ref: %Ref{pointer: "#/definitions/schemas"}},
               properties: %Schema{
-                additional_properties: %Schema{
-                  ref: %Ref{pointer: "#/definitions/schema"}
-                },
+                additional_properties: %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
                 type: :map
               },
               id: %Schema{format: :uri_reference, type: :string},
               pattern: %Schema{
-                any_of: [
-                  %Schema{format: :regex, type: :string},
-                  %Schema{module: Regex, type: :struct}
-                ]
+                any_of: [%Schema{format: :regex, type: :string}, %Schema{module: Regex, type: :struct}]
               },
-              else: %Schema{
-                ref: %Ref{pointer: "#/definitions/schema"}
-              },
+              else: %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
               items: %Schema{
                 any_of: [
                   %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
@@ -86,19 +61,11 @@ defmodule Xema.SchemaValidator do
                 unique_items: true
               },
               unique_items: %Schema{type: :boolean},
-              then: %Schema{
-                ref: %Ref{pointer: "#/definitions/schema"}
-              },
-              contains: %Schema{
-                ref: %Ref{pointer: "#/definitions/schema"}
-              },
-              min_properties: %Schema{
-                ref: %Ref{pointer: "#/definitions/non_negative_integer"}
-              },
+              then: %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
+              contains: %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
+              min_properties: %Schema{ref: %Ref{pointer: "#/definitions/non_negative_integer"}},
               multiple_of: %Schema{exclusive_minimum: 0, type: :number},
-              property_names: %Schema{
-                ref: %Ref{pointer: "#/definitions/schema"}
-              },
+              property_names: %Schema{ref: %Ref{pointer: "#/definitions/schema"}},
               required: %Schema{
                 any_of: [
                   %Schema{items: %Schema{type: :string}, type: :list},
@@ -110,14 +77,9 @@ defmodule Xema.SchemaValidator do
                   any_of: [
                     %Schema{type: :string},
                     %Schema{type: :atom},
-                    %Schema{
-                      items: %Schema{type: :string},
-                      type: :list
-                    },
+                    %Schema{items: %Schema{type: :string},type: :list},
                     %Schema{items: %Schema{type: :atom}, type: :list},
-                    %Schema{
-                      ref: %Ref{pointer: "#/definitions/schema"}
-                    }
+                    %Schema{ref: %Ref{pointer: "#/definitions/schema"}}
                   ]
                 },
                 type: :map
