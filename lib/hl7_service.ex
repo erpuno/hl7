@@ -41,14 +41,33 @@ defmodule HL7.Service do
        send_resp(conn, 200, encode([%{"type" => type, "id" => id, "spec" => spec}])) end
 
    def post4(conn,_,type,id,"$validate" = spec) do
-       fun = fn %Xema.ValidationError{reason: %{all_of: [%{properties: err}]}}, path, acc ->
-             [%{"details" => Jason.encode!(err), "severity" => "error", "code" => "structure"}|acc]
+       fun = fn
+             (%Xema.ValidationError{message: _, reason: %{required: req}}, path, acc) ->
+               fields = :string.join :lists.map(fn x -> :erlang.binary_to_list(x) end, req), ','
+               [%{"details" => "Fields [#{fields}] are required.",
+                 "severity" => "error",
+                 "code" => "structure"}
+               |acc]
+             (%Xema.ValidationError{message: _, reason: %{all_of: [%{properties: errors}]}}, path, acc) ->
+             [:lists.map(fn err ->
+               %{"details" => Jason.encode!(Map.get(errors, err)),
+                 "severity" => "error",
+                 "code" => "structure"}
+             end, Map.keys(errors))|acc]
+             (%Xema.ValidationError{message: _, reason: %{properties: errors}}, path, acc) ->
+             [:lists.map(fn err ->
+               %{"details" => Jason.encode!(Map.get(errors, err)),
+                 "severity" => "error",
+                 "expression" => type <> "." <> err,
+                 "code" => "value"}
+             end, Map.keys(errors))|acc]
        end
        {:ok, body, conn} = Plug.Conn.read_body(conn, [])
        schema = HL7.Loader.loadSchema("#{type}")
        obj = Jason.decode!(body)
        res = case Xema.validate(schema, obj) do
              {:error, %Xema.ValidationError{message: msg, reason: err}} = errors ->
+             :io.format 'Validation Errors: ~p~n', [errors]
               Xema.ValidationError.travers_errors(errors, [], fun)
              :ok -> [%{"details" => "Validation is successful!", "severity" => "information", "code" => "informational"}]
        end

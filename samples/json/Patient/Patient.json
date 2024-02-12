@@ -80,8 +80,8 @@
       }
    ],
    "gender":"male",
-   "birthDate":"1974-12-25",
-   "deceasedBoolean":false,
+   "birthDate": "1974-12-25",
+   "deceasedBoolean": false,
    "address":[
       {
          "use":"home",

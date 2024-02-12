@@ -178,6 +178,7 @@
       },
       "additionalProperties": false,
       "required": [
+        "id",
         "resourceType"
       ]
     },
