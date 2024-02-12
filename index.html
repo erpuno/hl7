@@ -88,15 +88,13 @@
     <h3>SCHEMA</h3>
     <p></p>
     <figure><code>
-  curl -X POST "http://hl7.erp.uno:9234/List/\$validate" -d @samples/json/List/List.json
+  $ curl -X POST "http://127.0.0.1:9234/List/\$validate" -d @samples/json/List/List.json
   {
-    "base": "",
-    "id": "01111313-long",
-    "spec": "$validate",
-    "type": "List",
-    "verify": {
-      "code": "success",
-      "message": "Object conforms to List of R5 schema."
+    "resourceType": "OperationOutcome",
+    "issues": {
+      "code": "informational",
+      "details": "Validation is successful!",
+      "severity": "information"
     }
   }
     </code></figure>

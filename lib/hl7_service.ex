@@ -5,6 +5,7 @@ defmodule HL7.Service do
    def encode(x) do
        case  Jason.encode(x) do
              {:ok, bin} -> bin <> "\n"
+             {:error, %Protocol.UndefinedError{protocol: _, value: value, description: desc}} -> desc <> "\n"
              {:error, %Protocol.UndefinedError{description: _, protocol: _, value: {:error, %Xema.ValidationError{message: _, reason: err}}}} -> err <> "\n"
              {:error, %Xema.ValidationError{message: _, reason: err}} -> err <> "\n"
        end |> Jason.Formatter.pretty_print
@@ -40,16 +41,19 @@ defmodule HL7.Service do
        send_resp(conn, 200, encode([%{"type" => type, "id" => id, "spec" => spec}])) end
 
    def post4(conn,_,type,id,"$validate" = spec) do
+       fun = fn %Xema.ValidationError{reason: %{all_of: [%{properties: err}]}}, path, acc ->
+             [%{"details" => Jason.encode!(err), "severity" => "error", "code" => "structure"}|acc]
+       end
        {:ok, body, conn} = Plug.Conn.read_body(conn, [])
-       schema = HL7.Loader.loadSchema("#{type}") 
+       schema = HL7.Loader.loadSchema("#{type}")
        obj = Jason.decode!(body)
        res = case Xema.validate(schema, obj) do
-             :ok -> {%{message: "Object conforms to #{type} of R5 schema.", code: "success"},"success"}
-             {:error, %Xema.ValidationError{message: msg, reason: err}} -> {%{message: msg, reason: err},"error"}
+             {:error, %Xema.ValidationError{message: msg, reason: err}} = errors ->
+              Xema.ValidationError.travers_errors(errors, [], fun)
+             :ok -> [%{"details" => "Validation is successful!", "severity" => "information", "code" => "informational"}]
        end
-       {message,verify} = res
-       :io.format 'POST/4:#{type}#{id}/#{spec}: ~p (~pKiB)', [verify, :erlang.round(:erlang.size(body) / 1024)]
-       send_resp(conn, 200, encode(%{"type" => type, "id" => Map.get(obj, "id", Map.get(obj, "$id", "")), "spec" => spec, "verify" => message})) end
+       :io.format 'POST/4:#{type}#{id}/#{spec}: ~p (~pKiB)', [res,:erlang.round(:erlang.size(body) / 1024)]
+       send_resp(conn, 200, encode(%{"resourceType" => "OperationOutcome", "issues" => res})) end
 
    def post4(conn,_base,compartment,id,qualifier) do
        :io.format 'POST/4:#{compartment}/#{qualifier}', []
