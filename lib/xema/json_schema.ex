@@ -144,13 +144,79 @@ defmodule Xema.JsonSchema do
   end
 
   # handles all rules with a regular keyword
-  defp rule({key, value}, opts) when key in keywords() do
+
+  def keywordsDefault(key,value,opts) do
     key
     |> String.trim_leading("$")
     |> ConvCase.to_snake_case()
     |> to_existing_atom(opts)
     |> rule(value, opts)
   end
+
+#["propertyNames", "maxProperties", "contentMediaType", "examples", "default",
+# "if", "description", "maximum", "id", "items", "then", "additionalItems",
+# "definitions", "properties", "patternProperties", "contains", "oneOf", "else",
+# "minItems", "caster", "contentEncoding", "pattern", "title",
+# "exclusiveMinimum", "enum", "maxLength", "type", "additionalProperties",
+# "required", "validator", "keys", "maxItems", "module", "dependencies", "not",
+# "anyOf", "multipleOf", "format", "minLength", "const", "allOf", "minimum",
+# "exclusiveMaximum", "uniqueItems", "comment", "minProperties", "$ref", "$id",
+# "$schema"]
+
+  defp rule({"propertyNames" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"maxProperties" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"contentMediaType" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"examples" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"default" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"if" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"description" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"maximum" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"id" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"items" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"then" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"additionalItems" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"definitions" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"properties" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"comment" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"module" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"caster" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"pattern" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"title" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"oneOf" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"allOf" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"else" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"validator" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"enum" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"anyOf" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"multipleOf" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"format" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"not" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"dependencies" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"contentEndoding" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"minLength" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"maxLength" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"minItems" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"maxItems" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"exclusiveMaximum" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"const" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"minimum" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"uniqueItems" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"minProperties" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"additionalProperties" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"$ref" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"$id" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"$schema" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"required" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"keys" = key, value}, opts), do: keywordsDefault(key,value,opts)
+  defp rule({"type" = key, value}, opts), do: keywordsDefault(key,value,opts)
+
+#  defp rule({key, value}, opts) when key in keywords() do
+#    key
+#    |> String.trim_leading("$")
+#    |> ConvCase.to_snake_case()
+#    |> to_existing_atom(opts)
+#    |> rule(value, opts)
+#  end
 
   # handles all rules without a regular keyword
   defp rule({key, value}, opts) when is_binary(key) and is_map(value) do
@@ -166,7 +232,7 @@ defmodule Xema.JsonSchema do
   defp rule({key, value}, opts), do: {to_existing_atom(key, opts), value}
 
   defp rule(:format, value, _) do
-    format = value # |> ConvCase.to_snake_case()
+    format = value |> ConvCase.to_snake_case()
                    |> to_existing_atom(maybe: true)
 
     case is_atom(format) do
