@@ -135,11 +135,9 @@ defmodule Xema do
 
   use Xema.Behaviour
 
-  import Xema.Castable.Helper, only: [cast_key: 2]
-  import Xema.Utils, only: [to_existing_atom: 1, to_sorted_list: 1]
+  import Xema.Castable.Helper, only: [to_existing_atom: 1, to_sorted_list: 1]
 
   alias Xema.{
-    Castable,
     CastError,
     JsonSchema,
     Ref,
@@ -792,8 +790,8 @@ defmodule Xema do
        when caster != nil and is_atom(caster),
        do: caster.cast(value)
 
-  defp do_castable_cast(schema, value) do
-    Castable.cast(value, schema)
+  defp do_castable_cast(%Schema{caster: caster}, value) do
+       caster.cast(value)
   end
 
   @spec cast_values(Schema.t(), term, keyword, list) :: term
@@ -1031,7 +1029,7 @@ defmodule Xema do
   @spec cast_keys([String.t()] | [atom], :strings | :atoms) :: [String.t()] | [atom]
   defp cast_keys(keys, keys_type) do
     Enum.map(keys, fn key ->
-      case cast_key(key, keys_type) do
+      case Xema.Castable.Helper.cast_key(key, keys_type) do
         :error -> key
         {:ok, cast} -> cast
       end

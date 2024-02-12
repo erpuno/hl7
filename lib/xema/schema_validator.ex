@@ -3,8 +3,6 @@ defmodule Xema.SchemaValidator do
   A validator for the schema input.
   """
 
-  # credo:disable-for-this-file Credo.Check.Design.DuplicatedCode
-
   alias Xema.{Ref, Schema, SchemaError}
 
   defp schema,

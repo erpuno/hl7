@@ -3,7 +3,7 @@ defmodule Xema.Schema do
   This module contains the struct for the keywords of a schema.
   """
 
-  alias Xema.{Behaviour, Ref, Schema, SchemaError, Utils}
+  alias Xema.{Behaviour, Ref, Schema, SchemaError}
 
   @type xema :: struct
 
@@ -291,7 +291,7 @@ defmodule Xema.Schema do
 
   defp do_fetch(schema, [key | keys] = pointer) do
     key = decode(key)
-    atom_key = Utils.to_existing_atom(key)
+    atom_key = Xema.Castable.Helper.to_existing_atom(key)
 
     case {Map.get(schema, key), Map.get(schema, atom_key)} do
       {nil, nil} ->

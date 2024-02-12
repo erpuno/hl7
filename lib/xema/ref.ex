@@ -4,7 +4,7 @@ defmodule Xema.Ref do
   references.
   """
 
-  alias Xema.{Ref, Schema, Utils, Validator}
+  alias Xema.{Ref, Schema, Validator}
 
   require Logger
 
@@ -16,7 +16,7 @@ defmodule Xema.Ref do
           uri: URI.t() | nil
         }
 
-#  @derive {Inspect, optional: [:pointer, :uri]}
+# @derive {Inspect, optional: [:pointer, :uri]}
   defstruct pointer: nil,
             uri: nil
 
@@ -42,7 +42,7 @@ defmodule Xema.Ref do
   def new(pointer, uri) when is_binary(pointer),
     do: %Ref{
       pointer: pointer,
-      uri: Utils.update_uri(uri, pointer)
+      uri: Xema.Behaviour.update_uri(uri, pointer)
     }
 
   @doc """

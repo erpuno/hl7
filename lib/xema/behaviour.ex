@@ -10,7 +10,6 @@ defmodule Xema.Behaviour do
     Ref,
     Schema,
     SchemaError,
-    Utils,
     ValidationError,
     Validator
   }
@@ -431,6 +430,11 @@ defmodule Xema.Behaviour do
 
   defp reduce(value, acc, path, fun), do: fun.(value, acc, path)
 
+  def update_uri(nil, nil), do: nil
+  def update_uri(uri_1, nil), do: URI.parse(uri_1)
+  def update_uri(nil, uri_2), do: URI.parse(uri_2)
+  def update_uri(uri_1, uri_2), do: URI.merge(uri_1, uri_2)
+
   # Returns a schema tree where each schema is the result of invoking `fun` on
   # each schema. The function gets also the current `ìd` for the schema. The
   # `id` could be `nil` or a `%URI{}` struct.
@@ -438,7 +442,7 @@ defmodule Xema.Behaviour do
   defp map(schema, fun), do: map(schema, fun, nil)
 
   defp map(%Schema{} = schema, fun, id) do
-    id = Utils.update_uri(id, schema.id)
+    id = update_uri(id, schema.id)
 
     Schema
     |> struct(

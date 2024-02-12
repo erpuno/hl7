@@ -39,12 +39,14 @@ defmodule Xema.JsonSchema do
     properties
   )a
 
-  @keywords Schema.keywords()
-            |> Enum.map(&to_string/1)
-            |> ConvCase.to_camel_case()
-            |> List.delete("ref")
-            |> List.delete("schema")
-            |> Enum.concat(["$ref", "$id", "$schema"])
+  defmacro keywords() do
+      Schema.keywords()
+      |> Enum.map(&to_string/1)
+      |> ConvCase.to_camel_case()
+      |> List.delete("ref")
+      |> List.delete("schema")
+      |> Enum.concat(["$ref", "$id", "$schema"])
+  end
 
   @doc """
   This function converts a JSON Schema in Xema schema source. The argument
@@ -142,7 +144,7 @@ defmodule Xema.JsonSchema do
   end
 
   # handles all rules with a regular keyword
-  defp rule({key, value}, opts) when key in @keywords do
+  defp rule({key, value}, opts) when key in keywords() do
     key
     |> String.trim_leading("$")
     |> ConvCase.to_snake_case()
@@ -164,7 +166,8 @@ defmodule Xema.JsonSchema do
   defp rule({key, value}, opts), do: {to_existing_atom(key, opts), value}
 
   defp rule(:format, value, _) do
-    format = value |> ConvCase.to_snake_case() |> to_existing_atom(maybe: true)
+    format = value # |> ConvCase.to_snake_case()
+                   |> to_existing_atom(maybe: true)
 
     case is_atom(format) do
       true -> {:format, format}
@@ -197,7 +200,7 @@ defmodule Xema.JsonSchema do
   defp rule(key, value, _), do: {key, value}
 
   defp schema?(value) do
-    value |> Map.keys() |> Enum.any?(fn key -> Enum.member?(@keywords, key) end)
+    value |> Map.keys() |> Enum.any?(fn key -> Enum.member?(keywords(), key) end)
   end
 
   defp to_existing_atom(str, opts \\ []) do

@@ -1,7 +1,45 @@
 defmodule Xema.Castable.Helper do
   @moduledoc false
 
-  import Xema.Utils, only: [to_existing_atom: 1]
+  def to_existing_atom(atom) when is_atom(atom), do: atom
+  def to_existing_atom(string) when is_binary(string) do String.to_existing_atom(string) rescue  _ -> nil  end
+
+  defp to_integer(value) when is_integer(value), do: {:ok, value}
+
+  defp to_integer(value) when is_binary(value) do
+    case Integer.parse(value) do
+      {integer, ""} -> {:ok, integer}
+      _error -> :error
+    end
+  end
+
+  defp to_integer(_value), do: :error
+
+  def item(item, keys: true), do: item
+  def item({_key, value}, keys: false), do: value
+
+  def to_sorted_list(map, opts \\ [keys: true]) do
+    result =
+      Enum.reduce_while(map, [], fn {key, _value} = item, acc ->
+        case to_integer(key) do
+          {:ok, integer} -> {:cont, [{integer, item(item, opts)} | acc]}
+          :error -> {:halt, nil}
+        end
+      end)
+
+    case result do
+      nil ->
+        :error
+
+      list ->
+        list =
+          list
+          |> Enum.sort_by(fn {index, _value} -> index end)
+          |> Enum.map(fn {_index, value} -> value end)
+
+        {:ok, list}
+    end
+  end
 
   defmacro __using__(_) do
     quote do

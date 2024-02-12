@@ -5,7 +5,20 @@ defmodule Xema.Validator do
 
   use Xema.Format
 
-  import Xema.Utils
+#  import Xema.Utils
+
+
+  def size(list) when is_list(list), do: length(list)
+  def size(tuple) when is_tuple(tuple), do: tuple_size(tuple)
+
+  def has_key?([], _), do: false
+  def has_key?(value, key) when is_map(value), do: Map.has_key?(value, key)
+  def has_key?(value, key) when is_list(value) do
+    case Keyword.keyword?(value) do
+      true -> Keyword.has_key?(value, key)
+      false -> Enum.any?(value, fn {k, _} -> k == key end)
+    end
+  end
 
   alias Xema.{Behaviour, Ref, Schema}
 
