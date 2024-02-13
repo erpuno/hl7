@@ -88,15 +88,23 @@
     <h3>SCHEMA</h3>
     <p></p>
     <figure><code>
-  $ curl -X POST "http://127.0.0.1:9234/List/\$validate" -d @samples/json/List/List.json
-  {
-    "resourceType": "OperationOutcome",
-    "issues": {
+$ curl -X POST "http://127.0.0.1:9234/List/\$validate" -d @samples/json/List/List.json ; echo
+{
+  "issues": [
+    {
+      "code": "invariant",
+      "details": "dom-6: A resource should have narrative for robust management",
+      "expression": "List",
+      "severity": "warning"
+    },
+    {
       "code": "informational",
       "details": "Validation is successful!",
       "severity": "information"
     }
-  }
+  ],
+  "resourceType": "OperationOutcome"
+}
     </code></figure>
 
      <p>ISO/HL7 is written in Erlang/OTP and supports <a href="https://rocksdb.org">RocksDB</a> or
