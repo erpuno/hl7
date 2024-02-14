@@ -41,12 +41,16 @@ defmodule HL7.Validation do
 
   def split(array) do :lists.split(:erlang.div(:erlang.length(array),2),array) end
 
-  def test() do
-      _ = :lists.map fn x ->
+  def load() do
+      :lists.map fn x ->
           {time,_} = :timer.tc(fn -> HL7.Loader.loadSchema "#{x}" end)
           :io.format 'load: ~p (μs), file: ~ts.~n', [time,"#{x}"]
           {time,x}
       end, suite()
+  end
+
+  def test() do
+      # load()
       s = :lists.sort :lists.map fn x ->
           {time,{name,code}} = :timer.tc(fn -> testItem "#{x}" end)
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
@@ -55,7 +59,7 @@ defmodule HL7.Validation do
       {x,y} = split(s)
       {a,b} = split(x)
       {c,d} = split(y)
-      [a,b,c,d] # R5/135
+      [a,b,c,d] # R5/160
   end
 
   def status(:ok) do "OK" end
