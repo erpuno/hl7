@@ -45,7 +45,10 @@
 </aside><main>
     <section>
     <a name=principles><h3>API</h3></a>
-    <p>The HL7/FHIR HTTP API:</p>
+    <p>The HL7/FHIR HTTP API is designed to be simple being able to perform
+       HTTP GET PUT DELETE methods as atomic operations generating history Bundle.
+       The HTTP path <b>resourceType</b> routes HTTP call to selective module.
+       </p>
     <figure><code>
      get "/"
     post "/"
@@ -58,10 +61,10 @@
     post "/$export"
     post "/$diff"
     post "/$reindex"
-    post "/:type/$validate"
-     get "/:type/:id"
-     put "/:type/:id"
-  delete "/:type/:id"
+    post "/:resourceType/$validate"
+     get "/:resourceType/:id"
+     put "/:resourceType/:id"
+  delete "/:resourceType/:id"
     post "/_search"
     post "/:res/_search"
     post "/:comp/:id/_search"
@@ -71,17 +74,61 @@
 
     <section>
     <a name=principles><h3>MODULES</h3></a>
-    <p>HL7/FHIR R5 Protocol Modules are grouped by Protocol Profile domains each under distinct jurisdiction.</p>
-    <p><b class=se>Primitive</b>. Internal data types: instant, time, date, dateTime, base64binary, decimal, integer64, boolean, url, code, string, integer, uri, canonical, markdown, id, oid, uuid, unsignedInt, positiveInt.</p>
-    <p><b class=se>General</b>. General-purpose types: Address, Age, Annotation, Attachment, ContactPoint, Count, Distance, Dosage, Duration, Element, HumanName, Identifier, Meta, Money, Period, Quantity, Ratio, Range, RatioRange, Reference, SampledData, Signature, Timing.</p>
-    <p><b class=se>Foundation</b>. Infrastructural types: Resource, DomainResource, Basic, Bundle, Composition, List, Subscription.</p>
-    <p><b class=se>Security</b>. Security-sensitive types: Consent, Permission, Provenance, Signature.</p>
-    <p><b class=se>Terminology</b>. Dictionary-related types: CodeSystem, ValueSet, ConceptMap, NamingSystem, Coding, CodeableConcept, CodeableReference, Coding.</p>
-    <p><b class=se>Administration</b>. Administrative types: Patient, RelatedPerson, Person, Group, Practitioner, PractitionerRole, Organization, Account, Location, HealthcareService, Endpoint, Schedule, Slot, SpecimenDefinition, EpisodOfCare, Encounter, EncounterHistory, Appointment, Flag, ObservationDefinition, NutritionProduct, Device, DeviceDefinition, DeviceMetric, DeviceUsage, DeviceAssociation.</p>
-    <p><b class=se>Clinical</b>. Clinical data types: Condition, Procedure, CarePlan, Goal, DetectedIssue.</p>
-    <p><b class=se>Diagnostic</b>. Diagnostic data types: Observation, Specimen, BodyStructure.</p>
-    <p><b class=se>Financial</b>. Financial data types: Account, Contract, Claim, Enrollment, Coverage, PaymentNotice.</p>
-    <p><b class=se>Workflow</b>. Workflow modeling data types: ActivityDefinition, Definition, EventDefinition, MessageDefinition, PlanDefinition, ObservationDefinition, ClinicalUse, Measure, OperationDefinition, Requirements.</p>
+
+    <p>HL7/FHIR R5 Protocol Modules are grouped by Protocol
+       Profile domains each under distinct jurisdiction.</p>
+
+    <p><b class=se>Primitive</b>. Primitive datatypes are based on <b>draft-07</b> internal definitions:
+       instant, time, date, dateTime, base64binary,
+       decimal, integer64, boolean, url, code, string, integer, uri,
+       canonical, markdown, id, oid, uuid, unsignedInt, positiveInt.</p>
+
+    <p><b class=se>General</b>.
+       General-purpose types represent atomic or vector non-dictionary but complex values:
+       Address, Age, Annotation, Attachment, ContactPoint, Count, Distance, Dosage,
+       Duration, Element, HumanName, Identifier, Meta, Money, Period,
+       Quantity, Ratio, Range, RatioRange, Reference, SampledData,
+       Timing.</p>
+
+    <p><b class=se>Foundation</b>.
+       Infrastructural types represents OSI levels monikers and RPC data structures:
+       Resource, DomainResource, Basic, Bundle, Composition,
+       List, Subscription, Endpoint, OperationOutcome.</p>
+
+    <p><b class=se>Security</b>.
+       Security-sensitive types provides ABAC facilities, identity
+       services and signature protection (CAdES, XAdES, ASIC-S, ДСТУ-4145, ДСТУ-7564):
+       Consent, Permission, Provenance, Signature.</p>
+
+    <p><b class=se>Terminology</b>.
+       Dictionary-related data types that caries most of medical international dictionaries and questionaries
+       such as SNOMED, LOINC, MMSE, WHODAS, IQ, ICD-10/11:
+       CodeSystem, ValueSet, ConceptMap, NamingSystem, Coding,
+       CodeableConcept, CodeableReference, Coding,
+       Ingredient, Substances, Packaging, Manufacturer, Brands, Questionary, Component.</p>
+
+    <p><b class=se>Administration</b>.
+       Administrative types represents business process of the patient related services:
+       Patient, RelatedPerson, Person, Group, Practitioner, PractitionerRole,
+       Organization, Account, Location, HealthcareService, Schedule,
+       Slot, SpecimenDefinition, EpisodOfCare, Encounter, EncounterHistory,
+       Appointment, Flag, ObservationDefinition, NutritionProduct, Device,
+       DeviceDefinition, DeviceMetric, DeviceUsage, DeviceAssociation.</p>
+
+    <p><b class=se>Clinical</b>.
+       Clinical data types: Condition, Procedure, CarePlan, Goal, DetectedIssue.</p>
+
+    <p><b class=se>Diagnostic</b>.
+       Diagnostic data types: Observation, Specimen, BodyStructure.</p>
+
+    <p><b class=se>Financial</b>.
+       Financial data types: Account, Contract, Claim, Enrollment, Coverage, PaymentNotice.</p>
+
+    <p><b class=se>Workflow</b>.
+       Workflow modeling data types are mapped onto BPMN business model:
+       ActivityDefinition, Definition, EventDefinition, MessageDefinition,
+       PlanDefinition, ObservationDefinition, ClinicalUse, Measure,
+       OperationDefinition, Requirements.</p>
     </section>
     <section>
 
