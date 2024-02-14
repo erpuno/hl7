@@ -88,12 +88,12 @@
        Address, Age, Annotation, Attachment, ContactPoint, Count, Distance, Dosage,
        Duration, Element, HumanName, Identifier, Meta, Money, Period,
        Quantity, Ratio, Range, RatioRange, Reference, SampledData,
-       Timing.</p>
+       Timing, Binary.</p>
 
     <p><b class=se>Foundation</b>.
        Infrastructural types represents OSI levels monikers and RPC data structures:
        Resource, DomainResource, Basic, Bundle, Composition,
-       List, Subscription, Endpoint, OperationOutcome.</p>
+       List, Subscription, Endpoint, OperationOutcome, CapabilityStatement.</p>
 
     <p><b class=se>Security</b>.
        Security-sensitive types provides ABAC facilities, identity
@@ -105,24 +105,29 @@
        such as SNOMED, LOINC, MMSE, WHODAS, IQ, ICD-10/11:
        CodeSystem, ValueSet, ConceptMap, NamingSystem, Coding,
        CodeableConcept, CodeableReference, Coding,
-       Ingredient, Substances, Packaging, Manufacturer, Brands, Questionary, Component.</p>
+       Medication, Ingredient, Substances, ProductPackageDefinition, Manufacturer.</p>
 
     <p><b class=se>Administration</b>.
        Administrative types represents business process of the patient related services:
        Patient, RelatedPerson, Person, Group, Practitioner, PractitionerRole,
-       Organization, Account, Location, HealthcareService, Schedule,
+       Organization, Account, Location, HealthcareService, Schedule, Communication,
        Slot, SpecimenDefinition, EpisodOfCare, Encounter, EncounterHistory,
        Appointment, Flag, ObservationDefinition, NutritionProduct, Device,
-       DeviceDefinition, DeviceMetric, DeviceUsage, DeviceAssociation.</p>
+       DeviceDefinition, AuditEvent, MedicationAdministration.</p>
 
     <p><b class=se>Clinical</b>.
-       Clinical data types: Condition, Procedure, CarePlan, Goal, DetectedIssue.</p>
+       Clinical data types: Condition, Procedure, CarePlan, CareTeam, Goal, DetectedIssue,
+       ClinicalImression, DeviceRequest, DeviceDispense, DeviceUsage,
+       DeviceAssociation, DeviceComponent, DeviceUseStatement, MarketingStatus,
+       SampleData, MedicationRequest, MedicationDispense.</p>
 
     <p><b class=se>Diagnostic</b>.
-       Diagnostic data types: Observation, Specimen, BodyStructure.</p>
+       Diagnostic data types: Observation, Specimen, BodyStructure, BodySite, AdverseEvent,
+       AllergyIntollerance, Questionnaire.</p>
 
     <p><b class=se>Financial</b>.
-       Financial data types: Account, Contract, Claim, Enrollment, Coverage, PaymentNotice.</p>
+       Financial data types: Account, Contract, Claim, ChargeItem, EnrollmentResponse, EnrollmentRequest,
+       Coverage, PaymentNotice, ExplanatoryOfBenefit, Invoice.</p>
 
     <p><b class=se>Workflow</b>.
        Workflow modeling data types are mapped onto BPMN business model:
@@ -135,7 +140,7 @@
     <h3>SCHEMA</h3>
     <p></p>
     <figure><code>
-$ curl -X POST "http://127.0.0.1:9234/List/\$validate" -d @samples/json/List/List.json ; echo
+$ curl -X POST "http://hl7:9234/List/\$validate" -d @samples/json/List/List.json
 {
   "issues": [
     {
