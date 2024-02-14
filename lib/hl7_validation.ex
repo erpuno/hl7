@@ -65,6 +65,22 @@ defmodule HL7.Validation do
   def status(:ok) do "OK" end
   def status({:error, %Xema.ValidationError{reason: %{all_of: x}}}) do x end
 
+  def testCodeSystem(name) do
+      file = "terminology/#{name}/CodeSystem-#{name}.json"
+      {_,objBin} = :file.read_file file
+      schema = HL7.Loader.loadSchema("CodeSystem")
+      obj = Jason.decode!(objBin)
+      list = Map.get(obj, "concept")
+      res = :lists.map(fn x ->
+        code = Map.get(x, "code")
+        display = Map.get(x, "display")
+        id = Map.get(x, "id")
+        {id,code,display}
+       end, list)
+      verify = Xema.validate(schema, obj)
+      {name,verify,res}
+  end
+
   def testItem(name) do
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
