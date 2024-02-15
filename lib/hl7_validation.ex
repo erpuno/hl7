@@ -73,11 +73,11 @@ defmodule HL7.Validation do
       list = Map.get(obj, "concept")
       id = Map.get(obj, "id")
       publisher = Map.get(obj, "publisher")
-      res = :lists.flatten :lists.map(fn x ->
+      res = :lists.map(fn x ->
         code = Map.get(x, "code")
         display = Map.get(x, "display")
         id = Map.get(x, "id")
-        case id do nil -> [] ; _ -> {id,:erlang.binary_to_atom(code),display} end
+        case id do nil when name != "КВЕД" -> [] ; _ -> {id,:erlang.binary_to_atom(code),display} end
        end, list)
       verify = Xema.validate(schema, obj)
       {name,verify,id,publisher,res}
