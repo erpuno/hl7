@@ -1,6 +1,6 @@
 {
   "resourceType" : "CodeSystem",
-  "id" : [ { "УКРСТАТ" : "КВЕД" } ],
+  "id" : [ { "ДССУ" : "КВЕД" } ],
   "url" : "http://terminology.erp.uno/CodeSystem/УКРСТАТ:КВЕД",
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986",

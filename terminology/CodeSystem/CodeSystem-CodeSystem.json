@@ -1,6 +1,6 @@
 {
   "resourceType" : "CodeSystem",
-  "id" : [ { "ЕСОЗ" : "Класифікатор класифікаторів CodeSystem" } ],
+  "id" : [ { "ЕСОЗ" : "CodeSystem" } ],
   "language" : "en",
   "text" : {
     "status" : "generated",
@@ -105,12 +105,12 @@
   {
     "id" : "ДССУ:КОАТУУ/SETTLEMENT_TYPE",
     "code" : "КОАТУУ",
-    "display" : "Вид населенного пункту згідно номенклатури КОАТУУ"
+    "display" : "Вид населенного пункту КОАТУУ"
   },
   {
     "id" : "ДССУ:КАТОТТГ/SETTLEMENT_TYPE",
     "code" : "КАТОТТГ",
-    "display" : "Вид населенного пункту згідно номенклатури КАТОТТГ"
+    "display" : "Вид населенного пункту КАТОТТГ"
   },
   {
     "id" : "ДССУ:КВЕД",
@@ -150,14 +150,86 @@
     "definition" : "FHIR UnitOfPresentation"
   },
   {
+    "id" : "ЕСОЗ:COUNTRY",
+    "code" : "Country",
+    "display" : "Міжнародні коди країн"
+  },
+  {
     "id" : "ЕСОЗ:eHealth/immunization_dosage_units",
     "code" : "DosageUnits",
     "display" : "Одиниці виміру доз для імунізації"
   },
   {
-    "id" : "ЕСОЗ:COUNTRY",
-    "code" : "Country",
-    "display" : "Міжнародні коди країн"
+    "id" : "ЕСОЗ:eHealth/ICPC2/reasons",
+    "code" : "ICPC2UKR",
+    "display" : "Класифікатор первинної медичної допомоги"
+  },
+  {
+    "id" : "ЕСОЗ:eHealth/ICPC2/actions",
+    "code" : "ICPC2UKR-actions",
+    "display" : "Класифікатор дій первинної медичної допомоги"
+  },
+  {
+    "id" : "ЕСОЗ:eHealth/episode_types",
+    "code" : "EpisodeOfCareType",
+    "display" : "Види медичної допомоги"
+  },
+  {
+    "id" : "FHIR:CodeSystem",
+    "code" : "CodeSystem",
+    "display" : "Цей класифікатор ієрархічних словників FHIR сервера",
+    "definition" : "Code systems used in HL7 standards.",
+    "property" : [{ "code" : "status", "valueCode" : "active" },
+                  { "code" : "internalId", "valueCode" : "19880" },
+                  { "code" : "OID", "valueCode" : "2.16.840.1.113883.5.22" }]
+  },
+  {
+    "id" : "FHIR:ActionType",
+    "code" : "ActionType",
+    "display" : "Type of CRUD operation or Event signalling"
+  },
+  {
+    "id" : "FHIR:BundleType",
+    "code" : "BundleType",
+    "display" : "Type of Bundle of FHIR server"
+  },
+  {
+    "id" : "FHIR:Religion2",
+    "code" : "Religion2",
+    "display" : "Type of Religion of FHIR nomenclature"
+  },
+  {
+    "id" : "FHIR:RefferalStatus",
+    "code" : "RefferalStatus",
+    "display" : "Status of Document in CRM"
+  },
+  {
+    "id" : "FHIR:ActionCode",
+    "code" : "ActionCode",
+    "display" : "Type of message in CRM system describing Practitioner action"
+  },
+  {
+    "id" : "FHIR:AdministrativeGender",
+    "code" : "AdministrativeGender",
+    "display" : "Gender or person",
+    "definition" : "The gender of a person used for adminstrative purposes (as opposed to clinical gender)",
+    "property" : [{ "code" : "status", "valueCode" : "active" },
+                  { "code" : "internalId", "valueCode" : "19799" },
+                  { "code" : "OID", "valueCode" : "2.16.840.1.113883.5.1" }]
+  },
+  {
+    "id" : "FHIR:AppointmentStatus",
+    "code" : "AppointmentStatus",
+    "display" : "Type of Patient appointment in history records of scheduled visits"
+  },
+  {
+    "id" : "FHIR:ObservationCategory",
+    "code" : "ObservationCategory",
+    "display" : "ObservationCategory",
+    "definition" : "High level observation categories for the general type of observation being made.\r\n\r\nURL: http://hl7-fhir.github.io/valueset-observation-category.html\r\n\r\nThis is an inline code system http://hl7.org/fhir/observation-category.",
+    "property" : [{ "code" : "status", "valueCode" : "active" },
+                  { "code" : "internalId", "valueCode" : "23733" },
+                  { "code" : "OID", "valueCode" : "2.16.840.1.113883.4.642.1.222" }]
   },
   {
     "code" : "ABCcodes",
@@ -571,23 +643,6 @@
     }]
   },
   {
-    "code" : "AdministrativeGender",
-    "display" : "AdministrativeGender",
-    "definition" : "The gender of a person used for adminstrative purposes (as opposed to clinical gender)",
-    "property" : [{
-      "code" : "status",
-      "valueCode" : "active"
-    },
-    {
-      "code" : "internalId",
-      "valueCode" : "19799"
-    },
-    {
-      "code" : "OID",
-      "valueCode" : "2.16.840.1.113883.5.1"
-    }]
-  },
-  {
     "code" : "AHFS",
     "display" : "AHFS Pharmacologic-Therapeutic Classification",
     "definition" : "**Description:** The AHFS Pharmacologic-Therapeutic Classification has been in use in hospitals in the United States since its inception in 1959. An integral part of the American Hospital Formulary Service, the AHFS classification allows the grouping of drugs with similar pharmacologic, therapeutic, and/or chemical characteristics. Today, the AHFS classification is used by many people outside of hospitals.",
@@ -921,23 +976,6 @@
     {
       "code" : "internalId",
       "valueCode" : "11064"
-    }]
-  },
-  {
-    "code" : "CodeSystem",
-    "display" : "CodeSystem",
-    "definition" : "Code systems used in HL7 standards.",
-    "property" : [{
-      "code" : "status",
-      "valueCode" : "active"
-    },
-    {
-      "code" : "internalId",
-      "valueCode" : "19880"
-    },
-    {
-      "code" : "OID",
-      "valueCode" : "2.16.840.1.113883.5.22"
     }]
   },
   {
@@ -3337,23 +3375,6 @@
     {
       "code" : "OID",
       "valueCode" : "2.16.840.1.113883.5.1008"
-    }]
-  },
-  {
-    "code" : "ObservationCategory",
-    "display" : "ObservationCategory",
-    "definition" : "High level observation categories for the general type of observation being made.\r\n\r\nURL: http://hl7-fhir.github.io/valueset-observation-category.html\r\n\r\nThis is an inline code system http://hl7.org/fhir/observation-category.",
-    "property" : [{
-      "code" : "status",
-      "valueCode" : "active"
-    },
-    {
-      "code" : "internalId",
-      "valueCode" : "23733"
-    },
-    {
-      "code" : "OID",
-      "valueCode" : "2.16.840.1.113883.4.642.1.222"
     }]
   },
   {
