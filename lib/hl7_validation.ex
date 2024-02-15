@@ -72,7 +72,7 @@ defmodule HL7.Validation do
       obj = Jason.decode!(objBin)
       list = Map.get(obj, "concept")
       id = Map.get(obj, "id")
-      publisher = Map.get(obj, "publisher")
+      _publisher = Map.get(obj, "publisher")
       res = :lists.flatten :lists.map(fn x ->
         code = Map.get(x, "code")
         display = Map.get(x, "display")
@@ -80,7 +80,7 @@ defmodule HL7.Validation do
         case id do nil when name != "КВЕД" -> [] ; _ -> {id,:erlang.binary_to_atom(code),display} end
        end, list)
       verify = Xema.validate(schema, obj)
-      {name,verify,id,publisher,res}
+      {name,verify,id,res}
   end
 
   def testItem(name) do
