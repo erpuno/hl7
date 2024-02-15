@@ -73,7 +73,7 @@ defmodule HL7.Validation do
       list = Map.get(obj, "concept")
       id = Map.get(obj, "id")
       publisher = Map.get(obj, "publisher")
-      res = :lists.map(fn x ->
+      res = :lists.flatten :lists.map(fn x ->
         code = Map.get(x, "code")
         display = Map.get(x, "display")
         id = Map.get(x, "id")
