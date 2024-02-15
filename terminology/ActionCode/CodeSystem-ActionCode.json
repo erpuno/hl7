@@ -38,17 +38,17 @@
   "status": "active",
   "experimental": false,
   "date": "2020-12-28T16:55:11+11:00",
-  "publisher": "HL7 (FHIR Project)",
+  "publisher": "НСЗУ",
   "contact": [
     {
       "telecom": [
         {
           "system": "url",
-          "value": "http://hl7.org/fhir"
+          "value": "https://hl7.erp.uno"
         },
         {
           "system": "email",
-          "value": "fhir@lists.hl7.org"
+          "value": "author@5ht.co"
         }
       ]
     }

@@ -1,0 +1,77 @@
+{
+  "resourceType" : "CodeSystem",
+  "language" : "ua",
+  "id" : [
+     { "ЕСОЗ" : "LEGAL_ENTITY_FORM" }
+  ],
+  "meta" : {
+    "lastUpdated" : "2024-02-14T15:10:28.568-06:00",
+    "profile" : [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This code system http://terminology.hl7.org/CodeSystem/organization-type defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">prov<a name=\"organization-type-prov\"> </a></td><td>Healthcare Provider</td><td>An organization that provides healthcare services.</td></tr><tr><td style=\"white-space:nowrap\">dept<a name=\"organization-type-dept\"> </a></td><td>Hospital Department</td><td>A department or ward within a hospital (Generally is not applicable to top level organizations)</td></tr><tr><td style=\"white-space:nowrap\">team<a name=\"organization-type-team\"> </a></td><td>Organizational team</td><td>An organizational team is usually a grouping of practitioners that perform a specific function within an organization (which could be a top level organization, or a department).</td></tr><tr><td style=\"white-space:nowrap\">govt<a name=\"organization-type-govt\"> </a></td><td>Government</td><td>A political body, often used when including organization records for government bodies such as a Federal Government, State or Local Government.</td></tr><tr><td style=\"white-space:nowrap\">ins<a name=\"organization-type-ins\"> </a></td><td>Insurance Company</td><td>A company that provides insurance to its subscribers that may include healthcare related policies.</td></tr><tr><td style=\"white-space:nowrap\">pay<a name=\"organization-type-pay\"> </a></td><td>Payer</td><td>A company, charity, or governmental organization, which processes claims and/or issues payments to providers on behalf of patients or groups of patients.</td></tr><tr><td style=\"white-space:nowrap\">edu<a name=\"organization-type-edu\"> </a></td><td>Educational Institute</td><td>An educational institution that provides education or research facilities.</td></tr><tr><td style=\"white-space:nowrap\">reli<a name=\"organization-type-reli\"> </a></td><td>Religious Institution</td><td>An organization that is identified as a part of a religious institution.</td></tr><tr><td style=\"white-space:nowrap\">crs<a name=\"organization-type-crs\"> </a></td><td>Clinical Research Sponsor</td><td>An organization that is identified as a Pharmaceutical/Clinical Research Sponsor.</td></tr><tr><td style=\"white-space:nowrap\">cg<a name=\"organization-type-cg\"> </a></td><td>Community Group</td><td>An un-incorporated community group.</td></tr><tr><td style=\"white-space:nowrap\">bus<a name=\"organization-type-bus\"> </a></td><td>Non-Healthcare Business or Corporation</td><td>An organization that is a registered business or corporation but not identified by other types.</td></tr><tr><td style=\"white-space:nowrap\">other<a name=\"organization-type-other\"> </a></td><td>Other</td><td>Other type of organization not already specified.</td></tr></table></div>"
+  },
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode" : "pa"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode" : "draft"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger" : 1
+    }
+  ],
+  "url" : "http://terminology.hl7.org/CodeSystem/organization-type",
+  "identifier" : [
+    {
+      "system" : "urn:ietf:rfc:3986",
+      "value" : "urn:oid:2.16.840.1.113883.4.642.1.1128"
+    }
+  ],
+  "version" : "0.1.0",
+  "name" : "OrganizationForm",
+  "title" : "Organization form",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2021-12-02T19:54:18-07:00",
+  "publisher" : "НСЗУ",
+  "contact" : [
+    {
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "https://hl7.erp.uno"
+        }
+      ]
+    }
+  ],
+  "description" : "This example value set defines a set of codes that can be used to indicate a type of organization.",
+  "caseSensitive" : true,
+  "valueSet" : "http://terminology.hl7.org/ValueSet/organization-form",
+  "content" : "complete",
+  "concept" : [
+      { "code" : "120", "display" : "ПРИВАТНЕ ПІДПРИЄМСТВО", "id" : "ЕСОЗ:120" },
+      { "code" : "140", "display" : "ДЕРЖАВНЕ ПІДПРИЄМСТВО", "id" : "ЕСОЗ:140" },
+      { "code" : "145", "display" : "КАЗЕННЕ ПІДПРИЄМСТВО", "id" : "ЕСОЗ:145" },
+      { "code" : "150", "display" : "КОМУНАЛЬНЕ ПІДПРИЄМСТВО", "id" : "ЕСОЗ:150" },
+      { "code" : "160", "display" : "ДОЧІРНЄ ПІДПРИЄМСТВО", "id" : "ЕСОЗ:160" },
+      { "code" : "193", "display" : "СПІЛЬНЕ ПІДПРИЄМСТВО", "id" : "ЕСОЗ:193" },
+      { "code" : "230", "display" : "АКЦІОНЕРНЕ ТОВАРИСТВО", "id" : "ЕСОЗ:230" },
+      { "code" : "231", "display" : "ВІДКРИТЕ АКЦІОНЕРНЕ ТОВАРИСТВО", "id" : "ЕСОЗ:231" },
+      { "code" : "232", "display" : "ЗАКРИТЕ АКЦІОНЕРНЕ ТОВАРИСТВО", "id" : "ЕСОЗ:234" },
+      { "code" : "235", "display" : "ДЕРЖАВНА АКЦІОНЕРНА КОМПАНІЯ (ТОВАРИСТВО)", "id" : "ЕСОЗ:235" },
+      { "code" : "240", "display" : "ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ", "id" : "ЕСОЗ:240" },
+      { "code" : "250", "display" : "ТОВАРИСТВО З ДОДАТКОВОЮ ВІДПОВІДАЛЬНІСТЮ", "id" : "ЕСОЗ:250" },
+      { "code" : "425", "display" : "ДЕРЖАВНА ОРГАНІЗАЦІЯ (УСТАНОВА, ЗАКЛАД)", "id" : "ЕСОЗ:425" },
+      { "code" : "430", "display" : "КОМУНАЛЬНА ОРГАНІЗАЦІЯ (УСТАНОВА, ЗАКЛАД)", "id" : "ЕСОЗ:430" },
+      { "code" : "910", "display" : "ПІДПРИЄМЕЦЬ-ФІЗИЧНА ОСОБА", "id" : "ЕСОЗ:910" },
+      { "code" : "995", "display" : "ІНШІ ОРГАНІЗАЦІЙНО-ПРАВОВІ ФОРМИ", "id" : "ЕСОЗ:995" }
+  ]
+}

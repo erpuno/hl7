@@ -17,9 +17,9 @@
   "status" : "retired",
   "experimental" : false,
   "date" : "2019-03-20",
-  "publisher" : "Health Level 7",
+  "publisher" : "НСЗУ",
   "contact" : [{
-    "name" : "Health Level Seven"
+    "name" : "Namdak Tonpa"
   }],
   "description" : "Code systems used in HL7 standards.",
   "caseSensitive" : true,
@@ -101,7 +101,50 @@
     "description" : "Property applies to concepts in the CodeSystem Code System.  The property holds the OID that uniquely identifies the code system represented by this coded concept.",
     "type" : "code"
   }],
-  "concept" : [{
+  "concept" : [
+  {
+    "id" : "ЕСОЗ:LEGAL_ENTITY_TYPE",
+    "code" : "1",
+    "display" : "Технічний тип системи організації",
+    "definition" : "FHIR OrganizationType"
+  },
+  {
+    "id" : "ЕСОЗ:LEGAL_ENTITY_TYPE_V2",
+    "code" : "2",
+    "display" : "Технічний тип системи організації (нові поля)"
+  },
+  {
+    "id" : "ЕСОЗ:LEGAL_STATUS",
+    "code" : "3",
+    "display" : "Технічний статус організації"
+  },
+  {
+    "id" : "ЕСОЗ:LEGAL_FORM",
+    "code" : "4",
+    "display" : "Юридичний тип системи (форма власності)"
+  },
+  {
+    "id" : "ЕСОЗ:DIVISION_STATUS",
+    "code" : "5",
+    "display" : "Статус структурного підрозділу"
+  },
+  {
+    "id" : "КОАТУУ:SETTLEMENT_TYPE",
+    "code" : "6",
+    "display" : "Вид населенного пункту згідно старої номенклатури КОАТУУ"
+  },
+  {
+    "id" : "КАТОТТГ:SETTLEMENT_TYPE",
+    "code" : "7",
+    "display" : "Вид населенного пункту згідно нової номенклатури КАТОТТГ"
+  },
+  {
+    "id" : "ЕСОЗ:MEDICATION_UNIT",
+    "code" : "8",
+    "display" : "Спосіб розповсюдження лікарського засобу.",
+    "definition" : "FHIR UnitOfPresentation"
+  },
+  {
     "code" : "ABCcodes",
     "display" : "ABCcodes",
     "definition" : "Five character alphabetic codes fit into current claims processing software or onto standard paper claim forms. ABC Codes give business parity to licensed CAM and nurse providers who file claims to insurance companies. .",
@@ -4693,5 +4736,6 @@
       "code" : "OID",
       "valueCode" : "2.16.840.1.113883.5.142"
     }]
-  }]
+  }
+  ]
 }

@@ -20,15 +20,15 @@
   "status" : "active",
   "experimental" : false,
   "date" : "2019-12-01",
-  "publisher" : "Health Level Seven International",
+  "publisher" : "НСЗУ",
   "contact" : [{
     "telecom" : [{
       "system" : "url",
-      "value" : "http://hl7.org"
+      "value" : "https://hl7.erp.uno"
     },
     {
       "system" : "email",
-      "value" : "hq@HL7.org"
+      "value" : "namdak@tonpa.guru"
     }]
   }],
   "description" : "HL7-defined code system of concepts specifying the part of the body.  Used in HL7 Version 2 messaging in the RXR segment.",

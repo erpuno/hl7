@@ -52,17 +52,17 @@
   "status": "active",
   "experimental": false,
   "date": "2021-01-05T10:01:24+11:00",
-  "publisher": "HL7 (FHIR Project)",
+  "publisher": "НСЗУ",
   "contact": [
     {
       "telecom": [
         {
           "system": "url",
-          "value": "http://hl7.org/fhir"
+          "value": "https://hl7.erp.uno"
         },
         {
           "system": "email",
-          "value": "fhir@lists.hl7.org"
+          "value": "namdak@tonpa.guru"
         }
       ]
     }

@@ -71,6 +71,8 @@ defmodule HL7.Validation do
       schema = HL7.Loader.loadSchema("CodeSystem")
       obj = Jason.decode!(objBin)
       list = Map.get(obj, "concept")
+      id = Map.get(obj, "id")
+      publisher = Map.get(obj, "publisher")
       res = :lists.map(fn x ->
         code = Map.get(x, "code")
         display = Map.get(x, "display")
@@ -78,7 +80,7 @@ defmodule HL7.Validation do
         {id,code,display}
        end, list)
       verify = Xema.validate(schema, obj)
-      {name,verify,res}
+      {name,verify,id,publisher,res}
   end
 
   def testItem(name) do

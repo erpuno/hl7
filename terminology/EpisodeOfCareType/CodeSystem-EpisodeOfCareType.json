@@ -1,0 +1,89 @@
+{
+  "resourceType" : "CodeSystem",
+  "language" : "ua",
+  "id" : [ { "ЕСОЗ" : "eHealth/episode_types" } ],
+  "meta" : {
+    "lastUpdated" : "2020-04-09T21:10:28.568+00:00",
+    "profile" : [
+       "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://terminology.hl7.org/CodeSystem/episodeofcare-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td style=\"white-space:nowrap\">hacc<a name=\"episodeofcare-type-hacc\"> </a></td><td>Home and Community Care</td></tr><tr><td style=\"white-space:nowrap\">pac<a name=\"episodeofcare-type-pac\"> </a></td><td>Post Acute Care</td></tr><tr><td style=\"white-space:nowrap\">diab<a name=\"episodeofcare-type-diab\"> </a></td><td>Post coordinated diabetes program</td></tr><tr><td style=\"white-space:nowrap\">da<a name=\"episodeofcare-type-da\"> </a></td><td>Drug and alcohol rehabilitation</td></tr><tr><td style=\"white-space:nowrap\">cacp<a name=\"episodeofcare-type-cacp\"> </a></td><td>Community-based aged care</td></tr></table></div>"
+  },
+  "extension" : [
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode" : "pa"
+    },
+    {
+      "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger" : 1
+    }
+  ],
+  "url" : "http://terminology.hl7.org/CodeSystem/episodeofcare-type",
+  "identifier" : [
+    {
+      "system" : "urn:ietf:rfc:3986",
+      "value" : "urn:oid:2.16.840.1.113883.4.642.1.1189"
+    }
+  ],
+  "version" : "1.0.0",
+  "name" : "EpisodeOfCareType",
+  "title" : "Episode of care type",
+  "status" : "draft",
+  "experimental" : false,
+  "date" : "2023-11-17T03:23:21-07:00",
+  "publisher" : "НСЗУ",
+  "contact" : [
+    {
+      "telecom" : [
+        {
+          "system" : "url",
+          "value" : "http://hl7.org"
+        },
+        {
+          "system" : "email",
+          "value" : "hq@HL7.org"
+        }
+      ]
+    }
+  ],
+  "description" : "This example value set defines a set of codes that can be used to express the usage type of an EpisodeOfCare record.",
+  "copyright" : "This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license",
+  "caseSensitive" : true,
+  "valueSet" : "http://terminology.hl7.org/ValueSet/episodeofcare-type",
+  "content" : "complete",
+  "concept" : [
+    { "code" : "AMB", "display" : "Амбулаторна спеціалізована допомога", "id" : "ЕСОЗ:AMB" },
+    { "code" : "DG", "display" : "Діагностика", "id" : "ЕСОЗ:DG" },
+    { "code" : "PREVENTION", "display" : "Профілактика", "id" : "ЕСОЗ:PREVENTION" },
+    { "code" : "TREATMENT", "display" : "Лікування", "id" : "ЕСОЗ:TREATMENT" },
+    { "code" : "PALLIATIVE_CARE", "display" : "Паліативна допомога", "id" : "ЕСОЗ:PALLIATIVE_CARE" },
+    { "code" : "REHAB", "display" : "Реабілітація", "id" : "ЕСОЗ:REHAB" },
+    { "code" : "LAB", "display" : "Лабораторні дослідження", "id" : "ЕСОЗ:LAB" },
+    { "code" : "PHC", "display" : "Первинна медична допомога", "id" : "ЕСОЗ:PHC" },
+    { "code" : "PRENC", "display" : "Підготовча допомога", "id" : "ЕСОЗ:PRENC" },
+    {
+      "code" : "hacc",
+      "display" : "Home and Community Care"
+    },
+    {
+      "code" : "pac",
+      "display" : "Post Acute Care"
+    },
+    {
+      "code" : "diab",
+      "display" : "Post coordinated diabetes program"
+    },
+    {
+      "code" : "da",
+      "display" : "Drug and alcohol rehabilitation"
+    },
+    {
+      "code" : "cacp",
+      "display" : "Community-based aged care"
+    }
+  ]
+}
