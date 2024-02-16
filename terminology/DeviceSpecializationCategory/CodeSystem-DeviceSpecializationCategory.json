@@ -1,0 +1,92 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "device-specification-category",
+  "meta" : {
+    "lastUpdated" : "2024-02-13T22:01:30.310+00:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/device-specification-category</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">communication<a name=\"device-specification-category-communication\"> </a></td><td>Communication</td><td>A communication standard.</td></tr><tr><td style=\"white-space:nowrap\">performance<a name=\"device-specification-category-performance\"> </a></td><td>Performance</td><td>A performance standard.</td></tr><tr><td style=\"white-space:nowrap\">measurement<a name=\"device-specification-category-measurement\"> </a></td><td>Measurement</td><td>A measurement standard.</td></tr><tr><td style=\"white-space:nowrap\">risk-class<a name=\"device-specification-category-risk-class\"> </a></td><td>Risk Class</td><td>Class or catefory of risk.</td></tr><tr><td style=\"white-space:nowrap\">electrical<a name=\"device-specification-category-electrical\"> </a></td><td>Electrical</td><td>Electrical classification.</td></tr><tr><td style=\"white-space:nowrap\">material<a name=\"device-specification-category-material\"> </a></td><td>Material</td><td>Classification related to materials.</td></tr><tr><td style=\"white-space:nowrap\">exchange<a name=\"device-specification-category-exchange\"> </a></td><td>Exchange</td><td>Exchange category.</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 2
+  }],
+  "url" : "http://hl7.org/fhir/device-specification-category",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.4.2054"
+  }],
+  "version" : "6.0.0-cibuild",
+  "name" : "FHIRDeviceSpecializationCategory",
+  "title" : "FHIR Device Specialization Category",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2022-03-28T10:01:24+11:00",
+  "publisher" : "HL7 (FHIR Project)",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    },
+    {
+      "system" : "email",
+      "value" : "fhir@lists.hl7.org"
+    }]
+  }],
+  "description" : "The kind of standards used by the device.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "valueSet" : "http://hl7.org/fhir/ValueSet/device-specification-category",
+  "content" : "complete",
+  "concept" : [{
+    "code" : "communication",
+    "display" : "Communication",
+    "definition" : "A communication standard."
+  },
+  {
+    "code" : "performance",
+    "display" : "Performance",
+    "definition" : "A performance standard."
+  },
+  {
+    "code" : "measurement",
+    "display" : "Measurement",
+    "definition" : "A measurement standard."
+  },
+  {
+    "code" : "risk-class",
+    "display" : "Risk Class",
+    "definition" : "Class or catefory of risk."
+  },
+  {
+    "code" : "electrical",
+    "display" : "Electrical",
+    "definition" : "Electrical classification."
+  },
+  {
+    "code" : "material",
+    "display" : "Material",
+    "definition" : "Classification related to materials."
+  },
+  {
+    "code" : "exchange",
+    "display" : "Exchange",
+    "definition" : "Exchange category."
+  }]
+}

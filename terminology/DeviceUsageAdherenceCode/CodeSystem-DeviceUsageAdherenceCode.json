@@ -1,0 +1,72 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "deviceusage-adherence-code",
+  "meta" : {
+    "lastUpdated" : "2024-02-13T22:01:30.310+00:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/deviceusage-adherence-code</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">always<a name=\"deviceusage-adherence-code-always\"> </a></td><td>Always</td><td>The device is always used.</td></tr><tr><td style=\"white-space:nowrap\">never<a name=\"deviceusage-adherence-code-never\"> </a></td><td>Never</td><td>The device is never used.</td></tr><tr><td style=\"white-space:nowrap\">sometimes<a name=\"deviceusage-adherence-code-sometimes\"> </a></td><td>Sometimes</td><td>The device is sometimes used.</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 0
+  }],
+  "url" : "http://hl7.org/fhir/deviceusage-adherence-code",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.4.1854"
+  }],
+  "version" : "6.0.0-cibuild",
+  "name" : "DeviceUsageAdherenceCode",
+  "title" : "Device Usage Adherence Code",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2021-01-05T10:01:24+11:00",
+  "publisher" : "HL7 (FHIR Project)",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    },
+    {
+      "system" : "email",
+      "value" : "fhir@lists.hl7.org"
+    }]
+  }],
+  "description" : "A coded concept indicating the usage of the device.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "valueSet" : "http://hl7.org/fhir/ValueSet/deviceusage-adherence-code",
+  "content" : "complete",
+  "concept" : [{
+    "code" : "always",
+    "display" : "Always",
+    "definition" : "The device is always used."
+  },
+  {
+    "code" : "never",
+    "display" : "Never",
+    "definition" : "The device is never used."
+  },
+  {
+    "code" : "sometimes",
+    "display" : "Sometimes",
+    "definition" : "The device is sometimes used."
+  }]
+}

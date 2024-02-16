@@ -1,0 +1,107 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "device-category",
+  "meta" : {
+    "lastUpdated" : "2024-02-13T22:01:30.310+00:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/device-category</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">active<a name=\"device-category-active\"> </a></td><td>Active</td><td>Device where the operation depends on a source of energy.</td></tr><tr><td style=\"white-space:nowrap\">communicating<a name=\"device-category-communicating\"> </a></td><td>communicating</td><td>Device communicates electronically to peer information systems or possibly another device.</td></tr><tr><td style=\"white-space:nowrap\">dme<a name=\"device-category-dme\"> </a></td><td>Durable Medical Equipment</td><td>Equipment and supplies that provides therapeutic benefits to a patient.</td></tr><tr><td style=\"white-space:nowrap\">home-use<a name=\"device-category-home-use\"> </a></td><td>Maintenance</td><td>Medical device intended for users in a non-medical setting.</td></tr><tr><td style=\"white-space:nowrap\">implantable<a name=\"device-category-implantable\"> </a></td><td>Implantable</td><td>A device that is placed into a surgically or naturally formed cavity of the human body.</td></tr><tr><td style=\"white-space:nowrap\">in-vitro<a name=\"device-category-in-vitro\"> </a></td><td>In vitro</td><td>Tests done on samples such as blood or tissue that have been taken from the human body.</td></tr><tr><td style=\"white-space:nowrap\">point-of-care<a name=\"device-category-point-of-care\"> </a></td><td>Point of Care</td><td>a class of communicating devices that are used by medical providers for various purposes (e.g., monitoring, delivering or measuring).</td></tr><tr><td style=\"white-space:nowrap\">single-use<a name=\"device-category-single-use\"> </a></td><td>Single Use</td><td>A device use on one individual during a single procedure.</td></tr><tr><td style=\"white-space:nowrap\">reusable<a name=\"device-category-reusable\"> </a></td><td>Reusable</td><td>A device that healthcare providers can use to diagnose and treat one or more patients.</td></tr><tr><td style=\"white-space:nowrap\">software<a name=\"device-category-software\"> </a></td><td>Software</td><td>A device that may include a software component or consist exclusively of software e.g. data transformer or converter, clinical support algorithms, clinical apps</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 0
+  }],
+  "url" : "http://hl7.org/fhir/device-category",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.4.2105"
+  }],
+  "version" : "6.0.0-cibuild",
+  "name" : "FHIRDeviceCategory",
+  "title" : "FHIR Device Category",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2022-03-28T10:01:24+11:00",
+  "publisher" : "HL7 (FHIR Project)",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    },
+    {
+      "system" : "email",
+      "value" : "fhir@lists.hl7.org"
+    }]
+  }],
+  "description" : "The category of the device.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "valueSet" : "http://hl7.org/fhir/ValueSet/device-category",
+  "content" : "complete",
+  "concept" : [{
+    "code" : "active",
+    "display" : "Active",
+    "definition" : "Device where the operation depends on a source of energy."
+  },
+  {
+    "code" : "communicating",
+    "display" : "communicating",
+    "definition" : "Device communicates electronically to peer information systems or possibly another device."
+  },
+  {
+    "code" : "dme",
+    "display" : "Durable Medical Equipment",
+    "definition" : "Equipment and supplies that provides therapeutic benefits to a patient."
+  },
+  {
+    "code" : "home-use",
+    "display" : "Maintenance",
+    "definition" : "Medical device intended for users in a non-medical setting."
+  },
+  {
+    "code" : "implantable",
+    "display" : "Implantable",
+    "definition" : "A device that is placed into a surgically or naturally formed cavity of the human body."
+  },
+  {
+    "code" : "in-vitro",
+    "display" : "In vitro",
+    "definition" : "Tests done on samples such as blood or tissue that have been taken from the human body."
+  },
+  {
+    "code" : "point-of-care",
+    "display" : "Point of Care",
+    "definition" : "a class of communicating devices that are used by medical providers for various purposes (e.g., monitoring, delivering or measuring)."
+  },
+  {
+    "code" : "single-use",
+    "display" : "Single Use",
+    "definition" : "A device use on one individual during a single procedure."
+  },
+  {
+    "code" : "reusable",
+    "display" : "Reusable",
+    "definition" : "A device that healthcare providers can use to diagnose and treat one or more patients."
+  },
+  {
+    "code" : "software",
+    "display" : "Software",
+    "definition" : "A device that may include a software component or consist exclusively of software e.g. data transformer or converter, clinical support algorithms, clinical apps"
+  }]
+}

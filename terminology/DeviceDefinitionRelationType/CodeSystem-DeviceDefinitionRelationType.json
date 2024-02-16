@@ -1,0 +1,72 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "devicedefinition-relationtype",
+  "meta" : {
+    "lastUpdated" : "2024-02-14T09:01:30.310+11:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/devicedefinition-relationtype</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">gateway<a name=\"devicedefinition-relationtype-gateway\"> </a></td><td>Gateway</td><td>Gateway.</td></tr><tr><td style=\"white-space:nowrap\">replaces<a name=\"devicedefinition-relationtype-replaces\"> </a></td><td>Replaces</td><td>The current device replaces the linked device.</td></tr><tr><td style=\"white-space:nowrap\">previous<a name=\"devicedefinition-relationtype-previous\"> </a></td><td>Previous</td><td>The current device is a previous device and has been replaced by the linked device.</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 0
+  }],
+  "url" : "http://hl7.org/fhir/devicedefinition-relationtype",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.4.1933"
+  }],
+  "version" : "6.0.0-cibuild",
+  "name" : "DeviceDefinitionRelationType",
+  "title" : "Device Definition Relation Type",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2021-01-05T10:01:24+11:00",
+  "publisher" : "HL7 (FHIR Project)",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    },
+    {
+      "system" : "email",
+      "value" : "fhir@lists.hl7.org"
+    }]
+  }],
+  "description" : "The type of relation between devices.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "valueSet" : "http://hl7.org/fhir/ValueSet/device-relationtype",
+  "content" : "complete",
+  "concept" : [{
+    "code" : "gateway",
+    "display" : "Gateway",
+    "definition" : "Gateway."
+  },
+  {
+    "code" : "replaces",
+    "display" : "Replaces",
+    "definition" : "The current device replaces the linked device."
+  },
+  {
+    "code" : "previous",
+    "display" : "Previous",
+    "definition" : "The current device is a previous device and has been replaced by the linked device."
+  }]
+}

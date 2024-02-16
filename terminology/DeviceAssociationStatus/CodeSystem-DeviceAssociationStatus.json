@@ -1,0 +1,59 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "deviceassociation-status",
+  "meta" : {
+    "lastUpdated" : "2024-02-13T22:01:30.310+00:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/deviceassociation-status</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">implanted<a name=\"deviceassociation-status-implanted\"> </a></td><td>Implanted</td><td>The device is implanted in the patient.</td></tr><tr><td style=\"white-space:nowrap\">explanted<a name=\"deviceassociation-status-explanted\"> </a></td><td>Explanted</td><td>The device is no longer implanted in the patient. Note that this is not the value to be used for devices that have never been implanted. In those cases, no value or a specific value can be used.</td></tr><tr><td style=\"white-space:nowrap\">entered-in-error<a name=\"deviceassociation-status-entered-in-error\"> </a></td><td>Entered in Error</td><td>The association was entered in error and therefore nullified.</td></tr><tr><td style=\"white-space:nowrap\">attached<a name=\"deviceassociation-status-attached\"> </a></td><td>Attached</td><td>The device is attached to the patient but not implanted in the patient.</td></tr><tr><td style=\"white-space:nowrap\">unknown<a name=\"deviceassociation-status-unknown\"> </a></td><td>Unknown</td><td>The association status of the device has not been determined.</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  }],
+  "url" : "http://hl7.org/fhir/deviceassociation-status",
+  "version" : "6.0.0-cibuild",
+  "name" : "DeviceAssociationStatus",
+  "title" : "DeviceAssociation Status Codes",
+  "status" : "active",
+  "experimental" : false,
+  "publisher" : "HL7 International",
+  "description" : "DeviceAssociation Status Codes",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "valueSet" : "http://hl7.org/fhir/ValueSet/deviceassociation-status",
+  "content" : "complete",
+  "concept" : [{
+    "code" : "implanted",
+    "display" : "Implanted",
+    "definition" : "The device is implanted in the patient."
+  },
+  {
+    "code" : "explanted",
+    "display" : "Explanted",
+    "definition" : "The device is no longer implanted in the patient. Note that this is not the value to be used for devices that have never been implanted. In those cases, no value or a specific value can be used."
+  },
+  {
+    "code" : "entered-in-error",
+    "display" : "Entered in Error",
+    "definition" : "The association was entered in error and therefore nullified."
+  },
+  {
+    "code" : "attached",
+    "display" : "Attached",
+    "definition" : "The device is attached to the patient but not implanted in the patient."
+  },
+  {
+    "code" : "unknown",
+    "display" : "Unknown",
+    "definition" : "The association status of the device has not been determined."
+  }]
+}

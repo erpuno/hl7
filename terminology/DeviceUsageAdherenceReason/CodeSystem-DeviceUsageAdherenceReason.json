@@ -1,0 +1,87 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "deviceusage-adherence-reason",
+  "meta" : {
+    "lastUpdated" : "2024-02-13T22:01:30.310+00:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/deviceusage-adherence-reason</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">lost<a name=\"deviceusage-adherence-reason-lost\"> </a></td><td>Lost</td><td>The device is lost.</td></tr><tr><td style=\"white-space:nowrap\">stolen<a name=\"deviceusage-adherence-reason-stolen\"> </a></td><td>Stolen</td><td>The device is stolen.</td></tr><tr><td style=\"white-space:nowrap\">prescribed<a name=\"deviceusage-adherence-reason-prescribed\"> </a></td><td>Prescribed</td><td>The device is prescribed.</td></tr><tr><td style=\"white-space:nowrap\">broken<a name=\"deviceusage-adherence-reason-broken\"> </a></td><td>Broken</td><td>The device is broken.</td></tr><tr><td style=\"white-space:nowrap\">burned<a name=\"deviceusage-adherence-reason-burned\"> </a></td><td>Burned</td><td>The device is burned.</td></tr><tr><td style=\"white-space:nowrap\">forgot<a name=\"deviceusage-adherence-reason-forgot\"> </a></td><td>Forgot</td><td>The device is forgotten.</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 0
+  }],
+  "url" : "http://hl7.org/fhir/deviceusage-adherence-reason",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.4.1855"
+  }],
+  "version" : "6.0.0-cibuild",
+  "name" : "DeviceUsageAdherenceReason",
+  "title" : "Device Usage Adherence Reason",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2021-01-05T10:01:24+11:00",
+  "publisher" : "HL7 (FHIR Project)",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    },
+    {
+      "system" : "email",
+      "value" : "fhir@lists.hl7.org"
+    }]
+  }],
+  "description" : "A coded concept indicating the reason for the usage of the device.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "valueSet" : "http://hl7.org/fhir/ValueSet/deviceusage-adherence-reason",
+  "content" : "complete",
+  "concept" : [{
+    "code" : "lost",
+    "display" : "Lost",
+    "definition" : "The device is lost."
+  },
+  {
+    "code" : "stolen",
+    "display" : "Stolen",
+    "definition" : "The device is stolen."
+  },
+  {
+    "code" : "prescribed",
+    "display" : "Prescribed",
+    "definition" : "The device is prescribed."
+  },
+  {
+    "code" : "broken",
+    "display" : "Broken",
+    "definition" : "The device is broken."
+  },
+  {
+    "code" : "burned",
+    "display" : "Burned",
+    "definition" : "The device is burned."
+  },
+  {
+    "code" : "forgot",
+    "display" : "Forgot",
+    "definition" : "The device is forgotten."
+  }]
+}

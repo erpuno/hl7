@@ -1,0 +1,71 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "devicedefinition-regulatory-identifier-type",
+  "meta" : {
+    "lastUpdated" : "2024-02-14T09:01:30.310+11:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/devicedefinition-regulatory-identifier-type</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">basic<a name=\"devicedefinition-regulatory-identifier-type-basic\"> </a></td><td>Basic</td><td>EUDAMED's basic UDI-DI identifier.</td></tr><tr><td style=\"white-space:nowrap\">master<a name=\"devicedefinition-regulatory-identifier-type-master\"> </a></td><td>Master</td><td>EUDAMED's master UDI-DI identifier.</td></tr><tr><td style=\"white-space:nowrap\">license<a name=\"devicedefinition-regulatory-identifier-type-license\"> </a></td><td>License</td><td>The identifier is a license number.</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 0
+  }],
+  "url" : "http://hl7.org/fhir/devicedefinition-regulatory-identifier-type",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.4.2109"
+  }],
+  "version" : "6.0.0-cibuild",
+  "name" : "DeviceRegulatoryIdentifierType",
+  "title" : "Device Regulatory Identifier Type",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2021-01-05T10:01:24+11:00",
+  "publisher" : "HL7 (FHIR Project)",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    },
+    {
+      "system" : "email",
+      "value" : "fhir@lists.hl7.org"
+    }]
+  }],
+  "description" : "The type of regulatory identifier.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "content" : "complete",
+  "concept" : [{
+    "code" : "basic",
+    "display" : "Basic",
+    "definition" : "EUDAMED's basic UDI-DI identifier."
+  },
+  {
+    "code" : "master",
+    "display" : "Master",
+    "definition" : "EUDAMED's master UDI-DI identifier."
+  },
+  {
+    "code" : "license",
+    "display" : "License",
+    "definition" : "The identifier is a license number."
+  }]
+}

@@ -77,7 +77,7 @@ defmodule HL7.Validation do
         code = Map.get(x, "code")
         display = Map.get(x, "display")
         id = Map.get(x, "id")
-        case id do nil when name != "КВЕД" -> [] ; _ -> {id,:erlang.binary_to_atom(code),display} end
+        case id do nil when name == "CodeSystem" -> [] ; _ -> {id,:erlang.binary_to_atom(code),display} end
        end, list)
       verify = Xema.validate(schema, obj)
       {name,verify,id,res}

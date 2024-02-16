@@ -1,0 +1,77 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "device-availability-status",
+  "meta" : {
+    "lastUpdated" : "2024-02-13T22:01:30.310+00:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablecodesystem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This case-sensitive code system <code>http://hl7.org/fhir/device-availability-status</code> defines the following codes:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">lost<a name=\"device-availability-status-lost\"> </a></td><td>Lost</td><td>The device is lost.</td></tr><tr><td style=\"white-space:nowrap\">damaged<a name=\"device-availability-status-damaged\"> </a></td><td>Damaged</td><td>The device is damaged.</td></tr><tr><td style=\"white-space:nowrap\">destroyed<a name=\"device-availability-status-destroyed\"> </a></td><td>Destroyed</td><td>The device is destroyed.</td></tr><tr><td style=\"white-space:nowrap\">available<a name=\"device-availability-status-available\"> </a></td><td>Available</td><td>The device is available.</td></tr></table></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "oo"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 2
+  }],
+  "url" : "http://hl7.org/fhir/device-availability-status",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.4.2048"
+  }],
+  "version" : "6.0.0-cibuild",
+  "name" : "FHIRDeviceAvailabilityStatus",
+  "title" : "FHIR Device Availability Status",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2021-01-05T10:01:24+11:00",
+  "publisher" : "HL7 (FHIR Project)",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://hl7.org/fhir"
+    },
+    {
+      "system" : "email",
+      "value" : "fhir@lists.hl7.org"
+    }]
+  }],
+  "description" : "The record status of the device.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001",
+      "display" : "World"
+    }]
+  }],
+  "caseSensitive" : true,
+  "valueSet" : "http://hl7.org/fhir/ValueSet/device-availability-status",
+  "content" : "complete",
+  "concept" : [{
+    "code" : "lost",
+    "display" : "Lost",
+    "definition" : "The device is lost."
+  },
+  {
+    "code" : "damaged",
+    "display" : "Damaged",
+    "definition" : "The device is damaged."
+  },
+  {
+    "code" : "destroyed",
+    "display" : "Destroyed",
+    "definition" : "The device is destroyed."
+  },
+  {
+    "code" : "available",
+    "display" : "Available",
+    "definition" : "The device is available."
+  }]
+}
