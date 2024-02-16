@@ -1,6 +1,6 @@
 {
   "resourceType" : "CodeSystem",
-  "id" : [ { "ЕСОЗ" : "CodeSystem" } ],
+  "id" : [ { "FHIR" : "CodeSystem" } ],
   "language" : "en",
   "text" : {
     "status" : "generated",
@@ -218,6 +218,26 @@
                   { "code" : "OID", "valueCode" : "2.16.840.1.113883.5.1" }]
   },
   {
+    "id" : "FHIR:AdministrableDoseForm",
+    "code" : "AdministrableDoseForm",
+    "display" : "Dose form for a medication, in the form suitable for patient"
+  },
+  {
+    "id" : "FHIR:AllergyIntoleranceCategory",
+    "code" : "AllergyIntoleranceCategory",
+    "display" : "Category of an identified substance associated with allergies or intolerances"
+  },
+  {
+    "id" : "FHIR:AllergyIntoleranceType",
+    "code" : "AllergyIntoleranceType",
+    "display" : "Identification of the underlying physiological mechanism for a Reaction Risk"
+  },
+  {
+    "id" : "FHIR:AllergyIntoleranceCriticality",
+    "code" : "AllergyIntoleranceCriticality",
+    "display" : "Estimate of the potential clinical harm of a reaction to an identified substance"
+  },
+  {
     "id" : "FHIR:AppointmentStatus",
     "code" : "AppointmentStatus",
     "display" : "Type of Patient appointment in history records of scheduled visits"
@@ -240,6 +260,86 @@
     "id" : "FHIR:Eligibility",
     "code" : "Eligibility",
     "display" : "List of HealthcareService eligibility codes"
+  },
+  {
+    "id" : "FHIR:BodyParts",
+    "code" : "BodyParts",
+    "display" : "Concepts specifying the part of the body"
+  },
+  {
+    "id" : "FHIR:DetectedIssueSeverity",
+    "code" : "DetectedIssueSeverity",
+    "display" : "Potential degree of impact of the identified issue for Patient"
+  },
+  {
+    "id" : "FHIR:DeviceAssociationStatus",
+    "code" : "DeviceAssociationStatus",
+    "display" : "DeviceAssociation Status Codes"
+  },
+  {
+    "id" : "FHIR:DeviceAvailabilityStatus",
+    "code" : "DeviceAvailabilityStatus",
+    "display" : "The record status of the device"
+  },
+  {
+    "id" : "FHIR:DeviceCategory",
+    "code" : "DeviceCategory",
+    "display" : "The category of the device"
+  },
+  {
+    "id" : "FHIR:DeviceDefinitionRelationType",
+    "code" : "DeviceDefinitionRelationType",
+    "display" : "The type of relation between devices"
+  },
+  {
+    "id" : "FHIR:DeviceDispenseStatusCodes",
+    "code" : "DeviceDispenseStatusCodes",
+    "display" : "DeviceDispense Status Codes"
+  },
+  {
+    "id" : "FHIR:DeviceNameType",
+    "code" : "DeviceNameType",
+    "display" : "The type of name the device is referred by"
+  },
+  {
+    "id" : "FHIR:DeviceRegulatoryIdentifierType",
+    "code" : "DeviceRegulatoryIdentifierType",
+    "display" : "Device Regulatory Identifier Type"
+  },
+  {
+    "id" : "FHIR:DeviceSpecializationCategory",
+    "code" : "DeviceSpecializationCategory",
+    "display" : "The kind of standards used by the device"
+  },
+  {
+    "id" : "FHIR:DeviceStatus",
+    "code" : "DeviceStatus",
+    "display" : "The status of the Device record"
+  },
+  {
+    "id" : "FHIR:DeviceUsageAdherenceCode",
+    "code" : "DeviceUsageAdherenceCode",
+    "display" : "Device Usage Adherence Code"
+  },
+  {
+    "id" : "FHIR:DeviceUsageAdherenceReason",
+    "code" : "DeviceUsageAdherenceReason",
+    "display" : "Device Usage Adherence Reason"
+  },
+  {
+    "id" : "FHIR:DeviceUsageStatus",
+    "code" : "DeviceUsageStatus",
+    "display" : "A coded concept indicating the current status of the Device Usage"
+  },
+  {
+    "id" : "FHIR:IssueType",
+    "code" : "IssueType",
+    "display" : "A code that describes the type of issue"
+  },
+  {
+    "id" : "FHIR:ItemType",
+    "code" : "ItemType",
+    "display" : "Distinguishes groups from questions and display text"
   },
   {
     "code" : "ABCcodes",
