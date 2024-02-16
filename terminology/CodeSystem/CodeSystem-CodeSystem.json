@@ -232,6 +232,16 @@
                   { "code" : "OID", "valueCode" : "2.16.840.1.113883.4.642.1.222" }]
   },
   {
+    "id" : "FHIR:FHIRTypes",
+    "code" : "FHIRTypes",
+    "display" : "List of supported JSON Schema definitions by this FHIR server"
+  },
+  {
+    "id" : "FHIR:Eligibility",
+    "code" : "Eligibility",
+    "display" : "List of HealthcareService eligibility codes"
+  },
+  {
     "code" : "ABCcodes",
     "display" : "ABCcodes",
     "definition" : "Five character alphabetic codes fit into current claims processing software or onto standard paper claim forms. ABC Codes give business parity to licensed CAM and nurse providers who file claims to insurance companies. .",
