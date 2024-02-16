@@ -337,6 +337,11 @@
     "display" : "A code that describes the type of issue"
   },
   {
+    "id" : "FHIR:GoalStatus",
+    "code" : "GoalStatus",
+    "display" : "Codes that reflect the current state of a goal"
+  },
+  {
     "id" : "FHIR:ItemType",
     "code" : "ItemType",
     "display" : "Distinguishes groups from questions and display text"

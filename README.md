@@ -6,11 +6,12 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 
 ## Features
 
-* Fast (<5ms) JSON Schema `draft-07` Mutual Dependency Validator
-* FHIR Protocol Version R5 (160 resource types, full set)
-* HTTP Endpoints
-* Erlang Records Internal Representation (for type-checking and compact memory footprint)
 * Extremely Compact Codebase (<10K LOC)
+* Erlang Records Internal Representation (for type-checking and compact footprint)
+* Fast (<5ms) JSON Schema `draft-07` Mutual Dependency Validator
+* FHIR Protocol Version R5 (160 resource types)
+* FHIR Terminology (50 code systems)
+* HTTP Endpoints
 
 ### Setup
 
@@ -66,37 +67,7 @@ can only be achieved with a validation code compiler.
 
 ## HL7/FHIR HTTP API
 
-```el3ixir
-defmodule HL7.Endpoint do
-  use Plug.Router
-  plug Plug.Logger
-  plug :match
-  plug :dispatch
-  plug(Plug.Parsers, parsers: [:json], json_decoder: Jason)
-  get  "/"       do HL7.Service.root(conn) end
-  post "/"       do HL7.Service.postRoot(conn) end
-  get  "/$meta"      do HL7.Service.meta(conn) end
-  post "/$meta"      do HL7.Service.postMeta(conn) end
-  get  "/metadata"   do HL7.Service.metadata(conn) end
-  get  "/_history"   do HL7.Service.history(conn) end
-  get  "/_diff"      do HL7.Service.diff(conn) end
-  get  "/$export"    do HL7.Service.export(conn) end
-  post "/$export"    do HL7.Service.postExport(conn) end
-  post "/$diff"      do HL7.Service.postDiff(conn) end
-  post "/$reindex"   do HL7.Service.reindex(conn) end
-  post "/:type/$validate" do HL7.Service.post4(conn,"",type,"","$validate") end
-  get  "/:type/:id"       do HL7.Service.get4(conn,"",type,id,"$base") end
-  put  "/:type/:id"       do HL7.Service.put4(conn,"",type,id,"$base") end
-  delete "/:type/:id"     do HL7.Service.delete4(conn,"",type,id,"$base") end
-  post "/_search"                do HL7.Service.post2(conn,"","_search") end
-  post "/:res/_search"           do HL7.Service.post3(conn,"",res,"_search") end
-  post "/:comp/:id/_search"      do HL7.Service.post4(conn,"",comp,id,"_search") end
-  post "/:comp/:id/:res/_search" do HL7.Service.post5(conn,"",comp,id,res,"_search") end
-  match _ do send_resp(conn, 404,
-       "Please refer to https://hl7.erp.uno manual" <>
-       " for information about endpoints addresses.") end
-end
-```
+### Meta
 
 ```sh
 $ curl -X GET "http://localhost:9234/\$meta"
@@ -133,6 +104,8 @@ $ curl -X GET "http://localhost:9234/\$meta"
   }
 ]
 ```
+
+### Validation
 
 ```sh
 $ time curl -X POST "http://localhost:9234/List/\$validate" -d @samples/json/List/List.json
