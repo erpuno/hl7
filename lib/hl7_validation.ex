@@ -65,8 +65,8 @@ defmodule HL7.Validation do
   def status(:ok) do "OK" end
   def status({:error, %Xema.ValidationError{reason: %{all_of: x}}}) do x end
 
-  def foldConcept(_name, []), do: []
-  def foldConcept(name, list) do
+  def foldConcept(_name, [], _lvl), do: []
+  def foldConcept(name, list, lvl) do
       res = :lists.flatten( :lists.map(fn x ->
         id = Map.get(x, "id")
         case id do
@@ -75,10 +75,10 @@ defmodule HL7.Validation do
                code = :erlang.binary_to_atom Map.get(x, "code")
                display = Map.get(x, "display")
                concept = Map.get(x, "concept")
-               [{id,code,display}] ++
+               [{lvl,id,code,display}] ++
                case concept do
                  nil -> []
-                   _ -> foldConcept(code, concept)
+                   _ -> foldConcept(code, concept, lvl+1)
                end
         end
       end, list))
@@ -86,6 +86,7 @@ defmodule HL7.Validation do
   end
 
   def testCodeSystem(name) do
+      lvl = 1
       file = "terminology/#{name}/CodeSystem-#{name}.json"
       {_,objBin} = :file.read_file file
       schema = HL7.Loader.loadSchema("CodeSystem")
@@ -98,8 +99,8 @@ defmodule HL7.Validation do
         display = Map.get(x, "display", [])
         concept = Map.get(x, "concept", [])
         id = Map.get(x, "id")
-        [case id do nil when name == "CodeSystem" -> [] ; _ -> {id,:erlang.binary_to_atom(code),display} end]
-        ++ foldConcept(name, concept)
+        [case id do nil when name == "CodeSystem" -> [] ; _ -> {lvl,id,:erlang.binary_to_atom(code),display} end]
+        ++ foldConcept(name, concept, lvl + 1)
        end, list)
       verify = Xema.validate(schema, obj)
       {name,verify,id,res}
