@@ -257,6 +257,11 @@
     "display" : "List of supported JSON Schema definitions by this FHIR server"
   },
   {
+    "id" : "FHIR:FHIRVersion",
+    "code" : "FHIRVersion",
+    "display" : "List of known FHIR versions"
+  },
+  {
     "id" : "FHIR:Eligibility",
     "code" : "Eligibility",
     "display" : "List of HealthcareService eligibility codes"
