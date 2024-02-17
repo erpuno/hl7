@@ -52,7 +52,7 @@ defmodule HL7.Validation do
   def test() do
       # load()
       s = :lists.sort :lists.map fn x ->
-          {time,{name,code}} = :timer.tc(fn -> testItem "#{x}" end)
+          {time,{name,code}} = :timer.tc(fn -> testSample "#{x}" end)
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
           {status(code),:erlang.binary_to_atom(name),time}
       end, suite()
@@ -87,12 +87,12 @@ defmodule HL7.Validation do
 
   def testCodeSystem(name) do
       lvl = 1
-      file = "terminology/#{name}/CodeSystem-#{name}.json"
+      file = "terminology/CodeSystem/CodeSystem-#{name}.json"
       {_,objBin} = :file.read_file file
       schema = HL7.Loader.loadSchema("CodeSystem")
       obj = Jason.decode!(objBin)
       id = Map.get(obj, "id")
-      _publisher = Map.get(obj, "publisher")
+      url = Map.get(obj, "url")
       list = Map.get(obj, "concept")
       res = :lists.flatten :lists.map(fn x ->
         code = Map.get(x, "code")
@@ -103,10 +103,34 @@ defmodule HL7.Validation do
         ++ foldConcept(name, concept, lvl + 1)
        end, list)
       verify = Xema.validate(schema, obj)
-      {name,verify,id,res}
+      {name,verify,id,url,res}
   end
 
-  def testItem(name) do
+  def testValueSet(name) do
+      lvl = 1
+      file = "terminology/ValueSet/ValueSet-#{name}.json"
+      {_,objBin} = :file.read_file file
+      schema = HL7.Loader.loadSchema("ValueSet")
+      obj = Jason.decode!(objBin)
+      id = Map.get(obj, "id")
+      url = Map.get(obj, "url")
+      compose = Map.get(obj, "compose")
+      include = Map.get(compose, "include",[])
+      res = :lists.flatten :lists.map(fn i ->
+        system = Map.get(i, "system")
+        list = Map.get(i, "concept")
+        :lists.map(fn x ->
+          code = Map.get(x, "code")
+          display = Map.get(x, "display", [])
+          concept = Map.get(x, "concept", [])
+          {lvl,system,:erlang.binary_to_atom(code),display}
+        end, list)
+      end, include)
+      verify = Xema.validate(schema, obj)
+      {name,verify,id,url,res}
+  end
+
+  def testSample(name) do
       file = "samples/json/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
 #     :io.format 'loadFile: ~p~n', [file]
@@ -114,6 +138,25 @@ defmodule HL7.Validation do
       obj = Jason.decode!(objBin)
       verify = Xema.validate(schema, obj)
       {name,verify}
+  end
+
+  def testTerminology(name) do
+      file = "terminology/TerminologyCapabilities/TerminologyCapabilities-#{name}.json"
+      {_,objBin} = :file.read_file file
+#     :io.format 'loadFile: ~p~n', [file]
+      schema = HL7.Loader.loadSchema("TerminologyCapabilities")
+      obj = Jason.decode!(objBin)
+      id = Map.get(obj, "identifier")
+      publisher = Map.get(obj, "implementation")
+      codeSystem = Map.get(obj, "codeSystem")
+      res = :lists.flatten :lists.map(fn x ->
+        uri = Map.get(x, "uri")
+        version = Map.get(x, "version", [])
+        content = Map.get(x, "content", [])
+        {uri,version,content}
+       end, codeSystem)
+      verify = Xema.validate(schema, obj)
+      {name,verify,id,publisher,res}
   end
 
 end
