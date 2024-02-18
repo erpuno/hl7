@@ -1,4 +1,4 @@
-defmodule HL7.Terminology.Terminology do
+defmodule HL7.Terminology do
   def show(name) do
       file = "terminology/TerminologyCapabilities/TerminologyCapabilities-#{name}.json"
       {_,objBin} = :file.read_file file

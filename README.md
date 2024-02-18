@@ -198,4 +198,11 @@ Workflow modeling data types: `ActivityDefinition`, `Definition`, `EventDefiniti
 
 ## Credits
 
+# Development Environment
+
+```elixir
+IEx.configure(width: :erlang.element(2, :io.columns))
+IEx.configure(inspect: [limit: :infinity])
+```
+
 * Namdak Tonpa
