@@ -2,33 +2,13 @@ defmodule HL7.Validation do
   import HL7.Terminology.Hierarchy
 
   def suite() do
-      [
-        :Identifier, :Quantity, :Reference, :Location, :Extension, :Patient, :Specimen, :Observation,
-        :List, :Encounter, :Contract, :Device, :Organization, :DeviceDefinition, :DeviceAssociation,
-        :DeviceMetric, :DeviceRequest, :DeviceDispense, :DetectedIssue, :BodyStructure, :Account,
-        :AdverseEvent, :CarePlan, :CareTeam, :AllergyIntolerance, :Appointment, :AppointmentResponse,
-        :AuditEvent, :Binary, :Bundle, :CapabilityStatement, :Claim, :ClaimResponse,
-        :ChargeItem, :Basic, :BodySite, :ClinicalImpression, :CodeSystem, :Composition, :ConceptMap,
-        :Condition, :Consent, :CoverageEligibilityRequest, :CoverageEligibilityResponse,
-        :DiagnosticReport, :DocumentReference, :Endpoint, :EnrollmentRequest, :EpisodeOfCare,
-        :ExplanationOfBenefit, :FamilyMemberHistory, :Flag, :Communication, :CommunicationRequest,
-        :CompartmentDefinition, :DataRequirement, :Immunization, :ImmunizationRecommendation,
-        :Person, :TerminologyCapabilities, :ValueSet, :Slot, :Provenance, :MeasureReport,
-        :Questionnaire, :Subscription, :Parameters, :MedicationStatement, :NamingSystem, :Media,
-        :VisionPrescription, :Schedule, :Sequence, :QuestionnaireResponse, :MessageDefinition,
-        :MessageHeader, :NutritionOrder, :SearchParameter, :PaymentNotice, :PaymentReconciliation,
-        :PlanDefinition, :SupplyDelivery, :SupplyRequest, :Task, :TriggerDefinition,
-        :ActivityDefinition, :Coverage, :DeviceComponent, :DeviceUsage, :DeviceUseStatement,
-        :EnrollmentResponse, :HealthcareService, :Measure, :MedicationRequest, :MedicationDispense,
-        :Practitioner, :PractitionerRole, :Procedure, :ProcedureRequest,
-        :Substance, :Medication, :OperationOutcome, :ExtendedContactDetail, :OrganizationAffiliation,
-        :EventDefinition, :Goal, :ImagingSelection, :ImagingStudy, :MedicationAdministration,
-        :MedicationKnowledge, :Contributor, :StructureDefinition, :TestScript, :TestReport, :Group,
-        :Linkage, :Library, :ImplementationGuide, :ImagingManifest, :GuidanceResponse, :GraphDefinition,
-        :Timing, :UsageContext, :StructureMap, :Signature, :SampledData, :ResourceList,
-        :Resource, :RelatedArtifact, :MarketingStatus, :Ingredient, :ProductPackageDefinition, :Permission,
-        :Invoice
-      ]
+      {_,_,_,_,x} = HL7.showCodeSystem("ResourceType")
+      :lists.flatten :lists.map(fn {_,_,atom,bin} ->
+           case HL7.Loader.testSchema bin do
+                 true -> atom
+                false -> [] # [{atom] # uncomment to see unsupported (yet) resourcees
+           end
+      end, x)
   end
 
   def clear_cache() do
@@ -52,21 +32,18 @@ defmodule HL7.Validation do
 
   def test() do
       # load()
-      s = :lists.sort :lists.map fn x ->
+      :lists.sort :lists.map fn x ->
           {time,{name,code}} = :timer.tc(fn -> validateSample "#{x}" end)
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
           {status(code),:erlang.binary_to_atom(name),time}
       end, suite()
-      {x,y} = split(s)
-      {a,b} = split(x)
-      {c,d} = split(y)
-      [a,b,c,d] # R5/160
+#     {x,y} = split(s) ; {a,b} = split(x) ; {c,d} = split(y) ; [a,b,c,d] # R5/160
   end
 
   def validateSample(name) do
-      file = "samples/json/#{name}/#{name}.json"
+      file = "samples/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
-#     :io.format 'loadFile: ~p~n', [file]
+#     :io.format 'validateSample: ~p~n', [name]
       schema = HL7.Loader.loadSchema("#{name}")
       obj = Jason.decode!(objBin)
       verify = Xema.validate(schema, obj)

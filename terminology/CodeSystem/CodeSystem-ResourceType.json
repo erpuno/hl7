@@ -348,6 +348,10 @@
     }]
   },
   {
+    "code" : "BodySite",
+    "display" : "BodySite"
+  },
+  {
     "code" : "BodyStructure",
     "display" : "BodyStructure",
     "definition" : "Record details about an anatomical structure.  This resource may be used when a coded concept does not provide the necessary detail needed for the use case.",
@@ -936,6 +940,10 @@
     }]
   },
   {
+    "code" : "Contributor",
+    "display" : "Contributor"
+  },
+  {
     "code" : "Coverage",
     "display" : "Coverage",
     "definition" : "Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.",
@@ -1031,6 +1039,10 @@
     }]
   },
   {
+    "code" : "DataRequirement",
+    "display" : "DataRequirement"
+  },
+  {
     "code" : "DetectedIssue",
     "display" : "DetectedIssue",
     "definition" : "Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.",
@@ -1105,6 +1117,14 @@
     }]
   },
   {
+    "code" : "DeviceAssociation",
+    "display" : "DeviceAssociation"
+  },
+  {
+    "code" : "DeviceComponent",
+    "display" : "DeviceComponent"
+  },
+  {
     "code" : "DeviceDefinition",
     "display" : "DeviceDefinition",
     "definition" : "The characteristics, operational status and capabilities of a medical-related component of a medical device.",
@@ -1132,6 +1152,10 @@
       },
       "value" : "DefiniciónDeDispositivo"
     }]
+  },
+  {
+    "code" : "DeviceDispense",
+    "display" : "DeviceDispense"
   },
   {
     "code" : "DeviceMetric",
@@ -1198,6 +1222,10 @@
       },
       "value" : "SolicitudDeDispositivo"
     }]
+  },
+  {
+    "code" : "DeviceUsage",
+    "display" : "DeviceUsage"
   },
   {
     "code" : "DeviceUseStatement",
@@ -1616,6 +1644,14 @@
     }]
   },
   {
+    "code" : "ExtendedContactDetail",
+    "display" : "ExtendedContactDetail"
+  },
+  {
+    "code" : "Extension",
+    "display" : "Extension"
+  },
+  {
     "code" : "FamilyMemberHistory",
     "display" : "FamilyMemberHistory",
     "definition" : "Significant health conditions for a person related to the patient relevant in the context of care for the patient.",
@@ -1819,6 +1855,18 @@
     }]
   },
   {
+    "code" : "Identifier",
+    "display" : "Identifier"
+  },
+  {
+    "code" : "ImagingManifest",
+    "display" : "ImagingManifest"
+  },
+  {
+    "code" : "ImagingSelection",
+    "display" : "ImagingSelection"
+  },
+  {
     "code" : "ImagingStudy",
     "display" : "ImagingStudy",
     "definition" : "Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.",
@@ -1972,6 +2020,10 @@
       },
       "value" : "Invoice"
     }]
+  },
+  {
+    "code" : "Ingredient",
+    "display" : "Ingredient"
   },
   {
     "code" : "Library",
@@ -3085,6 +3137,14 @@
     }]
   },
   {
+    "code" : "ProcedureRequest",
+    "display" : "ProcedureRequest"
+  },
+  {
+    "code" : "ProductPackageDefinition",
+    "display" : "ProductPackageDefinition"
+  },
+  {
     "code" : "Provenance",
     "display" : "Provenance",
     "definition" : "Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.",
@@ -3120,6 +3180,10 @@
       },
       "value" : "Procedencia"
     }]
+  },
+  {
+    "code" : "Quantity",
+    "display" : "Quantity"
   },
   {
     "code" : "Questionnaire",
@@ -3194,6 +3258,18 @@
       },
       "value" : "RespuestaAlCuestionario"
     }]
+  },
+  {
+    "code" : "Reference",
+    "display" : "Reference"
+  },
+  {
+    "code" : "RelatedArtifact",
+    "display" : "RelatedArtifact"
+  },
+  {
+    "code" : "ResourceList",
+    "display" : "ResourceList"
   },
   {
     "code" : "RelatedPerson",
@@ -3391,6 +3467,38 @@
       },
       "value" : "RiskEvidenceSynthesis"
     }]
+  },
+  {
+    "code" : "SampledData",
+    "display" : "SampledData"
+  },
+  {
+    "code" : "Sequence",
+    "display" : "Sequence"
+  },
+  {
+    "code" : "Signature",
+    "display" : "Signature"
+  },
+  {
+    "code" : "Subscription",
+    "display" : "Subscription"
+  },
+  {
+    "code" : "UsageContext",
+    "display" : "UsageContext"
+  },
+  {
+    "code" : "OperationOutcomeIssue",
+    "display" : "OperationOutcomeIssue"
+  },
+  {
+    "code" : "Timing",
+    "display" : "Timing"
+  },
+  {
+    "code" : "TriggerDefinition",
+    "display" : "TriggerDefinition"
   },
   {
     "code" : "Schedule",
