@@ -73,7 +73,4 @@ defmodule HL7.Validation do
       {name,verify}
   end
 
-  def showCodeSystem(name),  do: HL7.Terminology.CodeSystem.show(name)
-  def showValueSet(name),    do: HL7.Terminology.ValueSet.show(name)
-  def showTerminology(name), do: HL7.Terminology.Terminology.show(name)
 end

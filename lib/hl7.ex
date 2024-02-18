@@ -3,8 +3,7 @@ defmodule HL7 do
   """
   require Record
 
-  @schema [ :"Person", :"Patient", :"Location", :"Organization",
-            :"Composition",
+  @schema [ :"Person", :"Patient", :"Location", :"Organization", :"Composition",
             :"DeviceDefinition", :"DeviceDispense", :"DeviceRequest" ]
 
   Enum.each(@schema,
@@ -31,5 +30,11 @@ defmodule HL7 do
   )
 
   def schema(), do: @schema
+
+  # Maintenance Shell
+
+  def showCodeSystem(name),  do: HL7.Terminology.CodeSystem.show(name)
+  def showValueSet(name),    do: HL7.Terminology.ValueSet.show(name)
+  def showTerminology(name), do: HL7.Terminology.show(name)
 
 end
