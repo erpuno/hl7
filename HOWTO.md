@@ -12,7 +12,7 @@ Compound Dictionaries
 ---------------------
 
 ```elixir
-> HL7.Validation.showValueSet "CareTeamCategory"
+> HL7.showValueSet "CareTeamCategory"
 {"CareTeamCategory", :ok, "care-team-category", "http://hl7.org/fhir/ValueSet/care-team-category",
  [
    {1, "http://loinc.org", :"LA27975-4", "Event-focused care team"},
@@ -32,7 +32,7 @@ Registered Terminologies
 ------------------------
 
 ```elixir
-> HL7.Validation.showTerminology "ЕСОЗ"
+> HL7.showTerminology "ЕСОЗ"
 {"ЕСОЗ", :ok, [%{"system" => "urn:ietf:rfc:3986", "value" => "urn:oid:2.16.840.1.113883.4.642.6.1"}], %{"description" => "The ACME FHIR Terminology Server"},
  [
    {"http://snomed.info/sct", [%{"code" => "http://snomed.info/sct/32506021000036107/version/20220831"}], "complete"},
@@ -45,7 +45,7 @@ Hierarchical Dictionaries
 -------------------------
 
 ```elixir
-> HL7.Validation.showCodeSystem "FHIRVersion"
+> HL7.showCodeSystem "FHIRVersion"
 {"FHIRVersion", :ok, "FHIR-version", "http://hl7.org/fhir/FHIR-version",
  [
    {1, nil, :"3.0", "3.0"},
@@ -88,7 +88,7 @@ Registered Distributed Domains
 ------------------------------
 
 ```elixir
-> HL7.Validation.showCodeSystem "CodeSystem"
+> HL7.showCodeSystem "CodeSystem"
 {"CodeSystem", :ok, [%{"FHIR" => "CodeSystem"}], "http://terminology.hl7.org/CodeSystem/v3-CodeSystem",
  [
    {1, "ДССУ:КОАТУУ/SETTLEMENT_TYPE", :КОАТУУ, "Вид населенного пункту КОАТУУ"},
