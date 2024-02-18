@@ -108,7 +108,7 @@ $ curl -X GET "http://localhost:9234/\$meta"
 ### Validation
 
 ```sh
-$ time curl -X POST "http://localhost:9234/List/\$validate" -d @samples/json/List/List.json
+$ time curl -X POST "http://localhost:9234/List/\$validate" -d @samples/List/List.json
 {
   "base": "",
   "id": "01111313-long",

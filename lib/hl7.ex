@@ -33,6 +33,7 @@ defmodule HL7 do
 
   # Maintenance Shell
 
+  def test(),                do: HL7.Validation.test
   def showCodeSystem(name),  do: HL7.Terminology.CodeSystem.show(name)
   def showValueSet(name),    do: HL7.Terminology.ValueSet.show(name)
   def showTerminology(name), do: HL7.Terminology.show(name)
