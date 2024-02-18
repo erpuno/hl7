@@ -1,8 +1,11 @@
 defmodule HL7.Loader do
   @moduledoc false
   @behaviour Xema.Loader
-  def testSchema(id) do
-      :filelib.is_file "schema/#{id}.schema.json"
+  def testSchema(atom,id) do
+      case :filelib.is_file "schema/#{id}.schema.json" do
+            true -> atom
+           false -> [] # [{atom] # uncomment to see unsupported (yet) resourcees
+      end
   end
   def loadSchema(id) do
       refs = :application.get_env(:hl7, "#{id}", [])

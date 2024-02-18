@@ -3,12 +3,7 @@ defmodule HL7.Validation do
 
   def suite() do
       {_,_,_,_,x} = HL7.showCodeSystem("ResourceType")
-      :lists.flatten :lists.map(fn {_,_,atom,bin} ->
-           case HL7.Loader.testSchema bin do
-                 true -> atom
-                false -> [] # [{atom] # uncomment to see unsupported (yet) resourcees
-           end
-      end, x)
+      :lists.flatten :lists.map(fn {_,_,atom,bin} -> HL7.Loader.testSchema(atom,bin) end, x)
   end
 
   def clear_cache() do
