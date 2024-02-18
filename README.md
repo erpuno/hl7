@@ -4,7 +4,7 @@
 
 Minimalistic scalable microseconds precise FHIR application server in Elixir.
 
-## Features
+# Features
 
 * Extremely Compact Codebase (<10K LOC)
 * Erlang Records Internal Representation (for type-checking and compact footprint)
@@ -13,7 +13,7 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 * FHIR Terminology (50 code systems)
 * HTTP Endpoints
 
-### Setup
+# Setup
 
 ```elixir
 $ mix deps.get
@@ -65,9 +65,9 @@ Note that `List` instance is 64K JSON object.
 Note that best possible (fastest) validation at a given platform
 can only be achieved with a validation code compiler.
 
-## HL7/FHIR HTTP API
+# HL7/FHIR HTTP API
 
-### Meta
+## Meta
 
 ```sh
 $ curl -X GET "http://localhost:9234/\$meta"
@@ -105,7 +105,7 @@ $ curl -X GET "http://localhost:9234/\$meta"
 ]
 ```
 
-### Validation
+## Validation
 
 ```sh
 $ time curl -X POST "http://localhost:9234/List/\$validate" -d @samples/List/List.json
@@ -196,13 +196,17 @@ Workflow modeling data types: `ActivityDefinition`, `Definition`, `EventDefiniti
 `MessageDefinition`, `PlanDefinition`, `ObservationDefinition`, `ClinicalUse`,
 `Measure`, `OperationDefinition`, `Requirements`.
 
-## Credits
-
 # Development Environment
 
 ```elixir
 IEx.configure(width: :erlang.element(2, :io.columns))
 IEx.configure(inspect: [limit: :infinity])
 ```
+
+# Publications
+
+* <a href="https://tonpa.guru/stream/2024/2024-02-18%20HL7.htm">ISO/HL7 FHIR: Валідація</a>
+
+# Credits
 
 * Namdak Tonpa
