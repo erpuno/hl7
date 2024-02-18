@@ -205,7 +205,7 @@ IEx.configure(inspect: [limit: :infinity])
 
 # Publications
 
-* <a href="https://tonpa.guru/stream/2024/2024-02-18%20HL7.htm">ISO/HL7 FHIR: Валідація</a>
+* <a href="https://tonpa.guru/stream/2024/2024-02-18%20HL7.htm">2024-02-18 ISO/HL7 FHIR: Валідація</a>
 
 # Credits
 
