@@ -206,6 +206,7 @@ IEx.configure(inspect: [limit: :infinity])
 # Code Size
 
 Low-code schema design suitable for other language implementations.
+Yes, it is correct, I manually commited and verified 1K files in 1 month.
 
 | Language  | Package  | Files | LOC     | Description                    |
 | --------- |--------- | ----- | ------- | ------------------------------ |
