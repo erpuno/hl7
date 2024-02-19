@@ -19,7 +19,7 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 $ mix deps.get
 $ iex -S mix
 ISO/HL7 27931:2009 application server listening at port: 9234.
-JSON Schema: draft-07, FHIR Protocol Version: R5.
+JSON Schema: draft-07, FHIR Protocol Version: 5.0.0.
 Interactive Elixir (1.12.2) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)>
 ```
