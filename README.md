@@ -9,7 +9,8 @@ Minimalistic scalable microseconds precise FHIR application server in Elixir.
 * Extremely Compact Codebase (<10K LOC)
 * Erlang Records Internal Representation (for type-checking and compact footprint)
 * Fast (<5ms) JSON Schema `draft-07` Mutual Dependency Validator
-* FHIR Protocol Version R5 (160 resource types)
+* FHIR Protocol Version 5.0.0 (204 resource types)
+* FHIR Schema Support for R4/R5
 * FHIR Terminology (50 code systems)
 * HTTP Endpoints
 
