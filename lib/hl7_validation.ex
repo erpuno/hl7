@@ -9,10 +9,10 @@ defmodule HL7.Validation do
   def clear_cache() do
       :lists.flatten(
       :lists.map(fn {y,_} when is_binary(y) ->
-#       :application.set_env(:hl7, y, [])
+       :application.set_env(:hl7, y, [])
         {y}
         ; _ -> [] end,
-      :application.get_all_env(:hl7)))
+      :lists.sort :application.get_all_env(:hl7)))
   end
 
   def split(array) do :lists.split(:erlang.div(:erlang.length(array),2),array) end
