@@ -118,59 +118,59 @@
     "display" : "Класифікація видів економічної діяльності (КВЕД)"
   },
   {
-    "id" : "ЕСОЗ:LEGAL_ENTITY_TYPE",
+    "id" : "EHCS:LEGAL_ENTITY_TYPE",
     "code" : "OrganizationType",
     "display" : "Технічний тип системи організації",
     "definition" : "FHIR OrganizationType"
   },
   {
-    "id" : "ЕСОЗ:LEGAL_ENTITY_TYPE_V2",
+    "id" : "EHCS:LEGAL_ENTITY_TYPE_V2",
     "code" : "OrganizationType",
     "display" : "Технічний тип системи організації (нові поля)"
   },
   {
-    "id" : "ЕСОЗ:LEGAL_ENTITY_STATUS",
+    "id" : "EHCS:LEGAL_ENTITY_STATUS",
     "code" : "OrganizationStatus",
     "display" : "Технічний статус організації"
   },
   {
-    "id" : "ЕСОЗ:LEGAL_FORM",
+    "id" : "EHCS:LEGAL_FORM",
     "code" : "OrganizationForm",
     "display" : "Юридичний тип системи (форма власності)"
   },
   {
-    "id" : "ЕСОЗ:DIVISION_STATUS",
+    "id" : "EHCS:DIVISION_STATUS",
     "code" : "LocationStatus",
     "display" : "Статус структурного підрозділу"
   },
   {
-    "id" : "ЕСОЗ:MEDICATION_UNIT",
+    "id" : "EHCS:MEDICATION_UNIT",
     "code" : "UnitOfPresentation",
     "display" : "Спосіб розповсюдження лікарського засобу",
     "definition" : "FHIR UnitOfPresentation"
   },
   {
-    "id" : "ЕСОЗ:COUNTRY",
+    "id" : "EHCS:COUNTRY",
     "code" : "Country",
     "display" : "Міжнародні коди країн"
   },
   {
-    "id" : "ЕСОЗ:eHealth/immunization_dosage_units",
+    "id" : "EHCS:eHealth/immunization_dosage_units",
     "code" : "DosageUnits",
     "display" : "Одиниці виміру доз для імунізації"
   },
   {
-    "id" : "ЕСОЗ:eHealth/ICPC2/reasons",
+    "id" : "EHCS:eHealth/ICPC2/reasons",
     "code" : "ICPC2UKR",
     "display" : "Класифікатор первинної медичної допомоги"
   },
   {
-    "id" : "ЕСОЗ:eHealth/ICPC2/actions",
+    "id" : "EHCS:eHealth/ICPC2/actions",
     "code" : "ICPC2UKR-actions",
     "display" : "Класифікатор дій первинної медичної допомоги"
   },
   {
-    "id" : "ЕСОЗ:eHealth/episode_types",
+    "id" : "EHCS:eHealth/episode_types",
     "code" : "EpisodeOfCareType",
     "display" : "Види медичної допомоги"
   },
