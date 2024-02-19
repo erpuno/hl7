@@ -203,6 +203,15 @@ IEx.configure(width: :erlang.element(2, :io.columns))
 IEx.configure(inspect: [limit: :infinity])
 ```
 
+# Code Size
+
+Low-code schema design suitable for other language implementations.
+
+| Language      | Files | LOC     |
+| ------------- | ----- | ------- |
+| JSON          | 1044  | 143809  |
+| Elixir/Erlang | 47    | 5128    |
+
 # Publications
 
 * <a href="https://tonpa.guru/stream/2024/2024-02-18%20HL7.htm">2024-02-18 ISO/HL7 FHIR: Валідація</a>
