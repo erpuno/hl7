@@ -4,7 +4,7 @@ defmodule HL7.Loader do
   def testSchema(atom,id) do
       case :filelib.is_file "schema/#{id}.schema.json" do
             true -> atom
-           false -> [] # [{atom] # uncomment to see unsupported (yet) resourcees
+           false -> [{atom}] # [{atom] # uncomment to see unsupported (yet) resourcees
       end
   end
   def loadSchema(id) do

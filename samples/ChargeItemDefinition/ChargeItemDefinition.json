@@ -1,0 +1,72 @@
+{
+  "resourceType" : "ChargeItemDefinition",
+  "id" : "ebm",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ChargeItemDefinition</b><a name=\"ebm\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource ChargeItemDefinition &quot;ebm&quot; </p></div><p><b>url</b>: <code>http://fhir.de/ChargeItemDefinition/kbv/ebm-30110</code></p><p><b>identifier</b>: id:\u00a0urn:oid:2.16.840.1.113883.4.642.29.1</p><p><b>version</b>: 2-2018</p><p><b>status</b>: active</p><p><b>description</b>: Allergologisch-diagnostischer Komplex zur Diagnostik und/oder zum Ausschluss einer (Kontakt-)Allergie vom Spättyp (Typ IV), einschl. Kosten</p><p><b>code</b>: Allergologiediagnostik I <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ebm#30110)</span></p><blockquote><p><b>applicability</b></p><h3>Conditions</h3><table class=\"grid\"><tr><td>-</td><td><b>Description</b></td><td><b>Language</b></td><td><b>Expression</b></td></tr><tr><td>*</td><td>Excludes billing code 13250 for same Encounter</td><td>text/cql</td><td>[some CQL expression]</td></tr></table><p><b>effectivePeriod</b>: 2018-04-01 --&gt; 2018-06-30</p></blockquote><blockquote><p><b>applicability</b></p><h3>Conditions</h3><table class=\"grid\"><tr><td>-</td><td><b>Description</b></td><td><b>Language</b></td><td><b>Expression</b></td></tr><tr><td>*</td><td>Applies only once per Encounter</td><td>text/CQL</td><td>[some CQL expression]</td></tr></table><p><b>effectivePeriod</b>: 2018-04-01 --&gt; 2018-06-30</p></blockquote><blockquote><p><b>propertyGroup</b></p><blockquote><p><b>priceComponent</b></p><p><b>type</b>: base</p><p><b>code</b>: Gesamt (Euro) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ebm-attribute#gesamt-euro)</span></p><blockquote><p><b>amount</b></p><p><span title=\"Euro\">€67.44</span> (EUR)</p></blockquote></blockquote><blockquote><p><b>priceComponent</b></p><p><b>type</b>: informational</p><p><b>code</b>: Gesamt (Punkte) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (ebm-attribute#gesamt-punkte)</span></p><p><b>factor</b>: 633</p></blockquote></blockquote></div>"
+  },
+  "url" : "http://fhir.de/ChargeItemDefinition/kbv/ebm-30110",
+  "identifier" : [{
+    "system" : "urn:ietf:rfc:3986",
+    "value" : "urn:oid:2.16.840.1.113883.4.642.29.1"
+  }],
+  "version" : "2-2018",
+  "status" : "active",
+  "description" : "Allergologisch-diagnostischer Komplex zur Diagnostik und/oder zum Ausschluss einer (Kontakt-)Allergie vom Spättyp (Typ IV), einschl. Kosten",
+  "code" : {
+    "coding" : [{
+      "system" : "http://fhir.de/CodingSystem/kbv/ebm",
+      "code" : "30110",
+      "display" : "Allergologiediagnostik I"
+    }]
+  },
+  "applicability" : [{
+    "condition" : {
+      "description" : "Excludes billing code 13250 for same Encounter",
+      "language" : "text/cql",
+      "expression" : "[some CQL expression]"
+    },
+    "effectivePeriod" : {
+      "start" : "2018-04-01",
+      "end" : "2018-06-30"
+    }
+  },
+  {
+    "condition" : {
+      "description" : "Applies only once per Encounter",
+      "language" : "text/CQL",
+      "expression" : "[some CQL expression]"
+    },
+    "effectivePeriod" : {
+      "start" : "2018-04-01",
+      "end" : "2018-06-30"
+    }
+  }],
+  "propertyGroup" : [{
+    "priceComponent" : [{
+      "type" : "base",
+      "code" : {
+        "coding" : [{
+          "system" : "http://fhir.de/CodeSystem/kbv/ebm-attribute",
+          "code" : "gesamt-euro",
+          "display" : "Gesamt (Euro)"
+        }]
+      },
+      "amount" : {
+        "value" : 67.44,
+        "currency" : "EUR"
+      }
+    },
+    {
+      "type" : "informational",
+      "code" : {
+        "coding" : [{
+          "system" : "http://fhir.de/CodeSystem/kbv/ebm-attribute",
+          "code" : "gesamt-punkte",
+          "display" : "Gesamt (Punkte)"
+        }]
+      },
+      "factor" : 633
+    }]
+  }]
+}

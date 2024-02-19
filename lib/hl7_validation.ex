@@ -28,6 +28,7 @@ defmodule HL7.Validation do
   def test() do
       # load()
       :lists.sort :lists.map fn x ->
+#         :io.format 'validation start: ~ts.~n', ["#{x}"]
           {time,{name,code}} = :timer.tc(fn -> validateSample "#{x}" end)
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
           {status(code),:erlang.binary_to_atom(name),time}

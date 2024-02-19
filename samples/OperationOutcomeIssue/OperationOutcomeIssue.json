@@ -1,0 +1,8 @@
+{
+      "resourceType": "OperationOutcomeIssue",
+      "severity": "information",
+      "code": "informational",
+      "details": {
+        "text": "All OK"
+      }
+}
