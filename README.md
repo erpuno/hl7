@@ -207,10 +207,10 @@ IEx.configure(inspect: [limit: :infinity])
 
 Low-code schema design suitable for other language implementations.
 
-| Language      | Files | LOC     |
-| ------------- | ----- | ------- |
-| JSON          | 1044  | 143809  |
-| Elixir/Erlang | 47    | 5128    |
+| Language      | Files | LOC     | Description                 |
+| ------------- | ----- | ------- | --------------------------- |
+| JSON          | 1044  | 143809  | FHIR Schema + Samples suite |
+| Elixir/Erlang | 47    | 5128    | JSON Validation + FHIR HTTP |
 
 # Publications
 
