@@ -14,7 +14,7 @@ defmodule HL7.Service do
    def delete4(conn,base,type,id,spec),                     do: HL7.Delete.delete(conn,base,type,id,spec)
    def post2(conn,base,qualifier),                          do: HL7.Search.search(conn,base,qualifier)
    def post3(conn,base,resource,qualifier),                 do: HL7.Search.post3(conn,base,resource,qualifier)
-   def post5(conn,base,compartment,id,resource,qualifier), do: HL7.Compartment.post5(conn,base,compartment,id,resource,qualifier)
+   def post5(conn,base,compartment,id,resource,qualifier),  do: HL7.Compartment.post5(conn,base,compartment,id,resource,qualifier)
 
 # Not Implemented Yet
 
@@ -31,7 +31,6 @@ defmodule HL7.Service do
    def encode(x) do
        case  Jason.encode(x) do
              {:ok, bin} -> bin <> "\n"
-#             {:error, %Protocol.UndefinedError{protocol: _, value: value, description: desc}} -> desc <> "\n"
              {:error, %Protocol.UndefinedError{description: _, protocol: _, value: {:error, %Xema.ValidationError{message: _, reason: err}}}} -> err <> "\n"
              {:error, %Xema.ValidationError{message: _, reason: err}} -> err <> "\n"
        end |> Jason.Formatter.pretty_print

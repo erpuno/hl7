@@ -32,7 +32,7 @@ defmodule HL7.Validation do
           :io.format 'validation: ~p (μs), schema: ~ts.~n', [time,"#{name}"]
           {status(code),:erlang.binary_to_atom(name),time}
       end, suite()
-#     {x,y} = split(s) ; {a,b} = split(x) ; {c,d} = split(y) ; [a,b,c,d] # R5/160
+#     {x,y} = split(s) ; {a,b} = split(x) ; {c,d} = split(y) ; [a,b,c,d] # R5/160 Slice by 40
   end
 
   def validateSample(name) do
