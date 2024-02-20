@@ -37,5 +37,5 @@ defmodule HL7 do
   def showCodeSystem(name),  do: HL7.Terminology.CodeSystem.show(name)
   def showValueSet(name),    do: HL7.Terminology.ValueSet.show(name)
   def showTerminology(name), do: HL7.Terminology.show(name)
-
+  def priv(),                do: :erlang.iolist_to_binary(:application.get_env(:hl7, :priv_dir, :code.priv_dir(:hl7))) <> "/"
 end

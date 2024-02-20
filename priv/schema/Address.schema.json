@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/priv/schema/Address.schema.json",
+  "$ref": "#/definitions/Address",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "Period": {
+      "allOf": [
+        {
+          "description": "A time period defined by a start and end date and optionally time.",
+          "properties": {
+            "start": {
+              "description": "The start of the period. The boundary is inclusive.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "end": {
+              "description": "The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          }
+        }
+      ]
+    },
+    "Address": {
+      "allOf": [
+        {
+          "description": "An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.",
+          "properties": {
+            "use": {
+              "description": "The purpose of this address.",
+              "enum": [
+                "home",
+                "work",
+                "temp",
+                "old"
+              ],
+              "type": "string"
+            },
+            "type": {
+              "description": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
+              "enum": [
+                "postal",
+                "physical",
+                "both"
+              ],
+              "type": "string"
+            },
+            "text": {
+              "description": "A full text representation of the address.",
+              "type": "string"
+            },
+            "line": {
+              "description": "This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "city": {
+              "description": "The name of the city, town, village or other community or delivery center.",
+              "type": "string"
+            },
+            "district": {
+              "description": "The name of the administrative area (county).",
+              "type": "string"
+            },
+            "state": {
+              "description": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).",
+              "type": "string"
+            },
+            "postalCode": {
+              "description": "A postal code designating a region defined by the postal service.",
+              "type": "string"
+            },
+            "country": {
+              "description": "Country - a nation as commonly understood or generally accepted.",
+              "type": "string"
+            },
+            "period": {
+              "description": "Time period when address was/is in use.",
+              "$ref": "#/definitions/Period"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

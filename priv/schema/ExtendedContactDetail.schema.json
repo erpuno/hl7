@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/priv/schema/ExtendedContactDetail.schema.json",
+  "$ref": "#/definitions/ExtendedContactDetail",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "ExtendedContactDetail": {
+      "allOf": [
+        {
+          "description": "ExtendedContactDetail.",
+          "properties": {
+             "purpose" : {
+                "description": "Processing outcome errror, partial or complete processing.",
+                "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+              },
+             "name" : {
+                "description": "This records identifiers associated names.",
+                "type": "array",
+                "items": {
+                  "$ref": "HumanName.schema.json#/definitions/HumanName"
+                 }
+              },
+             "telecom" : {
+                "description": "This records identifiers associated names.",
+                "type": "array",
+                "items": {
+                  "$ref": "ContactPoint.schema.json#/definitions/ContactPoint"
+                 }
+              },
+             "address" : {
+                "description": "Processing outcome errror, partial or complete processing.",
+                "$ref": "Address.schema.json#/definitions/Address"
+              },
+             "organization" : {
+                "description": "Processing outcome errror, partial or complete processing.",
+                "$ref": "Organization.schema.json#/definitions/Organization"
+              },
+             "period" : {
+                "description": "Processing outcome errror, partial or complete processing.",
+                "$ref": "Period.schema.json#/definitions/Period"
+              }
+           }
+         }
+      ]
+    }
+  }
+}
+

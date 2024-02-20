@@ -2,7 +2,7 @@ defmodule HL7.Terminology.CodeSystem do
   import HL7.Terminology.Hierarchy
   def show(name) do
       lvl = 1
-      file = "terminology/CodeSystem/CodeSystem-#{name}.json"
+      file = HL7.priv <> "terminology/CodeSystem/CodeSystem-#{name}.json"
       {_,objBin} = :file.read_file file
       schema = HL7.Loader.loadSchema("CodeSystem")
       obj = Jason.decode!(objBin)

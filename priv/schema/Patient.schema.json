@@ -1,0 +1,324 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/priv/schema/Patient.schema.json",
+  "$ref": "#/definitions/Patient",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "date": {
+      "description": "The date that the list was prepared.",
+      "type": "string",
+      "pattern": "-?([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+    },
+    "code": {
+      "pattern": "^[^\\s]+( [^\\s]+)*$",
+      "type": "string",
+      "description": "A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"
+    },
+    "uri": {
+      "pattern": "^\\S*$",
+      "type": "string",
+      "description": "String of characters used to identify a name or a resource"
+    },
+    "Patient": {
+      "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a Patient resource",
+          "const": "Patient"
+        },
+        "id": {
+          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+          "type": "string"
+        },
+        "meta": {
+          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+          "$ref": "Meta.schema.json#/definitions/Meta"
+        },
+        "implicitRules": {
+          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+          "$ref": "#/definitions/uri"
+        },
+        "language": {
+          "description": "The base language in which the resource is written.",
+          "$ref": "#/definitions/code"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+          "$ref": "Narrative.schema.json#/definitions/Narrative"
+        },
+        "contained": {
+          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+          "items": {
+            "$ref": "ResourceList.schema.json#/definitions/ResourceList"
+          },
+          "type": "array"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "An identifier for this patient.",
+          "items": {
+            "$ref": "Identifier.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "active": {
+          "description": "Whether this patient record is in active use. \nMany systems use this property to mark as non-current patients, such as those that have not been seen for a period of time based on an organization\u0027s business rules.\n\nIt is often used to filter patient lists to exclude inactive patients\n\nDeceased patients may also be marked as inactive for the same reasons, but may be active for some time after death.",
+          "type": "boolean"
+        },
+        "name": {
+          "description": "A name associated with the individual.",
+          "items": {
+            "$ref": "HumanName.schema.json#/definitions/HumanName"
+          },
+          "type": "array"
+        },
+        "telecom": {
+          "description": "A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted.",
+          "items": {
+            "$ref": "ContactPoint.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "gender": {
+          "description": "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.",
+          "enum": [
+            "male",
+            "female",
+            "other",
+            "unknown"
+          ]
+        },
+        "birthDate": {
+          "description": "The date of birth for the individual.",
+          "$ref": "#/definitions/date"
+        },
+        "deceasedBoolean": {
+          "description": "Indicates if the individual is deceased or not.",
+          "pattern": "^true|false$",
+          "type": "boolean"
+        },
+        "deceasedDateTime": {
+          "description": "Indicates if the individual is deceased or not.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "address": {
+          "description": "An address for the individual.",
+          "items": {
+            "$ref": "Address.schema.json#/definitions/Address"
+          },
+          "type": "array"
+        },
+        "maritalStatus": {
+          "description": "This field contains a patient\u0027s most recent marital (civil) status.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "multipleBirthBoolean": {
+          "description": "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).",
+          "pattern": "^true|false$",
+          "type": "boolean"
+        },
+        "multipleBirthInteger": {
+          "description": "Indicates whether the patient is part of a multiple (boolean) or indicates the actual birth order (integer).",
+          "pattern": "^-?([0]|([1-9][0-9]*))$",
+          "type": "number"
+        },
+        "photo": {
+          "description": "Image of the patient.",
+          "items": {
+            "$ref": "Attachment.schema.json#/definitions/Attachment"
+          },
+          "type": "array"
+        },
+        "contact": {
+          "description": "A contact party (e.g. guardian, partner, friend) for the patient.",
+          "items": {
+            "$ref": "#/definitions/Patient_Contact"
+          },
+          "type": "array"
+        },
+        "communication": {
+          "description": "A language which may be used to communicate with the patient about his or her health.",
+          "items": {
+            "$ref": "#/definitions/Patient_Communication"
+          },
+          "type": "array"
+        },
+        "generalPractitioner": {
+          "description": "Patient\u0027s nominated care provider.",
+          "items": {
+            "$ref": "Reference.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "managingOrganization": {
+          "description": "Organization that is the custodian of the patient record.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "link": {
+          "description": "Link to another patient resource that concerns the same actual patient.",
+          "items": {
+            "$ref": "#/definitions/Patient_Link"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "resourceType"
+      ]
+    },
+    "Patient_Contact": {
+      "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "relationship": {
+          "description": "The nature of the relationship between the patient and the contact person.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "A name associated with the contact person.",
+          "$ref": "HumanName.schema.json#/definitions/HumanName"
+        },
+        "telecom": {
+          "description": "A contact detail for the person, e.g. a telephone number or an email address.",
+          "items": {
+            "$ref": "ContactPoint.schema.json#/definitions/ContactPoint"
+          },
+          "type": "array"
+        },
+        "address": {
+          "description": "Address for the contact person.",
+          "$ref": "Address.schema.json#/definitions/Address"
+        },
+        "gender": {
+          "description": "Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes.",
+          "enum": [
+            "male",
+            "female",
+            "other",
+            "unknown"
+          ]
+        },
+        "organization": {
+          "description": "Organization on behalf of which the contact is acting or for which the contact is working.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "period": {
+          "description": "The period during which this contact person or organization is valid to be contacted relating to this patient.",
+          "$ref": "Period.schema.json#/definitions/Period"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Patient_Communication": {
+      "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "language": {
+          "description": "The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "preferred": {
+          "description": "Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "language"
+      ]
+    },
+    "Patient_Link": {
+      "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "other": {
+          "description": "The other patient resource that the link refers to.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "type": {
+          "description": "The type of link between this patient resource and another patient resource.",
+          "enum": [
+            "replaced-by",
+            "replaces",
+            "refer",
+            "seealso"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "other"
+      ]
+    }
+  }
+}

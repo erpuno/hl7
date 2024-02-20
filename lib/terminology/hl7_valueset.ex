@@ -1,7 +1,7 @@
 defmodule HL7.Terminology.ValueSet do
   def show(name) do
       lvl = 1
-      file = "terminology/ValueSet/ValueSet-#{name}.json"
+      file = HL7.priv <> "terminology/ValueSet/ValueSet-#{name}.json"
       {_,objBin} = :file.read_file file
       schema = HL7.Loader.loadSchema("ValueSet")
       obj = Jason.decode!(objBin)

@@ -37,7 +37,7 @@ defmodule HL7.Validation do
   end
 
   def validateSample(name) do
-      file = "samples/#{name}/#{name}.json"
+      file = HL7.priv <>  "samples/#{name}/#{name}.json"
       {_,objBin} = :file.read_file file
 #     :io.format 'validateSample: ~p~n', [name]
       schema = HL7.Loader.loadSchema("#{name}")

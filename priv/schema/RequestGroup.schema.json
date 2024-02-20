@@ -1,0 +1,488 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/priv/schema/RequestGroup.schema.json",
+  "$ref": "#/definitions/RequestGroup",
+  "description": "see https://hl7.org/fhir/R4/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "Expression":{},
+    "date": {
+      "description": "The date that the list was prepared.",
+      "type": "string",
+      "pattern": "-?([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+    },
+    "canonical": {},
+    "dateTime": {
+      "description": "The date that the list was prepared.",
+      "type": "string",
+      "pattern": "-?([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+    },
+    "code": {
+      "pattern": "^[^\\s]+( [^\\s]+)*$",
+      "type": "string",
+      "description": "A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"
+    },
+    "uri": {
+      "pattern": "^\\S*$",
+      "type": "string",
+      "description": "String of characters used to identify a name or a resource"
+    },
+    "RequestGroup": {
+      "description": "A group of related requests that can be used to capture intended activities that have inter-dependencies such as \"give this medication after that one\".",
+      "properties": {
+        "resourceType": {
+          "description": "This is a RequestGroup resource",
+          "const": "RequestGroup"
+        },
+        "id": {
+          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+          "type": "string"
+        },
+        "meta": {
+          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+          "$ref": "Meta.schema.json#/definitions/Meta"
+        },
+        "implicitRules": {
+          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+          "$ref": "#/definitions/uri"
+        },
+        "_implicitRules": {
+          "description": "Extensions for implicitRules",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "language": {
+          "description": "The base language in which the resource is written.",
+          "$ref": "#/definitions/code"
+        },
+        "_language": {
+          "description": "Extensions for language",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+          "$ref": "Narrative.schema.json#/definitions/Narrative"
+        },
+        "contained": {
+          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope.",
+          "items": {
+            "$ref": "ResourceList.schema.json#/definitions/ResourceList"
+          },
+          "type": "array"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "Allows a service to provide a unique, business identifier for the request.",
+          "items": {
+            "$ref": "Identifier.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "instantiatesCanonical": {
+          "description": "A canonical URL referencing a FHIR-defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this request.",
+          "items": {
+            "$ref": "#/definitions/canonical"
+          },
+          "type": "array"
+        },
+        "_instantiatesCanonical": {
+          "description": "Extensions for instantiatesCanonical",
+          "items": {
+            "$ref": "Element.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "instantiatesUri": {
+          "description": "A URL referencing an externally defined protocol, guideline, orderset or other definition that is adhered to in whole or in part by this request.",
+          "items": {
+            "$ref": "#/definitions/uri"
+          },
+          "type": "array"
+        },
+        "_instantiatesUri": {
+          "description": "Extensions for instantiatesUri",
+          "items": {
+            "$ref": "Element.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "basedOn": {
+          "description": "A plan, proposal or order that is fulfilled in whole or in part by this request.",
+          "items": {
+            "$ref": "Reference.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "replaces": {
+          "description": "Completed or terminated request(s) whose function is taken by this new request.",
+          "items": {
+            "$ref": "Reference.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "groupIdentifier": {
+          "description": "A shared identifier common to all requests that were authorized more or less simultaneously by a single author, representing the identifier of the requisition, prescription or similar form.",
+          "$ref": "Identifier.schema.json#/definitions/Identifier"
+        },
+        "status": {
+          "description": "The current state of the request. For request groups, the status reflects the status of all the requests in the group.",
+          "$ref": "#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "intent": {
+          "description": "Indicates the level of authority/intentionality associated with the request and where the request fits into the workflow chain.",
+          "$ref": "#/definitions/code"
+        },
+        "_intent": {
+          "description": "Extensions for intent",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "priority": {
+          "description": "Indicates how quickly the request should be addressed with respect to other requests.",
+          "$ref": "#/definitions/code"
+        },
+        "_priority": {
+          "description": "Extensions for priority",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "A code that identifies what the overall request group is.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "subject": {
+          "description": "The subject for which the request group was created.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "encounter": {
+          "description": "Describes the context of the request group, if any.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "authoredOn": {
+          "description": "Indicates when the request group was created.",
+          "$ref": "#/definitions/dateTime"
+        },
+        "_authoredOn": {
+          "description": "Extensions for authoredOn",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "author": {
+          "description": "Provides a reference to the author of the request group.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "reasonCode": {
+          "description": "Describes the reason for the request group in coded or textual form.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "reasonReference": {
+          "description": "Indicates another resource whose existence justifies this request group.",
+          "items": {
+            "$ref": "Reference.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "note": {
+          "description": "Provides a mechanism to communicate additional information about the response.",
+          "items": {
+            "$ref": "Annotation.schema.json#/definitions/Annotation"
+          },
+          "type": "array"
+        },
+        "action": {
+          "description": "The actions, if any, produced by the evaluation of the artifact.",
+          "items": {
+            "$ref": "#/definitions/RequestGroup_Action"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "resourceType"
+      ]
+    },
+    "RequestGroup_Action": {
+      "description": "A group of related requests that can be used to capture intended activities that have inter-dependencies such as \"give this medication after that one\".",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "prefix": {
+          "description": "A user-visible prefix for the action.",
+          "type": "string"
+        },
+        "_prefix": {
+          "description": "Extensions for prefix",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "title": {
+          "description": "The title of the action displayed to a user.",
+          "type": "string"
+        },
+        "_title": {
+          "description": "Extensions for title",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "description": {
+          "description": "A short description of the action used to provide a summary to display to the user.",
+          "type": "string"
+        },
+        "_description": {
+          "description": "Extensions for description",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "textEquivalent": {
+          "description": "A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that might not be capable of interpreting it dynamically.",
+          "type": "string"
+        },
+        "_textEquivalent": {
+          "description": "Extensions for textEquivalent",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "priority": {
+          "description": "Indicates how quickly the action should be addressed with respect to other actions.",
+          "$ref": "#/definitions/code"
+        },
+        "_priority": {
+          "description": "Extensions for priority",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "code": {
+          "description": "A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a section of a documentation template.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "documentation": {
+          "description": "Didactic or other informational resources associated with the action that can be provided to the CDS recipient. Information resources can include inline text commentary and links to web resources.",
+          "items": {
+            "$ref": "RelatedArtifact.schema.json#/definitions/RelatedArtifact"
+          },
+          "type": "array"
+        },
+        "condition": {
+          "description": "An expression that describes applicability criteria, or start/stop conditions for the action.",
+          "items": {
+            "$ref": "#/definitions/RequestGroup_Condition"
+          },
+          "type": "array"
+        },
+        "relatedAction": {
+          "description": "A relationship to another action such as \"before\" or \"30-60 minutes after start of\".",
+          "items": {
+            "$ref": "#/definitions/RequestGroup_RelatedAction"
+          },
+          "type": "array"
+        },
+        "timingDateTime": {
+          "description": "An optional value describing when the action should be performed.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?$",
+          "type": "string"
+        },
+        "_timingDateTime": {
+          "description": "Extensions for timingDateTime",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "timingAge": {
+          "description": "An optional value describing when the action should be performed.",
+          "$ref": "Age.schema.json#/definitions/Age"
+        },
+        "timingPeriod": {
+          "description": "An optional value describing when the action should be performed.",
+          "$ref": "Period.schema.json#/definitions/Period"
+        },
+        "timingDuration": {
+          "description": "An optional value describing when the action should be performed.",
+          "$ref": "Duration.schema.json#/definitions/Duration"
+        },
+        "timingRange": {
+          "description": "An optional value describing when the action should be performed.",
+          "$ref": "Range.schema.json#/definitions/Range"
+        },
+        "timingTiming": {
+          "description": "An optional value describing when the action should be performed.",
+          "$ref": "Timing.schema.json#/definitions/Timing"
+        },
+        "participant": {
+          "description": "The participant that should perform or be responsible for this action.",
+          "items": {
+            "$ref": "Reference.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "The type of action to perform (create, update, remove).",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "groupingBehavior": {
+          "description": "Defines the grouping behavior for the action and its children.",
+          "$ref": "#/definitions/code"
+        },
+        "_groupingBehavior": {
+          "description": "Extensions for groupingBehavior",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "selectionBehavior": {
+          "description": "Defines the selection behavior for the action and its children.",
+          "$ref": "#/definitions/code"
+        },
+        "_selectionBehavior": {
+          "description": "Extensions for selectionBehavior",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "requiredBehavior": {
+          "description": "Defines expectations around whether an action is required.",
+          "$ref": "#/definitions/code"
+        },
+        "_requiredBehavior": {
+          "description": "Extensions for requiredBehavior",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "precheckBehavior": {
+          "description": "Defines whether the action should usually be preselected.",
+          "$ref": "#/definitions/code"
+        },
+        "_precheckBehavior": {
+          "description": "Extensions for precheckBehavior",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "cardinalityBehavior": {
+          "description": "Defines whether the action can be selected multiple times.",
+          "$ref": "#/definitions/code"
+        },
+        "_cardinalityBehavior": {
+          "description": "Extensions for cardinalityBehavior",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "resource": {
+          "description": "The resource that is the target of the action (e.g. CommunicationRequest).",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "action": {
+          "description": "Sub actions.",
+          "items": {
+            "$ref": "#/definitions/RequestGroup_Action"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RequestGroup_Condition": {
+      "description": "A group of related requests that can be used to capture intended activities that have inter-dependencies such as \"give this medication after that one\".",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "kind": {
+          "description": "The kind of condition.",
+          "$ref": "#/definitions/code"
+        },
+        "_kind": {
+          "description": "Extensions for kind",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "expression": {
+          "description": "An expression that returns true or false, indicating whether or not the condition is satisfied.",
+          "$ref": "#/definitions/Expression"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RequestGroup_RelatedAction": {
+      "description": "A group of related requests that can be used to capture intended activities that have inter-dependencies such as \"give this medication after that one\".",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "actionId": {
+          "description": "The element id of the action this is related to.",
+          "type": "string"
+        },
+        "_actionId": {
+          "description": "Extensions for actionId",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "relationship": {
+          "description": "The relationship of this action to the related action.",
+          "$ref": "#/definitions/code"
+        },
+        "_relationship": {
+          "description": "Extensions for relationship",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "offsetDuration": {
+          "description": "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before.",
+          "$ref": "Duration.schema.json#/definitions/Duration"
+        },
+        "offsetRange": {
+          "description": "A duration or range of durations to apply to the relationship. For example, 30-60 minutes before.",
+          "$ref": "Range.schema.json#/definitions/Range"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

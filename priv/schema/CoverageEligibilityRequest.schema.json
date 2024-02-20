@@ -1,0 +1,453 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/priv/schema/CoverageEligibilityRequest.schema.json",
+  "$ref": "#/definitions/CoverageEligibilityRequest",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "dateTime": {
+      "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]{1,9})?)?)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)?)?)?$",
+      "type": "string",
+      "description": "A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a UTC offset SHALL be populated. The format is a union of the schema types gYear, gYearMonth, date and dateTime. Seconds must be provided due to schema type constraints but may be zero-filled and may be ignored.                 Dates SHALL be valid dates."
+    },
+    "positiveInt": {
+        "pattern": "[1-9][0-9]*",
+        "description": "Extensions for defaultValuePositiveInt",
+        "type": "number"
+    },
+    "code": {
+      "pattern": "^[^\\s]+( [^\\s]+)*$",
+      "type": "string",
+      "description": "A string which has at least one character and no leading or trailing whitespace and where there is no whitespace other than single spaces in the contents"
+    },
+    "uri": {
+      "pattern": "^\\S*$",
+      "type": "string",
+      "description": "String of characters used to identify a name or a resource"
+    },
+    "CoverageEligibilityRequest": {
+      "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.",
+      "properties": {
+        "resourceType": {
+          "description": "This is a CoverageEligibilityRequest resource",
+          "const": "CoverageEligibilityRequest"
+        },
+        "id": {
+          "description": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+          "type": "string"
+        },
+        "meta": {
+          "description": "The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.",
+          "$ref": "Meta.schema.json#/definitions/Meta"
+        },
+        "implicitRules": {
+          "description": "A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.",
+          "$ref": "#/definitions/uri"
+        },
+        "_implicitRules": {
+          "description": "Extensions for implicitRules",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "language": {
+          "description": "The base language in which the resource is written.",
+          "$ref": "#/definitions/code"
+        },
+        "_language": {
+          "description": "Extensions for language",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "text": {
+          "description": "A human-readable narrative that contains a summary of the resource and can be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it \"clinically safe\" for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety.",
+          "$ref": "Narrative.schema.json#/definitions/Narrative"
+        },
+        "contained": {
+          "description": "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, nor can they have their own independent transaction scope. This is allowed to be a Parameters resource if and only if it is referenced by a resource that provides context/meaning.",
+          "items": {
+            "$ref": "ResourceList.schema.json#/definitions/ResourceList"
+          },
+          "type": "array"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the resource and that modifies the understanding of the element that contains it and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "identifier": {
+          "description": "A unique identifier assigned to this coverage eligiblity request.",
+          "items": {
+            "$ref": "Identifier.schema.json#/definitions/Identifier"
+          },
+          "type": "array"
+        },
+        "status": {
+          "description": "The status of the resource instance.",
+          "$ref": "#/definitions/code"
+        },
+        "_status": {
+          "description": "Extensions for status",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "priority": {
+          "description": "When the requestor expects the processor to complete processing.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "purpose": {
+          "description": "Code to specify whether requesting: prior authorization requirements for some service categories or billing codes; benefits for coverages specified or discovered; discovery and return of coverages for the patient; and/or validation that the specified coverage is in-force at the date/period specified or \u0027now\u0027 if not specified.",
+          "items": {
+            "$ref": "#/definitions/code"
+          },
+          "type": "array"
+        },
+        "_purpose": {
+          "description": "Extensions for purpose",
+          "items": {
+            "$ref": "Element.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "patient": {
+          "description": "The party who is the beneficiary of the supplied coverage and for whom eligibility is sought.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "event": {
+          "description": "Information code for an event with a corresponding date or period.",
+          "items": {
+            "$ref": "#/definitions/CoverageEligibilityRequest_Event"
+          },
+          "type": "array"
+        },
+        "servicedDate": {
+          "description": "The date or dates when the enclosed suite of services were performed or completed.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?$",
+          "type": "string"
+        },
+        "_servicedDate": {
+          "description": "Extensions for servicedDate",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "servicedPeriod": {
+          "description": "The date or dates when the enclosed suite of services were performed or completed.",
+          "$ref": "Period.schema.json#/definitions/Period"
+        },
+        "created": {
+          "description": "The date when this resource was created.",
+          "$ref": "#/definitions/dateTime"
+        },
+        "_created": {
+          "description": "Extensions for created",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "enterer": {
+          "description": "Person who created the request.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "provider": {
+          "description": "The provider which is responsible for the request.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "insurer": {
+          "description": "The Insurer who issued the coverage in question and is the recipient of the request.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "facility": {
+          "description": "Facility where the services are intended to be provided.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "supportingInfo": {
+          "description": "Additional information codes regarding exceptions, special considerations, the condition, situation, prior or concurrent issues.",
+          "items": {
+            "$ref": "#/definitions/CoverageEligibilityRequest_SupportingInfo"
+          },
+          "type": "array"
+        },
+        "insurance": {
+          "description": "Financial instruments for reimbursement for the health care products and services.",
+          "items": {
+            "$ref": "#/definitions/CoverageEligibilityRequest_Insurance"
+          },
+          "type": "array"
+        },
+        "item": {
+          "description": "Service categories or billable services for which benefit details and/or an authorization prior to service delivery may be required by the payor.",
+          "items": {
+            "$ref": "#/definitions/CoverageEligibilityRequest_Item"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patient",
+        "insurer",
+        "resourceType"
+      ]
+    },
+    "CoverageEligibilityRequest_Event": {
+      "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "A coded event such as when a service is expected or a card printed.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "whenDateTime": {
+          "description": "A date or period in the past or future indicating when the event occurred or is expectd to occur.",
+          "pattern": "^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]{1,9})?)?)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)?)?)?$",
+          "type": "string"
+        },
+        "_whenDateTime": {
+          "description": "Extensions for whenDateTime",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "whenPeriod": {
+          "description": "A date or period in the past or future indicating when the event occurred or is expectd to occur.",
+          "$ref": "Period.schema.json#/definitions/Period"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "CoverageEligibilityRequest_SupportingInfo": {
+      "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "sequence": {
+          "description": "A number to uniquely identify supporting information entries.",
+          "$ref": "#/definitions/positiveInt"
+        },
+        "_sequence": {
+          "description": "Extensions for sequence",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "information": {
+          "description": "Additional data or information such as resources, documents, images etc. including references to the data or the actual inclusion of the data.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "appliesToAll": {
+          "description": "The supporting materials are applicable for all detail items, product/servce categories and specific billing codes.",
+          "type": "boolean"
+        },
+        "_appliesToAll": {
+          "description": "Extensions for appliesToAll",
+          "$ref": "Element.schema.json#/definitions/Element"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "information"
+      ]
+    },
+    "CoverageEligibilityRequest_Insurance": {
+      "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "focal": {
+          "description": "A flag to indicate that this Coverage is to be used for evaluation of this request when set to true.",
+          "type": "boolean"
+        },
+        "_focal": {
+          "description": "Extensions for focal",
+          "$ref": "Element.schema.json#/definitions/Element"
+        },
+        "coverage": {
+          "description": "Reference to the insurance card level information contained in the Coverage resource. The coverage issuing insurer will use these details to locate the patient\u0027s actual coverage within the insurer\u0027s information system.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "businessArrangement": {
+          "description": "A business agreement number established between the provider and the insurer for special business processing purposes.",
+          "type": "string"
+        },
+        "_businessArrangement": {
+          "description": "Extensions for businessArrangement",
+          "$ref": "Element.schema.json#/definitions/Element"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coverage"
+      ]
+    },
+    "CoverageEligibilityRequest_Item": {
+      "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "supportingInfoSequence": {
+          "description": "Exceptions, special conditions and supporting information applicable for this service or product line.",
+          "items": {
+            "$ref": "#/definitions/positiveInt"
+          },
+          "type": "array"
+        },
+        "_supportingInfoSequence": {
+          "description": "Extensions for supportingInfoSequence",
+          "items": {
+            "$ref": "Element.schema.json#/definitions/Element"
+          },
+          "type": "array"
+        },
+        "category": {
+          "description": "Code to identify the general type of benefits under which products and services are provided.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "productOrService": {
+          "description": "This contains the product, service, drug or other billing code for the item.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "modifier": {
+          "description": "Item typification or modifiers codes to convey additional context for the product or service.",
+          "items": {
+            "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+          },
+          "type": "array"
+        },
+        "provider": {
+          "description": "The practitioner who is responsible for the product or service to be rendered to the patient.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "quantity": {
+          "description": "The number of repetitions of a service or product.",
+          "$ref": "Quantity.schema.json#/definitions/Quantity"
+        },
+        "unitPrice": {
+          "description": "The amount charged to the patient by the provider for a single unit.",
+          "$ref": "Money.schema.json#/definitions/Money"
+        },
+        "facility": {
+          "description": "Facility where the services will be provided.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        },
+        "diagnosis": {
+          "description": "Patient diagnosis for which care is sought.",
+          "items": {
+            "$ref": "#/definitions/CoverageEligibilityRequest_Diagnosis"
+          },
+          "type": "array"
+        },
+        "detail": {
+          "description": "The plan/proposal/order describing the proposed service in detail.",
+          "items": {
+            "$ref": "Reference.schema.json#/definitions/Reference"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "CoverageEligibilityRequest_Diagnosis": {
+      "description": "The CoverageEligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an CoverageEligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.",
+      "properties": {
+        "id": {
+          "description": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+          "type": "string"
+        },
+        "extension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "modifierExtension": {
+          "description": "May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element\u0027s descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and managable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.\n\nModifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).",
+          "items": {
+            "$ref": "Extension.schema.json#/definitions/Extension"
+          },
+          "type": "array"
+        },
+        "diagnosisCodeableConcept": {
+          "description": "The nature of illness or problem in a coded form or as a reference to an external defined Condition.",
+          "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+        },
+        "diagnosisReference": {
+          "description": "The nature of illness or problem in a coded form or as a reference to an external defined Condition.",
+          "$ref": "Reference.schema.json#/definitions/Reference"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    }
+  }
+}

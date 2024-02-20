@@ -79,10 +79,10 @@ $ curl -X GET "http://localhost:9234/\$meta"
         "name": "return",
         "valueMeta": {
           "profile": [
-            "https://hl7.erp.uno/schema/Person.schema.json",
-            "https://hl7.erp.uno/schema/Patient.schema.json",
-            "https://hl7.erp.uno/schema/Organization.schema.json",
-            "https://hl7.erp.uno/schema/Location.schema.json"
+            "https://hl7.erp.uno/priv/schema/Person.schema.json",
+            "https://hl7.erp.uno/priv/schema/Patient.schema.json",
+            "https://hl7.erp.uno/priv/schema/Organization.schema.json",
+            "https://hl7.erp.uno/priv/schema/Location.schema.json"
           ],
           "security": [
             {
@@ -146,7 +146,7 @@ Internal data types: `instant`, `time`, `date`, `dateTime`, `base64binary`, `dec
 
 ### General
 
-General-purpose types: `Address`, `Age`, `Annotation`, `Attachment`, 
+General-purpose types: `Address`, `Age`, `Annotation`, `Attachment`,
 `ContactPoint`, `Count`, `Distance`, `Dosage`, `Duration`, `Element`,
 `HumanName`, `Identifier`, `Meta`, `Money`, `Period`, `Quantity`,
 `Ratio`, `Range`, `RatioRange`, `Reference`, `SampledData`, `Timing`.

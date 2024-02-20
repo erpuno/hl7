@@ -1,6 +1,6 @@
 defmodule HL7.Terminology do
   def show(name) do
-      file = "terminology/TerminologyCapabilities/TerminologyCapabilities-#{name}.json"
+      file = HL7.priv <> "terminology/TerminologyCapabilities/TerminologyCapabilities-#{name}.json"
       {_,objBin} = :file.read_file file
       schema = HL7.Loader.loadSchema("TerminologyCapabilities")
       obj = Jason.decode!(objBin)

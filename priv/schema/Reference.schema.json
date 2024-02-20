@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/priv/schema/Reference.schema.json",
+  "$ref": "#/definitions/Reference",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "Period": {
+      "allOf": [
+        {
+          "description": "A time period defined by a start and end date and optionally time.",
+          "properties": {
+            "start": {
+              "description": "The start of the period. The boundary is inclusive.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "end": {
+              "description": "The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            }
+          }
+        }
+      ]
+    },
+    "Identifier": {
+      "allOf": [
+        {
+          "description": "A technical identifier - identifies some entity uniquely and unambiguously.",
+          "properties": {
+            "use": {
+              "description": "The purpose of this identifier.",
+              "enum": ["usual", "official", "temp", "secondary"],
+              "type": "string"
+            },
+            "type": {
+              "description": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+              "$ref": "CodeableConcept.schema.json#/definitions/CodeableConcept"
+            },
+            "system": {
+              "description": "Establishes the namespace for the value - that is, a URL that describes a set values that are unique.",
+              "type": "string"
+            },
+            "value": {
+              "description": "The portion of the identifier typically relevant to the user and which is unique within the context of the system.",
+              "type": "string"
+            },
+            "period": {
+              "description": "Time period during which identifier is/was valid for use.",
+              "$ref": "#/definitions/Period"
+            },
+            "assigner": {
+              "description": "Organization that issued/manages the identifier.",
+              "$ref": "#/definitions/Reference"
+            }
+          }
+        }
+      ]
+    },
+    "Reference": {
+      "allOf": [
+        {
+          "description": "A reference from one resource to another.",
+          "properties": {
+            "reference": {
+              "description": "A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with \u0027#\u0027) refer to contained resources.",
+              "type": "string"
+            },
+            "identifier": {
+              "description": "An identifier for the other resource. This is used when there is no way to reference the other resource directly, either because the entity is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.",
+              "$ref": "#/definitions/Identifier"
+            },
+            "display": {
+              "description": "Plain text narrative that identifies the resource in addition to the resource reference.",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

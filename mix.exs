@@ -3,7 +3,7 @@ defmodule HL7.Mixfile do
 
   def project do
     [ app: :hl7,
-      version: "1.0.0",
+      version: "1.0.1",
       elixir: ">= 1.9.0",
       description: "ISO/HL7 FHIR Application Server",
       deps: deps(),
@@ -12,7 +12,7 @@ defmodule HL7.Mixfile do
   end
 
   def package do
-    [ files: ["lib", "include", "priv", "schema", "samples", "mix.exs", "README.md", "LICENSE"],
+    [ files: ["lib", "include", "priv", "mix.exs", "README.md", "LICENSE"],
       maintainers: ["Namdak Tonpa"],
       licenses: ["ISC"],
       links: %{"GitHub" => "https://github.com/erpuno/hl7"}
@@ -20,7 +20,7 @@ defmodule HL7.Mixfile do
   end
 
   def application do
-    [ extra_applications: [:logger, :plug_cowboy, :xmerl],
+    [ extra_applications: [:logger, :plug_cowboy],
       mod: {HL7.Application,[]}
     ]
   end

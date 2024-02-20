@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hl7.erp.uno/priv/schema/Age.schema.json",
+  "$ref": "#/definitions/Age",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
+  "definitions": {
+    "Age": {
+      "allOf": [
+        {
+          "description": "A duration of time during which an organism (or a process) has existed.",
+          "properties": {}
+        }
+      ]
+    }
+  }
+}
