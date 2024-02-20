@@ -6,7 +6,7 @@ defmodule HL7.Application do
       :io.format "JSON Schema: draft-07, FHIR Protocol Version: 5.0.0.~n"
   end
   def start(_, _) do
-      children = [ { Plug.Cowboy, scheme: :http, plug: HL7.Endpoint, options: [port: port()] } ]
+      children = [ { Bandit, scheme: :http, plug: HL7.Endpoint, port: port() } ]
       opts = [strategy: :one_for_one, name: App.Supervisor]
       banner()
       Supervisor.start_link(children, opts)

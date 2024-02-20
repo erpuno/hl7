@@ -3,11 +3,12 @@ defmodule HL7.Mixfile do
 
   def project do
     [ app: :hl7,
-      version: "1.0.1",
+      version: "1.0.2",
       elixir: ">= 1.9.0",
       description: "ISO/HL7 FHIR Application Server",
       deps: deps(),
       package: package(),
+      releases: [release: [include_executables_for: [:unix], cookie: "ERP1:FHIR"]]
     ]
   end
 
@@ -20,7 +21,7 @@ defmodule HL7.Mixfile do
   end
 
   def application do
-    [ extra_applications: [:logger, :plug_cowboy],
+    [ extra_applications: [:logger, :bandit],
       mod: {HL7.Application,[]}
     ]
   end
@@ -28,7 +29,8 @@ defmodule HL7.Mixfile do
   def deps do
     [
       {:ex_doc, "~> 0.21", only: :dev},
-      {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.15.3"},
+      {:bandit, "~> 1.0"},
       {:jason, "~> 1.2"}
     ]
   end
