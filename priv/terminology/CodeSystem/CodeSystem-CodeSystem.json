@@ -161,12 +161,12 @@
   },
   {
     "id" : "EHCS:eHealth/ICPC2/reasons",
-    "code" : "ICPC2UKR",
+    "code" : "ICPC2EUKR",
     "display" : "Класифікатор первинної медичної допомоги"
   },
   {
     "id" : "EHCS:eHealth/ICPC2/actions",
-    "code" : "ICPC2UKR-actions",
+    "code" : "ICPC2EUKR-actions",
     "display" : "Класифікатор дій первинної медичної допомоги"
   },
   {
