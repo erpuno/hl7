@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://hl7.org/fhir/json-schema/SubstanceProtein.schema.json",
+  "$id": "https://hl7.erp.uno/priv/schema/SubstanceProtein.schema.json",
   "$ref": "#/definitions/SubstanceProtein",
-  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
     "code": {
       "pattern": "^[^\\s]+( [^\\s]+)*$",

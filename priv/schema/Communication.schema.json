@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://hl7.epr.uno/schema/Communication.schema.json",
+  "$id": "https://hl7.epr.uno/priv/schema/Communication.schema.json",
   "$ref": "#/definitions/Communication",
   "description": "see https://hl7.org/fhir/R5/json.html for information about the FHIR Json Schemas",
   "definitions": {
