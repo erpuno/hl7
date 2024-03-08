@@ -38,4 +38,13 @@ defmodule HL7 do
   def showValueSet(name),    do: HL7.Terminology.ValueSet.show(name)
   def showTerminology(name), do: HL7.Terminology.show(name)
   def priv(),                do: :erlang.iolist_to_binary(:application.get_env(:hl7, :priv_dir, :code.priv_dir(:hl7))) <> "/"
+
+
+  def readEndpoint(name) do # markdown table
+      {:ok,file} = :file.read_file name
+      :lists.map(fn x ->
+         [a,b,c] = :lists.map(fn y -> :erlang.iolist_to_binary(:string.trim(y)) end, :string.tokens(x,'|'))
+         {:erlang.binary_to_list(b),:erlang.binary_to_atom(c),a}
+      end, :string.tokens(:erlang.binary_to_list(file),'\n'))
+  end
 end

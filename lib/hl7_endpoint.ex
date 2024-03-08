@@ -1,6 +1,6 @@
 defmodule HL7.Endpoint do
       use Plug.Router
-     plug Plug.Logger
+#     plug Plug.Logger
      plug :match
      plug :dispatch
      plug Plug.Parsers, parsers: [:json], json_decoder: Jason

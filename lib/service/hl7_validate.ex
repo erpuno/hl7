@@ -1,6 +1,6 @@
 defmodule HL7.Validate do
   import Plug.Conn
-  def validate(conn,_,type,id,"$validate" = spec) do
+  def validate(conn,_,type,_id,"$validate" = _spec) do
        fun = fn
              (%Xema.ValidationError{message: _, reason: %{required: req}}, _path, acc) ->
                fields = :string.join :lists.map(fn x -> :erlang.binary_to_list(x) end, req), ','
@@ -44,7 +44,7 @@ defmodule HL7.Validate do
                   "severity" => "information",
                   "code" => "informational"}]
        end
-       :io.format 'POST/4:#{type}#{id}/#{spec}: ~p (~pKiB)', [res,:erlang.round(:erlang.size(body) / 1024)]
+#       :io.format 'POST/4:#{type}#{id}/#{spec}: ~p (~pKiB)', [res,:erlang.round(:erlang.size(body) / 1024)]
        send_resp(conn, 200, HL7.Service.encode(%{"resourceType" => "OperationOutcome", "issues" => res}))
   end
 end
