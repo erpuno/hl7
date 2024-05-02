@@ -15,7 +15,7 @@
     "value" : "urn:oid:2.16.840.1.113883.4.642.22.3"
   }],
   "name" : "AustalianHealthcareIdentifierIndividual",
-  "title" : "Austalian Healthcare Identifier - Individual",
+  "title" : "Austalian Healthcare Identifier — Individual",
   "status" : "active",
   "kind" : "identifier",
   "date" : "2015-08-31",

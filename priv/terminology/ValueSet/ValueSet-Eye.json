@@ -1,0 +1,39 @@
+    {
+      "resourceType": "ValueSet",
+      "id": "eye",
+      "identifier": [
+        {
+          "system": "http://loinc.org",
+          "value": "http://loinc.org/ValueSet/LL355-9"
+        }
+      ],
+      "name": "GCS Eye Value Set",
+      "status": "active",
+      "description": "LOINC ANSWER LIST    (LL355-9)",
+      "compose": {
+        "include": [
+          {
+            "system": "http://loinc.org",
+            "concept": [
+              {
+                "code": "LA6553-7",
+                "display": "No eye opening"
+              },
+              {
+                "code": "LA6554-5",
+                "display": "Eye opening to pain"
+              },
+              {
+                "code": "LA6555-2",
+                "value": "x",
+                "display": "Eye opening to verbal command"
+              },
+              {
+                "code": "LA6556-0",
+                "display": "Eyes open spontaneously"
+              }
+            ]
+          }
+        ]
+      }
+    }

@@ -1,0 +1,139 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "Observation Codes Rehab Terminology 2.0 Package",
+  "meta" : {  "lastUpdated" : "2024-02-13T22:01:30.310+00:00",
+                  "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablevalueset"] },
+  "text" : { "status" : "generated", "div" : "<div></div>" },
+  "url" : "http://hl7.org/fhir/ValueSet/rehab-observation-codes",
+  "version" : "6.0.0-cibuild",
+  "name" : "ObservationCodes",
+  "title" : "Observation Codes",
+  "status" : "draft",
+  "experimental" : true,
+  "publisher" : "eHealth/FHIR",
+  "description" : "Indicates the type of Observation.",
+  "jurisdiction" : [ { "coding" : [{ "system" : "http://moz.gov.ua", "code" : "1", "display" : "Ukraine" }] }],
+  "copyright" : "eHealth",
+  "compose" : {
+    "include" : [
+      {
+        "system" : "http://loinc.org",
+        "concept" : [ { "code" : "LA72107-6", "display" : "Mini-Mental State Examination [MMSE]" },
+                      { "code" : "LL27976-2", "scoreRange": "0-30", "display" : "СУМАРНИЙ БАЛ [MMSE] " }
+                    ]
+      },
+      {
+        "system" : "http://lacounty.gov",
+        "concept" : [ { "code" : "RLA",
+                        "display" : "Rancho Los Amigos",
+                        "concept": [ { "id": "RLA-01", "code" : "Рівень I", "display" : "Відповідь відсутня/повна допомога" },
+                                     { "id": "RLA-02", "code" : "Рівень II", "display" : "Узагальнена відповідь/повна допомога" },
+                                     { "id": "RLA-03", "code" : "Рівень III", "display" : "Локалізована відповідь/повна допомога" },
+                                     { "id": "RLA-04", "code" : "Рівень IV", "display" : "Спантеличеність і збентеження/макс. доп." },
+                                     { "id": "RLA-05", "code" : "Рівень V", "display" : "Спантеличеність, невідповідність/макс. доп." },
+                                     { "id": "RLA-06", "code" : "Рівень VI", "display" : "Спантеличеність, відповідність/серед. доп." },
+                                     { "id": "RLA-07", "code" : "Рівень VII", "display" : "Автоматичність, відповідність/мін. доп." },
+                                     { "id": "RLA-08", "code" : "Рівень VIII", "display" : "Цілеспрямованість, відповідність stand by assist)" },
+                                     { "id": "RLA-09", "code" : "Рівень IX", "display" : "Цілеспрямованість, відповідність (on demand)" },
+                                     { "id": "RLA-10", "code" : "Рівень X", "display" : "Модифікована незалежність" }
+                                   ] } ]
+      },
+      {
+        "system" : "bartel.idx",
+        "concept" : [ { "code" : "LL5785-2", "display" : "Індекс Бартекл", "concept":
+                    [ { "id": "1", "code" : "LL5785-2", "display" : "eHealth/LOINC/LL5785-2", "concept": [
+                      { "id": "1.1", "code" : "LA24937-7", "display" : "повністю залежить" },
+                      { "id": "1.2", "code" : "LA31630-9", "display" : "частково потребує допомоги" },
+                      { "id": "1.3", "code" : "LA12302-8", "display" : "не потребує допомоги" },
+                      { "id": "1.4", "code" : "LA31633-3", "display" : "переміщення неможливе" } ] },
+                      { "id": "2", "code" : "LL5787-8", "display" : "eHealth/LOINC/LL5787-8", "concept": [
+                      { "id": "2.1", "code" : "LA31633-3", "display" : "переміщення неможливе" },
+                      { "id": "2.2", "code" : "LA31634-1", "display" : "потрібна значна фізична допомога" },
+                      { "id": "2.3", "code" : "LA31635-8", "display" : "потрібна незначна допомога" },
+                      { "id": "2.4", "code" : "LA12302-8", "display" : "не потребує допомоги" } ] },
+                      { "id": "2.5", "code" : "LL5777-9", "display" : "eHealth/LOINC/LL5777-9", "concept": [
+                      { "id": "2.6", "code" : "LA31643-2", "display" : "повністю залежний" },
+                      { "id": "2.7", "code" : "LA31644-0", "display" : "незалежний" } ] },
+                      { "id": "3", "code" : "LL5786-0", "display" : "eHealth/LOINC/LL5786-0", "concept": [
+                      { "id": "3.1", "code" : "LA12304-4", "display" : "повністю залежний від оточуючих" },
+                      { "id": "3.2", "code" : "LA31631-7", "display" : "потребує деякої допомоги" },
+                      { "id": "3.3", "code" : "LA31632-5", "display" : "не потребує допомоги" } ] },
+                      { "id": "4", "code" : "LL5788-6", "display" : "eHealth/LOINC/LL5788-6", "concept": [
+                      { "id": "4.1", "code" : "LA12304-4", "display" : "повністю залежний від оточуючих" },
+                      { "id": "4.2", "code" : "LA31636-6", "display" : "незалежний від оточуючих" } ] },
+                      { "id": "5", "code" : "LL5790-2", "display" : "eHealth/LOINC/LL5790-2", "concept": [
+                      { "id": "5.1", "code" : "LA31639-0", "display" : "не здатний до переміщення" },
+                      { "id": "5.2", "code" : "LA31640-8 ", "display" : "здатний до незалежного пересування в інвалідному візку" },
+                      { "id": "5.3", "code" : "LA31641-6", "display" : "може ходити з допомогою однієї особи або двох осіб" },
+                      { "id": "5.4", "code" : "LA31642-4", "display" : "не залежний від оточуючих" } ] },
+                      { "id": "6", "code" : "LL5783-7", "display" : "eHealth/LOINC/LL5783-7", "concept": [
+                      { "id": "6.1", "code" : "LA24937-7", "display" : "не здатний підніматись по сходах" },
+                      { "id": "6.2", "code" : "LA31631-7", "display" : "потрібна фізична підтримка" },
+                      { "id": "6.3", "code" : "LA12302-8 ", "display" : "не потребує допомоги" } ] },
+                      { "id": "7", "code" : "LL5789-4", "display" : "eHealth/LOINC/LL5789-4", "concept": [
+                      { "id": "7.1", "code" : "LA12304-4", "display" : "повністю залежний від оточуючих" },
+                      { "id": "7.2", "code" : "LA31637-4", "display" : "частково потребує допомоги" },
+                      { "id": "7.3", "code" : "LA31638-2", "display" : "не потребує допомоги" } ] },
+                      { "id": "8", "code" : "LL5766-2", "display" : "eHealth/LOINC/LL5766-2", "concept": [
+                      { "id": "8.1", "code" : "LA31627-5", "display" : "нетримання" },
+                      { "id": "8.2", "code" : "LA31626-7", "display" : "випадкові інциденти нетримання" },
+                      { "id": "8.3", "code" : "LA31625-9", "display" : "повний контроль" } ] },
+                      { "id": "9", "code" : "LL5782-9", "display" : "eHealth/LOINC/LL5782-9", "concept": [
+                      { "id": "9.1", "code" : "LA31628-3", "display" : "нетримання" },
+                      { "id": "9.2", "code" : "LA31626-7", "display" : "випадкові інциденти нетримання" },
+                      { "id": "9.3", "code" : "LA31625-9", "display" : "повний контроль" } ] }
+                    ] } ]
+      },
+      {
+        "system" : "asia",
+        "code": "LL5900-7",
+        "display": "eHealth/LOINC/LL5900-7",
+        "concept" : [ { "code" : "LL5785-2", "display" : "Ураження (ASIA)",
+        "concept" : [ { "id" : "asia.1", "code" : "LA13487-6", "display" : "Повне ураження" },
+                      { "id" : "asia.2", "code" : "LA14518-7", "display" : "Неповне сенсорне ураження" },
+                      { "id" : "asia.3", "code" : "LA14519-5", "display" : "Неповне моторне ураження" },
+                      { "id" : "asia.4", "code" : "LA14520-3", "display" : "Неповне моторне ураження" },
+                      { "id" : "asia.5", "code" : "LA13503-0", "display" : "Норма" },
+                      { "id" : "asia.6", "code" : "LA32111-9", "display" : "Не підлягає оцінці / Не застосовується " }
+                     ] } ]
+      },
+      {
+        "system" : "asia.syn",
+        "display": "ASIA_SYNDROME",
+        "code": "eHealth/LOINC/ASIA_SYNDROME",
+        "concept" : [ { "code" : "LL5785-2", "display" : "Синдроми (ASIA)",
+        "concept" : [ { "code" : "AS-1", "score": "1", "display" : "Повне пошкодження спинного мозку" },
+                      { "code" : "AS-2", "score": "2", "display" : "Синдром пошкод. центр. част. спинного мозку" },
+                      { "code" : "AS-3", "score": "3", "display" : "Синдром пошкод. поло. поперечника спинного мозку" },
+                      { "code" : "AS-4", "score": "4", "display" : "Синдром передніх стовпів спинного мозку" },
+                      { "code" : "AS-5", "score": "5", "display" : "Синдром задніх стовпів спинного мозку" },
+                      { "code" : "AS-6", "score": "6", "display" : "Синдром конуса спинного мозку" },
+                      { "code" : "AS-7", "score": "7", "display" : "Синдром кінського хвоста" }
+                     ] } ]
+      },
+      {
+        "system" : "whodas.quest",
+        "display": "WHODAS 2.0",
+        "code": "eHealth/LOINC/WHODAS_2.0",
+        "concept" : [ { "code" : "N/A", "display" : "WHODAS 2.0",
+        "concept" : [ { "code" : "1.1", "display" : "Зосередженням на чомусь протягом десяти хвилин ?" },
+                      { "code" : "1.2", "display" : "Запам’ятовуванням виконати щось важливе ?" },
+                      { "code" : "6.8", "display" : "Наскільки великі проблеми виникали у вас в тому, щоб робити щось самостійно для відпочинку або задоволення ?" },
+                      { "code" : "H1", "display" : "Загалом за останні 30 днів упродовж скількох днів були ці труднощі ?" },
+                      { "code" : "H2", "display" : "За останні 30 днів протягом скількох днів були ви були повністю не в змозі займатися звичайною діяльністю або працювати через будь-які проблеми зі станом здоров’я ?" },
+                      { "code" : "H3", "display" : "Упродовж останніх 30 днів на скільки днів ви скоротили або зменшили повсякденну або робочу активність через погіршення стану здоров’я ? Не враховувайте дні, коли ви були абсолютно не в змозі щось робити." }
+                    ] } ]
+      },
+      {
+        "system" : "whodas.answer",
+        "display": "WHODAS 2.0",
+        "code": "eHealth/LOINC/WHODAS_ANSWER",
+        "concept" : [ { "code" : "N/A", "display" : "WHODAS 2.0 ANSWER",
+        "concept" : [ { "code" : "WHODAS-A-1", "display" : "Зосередженням на чомусь протягом десяти хвилин ?" },
+                      { "code" : "WHODAS-A-2", "display" : "Запам’ятовуванням виконати щось важливе ?" },
+                      { "code" : "WHODAS-A-3", "display" : "Упродовж останніх 30 днів на скільки днів ви скоротили або зменшили повсякденну або робочу активність через погіршення стану здоров’я ? Не враховувайте дні, коли ви були абсолютно не в змозі щось робити." }
+                    ] } ]
+      }
+    ]
+  }
+}

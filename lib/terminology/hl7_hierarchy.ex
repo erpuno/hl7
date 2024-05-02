@@ -7,6 +7,7 @@ defmodule HL7.Terminology.Hierarchy do
         id = Map.get(x, "id")
         case id do
              nil when name == "CodeSystem" -> []
+             nil when name == "ValueSet" -> []
              _ ->
                code = :erlang.binary_to_atom Map.get(x, "code")
                display = Map.get(x, "display")
