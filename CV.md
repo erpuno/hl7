@@ -12,16 +12,21 @@
 
 ## About the Project
 
-The ** Public Health Center (PHC)** is developing the **Governmental Statistical Warehouse (GSW)** — a
-secure, high-performance, cloud-based platform for collecting, storing, processing and analyzing aggregated statistical healthcare data across Ukraine.  
+The Public Health Center (PHC) is a key governmental institution in Ukraine dedicated
+to public health monitoring, prevention, and response. We are developing the Governmental
+Statistical Warehouse (GSW) — a secure, scalable, cloud-based platform specifically for
+aggregating, storing, processing, and analyzing statistical data related to infectious
+diseases such as AIDS (HIV/AIDS), hepatitis (including types B and C), and similar communicable diseases.
+The warehouse will support:
 
-The warehouse supports:  
-- Evidence-based health policy decisions  
-- Epidemiological surveillance  
-- Healthcare resource planning and allocation  
+Real-time epidemiological tracking and surveillance
+Statistical analysis for policy development and resource allocation
+Reporting on disease prevalence, trends, and intervention outcomes
+Integration with national health databases while ensuring data privacy and security
 
-We are looking for an experienced **DevOps Engineer** to design, build and operate the reliable,
-secure and scalable infrastructure underpinning this national-level system.
+We are seeking an experienced DevOps Engineer to build and maintain the infrastructure
+for this critical system, ensuring it handles sensitive statistical data reliably and
+in compliance with health data regulations.
 
 ## Statement of Work – Main Responsibilities
 
